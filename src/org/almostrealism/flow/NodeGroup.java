@@ -51,7 +51,9 @@ import org.almostrealism.util.Defaults;
 import org.almostrealism.util.Graph;
 
 import io.almostrealism.db.Client;
+import io.almostrealism.msg.Connection;
 import io.almostrealism.msg.Message;
+import io.almostrealism.msg.NodeProxy;
 
 /**
  * A {@link NodeGroup} object represents a group of nodes (Node objects).
@@ -1242,7 +1244,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	public void addProxyEventListener(NodeProxy.EventListener l) { this.plisteners.add(l); }
 	
 	/**
-	 * @see org.almostrealism.flow.NodeProxy.EventListener#connect(org.almostrealism.flow.NodeProxy)
+	 * @see io.almostrealism.msg.NodeProxy.EventListener#connect(io.almostrealism.msg.NodeProxy)
 	 */
 	public void connect(NodeProxy pr) {
 		if (this.connecting.contains(pr)) return;
@@ -1250,13 +1252,13 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	}
 	
 	/**
-	 * @see org.almostrealism.flow.NodeProxy.EventListener#disconnect(org.almostrealism.flow.NodeProxy)
+	 * @see io.almostrealism.msg.NodeProxy.EventListener#disconnect(io.almostrealism.msg.NodeProxy)
 	 * @return  The number of connections dropped.
 	 */
 	public int disconnect(NodeProxy p) { return this.removeServer(p); }
 	
 	/**
-	 * @see org.almostrealism.flow.NodeProxy.EventListener#recievedMessage(io.almostrealism.msg.Message, int)
+	 * @see io.almostrealism.msg.NodeProxy.EventListener#recievedMessage(io.almostrealism.msg.Message, int)
 	 */
 	public boolean recievedMessage(Message m, int reciever) {
 		if (reciever == -1) {

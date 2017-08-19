@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Michael Murray
+ * Copyright 2017 Michael Murray
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +14,12 @@
  * limitations under the License.
  */
 
-/*
- * Copyright (C) 2005-06  Mike Murray
- *
- *  All rights reserved.
- *  This document may not be reused without
- *  express written permission from Mike Murray.
- *
- */
-
-package org.almostrealism.flow;
+package io.almostrealism.msg;
 
 import java.io.IOException;
 
-import io.almostrealism.msg.Message;
+import org.almostrealism.flow.Job;
+import org.almostrealism.flow.Node;
 
 /**
  * A Connection object is used to relay information between a local node
@@ -181,7 +173,7 @@ public class Connection implements Runnable, NodeProxy.EventListener {
 	}
 	
 	/**
-	 * @see org.almostrealism.flow.NodeProxy.EventListener#connect(org.almostrealism.flow.NodeProxy)
+	 * @see io.almostrealism.msg.NodeProxy.EventListener#connect(io.almostrealism.msg.NodeProxy)
 	 */
 	public void connect(NodeProxy p) {
 		System.out.println(this.toString() + ": Connected to " + p);
@@ -189,7 +181,7 @@ public class Connection implements Runnable, NodeProxy.EventListener {
 	}
 
 	/**
-	 * @see org.almostrealism.flow.NodeProxy.EventListener#disconnect(org.almostrealism.flow.NodeProxy)
+	 * @see io.almostrealism.msg.NodeProxy.EventListener#disconnect(io.almostrealism.msg.NodeProxy)
 	 * @return  0.
 	 */
 	public int disconnect(NodeProxy p) {
@@ -201,7 +193,7 @@ public class Connection implements Runnable, NodeProxy.EventListener {
 	}
 
 	/**
-	 * @see org.almostrealism.flow.NodeProxy.EventListener#recievedMessage(io.almostrealism.msg.Message, int)
+	 * @see io.almostrealism.msg.NodeProxy.EventListener#recievedMessage(io.almostrealism.msg.Message, int)
 	 */
 	public boolean recievedMessage(Message m, int reciever) {
 		if (reciever != this.node.getId()) return false;

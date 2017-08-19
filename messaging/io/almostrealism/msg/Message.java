@@ -31,10 +31,8 @@ import java.io.ObjectInput;
 import java.io.ObjectOutput;
 import java.util.ArrayList;
 
-import org.almostrealism.flow.Connection;
 import org.almostrealism.flow.Job;
 import org.almostrealism.flow.Node;
-import org.almostrealism.flow.NodeProxy;
 
 /**
  * A Message object is used to send a message using a Proxy.

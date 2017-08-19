@@ -41,7 +41,6 @@ import java.util.Set;
 
 import org.almostrealism.flow.Job;
 import org.almostrealism.flow.JobFactory;
-import org.almostrealism.flow.NodeProxy;
 import org.almostrealism.flow.Resource;
 import org.almostrealism.flow.Server;
 import org.almostrealism.flow.Server.ResourceProvider;
@@ -55,6 +54,7 @@ import io.almostrealism.db.Query;
 import io.almostrealism.db.QueryHandler;
 import io.almostrealism.db.Query.ResultHandler;
 import io.almostrealism.msg.Message;
+import io.almostrealism.msg.NodeProxy;
 
 /**
  * A ResourceDistributionTask object maintains a collection of Job instances that are cycled

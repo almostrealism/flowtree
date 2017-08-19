@@ -44,7 +44,9 @@ import org.almostrealism.io.RSSFeed;
 import org.almostrealism.util.Graph;
 
 import io.almostrealism.db.Client;
+import io.almostrealism.msg.Connection;
 import io.almostrealism.msg.Message;
+import io.almostrealism.msg.NodeProxy;
 
 /**
  * A Node object represents a node in the distributed network.

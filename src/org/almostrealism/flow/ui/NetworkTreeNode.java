@@ -16,13 +16,13 @@
 
 package org.almostrealism.flow.ui;
 
+import io.almostrealism.msg.Connection;
 import io.almostrealism.tree.ui.TreeNode;
 
 import java.util.Enumeration;
 
 import javax.swing.tree.MutableTreeNode;
 
-import org.almostrealism.flow.Connection;
 import org.almostrealism.flow.Node;
 import org.almostrealism.flow.NodeGroup;
 
