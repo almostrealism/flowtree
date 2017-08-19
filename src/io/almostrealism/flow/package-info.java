@@ -4,4 +4,4 @@
 /**
  * @author  Michael Murray
  */
-package io.almostrealism.flow.lambda;
+package io.almostrealism.flow;
