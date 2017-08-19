@@ -13,18 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-/*
- * Copyright (C) 2006  Mike Murray
+/**
+ * @author michaelmurray
  *
- *  All rights reserved.
- *  This document may not be reused without
- *  express written permission from Mike Murray.
  */
-package org.almostrealism.flow.db;
-
-import java.util.Hashtable;
-
-public interface QueryHandler {
-	public Hashtable executeQuery(Query q);
-}
+package io.almostrealism.msg;

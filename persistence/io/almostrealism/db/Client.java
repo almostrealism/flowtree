@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Michael Murray
+ * Copyright 2017 Michael Murray
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,16 +14,7 @@
  * limitations under the License.
  */
 
-/*
- * Copyright (C) 2005-06  Mike Murray
- *
- *  All rights reserved.
- *  This document may not be reused without
- *  express written permission from Mike Murray.
- *
- */
-
-package org.almostrealism.flow.db;
+package io.almostrealism.db;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -40,8 +31,12 @@ import java.util.Properties;
 
 import javax.swing.JLabel;
 
-import org.almostrealism.flow.Message;
 import org.almostrealism.flow.resources.ResourceDistributionTask;
+import org.almostrealism.io.JobOutput;
+
+import com.almostrealism.flow.LoginDialog;
+
+import io.almostrealism.msg.Message;
 
 /**
  * A Client object is used to send output produced by executing a Job

@@ -27,6 +27,8 @@ package org.almostrealism.flow;
 
 import java.io.IOException;
 
+import io.almostrealism.msg.Message;
+
 /**
  * A Connection object is used to relay information between a local node
  * and a remote node.
@@ -199,7 +201,7 @@ public class Connection implements Runnable, NodeProxy.EventListener {
 	}
 
 	/**
-	 * @see org.almostrealism.flow.NodeProxy.EventListener#recievedMessage(org.almostrealism.flow.Message, int)
+	 * @see org.almostrealism.flow.NodeProxy.EventListener#recievedMessage(io.almostrealism.msg.Message, int)
 	 */
 	public boolean recievedMessage(Message m, int reciever) {
 		if (reciever != this.node.getId()) return false;

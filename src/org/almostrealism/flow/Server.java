@@ -53,14 +53,16 @@ import java.util.Set;
 import javax.swing.JLabel;
 
 import org.almostrealism.color.RGB;
-import org.almostrealism.flow.db.Client;
-import org.almostrealism.flow.db.DatabaseConnection;
-import org.almostrealism.flow.db.Query;
 import org.almostrealism.flow.resources.DistributedResource;
 import org.almostrealism.flow.resources.ImageResource;
 import org.almostrealism.flow.resources.LocalResource;
 import org.almostrealism.flow.resources.ResourceDistributionTask;
 import org.almostrealism.texture.GraphicsConverter;
+
+import io.almostrealism.db.Client;
+import io.almostrealism.db.DatabaseConnection;
+import io.almostrealism.db.Query;
+import io.almostrealism.msg.Message;
 
 // TODO Consider performing routine tasks (eg Garbage Collector, delete unused db rows, etc.)
 //      during time when activity rating is low.
@@ -1117,7 +1119,7 @@ public class Server implements JobFactory, Runnable {
 	}
 	
 	public Message executeQuery(Query q, NodeProxy p, long timeout) throws IOException {
-		org.almostrealism.flow.db.OutputServer dbs = org.almostrealism.flow.db.OutputServer.getCurrentServer();
+		io.almostrealism.db.OutputServer dbs = io.almostrealism.db.OutputServer.getCurrentServer();
 		
 		StringBuffer result = new StringBuffer();
 		

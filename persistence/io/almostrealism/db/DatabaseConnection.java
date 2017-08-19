@@ -23,7 +23,7 @@
  *
  */
 
-package org.almostrealism.flow.db;
+package io.almostrealism.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -38,7 +38,10 @@ import java.util.Map;
 import java.util.Set;
 
 import org.almostrealism.flow.Job;
-import org.almostrealism.flow.db.Query.ResultHandler;
+import org.almostrealism.io.JobOutput;
+import org.almostrealism.io.OutputHandler;
+
+import io.almostrealism.db.Query.ResultHandler;
 
 /**
  * @author Mike Murray

@@ -60,8 +60,9 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.PBEParameterSpec;
 
-import org.almostrealism.flow.db.Client;
-import org.almostrealism.flow.db.Query;
+import io.almostrealism.db.Client;
+import io.almostrealism.db.Query;
+import io.almostrealism.msg.Message;
 
 /**
  * A NodeProxy object uses a Socket to enable communication between remote nodes.

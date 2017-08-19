@@ -35,7 +35,8 @@ import java.io.PipedOutputStream;
 import org.almostrealism.flow.Resource;
 import org.almostrealism.flow.Server;
 import org.almostrealism.flow.Server.IOStreams;
-import org.almostrealism.flow.db.Client;
+
+import io.almostrealism.db.Client;
 
 public class ImageResource implements Resource {
 	private String uri;

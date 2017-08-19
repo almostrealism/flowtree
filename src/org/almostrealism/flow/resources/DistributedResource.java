@@ -36,10 +36,11 @@ import java.util.Map;
 
 import org.almostrealism.flow.Resource;
 import org.almostrealism.flow.Server.IOStreams;
-import org.almostrealism.flow.db.Client;
-import org.almostrealism.flow.db.DatabaseConnection;
-import org.almostrealism.flow.db.OutputServer;
-import org.almostrealism.flow.db.Query;
+
+import io.almostrealism.db.Client;
+import io.almostrealism.db.DatabaseConnection;
+import io.almostrealism.db.OutputServer;
+import io.almostrealism.db.Query;
 
 /**
  * A DistributedResource object represents a file in the distributed content repository.

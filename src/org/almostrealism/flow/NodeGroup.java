@@ -46,10 +46,12 @@ import java.util.Properties;
 import javax.crypto.NoSuchPaddingException;
 import javax.swing.JLabel;
 
-import org.almostrealism.flow.db.Client;
 import org.almostrealism.io.RSSFeed;
 import org.almostrealism.util.Defaults;
 import org.almostrealism.util.Graph;
+
+import io.almostrealism.db.Client;
+import io.almostrealism.msg.Message;
 
 /**
  * A {@link NodeGroup} object represents a group of nodes (Node objects).
@@ -1078,7 +1080,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 		
 		if (Message.verbose) System.out.println("NodeGroup: Getting dbs info...");
 		
-		org.almostrealism.flow.db.OutputServer dbs = org.almostrealism.flow.db.OutputServer.getCurrentServer();
+		io.almostrealism.db.OutputServer dbs = io.almostrealism.db.OutputServer.getCurrentServer();
 		if (dbs != null) {
 			if (this.tpLast % this.tpFreq == 0) {
 				this.throughputGraph.addEntry(dbs.getThroughput());
@@ -1254,7 +1256,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	public int disconnect(NodeProxy p) { return this.removeServer(p); }
 	
 	/**
-	 * @see org.almostrealism.flow.NodeProxy.EventListener#recievedMessage(org.almostrealism.flow.Message, int)
+	 * @see org.almostrealism.flow.NodeProxy.EventListener#recievedMessage(io.almostrealism.msg.Message, int)
 	 */
 	public boolean recievedMessage(Message m, int reciever) {
 		if (reciever == -1) {

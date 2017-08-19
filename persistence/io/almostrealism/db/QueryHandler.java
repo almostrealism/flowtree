@@ -14,12 +14,17 @@
  * limitations under the License.
  */
 
-package org.almostrealism.flow.db;
-
-/**
- * The OutputHandler interface is implemented by classes that wish to be notified when job output
- * is sent to a DatabaseConnection object to be stored.
+/*
+ * Copyright (C) 2006  Mike Murray
+ *
+ *  All rights reserved.
+ *  This document may not be reused without
+ *  express written permission from Mike Murray.
  */
-public interface OutputHandler {
-	public void storeOutput(long time, int uid, JobOutput output);
+package io.almostrealism.db;
+
+import java.util.Hashtable;
+
+public interface QueryHandler {
+	public Hashtable executeQuery(Query q);
 }

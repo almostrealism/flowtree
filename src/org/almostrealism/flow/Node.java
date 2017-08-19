@@ -40,9 +40,11 @@ import java.util.Set;
 
 import javax.swing.JLabel;
 
-import org.almostrealism.flow.db.Client;
 import org.almostrealism.io.RSSFeed;
 import org.almostrealism.util.Graph;
+
+import io.almostrealism.db.Client;
+import io.almostrealism.msg.Message;
 
 /**
  * A Node object represents a node in the distributed network.

@@ -23,7 +23,7 @@
  *
  */
 
-package org.almostrealism.flow.db;
+package com.almostrealism.flow;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -48,8 +48,6 @@ public class LoginDialog extends JPanel {
 	
 	private String user, passwd;
 	
-	private boolean okayed, dismissed;
-	
 	public LoginDialog() {
 		this.userField = new JTextField(20);
 		this.passwdField = new JPasswordField(20);
@@ -61,16 +59,6 @@ public class LoginDialog extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				LoginDialog.this.user = LoginDialog.this.userField.getText();
 				LoginDialog.this.passwd = LoginDialog.this.passwdField.getText();
-				
-				LoginDialog.this.okayed = true;
-				LoginDialog.this.dismissed = true;
-			}
-		});
-		
-		this.cancelButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				LoginDialog.this.okayed = false;
-				LoginDialog.this.dismissed = true;
 			}
 		});
 		

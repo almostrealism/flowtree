@@ -29,9 +29,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.almostrealism.flow.Job;
-import org.almostrealism.flow.db.Client;
-import org.almostrealism.flow.db.JobOutput;
-import org.almostrealism.flow.db.OutputHandler;
+import org.almostrealism.io.JobOutput;
+import org.almostrealism.io.OutputHandler;
+
+import io.almostrealism.db.Client;
 
 public class UrlProfilingJob implements Job {
 	public static class Handler implements OutputHandler {
