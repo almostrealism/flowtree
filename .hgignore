@@ -19,3 +19,5 @@ syntax: regexp
 ^MatrixView/target$
 syntax: regexp
 ^test\.jpg$
+syntax: regexp
+^target$

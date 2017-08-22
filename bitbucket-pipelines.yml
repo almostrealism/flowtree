@@ -12,7 +12,8 @@ pipelines:
           # - export DSMP_HOME=./dsmp
           # - java -classpath ${DSMP_HOME}:${DSMP_HOME}/dsmp-1.1-jar-with-dependencies.jar de.pdark.dsmp.Main ${DSMP_HOME}
           
-          - cat /usr/share/maven/conf/settings.xml
+          - rm /usr/share/maven/conf/settings.xml
+          - cp ./settings.xml /usr/share/maven/conf/settings.xml
           
           # Start our internal maven repo
           - ./apache-archiva-2.2.3/bin/archiva start
