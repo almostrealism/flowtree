@@ -47,4 +47,12 @@
 		    <version>2.3.4</version>
 		</dependency>
 	</dependencies>
+	
+	<repositories>
+	    <repository>
+	      <id>archiva-repo</id>
+	      <name>Archiva</name>
+	      <url>http://localhost:8080/repository/internal/</url>
+	    </repository>
+  </repositories>
 </project>

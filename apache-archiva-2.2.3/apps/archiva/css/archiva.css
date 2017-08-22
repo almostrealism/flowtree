@@ -1,0 +1,225 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
+/* medium-spinner */
+#medium-spinner {
+ z-index: 20001;
+}
+
+.ar-multiselect .ar-multiselect-column {
+    float: left;
+    width: 17em;
+}
+
+.ar-multiselect .ar-multiselect-center {
+    float: left;
+    width: 3em;
+}
+
+.ar-multiselect-center ul {
+    list-style: none;
+    margin: 3px 0 2px 6px
+}
+
+.ar-multiselect-right {
+    margin-left: 2em
+}
+
+.modified {
+    border:2px solid #fbc7c6;
+}
+
+.modified td{
+    border-top:2px solid #fbc7c6;
+    border:2px solid #fbc7c6;
+}
+
+.draggable-item {
+  cursor: move;
+  margin-bottom: 12px;
+  margin-left: 4px;
+  min-height: 2px;
+  padding: 12px;
+  border: 2px dotted #ddd;
+  margin-left: 2em
+}
+
+.network-proxy-remote-item{
+  margin-bottom: 12px;
+  min-height: 2px;
+  padding: 12px;
+  border: 2px dotted #ddd;
+  margin-left: 2em
+}
+
+.dotted{
+  margin-bottom: 12px;
+  min-height: 2px;
+  padding: 12px;
+  border: 2px dotted #ddd;
+  margin-left: 2em
+}
+
+.browse-list{
+  list-style-image: url("../images/folder.png")
+}
+.browse-list-project{
+  list-style-image: url("../images/folder-saved-search.png");
+}
+
+.package-list{
+  list-style-image: url("../images/package-x-generic.png");
+}
+
+.force-upper-case{
+  text-transform: uppercase;
+}
+
+.dropdown-menu {
+    max-width: 920px;
+}
+.ui-menu-item {
+    cursor: pointer;
+}
+
+.ui-autocomplete-loading{
+  background:url('../images/small-spinner.gif') no-repeat right center;
+}
+
+.nav .archiva-nav-header{
+  font-size: 12px;
+}
+
+footer {
+    border-top: 1px solid #CCCCCC;
+    color: #333333;
+    margin-top: 1em;
+    padding-bottom: 30px;
+    padding-top: 10px;
+}
+
+
+/* CSS for loading message */
+#loadingDiv {
+    position: absolute;
+    left: 45%;
+    bottom: 50%;
+    z-index: 20001;
+    height: auto;
+    border: 1px solid #ccc;
+}
+#loadingDiv a {
+    color: #225588;
+}
+
+#loadingDiv .loading-indicator {
+    background: white;
+    color: #444;
+    font: bold 12px tahoma;
+    padding: 10px;
+    margin: 0;
+    height: auto;
+}
+
+.navbar .brand {
+    color: #555555;
+    display: block;
+    float: left;
+    font-size: 20px;
+    font-weight: 200;
+    margin-left: -20px;
+    padding: 5px 5px;
+    text-shadow: 0 1px 0 #FFFFFF;
+}
+
+.sidebar-nav {
+    padding: 9px 0;
+}
+
+.page-header {
+    border-bottom: 1px solid #EEEEEE;
+    margin: 15px 0 20px;
+    padding-bottom: 3px;
+}
+
+.cursor-hand:hover {
+    cursor: pointer;
+}
+
+
+code {
+    background: none repeat scroll 0 0 #EEEEEE;
+    border: 1px solid #DDDDDD;
+    color: #555555;
+    display: block;
+    font: 1.1em "Lucida Sans Unicode",serif;
+    margin-bottom: 12px;
+    max-height: 300px;
+    overflow: auto;
+    padding: 8px 10px;
+    white-space: pre;
+    vertical-align: baseline;
+}
+
+ol.linenums {
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-left: 5px;
+}
+
+.ui-widget {
+    color: #333333;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+}
+
+path.link {
+    fill: none;
+    stroke: #666;
+    stroke-width: 1.5px;
+}
+
+marker#licensing {
+    fill: green;
+}
+
+path.link.licensing {
+    stroke: green;
+}
+
+path.link.resolved {
+    stroke-dasharray: 0,2 1;
+}
+
+circle {
+    fill: #ccc;
+    stroke: #333;
+    stroke-width: 1.5px;
+}
+
+text {
+    font: 10px sans-serif;
+    pointer-events: none;
+}
+
+text.shadow {
+    stroke: #fff;
+    stroke-width: 3px;
+    stroke-opacity: .8;
+}

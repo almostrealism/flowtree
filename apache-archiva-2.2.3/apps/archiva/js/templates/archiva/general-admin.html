@@ -1,0 +1,1248 @@
+<!--
+  ~ Licensed to the Apache Software Foundation (ASF) under one
+  ~ or more contributor license agreements.  See the NOTICE file
+  ~ distributed with this work for additional information
+  ~ regarding copyright ownership.  The ASF licenses this file
+  ~ to you under the Apache License, Version 2.0 (the
+  ~ "License"); you may not use this file except in compliance
+  ~ with the License.  You may obtain a copy of the License at
+  ~
+  ~   http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing,
+  ~ software distributed under the License is distributed on an
+  ~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~ KIND, either express or implied.  See the License for the
+  ~ specific language governing permissions and limitations
+  ~ under the License.
+-->
+
+<script id="repository-scanning-main" type="text/html">
+  <div id="repository-scanning-screen">
+    <div class="page-header">
+      <h2>${$.i18n.prop('repository-scanning.head')}</h2>
+    </div>
+  </div>
+
+  <ul id="repositories-tabs" class="nav nav-tabs">
+    <li class="active">
+      <a data-toggle="tab" href="#file-types-content">${$.i18n.prop('repository-scanning.file-types.head')}</a>
+    </li>
+    <li>
+      <a data-toggle="tab" href="#consumers-content">${$.i18n.prop('repository-scanning.consumers.head')}</a>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="file-types-content" class="tab-pane active" data-bind='template: {name:"file-types-tmpl"}'>
+    </div>
+    <div id="consumers-content" class="tab-pane">
+      <div id="consumers-known-content" data-bind='template: {name:"consumers-known-content-tmpl"}'></div>
+      <div id="consumers-invalid-content" data-bind='template: {name:"consumers-invalid-content-tmpl"}'></div>
+    </div>
+  </div>
+
+</script>
+
+<script id="file-types-tmpl" type="text/html">
+<div class="accordion" id="accordion-file-types">
+  <div class="span4">
+  {{each(i, fileType) fileTypes}}
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" href="#collapse-pattern-${fileType.id}"
+         data-parent="#accordion-file-types" data-toggle="collapse">${fileType.id}&nbsp;<i class="icon-resize-vertical"/></a>
+    </div>
+    <div id="collapse-pattern-${fileType.id}" class="accordion-body collapse">
+    <table class="table table-condensed">
+      {{each(j,pattern) fileType.patterns}}
+      <tr>
+        <td>${pattern}</td>
+        <td>
+          <a href="#" data-bind="click: function(){ removeFileTypePattern(fileType.id(),pattern) }">
+            <span class="btn btn-danger">
+              <i class="icon-trash icon-white"/>
+            </span>
+          </a>
+        </td>
+      </tr>
+      {{/each}}
+      <tr>
+        <td><input type="text" id="pattern-${fileType.id}"/></td>
+        <td>
+          <a href="#" data-bind="click: function(){addFileTypePattern(fileType.id())}">
+            <span class="btn btn-success">
+              <i class="icon-plus-sign icon-white"/>
+            </span>
+          </a>
+        </td>
+      </tr>
+    </table>
+    </div>
+  </div>
+  {{/each}}
+  </div>
+</div>
+</script>
+
+<script id="consumers-known-content-tmpl" type="text/html">
+  <div class="page-header">
+    <h4>${$.i18n.prop('repository-scanning.consumers.know-content.head')}</h4>
+  </div>
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>${$.i18n.prop('repository-scanning.consumers.grid.enabled')}</th>
+        <th>${$.i18n.prop('repository-scanning.consumers.grid.id')}</th>
+        <th>${$.i18n.prop('repository-scanning.consumers.grid.description')}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{each(i,knownAdminRepositoryConsumer) knownAdminRepositoryConsumers}}
+      <tr>
+        {{if knownAdminRepositoryConsumer.enabled()==true}}
+          <td>
+            <a class="cursor-hand" data-bind="click: function(){ disableKnowContentConsumer(knownAdminRepositoryConsumer) }">
+              <img src="images/weather-clear-22-22.png"/>
+            </a>
+          </td>
+          {{else}}
+          <td>
+            <a class="cursor-hand" data-bind="click: function(){ enableKnowContentConsumer(knownAdminRepositoryConsumer) }">
+              <img src="images/dialog-error-22-22.png"/>
+            </a>
+          </td>
+        {{/if}}
+
+        <td>${knownAdminRepositoryConsumer.id}</td>
+        <td>${knownAdminRepositoryConsumer.description}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</script>
+
+<script id="consumers-invalid-content-tmpl" type="text/html">
+  <div class="page-header">
+    <h4>${$.i18n.prop('repository-scanning.consumers.invalid-content.head')}</h4>
+  </div>
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>${$.i18n.prop('repository-scanning.consumers.grid.enabled')}</th>
+        <th>${$.i18n.prop('repository-scanning.consumers.grid.id')}</th>
+        <th>${$.i18n.prop('repository-scanning.consumers.grid.description')}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{each(i,invalidAdminRepositoryConsumer) invalidAdminRepositoryConsumers}}
+      <tr>
+        {{if invalidAdminRepositoryConsumer.enabled()==true}}
+          <td>
+            <a href="#" data-bind="click: function(){ disableInvalidContentConsumer(invalidAdminRepositoryConsumer) }">
+              <img src="images/weather-clear-22-22.png"/>
+            </a>
+          </td>
+          {{else}}
+          <td>
+            <a href="#" data-bind="click: function(){ enableInvalidContentConsumer(invalidAdminRepositoryConsumer) }">
+              <img src="images/dialog-error-22-22.png"/>
+            </a>
+          </td>
+        {{/if}}
+        <td>${invalidAdminRepositoryConsumer.id}</td>
+        <td>${invalidAdminRepositoryConsumer.description}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</script>
+
+<script id="runtime-configuration-screen" type="text/html">
+  <div class="page-header">
+    <h2>${$.i18n.prop('archiva-runtime-configuration.title')}</h2>
+  </div>
+  <ul class="nav nav-tabs">
+    <li class="active" id="network-configuration-form-li"><a href="#network-configuration-form-content" data-toggle="tab">${$.i18n.prop('runtime-configuration.maven.network.title')}</a></li>
+    <li id="cache-failure-form-li"><a href="#cache-failure-form-content" data-toggle="tab">${$.i18n.prop('runtime-configuration.cache.failure.title')}</a></li>
+    <li id="filelocking-form-li"><a href="#filelocking-form-content" data-toggle="tab">${$.i18n.prop('runtime-configuration.filelocking.title')}</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div class="tab-pane active" id="network-configuration-form-content">
+      <div class="page-header">
+        <h4>${$.i18n.prop('network-configuration.header')}</h4>
+      </div>
+      <div id="network-configuration-form" data-bind='template: {name:"network-configuration-form-tmpl"}'></div>
+    </div>
+    <div class="tab-pane" id="cache-failure-form-content">
+      <div id="cache-failure-form" data-bind='template: {name:"cache-failure-form-tmpl"}'></div>
+    </div>
+    <div class="tab-pane" id="filelocking-form-content">
+      <div id="filelocking-form" data-bind='template: {name:"filelocking-form-tmpl"}'></div>
+    </div>
+  </div>
+</script>
+
+
+<script id="network-configuration-form-tmpl" type="text/html">
+    <form id="network-configuration-edit-form" class="well form-horizontal">
+      <fieldset id="network-configuration-edit-fieldset">
+        <div class="control-group">
+          <label class="control-label" for="maxTotal">${$.i18n.prop('network-configuration.maxTotal')}</label>
+          <div class="controls">
+            <input type="text" class="xlarge required digits" id="maxTotal" name="maxTotal" size="8"
+                   data-bind="value: networkConfiguration().maxTotal"/>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="maxTotal">${$.i18n.prop('network-configuration.maxTotalPerHost')}</label>
+          <div class="controls">
+            <input type="text" class="xlarge required digits" id="maxTotalPerHost" name="maxTotalPerHost" size="8"
+                   data-bind="value: networkConfiguration().maxTotalPerHost"/>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="usePooling">${$.i18n.prop('network-configuration.usePooling')}</label>
+          <div class="controls">
+            <input type="checkbox" id="usePooling" name="usePooling" data-bind="checked: networkConfiguration().usePooling"/>
+          </div>
+        </div>
+      </fieldset>
+      <button id="network-configuration-btn-save" data-loading-text="${$.i18n.prop('common.loading')}"
+              data-bind="click: save" class="btn">${$.i18n.prop('save')}</button>
+    </form>
+</script>
+
+<script id="cache-failure-form-tmpl" type="text/html">
+
+  <form class="well form-horizontal" id="cache-failure-form-id">
+
+    <div class="control-group">
+      <label class="control-label" for="usersCacheTimeToLiveSeconds">${$.i18n.prop('runtime.cache.timeToLiveSeconds.label')}</label>
+      <div class="controls">
+        <input type="text" class="xlarge required digits" data-bind="value: archivaRuntimeConfiguration().urlFailureCacheConfiguration().timeToLiveSeconds"
+               id="usersCacheTimeToLiveSeconds" name="usersCacheTimeToLiveSeconds" />
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label" for="usersCacheTimeToIdleSeconds">${$.i18n.prop('runtime.cache.timeToIdleSeconds.label')}</label>
+      <div class="controls">
+        <input type="text" class="xlarge required digits" data-bind="value: archivaRuntimeConfiguration().urlFailureCacheConfiguration().timeToIdleSeconds"
+               id="usersCacheTimeToIdleSeconds" name="usersCacheTimeToIdleSeconds" />
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label" for="maxElementsInMemory">${$.i18n.prop('runtime.cache.maxElementsInMemory.label')}</label>
+      <div class="controls">
+        <input type="text" class="xlarge required digits" data-bind="value: archivaRuntimeConfiguration().urlFailureCacheConfiguration().maxElementsInMemory"
+               id="maxElementsInMemory" name="maxElementsInMemory" />
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label" for="maxElementsOnDisk">${$.i18n.prop('runtime.cache.maxElementsOnDisk.label')}</label>
+      <div class="controls">
+        <input type="text" class="xlarge required digits" data-bind="value: archivaRuntimeConfiguration().urlFailureCacheConfiguration().maxElementsOnDisk"
+               id="maxElementsOnDisk" name="maxElementsOnDisk" />
+      </div>
+    </div>
+
+
+
+    <button id="cache-failure-form-btn-save" data-loading-text="${$.i18n.prop('common.loading')}"
+            data-bind="click: save" class="btn">${$.i18n.prop('save')}</button>
+
+  </form>
+
+</script>
+
+
+<script id="filelocking-form-tmpl" type="text/html">
+
+  <form class="well form-horizontal" id="filelocking-form-id">
+
+    <div class="control-group">
+      <label class="control-label" for="skipLocking">${$.i18n.prop('runtime.fileLockConfiguration.skipLocking.label')}</label>
+      <div class="controls">
+        <input type="checkbox" class="xlarge" data-bind="checked: archivaRuntimeConfiguration().fileLockConfiguration().skipLocking"
+               id="skipLocking" name="skipLocking" />
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label" for="lockingTimeout">${$.i18n.prop('runtime.fileLockConfiguration.lockingTimeout.label')}</label>
+      <div class="controls">
+        <input type="text" class="xlarge required digits" data-bind="value: archivaRuntimeConfiguration().fileLockConfiguration().lockingTimeout"
+               id="lockingTimeout" name="lockingTimeout" />
+      </div>
+    </div>
+
+    <button id="filelocking-form-btn-save" data-loading-text="${$.i18n.prop('common.loading')}"
+            data-bind="click: save" class="btn">${$.i18n.prop('save')}</button>
+
+  </form>
+
+</script>
+
+
+<script id="system-status-main" type="text/html">
+  <div class="page-header">
+    <h4>${$.i18n.prop('system-status.header.version.info')}</h4>
+  </div>
+  <div id="status_version_info">
+    <img src="images/small-spinner.gif"/>
+  </div>
+
+  <div class="page-header">
+    <h4>${$.i18n.prop('system-status.header.memory')}&nbsp;<a class="cursor-hand" onclick="displayMemoryUsage()"><img src="images/view-refresh.png"/></a></h4>
+  </div>
+  <div id="status_memory_info">
+    <img src="images/small-spinner.gif"/>
+  </div>
+
+  <div class="page-header">
+    <h3>${$.i18n.prop('system-status.header.main')}&nbsp;<a class="cursor-hand" onclick="refreshSystemStatus()"><img src="images/view-refresh-22-22.png"/></a></h3>
+  </div>
+  <div class="page-header">
+    <h4>${$.i18n.prop('system-status.header.queues')}&nbsp;<a class="cursor-hand" onclick="displayQueueEntries()"><img src="images/view-refresh.png"/></a></h4>
+  </div>
+  <div id="status_queues">
+    <img src="images/small-spinner.gif"/>
+  </div>
+
+  <div class="page-header">
+    <h4>${$.i18n.prop('system-status.header.scanning')}&nbsp;<a class="cursor-hand" onclick="displayScanningStats()"><img src="images/view-refresh.png"/></a></h4>
+  </div>
+  <div id="status_scanning">
+    <img src="images/small-spinner.gif"/>
+  </div>
+
+  <div class="page-header">
+    <h4>${$.i18n.prop('system-status.header.caches')}&nbsp;<a class="cursor-hand" onclick="displayCacheEntries()"><img src="images/view-refresh.png"/></a></h4>
+  </div>
+  <div id="status_caches">
+      <img src="images/small-spinner.gif"/>
+  </div>
+
+  <div class="page-header">
+    <h4>${$.i18n.prop('system-status.header.current.time')}</h4>
+  </div>
+  <div id="status_current_time">
+    <img src="images/small-spinner.gif"/>
+  </div>
+
+</script>
+
+<script id="status_caches_tmpl" type="text/html">
+  <a class="btn btn-warning" onclick="flushAllCaches()">
+    ${$.i18n.prop('system-status.caches.flushAll')}
+  </a>
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>${$.i18n.prop('system-status.caches.grid.header.key')}</th>
+        <th>${$.i18n.prop('system-status.caches.grid.header.size')}</th>
+        <th>${$.i18n.prop('system-status.caches.grid.header.cacheHits')}</th>
+        <th>${$.i18n.prop('system-status.caches.grid.header.cacheMiss')}</th>
+        <th>${$.i18n.prop('system-status.caches.grid.header.cacheHitRate')}</th>
+        <th>${$.i18n.prop('system-status.caches.grid.header.inMemorySize')}</th>
+        <th>${$.i18n.prop('system-status.caches.grid.header.flush')}</th>
+      </tr>
+    </thead>
+    <tbody>
+    {{each(i,cacheEntry) cacheEntries}}
+      <tr>
+        <td>${cacheEntry.key}</td>
+        <td>${cacheEntry.size}</td>
+        <td>${cacheEntry.cacheHits}</td>
+        <td>${cacheEntry.cacheMiss}</td>
+        <td>${cacheEntry.cacheHitRate}</td>
+        <td>${cacheEntry.inMemorySize}</td>
+        <td>
+          <a class="cursor-hand" onclick="flushCache('${cacheEntry.key}')"
+             title="${$.i18n.prop('system-status.caches.grid.flush.icon.title')}">
+            {{if  cacheEntry.size > 0 }}
+              <img src="images/user-trash-full.png"/>
+            {{else}}
+              <img src="images/user-trash.png"/>
+            {{/if}}
+          </a>
+        </td>
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
+</script>
+
+
+<script id="status_queues_tmpl" type="text/html">
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>${$.i18n.prop('system-status.queues.grid.header.key')}</th>
+        <th>${$.i18n.prop('system-status.queues.grid.header.size')}</th>
+      </tr>
+    </thead>
+    <tbody>
+    {{each(i,queueEntry) queueEntries}}
+      <tr>
+        <td>${queueEntry.key}</td>
+        <td>${queueEntry.entriesNumber}</td>
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
+</script>
+
+<script id="status_scanning_tmpl" type="text/html">
+  {{if repositoryScannerStatisticsList.length == 0}}
+    <h5>No scans in progress.</h5>
+  {{else}}
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <th>${$.i18n.prop('system-status.scanning.grid.header.repository')}</th>
+          <th>${$.i18n.prop('system-status.scanning.grid.header.files.processed')}</th>
+          <th>${$.i18n.prop('system-status.scanning.grid.header.files.new')}</th>
+          <th>${$.i18n.prop('system-status.scanning.grid.header.stats')}</th>
+        </tr>
+      </thead>
+      <tbody>
+      {{each(i,repositoryScannerStatistics) repositoryScannerStatisticsList}}
+        <tr>
+          <td>${repositoryScannerStatistics.managedRepository.name()}</td>
+          <td>${repositoryScannerStatistics.totalFileCount}</td>
+          <td>${repositoryScannerStatistics.newFileCount}</td>
+          <td>
+            <blockquote>
+            <table>
+              <thead>
+                <tr>
+                  <th>${$.i18n.prop('system-status.scanning.consumers.grid.header.name')}</th>
+                  <th>${$.i18n.prop('system-status.scanning.consumers.grid.header.total')}</th>
+                  <th>${$.i18n.prop('system-status.scanning.consumers.grid.header.average')} ms</th>
+                  <th>${$.i18n.prop('system-status.scanning.consumers.grid.header.invocations.time')}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{each(j,consumerScanningStatistics) repositoryScannerStatistics.consumerScanningStatisticsList}}
+                <tr>
+                  <td>${consumerScanningStatistics.consumerKey}</td>
+                  <td>${consumerScanningStatistics.count}</td>
+                  <td>${consumerScanningStatistics.average}ms</td>
+                  <td>${consumerScanningStatistics.time}ms</td>
+                </tr>
+                {{/each}}
+              </tbody>
+            </table>
+            </blockquote>
+          </td>
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+  {{/if}}
+</script>
+
+<script id="changeAppearance" type="text/html">
+
+    <h4>${$.i18n.prop('appearance-configuration.organisation-details')}</h4>
+
+    <p>${$.i18n.prop('apperance-configuration.details-description')}</p>
+
+    <form id="appearance-configuration-form-id" class="well form-horizontal">
+        <fieldset id="appearance-configuration-fielset-id">
+            <div class="control-group">
+                <label class="control-label" for="name">${$.i18n.prop('appearance-configuration.name-label')}</label>
+                <div class="controls">
+                    <input type="text" class="input-xlarge required" id="name" name="name" size="50"
+                           data-bind="value: organisationInformation().name"/>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="name">${$.i18n.prop('appearance-configuration.url-label')}</label>
+                <div class="controls">
+                    <input type="text" class="input-xlarge required" id="url" name="url" size="50"
+                           data-bind="value: organisationInformation().url"/>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label"
+                       for="name">${$.i18n.prop('appearance-configuration.logoLocation-label')}</label>
+                <div class="controls">
+                    <input type="text" class="input-xxlarge" id="logoLocation" name="logoLocation" size="50"
+                           data-bind="value: organisationInformation().logoLocation"/>
+                </div>
+            </div>
+        </fieldset>
+        <button id="appearance-configuration-btn-save" data-loading-text="${$.i18n.prop('common.loading')}" data-bind="click: save" class="btn">${$.i18n.prop('save')}</button>
+    </form>
+</script>
+
+<script id="ui-configuration-screen" type="text/html">
+  <div class="page-header">
+    <h4>${$.i18n.prop('ui-configuration.header')}</h4>
+  </div>
+  <div id="ui-configuration-form" data-bind='template: {name:"ui-configuration-form-tmpl"}'></div>
+</script>
+
+<script id="ui-configuration-form-tmpl" type="text/html">
+  <form id="ui-configuration-edit-form" class="well form-horizontal">
+    <fieldset id="ui-configuration-edit-fieldset">
+      <div class="control-group">
+        <label class="control-label" for="maxTotal">${$.i18n.prop('ui-configuration.applicationUrl')}</label>
+        <div class="controls">
+          <input type="text" class="input-xxlarge required digits" id="applicationUrl" name="applicationUrl" size="8"
+                 data-bind="value: uiConfiguration().applicationUrl"/>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="disableRegistration">${$.i18n.prop('ui-configuration.disableRegistration')}</label>
+        <div class="controls">
+          <input type="checkbox" id="disableRegistration" name="disableRegistration" data-bind="checked: uiConfiguration().disableRegistration"/>
+        </div>
+      </div>
+
+    </fieldset>
+    <button id="ui-configuration-btn-save" data-bind="click: save" class="btn" data-loading-text="${$.i18n.prop('common.loading')}">${$.i18n.prop('save')}</button>
+  </form>
+</script>
+
+<script id="ui-configuration" type="text/html">
+
+  <div class="page-header">
+    <h4>${$.i18n.prop('ui-configuration.header')}</h4>
+  </div>
+
+  <ul class="nav nav-tabs">
+    <li class="active" id="ui-configuration-form-li"><a href="#ui-configuration-tab" data-toggle="tab">${$.i18n.prop('ui-configuration.header')}</a></li>
+    <li id="change-appearance-form-li"><a href="#change-appearance-form-tab" data-toggle="tab">${$.i18n.prop('appearance-configuration.title-page')}</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div class="tab-pane active" id="ui-configuration-tab">
+      <div id="ui-configuration-form" data-bind='template: {name:"ui-configuration-form-tmpl"}'></div>
+    </div>
+    <div class="tab-pane" id="change-appearance-form-tab">
+      <div id="change-appearance-form" data-bind='template: {name:"changeAppearance"}'></div>
+    </div>
+  </div>
+
+</script>
+
+
+<script id="file-upload-screen" type="text/html">
+  <div id="file-upload-main" data-bind='template:{name:"file-upload-tmpl"}'></div>
+</script>
+
+<script id="file-upload-tmpl" type="text/html">
+  <div class="page-header">
+    <h3>${$.i18n.prop('fileupload.header')}</h3>
+  </div>
+  <form id="fileupload" action="restServices/archivaUiServices/fileUploadService" method="POST"
+        enctype="multipart/form-data" class="well form-horizontal">
+
+    <fieldset id="network-proxy-edit-fieldset">
+      <div class="control-group">
+        <label class="control-label" for="repositoryId">${$.i18n.prop('fileupload.repositoryId')}</label>
+        <div class="controls">
+          <select id="repositoryId"
+                    data-bind="options: managedRepositories, optionsText: 'name',optionsValue:'id',
+                     value: repositoryId"></select>
+         </div>
+        </div>
+      <div class="control-group">
+        <label class="control-label" for="groupId">${$.i18n.prop('fileupload.groupId')}</label>
+        <div class="controls">
+          <input type="text" class="xlarge required" data-bind="value: groupId" id="groupId" name="groupId" size="10" />
+          </div>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="artifactId">${$.i18n.prop('fileupload.artifactId')}</label>
+        <div class="controls">
+          <input type="text" class="xlarge required" data-bind="value: artifactId" id="artifactId" name="artifactId" size="10" />
+          </div>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="version">${$.i18n.prop('fileupload.version')}</label>
+        <div class="controls">
+          <input type="text" class="xlarge required" data-bind="value: version" id="version" name="version" size="10" />
+          </div>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="packaging">${$.i18n.prop('fileupload.packaging')}</label>
+        <div class="controls">
+          <input type="text" class="xlarge required" data-bind="value: packaging" id="packaging" name="packaging" size="10" />
+          </div>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="generatePom">${$.i18n.prop('fileupload.generatePom')}</label>
+        <div class="controls">
+          <input type="checkbox" class="xlarge" data-bind="checked: generatePom" id="generatePom" name="generatePom" />
+          </div>
+        </div>
+      </div>
+    </fieldset>
+
+    <div class="row-fluid fileupload-buttonbar">
+      <div class="span7">
+        <span class="btn btn-success fileinput-button">
+          <i class="icon-plus icon-white"></i>
+          <span>${$.i18n.prop('fileupload.file.choose')}</span>
+          <input type="file" name="files[]" multiple="">
+        </span>
+        <button type="submit" class="btn btn-primary start">
+          <i class="icon-upload icon-white"></i>
+          <span>${$.i18n.prop('fileupload.start')}</span>
+        </button>
+        <button type="reset" class="btn btn-warning cancel">
+          <i class="icon-ban-circle icon-white"></i>
+          <span>${$.i18n.prop('fileupload.cancel')}</span>
+        </button>
+        <button type="button" class="btn btn-danger delete">
+          <i class="icon-trash icon-white"></i>
+          <span>${$.i18n.prop('fileupload.delete')}</span>
+        </button>
+        <input type="checkbox" class="toggle" title="${$.i18n.prop('fileupload.deleteAll')}">
+      </div>
+      <div class="span5">
+        <div class="progress progress-success progress-striped active">
+          <div class="bar" style="width:0%;"></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <a href="#" id="fileupload-save-files">
+        <span class="btn btn-info" data-bind='click: saveArtifacts'>
+          <i class="icon-file icon-white"></i>
+          <span>${$.i18n.prop('fileupload.save')}</span>
+        </span>
+      </a>
+    </div>
+    <div class="fileupload-loading"></div>
+    <br>
+    <div>
+        <img src="images/media-floppy-22-22.png"/>
+        <span class="label">Drag &amp; Drop files</span>
+    </div>
+    <br>
+    <table class="table table-striped">
+      <tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery" id="uploaded-files-list"></tbody>
+    </table>
+</form>
+
+</script>
+
+
+<script id="template-upload" type="text/html">
+  {% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-upload">
+      <td class="name"><span>{%=file.name%}</span></td>
+      <td><input type="text" class="input-small" id="classifier" name="classifier" placeholder="classifier" value=""/></td>
+      <td><input type="text" class="input-small" id="packaging" name="packaging" placeholder="packaging" value=""></td>
+      <td><span>pomFile:</span><input type="checkbox" id="pomFile" name="pomFile"/></td>
+      <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
+      {% if (file.error) { %}
+      <td class="error" colspan="2">
+        <span class="label label-important">{%=$.i18n.prop('fileupload.error')%}</span>
+        {%=$.i18n.prop('fileupload.errors.'+[file.error]) || file.error%}
+      </td>
+      {% } else if (o.files.valid && !i) { %}
+      <td>
+        <div class="progress progress-success progress-striped active">
+          <div class="bar" style="width:0%;"></div>
+        </div>
+      </td>
+      <td class="start">
+        {% if (!o.options.autoUpload) { %}
+        <button class="btn btn-primary">
+          <i class="icon-upload icon-white"></i>
+          <span>{%=$.i18n.prop('fileupload.start')%}</span>
+        </button>
+        {% } %}
+      </td>
+      {% } else { %}
+      <td colspan="2"></td>
+      {% } %}
+      <td class="cancel">
+      {% if (!i) { %}
+        <button class="btn btn-warning">
+          <i class="icon-ban-circle icon-white"></i>
+          <span>{%=$.i18n.prop('fileupload.cancel')%}</span>
+        </button>
+      {% } %}
+      </td>
+    </tr>
+  {% } %}
+</script>
+
+<script id="template-download" type="text/html">
+  {% for (var i=0, file; file=o.files[i]; i++) { %}
+  <tr class="template-download">
+      <td class="name"><span>{%=file.name%}</span></td>
+      <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
+    {% if (file.error) { %}
+      <td class="error" colspan="2">
+        <span class="label label-important">{%=$.i18n.prop('fileupload.error')%}</span>
+        {%=$.i18n.prop('fileupload.errors.'+[file.error]) || file.error%}
+      </td>
+    {% } else { %}
+      <td colspan="2"></td>
+    {% } %}
+      <td class="delete">
+        <button class="btn btn-danger" data-type="{%=file.deleteType%}"
+                data-url="restServices/archivaUiServices/fileUploadService/{%=file.deleteUrl%}">
+          <i class="icon-trash icon-white"></i>
+          <span>{%=$.i18n.prop('fileupload.destroy')%}</span>
+        </button>
+        <input type="checkbox" name="delete" value="1">
+      </td>
+    </tr>
+{% } %}
+</script>
+
+<script id="report-base" type="text/html">
+  <div class="page-header">
+    <h2>${$.i18n.prop('report.title')}</h2>
+  </div>
+
+    <ul class="nav nav-tabs">
+      <li class="active" id="report-stat-tab-li"><a href="#report-stat-tab-content" data-toggle="tab">${$.i18n.prop('report.statistics.title')}</a></li>
+      <li id="report-health-tab-li"><a href="#report-health-tab-content" data-toggle="tab">${$.i18n.prop('report.health.title')}</a></li>
+      <li id="report-result-tab-li" class="hide"><a href="#report-result" data-toggle="tab">${$.i18n.prop('report.result.title')}</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div class="tab-pane active" id="report-stat-tab-content">
+        <form class="form-horizontal" id="report-statistics-form-id">
+          <fieldset id="form-statistics-report">
+            <div class="row-fluid">
+              <div class="span6 row-fluid">
+                <div class="row-fluid" id="repositoriesErrorMessage"></div>
+                <div class="row-fluid">
+                  <div class="span6 dotted">
+                    <h5>${$.i18n.prop('report.statistics.selected-repositories.label')}</h5>
+                    <hr/>
+                    <div style="min-height: 40px"
+                         data-bind="sortable: { template: 'statistics-repositories-order-tmpl', data:statisticsReport().repositories}">
+                    </div>
+                  </div>
+                  <div class="span6 dotted">
+                    <h5>${$.i18n.prop('repository.groups.available-repositories.label')}</h5>
+                    <hr/>
+                    <div style="min-height: 40px"
+                         data-bind="sortable: {template: 'statistics-repositories-order-tmpl',data:availableRepositories}">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="span6 well">
+                  <div class="control-group">
+                      <label for="rowCountStatistics" class="control-label">
+                          ${$.i18n.prop('report.statistics.row-count.label')}
+                      </label>
+                      <div class="controls">
+                          <input type="text" id="rowCountStatistics" name="rowCountStatistics" class="input-small"
+                                 data-bind="value: statisticsReport().rowCount"/>
+
+                          <a class="btn btn-warning btn-mini" id="rowcount-info-button"
+                                  data-original-title="${$.i18n.prop('report.statistics.rowCount.explanations-title')}"
+                                  data-content="${$.i18n.prop('report.statistics.rowCount.explanations')}"
+                                  data-placement="left" data-toggle="button">
+                              <i class="icon-question-sign icon-white"></i>
+                          </a>
+                      </div>
+                  </div>
+                  <div class="control-group">
+                      <label for="startDate" class="control-label">
+                          ${$.i18n.prop('report.statistics.start-date.label')}
+                      </label>
+                      <div class="controls">
+                          <input type="text" id="startDate" name="startDate" class="input-small"
+                                 data-bind="value: statisticsReport().startDate"/>
+                      </div>
+                  </div>
+                  <div class="control-group">
+                      <label for="endDate" class="control-label">
+                          ${$.i18n.prop('report.statistics.end-date.label')}
+                      </label>
+                      <div class="controls">
+                          <input type="text" id="endDate" name="endDate" class="input-small"
+                                 data-bind="value: statisticsReport().endDate"/>
+                      </div>
+                  </div>
+              </div>
+            </div>
+              <div class="form-actions">
+                  <button class="btn btn-primary" data-bind="click: showStatistics">
+                      ${$.i18n.prop('report.statistics.btn-view')}
+                  </button>
+              </div>
+          </fieldset>
+        </form>
+      </div>
+
+      <div class="tab-pane" id="report-health-tab-content">
+        <form class="form-horizontal" id="report-health-form-id">
+          <fieldset id="form-health-report">
+            <div class="control-group">
+              <label for="rowCountHealth" class="control-label">
+                ${$.i18n.prop('report.statistics.row-count.label')}
+              </label>
+              <div class="controls">
+                <input type="text" id="rowCountHealth" name="rowCountHealth" class="input-small required"
+                        data-bind="value: healthReport().rowCount"/>
+              </div>
+            </div>
+            <div class="control-group">
+              <label for="groupId" class="control-label">
+                ${$.i18n.prop('report.health.groupId.label')}
+              </label>
+              <div class="controls">
+                <input type="text" id="groupId" name="groupId" data-bind="value: healthReport().groupId"/>
+              </div>
+            </div>
+            <div class="control-group">
+              <label for="repositoryId" class="control-label">
+                ${$.i18n.prop('report.health.repositoryId.label')}
+              </label>
+              <div class="controls">
+                <select id="repositoryId" name="repositoryId" data-bind="value: healthReport().repositoryId"
+                        class="required">
+                    <option value="all">${$.i18n.prop('report.select.all-repositories')}</option>
+                    {{each(i, repoId) repositoriesList}}
+                      <option value="${repoId}">${repoId}</option>
+                    {{/each}}
+                </select>
+              </div>
+            </div>
+            <div class="form-actions">
+              <a href="#" class="btn btn-primary" data-bind="click: showHealth">
+                ${$.i18n.prop('report.health.btn-view')}
+              </a>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+
+      <div class="tab-pane" id="report-result">
+      </div>
+    </div>
+</script>
+
+<script id="statistics-repositories-order-tmpl" type="text/html">
+  <div class="well draggable-item">
+    ${$data}
+  </div>
+</script>
+
+<script id="report-health" type="text/html">
+    <div class="page-header">
+        <h3>${$.i18n.prop('report.health.title')}</h3>
+    </div>
+    <table class="table table-bordered table-striped"
+           data-bind="simpleGrid: tableReportViewModel,simpleGridTemplate:'table-report-tmpl',pageLinksId:'reportHealthPageLinkId'">
+    </table>
+    <div id="reportHealthPageLinkId"></div>
+</script>
+
+<script id="report-statistics" type="text/html">
+    <div class="page-header">
+        <h3>${$.i18n.prop('report.statistics.title')}</h3>
+    </div>
+    <table class="table table-bordered table-striped"
+           data-bind="simpleGrid: tableReportViewModel,simpleGridTemplate:'table-report-tmpl',pageLinksId:'reportStatisticsPageLinkId'">
+    </table>
+    <div id="reportStatisticsPageLinkId"></div>
+</script>
+<script id="table-report-tmpl" type="text/html">
+    <thead>
+    {{each(i, columnDefinition) columns}}
+      <th>${ columnDefinition.headerText }</th>
+    {{/each}}
+    </thead>
+    <tbody>
+    {{each(i, row) itemsOnCurrentPage()}}
+      <tr>
+        {{each(i, columnDefinition) columns}}
+          {{var val = (typeof columnDefinition.rowText == 'function' ? columnDefinition.rowText(row) : row[columnDefinition.rowText])}}
+          <td>
+              ${val}
+          </td>
+        {{/each}}
+      </tr>
+    {{/each}}
+    </tbody>
+</script>
+
+<script type="text/html" id="redback-runtime-configuration-main">
+  <div class="page-header">
+    <h2>${$.i18n.prop('redback-runtime-configuration.title')}</h2>
+  </div>
+  <div id="redback-runtime-configuration-content" data-bind='template: {name:"redback-runtime-configuration-content-tmpl"}'>
+  </div>
+</script>
+
+<script type="text/html" id="redback-runtime-configuration-content-tmpl">
+  <ul class="nav nav-tabs">
+    <li class="active" id="redback-runtime-general-li"><a href="#redback-runtime-general-content" data-toggle="tab">${$.i18n.prop('redback.runtime.general.title')}</a></li>
+    <li id="redback-runtime-ldap-li"><a href="#redback-runtime-ldap-content" data-toggle="tab">${$.i18n.prop('redback.runtime.ldap.title')}</a></li>
+    <li id="redback-ldap-mapping-li"><a href="#redback-runtime-ldap-mapping" data-toggle="tab">${$.i18n.prop('redback.runtime.ldap.mapping.title')}</a></li>
+    <li id="redback-runtime-properties-li"><a href="#redback-runtime-properties-content" data-toggle="tab">${$.i18n.prop('redback.runtime.properties.title')}</a></li>
+    <li id="redback-runtime-users-cache-li"><a href="#redback-runtime-users-cache-content" data-toggle="tab">${$.i18n.prop('redback.runtime.users.cache.title')}</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div class="tab-pane active" id="redback-runtime-general-content">
+      <div class="well">
+        <div class="row-fluid">
+          <div class="span4 dotted">
+            <h5>${$.i18n.prop('redback.runtime.user-managers.impls.chose')}</h5>
+            <div style="min-height: 40px" id="user-mananagers-sortables-chose"
+                 data-bind="sortable: { template: 'redback-runtime-general-content-impl-informations', data:usedUserManagerImpls,afterMove: userManagerImplMoved}">
+            </div>
+          </div>
+
+          <div class="span4 dotted">
+            <h5>${$.i18n.prop('redback.runtime.user-managers.impls.available')}</h5>
+            <div style="min-height: 40px"id="user-mananagers-sortables-availables"
+                 data-bind="sortable: {template: 'redback-runtime-general-content-impl-informations',data:availableUserManagerImpls,afterMove: userManagerImplMoved}">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="well">
+        <div class="row-fluid">
+          <div class="span4 dotted">
+            <h5>${$.i18n.prop('redback.runtime.rbac-managers.impls.chose')}</h5>
+            <div style="min-height: 40px" id="rbac-mananagers-sortables-chose"
+                 data-bind="sortable: { template: 'redback-runtime-general-content-impl-informations', data:usedRbacManagerImpls,afterMove: rbacManagerImplMoved}">
+            </div>
+          </div>
+
+          <div class="span4 dotted">
+            <h5>${$.i18n.prop('redback.runtime.rbac-managers.impls.available')}</h5>
+            <div style="min-height: 40px"id="rbac-mananagers-sortables-availables"
+                 data-bind="sortable: {template: 'redback-runtime-general-content-impl-informations',data:availableRbacManagerImpls,afterMove: rbacManagerImplMoved}">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="redback-runtime-ldap-content">
+      <div class="well">
+        <form class="form-horizontal" id="redback-runtime-ldap-form-id">
+
+            <div class="control-group">
+              <label for="ldapHost" class="control-label">
+                ${$.i18n.prop('redback.runtime.ldap.host.label')}
+              </label>
+              <div class="controls">
+                <input type="text" id="ldapHost" name="ldapHost" class="input-xlarge"
+                       data-bind="value: redbackRuntimeConfiguration().ldapConfiguration().hostName"/>
+              </div>
+            </div>
+            <div class="control-group">
+              <label for="ldapPort" class="control-label">
+                ${$.i18n.prop('redback.runtime.ldap.port.label')}
+              </label>
+              <div class="controls">
+                <input type="text" id="ldapPort" name="ldapPort" class="input-large"
+                       data-bind="value: redbackRuntimeConfiguration().ldapConfiguration().port"/>
+              </div>
+            </div>
+            <div class="control-group">
+              <label for="ldap-writable" class="control-label">
+                ${$.i18n.prop('redback.runtime.ldap.writable.label')}
+              </label>
+              <div class="controls">
+                <input type="checkbox" id="ldap-writable" name="ldap-writable"
+                       data-bind="checked: redbackRuntimeConfiguration().ldapConfiguration().writable"/>
+              </div>
+            </div>
+            <div class="control-group">
+              <label for="ldapBaseDn" class="control-label">
+                ${$.i18n.prop('redback.runtime.ldap.baseDn.label')}
+              </label>
+              <div class="controls">
+                <input type="text" id="ldapBaseDn" name="ldapBaseDn" class="input-xxlarge"
+                       data-bind="value: redbackRuntimeConfiguration().ldapConfiguration().baseDn"/>
+              </div>
+            </div>
+            <div class="control-group">
+              <label for="baseGroupsDn" class="control-label">
+                ${$.i18n.prop('redback.runtime.ldap.baseGroupsDn.label')}
+              </label>
+              <div class="controls">
+                <input type="text" id="baseGroupsDn" name="baseGroupsDn" class="input-xxlarge"
+                       data-bind="value: redbackRuntimeConfiguration().ldapConfiguration().baseGroupsDn"/>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label for="ldapBindDn" class="control-label">
+                ${$.i18n.prop('redback.runtime.ldap.bindDn.label')}
+              </label>
+              <div class="controls">
+                <input type="text" id="ldapBindDn" name="ldapBindDn" class="input-xxlarge"
+                       data-bind="value: redbackRuntimeConfiguration().ldapConfiguration().bindDn"/>
+              </div>
+            </div>
+            <div class="control-group">
+              <label for="ldapPassword" class="control-label">
+                ${$.i18n.prop('redback.runtime.ldap.password.label')}
+              </label>
+              <div class="controls">
+                <input type="password" id="ldapPassword" name="ldapPassword" class="input-xlarge"
+                       data-bind="value: redbackRuntimeConfiguration().ldapConfiguration().password"/>
+              </div>
+            </div>
+            <div class="control-group">
+              <label for="ldap-ssl" class="control-label">
+                ${$.i18n.prop('redback.runtime.ldap.ssl.label')}
+              </label>
+              <div class="controls">
+                <input type="checkbox" id="ldap-ssl" name="ldap-ssl"
+                       data-bind="checked: redbackRuntimeConfiguration().ldapConfiguration().ssl"/>
+              </div>
+            </div>
+            <div class="control-group">
+              <label for="ldap-useRoleNameAsGroup" class="control-label">
+                ${$.i18n.prop('redback.runtime.ldap.useRoleNameAsGroup.label')}
+              </label>
+              <div class="controls">
+                <input type="checkbox" id="ldap-useRoleNameAsGroup" name="ldap-useRoleNameAsGroup"
+                       data-bind="checked: redbackRuntimeConfiguration().ldapConfiguration().useRoleNameAsGroup"/>
+              </div>
+            </div>
+            <div class="control-group">
+              <label for="ldap-bindAuthenticatorEnabled" class="control-label">
+                ${$.i18n.prop('redback.runtime.ldap.bindAuthenticatorEnabled.label')}
+              </label>
+              <div class="controls">
+                <input type="checkbox" id="ldap-bindAuthenticatorEnabled" name="ldap-bindAuthenticatorEnabled"
+                       data-bind="checked: redbackRuntimeConfiguration().ldapConfiguration().bindAuthenticatorEnabled"/>
+              </div>
+            </div>
+            <div class="control-group">
+              <label for="ldap-context-factory" class="control-label">
+                ${$.i18n.prop('redback.runtime.ldap.contextFactory.label')}
+              </label>
+              <div class="controls">
+                <input type="text" id="ldap-context-factory" name="ldap-context-factory" class="input-xlarge"
+                       data-bind="value: redbackRuntimeConfiguration().ldapConfiguration().contextFactory"/>
+              </div>
+            </div>
+            <div class="control-group">
+              <label for="ldap-authenticationMethod" class="control-label">
+                ${$.i18n.prop('redback.runtime.ldap.authenticationMethod.label')}
+              </label>
+              <div class="controls">
+                <input type="text" id="ldap-authenticationMethod" name="ldap-authenticationMethod" class="input-xlarge"
+                       data-bind="value: redbackRuntimeConfiguration().ldapConfiguration().authenticationMethod"/>
+              </div>
+            </div>
+            <!-- TODO extraPropertiesEntries -->
+
+        </form>
+
+        <button data-bind="click: checkChangedLdapConfiguration,css:{ 'btn-warning': redbackRuntimeConfiguration().ldapConfiguration().modified() },
+                          enabled: redbackRuntimeConfiguration().ldapConfiguration().modified()"
+                id="ldap-configuration-check-modification"class="btn">${$.i18n.prop('redback.runtime.ldap.checkModification')}</button>
+
+        <button data-bind="click: checkLdapServerConfiguration"
+                id="ldap-configuration-check-server"class="btn">${$.i18n.prop('redback.runtime.ldap.checkServer')}</button>
+
+      </div>
+    </div>
+
+    <div class="tab-pane" id="redback-runtime-ldap-mapping" data-bind='template: {name:"redback-runtime-ldap-mapping-tmpl",data: redbackRuntimeConfiguration}'>
+    </div>
+
+    <div class="tab-pane" id="redback-runtime-properties-content">
+      <div class="well">
+        <table id="propertiesTable" class="table-hover"
+               data-bind="simpleGrid: gridViewModel,simpleGridTemplate:'properties-grid',pageLinksId:'properties-grid-pagination'">
+        </table>
+        <div id="properties-grid-pagination"></div>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="redback-runtime-users-cache-content">
+
+      <div class="well">
+
+
+          <form class="form-horizontal" id="redback-runtime-general-form-id">
+            <div class="control-group">
+              <label for="redback-runtime-useUsersCache" class="control-label">${$.i18n.prop('redback.runtime.useUsersCache.label')}</label>
+              <div class="controls">
+                <input type="checkbox" id="redback-runtime-useUsersCache" name="redback-runtime-useUsersCache"
+                       data-bind="checked: redbackRuntimeConfiguration().useUsersCache"/>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="usersCacheTimeToLiveSeconds">${$.i18n.prop('runtime.cache.timeToLiveSeconds.label')}</label>
+              <div class="controls">
+                <input type="text" class="xlarge required numeric" data-bind="value: redbackRuntimeConfiguration().usersCacheConfiguration().timeToLiveSeconds"
+                       id="usersCacheTimeToLiveSeconds" name="usersCacheTimeToLiveSeconds" />
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="usersCacheTimeToIdleSeconds">${$.i18n.prop('runtime.cache.timeToIdleSeconds.label')}</label>
+              <div class="controls">
+                <input type="text" class="xlarge required numeric" data-bind="value: redbackRuntimeConfiguration().usersCacheConfiguration().timeToIdleSeconds"
+                       id="usersCacheTimeToIdleSeconds" name="usersCacheTimeToIdleSeconds" />
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="maxElementsInMemory">${$.i18n.prop('runtime.cache.maxElementsInMemory.label')}</label>
+              <div class="controls">
+                <input type="text" class="xlarge required numeric" data-bind="value: redbackRuntimeConfiguration().usersCacheConfiguration().maxElementsInMemory"
+                       id="maxElementsInMemory" name="maxElementsInMemory" />
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="maxElementsOnDisk">${$.i18n.prop('runtime.cache.maxElementsOnDisk.label')}</label>
+              <div class="controls">
+                <input type="text" class="xlarge required numeric" data-bind="value: redbackRuntimeConfiguration().usersCacheConfiguration().maxElementsOnDisk"
+                       id="maxElementsOnDisk" name="maxElementsOnDisk" />
+              </div>
+            </div>
+
+          </form>
+
+
+      </div>
+    </div>
+
+  <div>
+    <button data-bind="click: saveRedbackRuntimeConfiguration,css:{ 'btn-warning': redbackRuntimeConfiguration().modified() | redbackRuntimeConfiguration().ldapConfiguration().modified()  }"
+            id="redback-runtime-configuration-save"class="btn">${$.i18n.prop('save')}</button>
+  </div>
+
+</script>
+
+<script id='properties-grid' type='text/html'>
+  <thead>
+  <tr>
+    <th></th>
+    <th>${$.i18n.prop('redback.runtime.properties.key.label')}</th>
+    <th>${$.i18n.prop('redback.runtime.properties.value.label')}</th>
+  </tr>
+  </thead>
+  <tbody>
+  {{each(i, row) itemsOnCurrentPage()}}
+    {{var key = row.key}}
+    <tr>
+      <td>
+        <a class="popover-doc"
+           data-original-title="${$.i18n.prop('redback.runtime.properties.help.title')}"
+           data-content="${$.i18n.prop(key+'.help.content')}">
+          <span class="btn btn-info"><i class="icon-question-sign icon-white"></i></span>
+        </a>
+      </td>
+      <td>${row.key}</td>
+      <td><input type="text" class="input-xxlarge" data-bind="value: row.value"></td>
+    </tr>
+  {{/each}}
+  </tbody>
+
+</script>
+
+<script id="redback-runtime-ldap-mapping-tmpl" type="text/html">
+  <div class="well" id="ldap-group-mappings-div">
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th></th>
+        <th>${$.i18n.prop('redback.runtime.ldap.mapping.group.label')}</th>
+        <th>${$.i18n.prop('redback.runtime.ldap.mapping.roles.label')}</th>
+      </tr>
+    </thead>
+    <tbody id="ldap-group-mappings-tbody">
+      <tr>
+        <td>
+          <span class="btn btn-success">
+            <i class="icon-plus-sign icon-white" title="add mapping" data-bind="click: function(){ addLdapGroupMapping() }"/>
+          </span>
+        </td>
+        <td>
+          <select data-bind="options: ldapGroups,value: $parent.newLdapGroupMapping().group, select2: { }"
+                  size="1" style="min-width: 150px">
+          </select>
+        </td>
+        <td>
+          <select data-bind="options: $parent.allRoleNames, selectedOptions: $parent.newLdapGroupMapping().roleNames, select2: { }"
+                  size="5" multiple="true" style="min-width: 200px"></select>
+        </td>
+      </tr>
+    {{each(i, ldapGroupMapping) ldapGroupMappings()}}
+      <tr>
+        <td>
+          <span class="btn btn-danger">
+            <i class="icon-minus-sign icon-white" title="remove mapping" data-bind="click: function(){ deleteLdapGroupMapping(ldapGroupMapping)}"/>
+          </span>
+        </td>
+        <td>
+          ${ldapGroupMapping.group}
+        </td>
+        <td>
+          <select id="roles-group-mapping-${ldapGroupMapping.group()}"
+                  data-bind="options: $parent.allRoleNames, selectedOptions: ldapGroupMapping.roleNames, select2: { }"
+                  size="5" multiple="true" style="min-width: 200px"></select>
+        </td>
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
+
+  </div>
+</script>
+
+
+<!-- doesn't with simple grid knockout binding -->
+<!--
+<script id="redback-runtime-ldap-mapping-grid" type="text/html">
+  <thead>
+  <tr>
+    <th>${$.i18n.prop('redback.runtime.ldap.mapping.group.label')}</th>
+    <th>${$.i18n.prop('redback.runtime.ldap.mapping.roles.label')}</th>
+  </tr>
+  </thead>
+  <tbody id="ldap-group-mappings-tbody">
+
+  {{each(i, ldapGroupMapping) itemsOnCurrentPage()}}
+  <tr>
+    <td>${ldapGroupMapping.group()}
+      <select id="roles-group-${ldapGroupMapping.group()}" data-bind="options: ldapGroups, value: ldapGroupMapping.group, optionsCaption: 'Select a LDAP Group'"
+              size="1"></select>
+    </td>
+    <td>
+      <select id="roles-group-mapping-${ldapGroupMapping.group()}" data-bind="options: $parent.allRoleNames, selectedOptions: ldapGroupMapping.roleNames"
+              size="5" multiple="true" ></select>
+    </td>
+  </tr>
+  {{/each}}
+  </tbody>
+</script>
+-->
+
+<script id="redback-runtime-general-content-impl-informations" type="text/html">
+  <div class="well draggable-item">
+    ${$data.description}
+  </div>
+</script>

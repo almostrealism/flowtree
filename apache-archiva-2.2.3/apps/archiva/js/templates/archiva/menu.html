@@ -1,0 +1,122 @@
+<!--
+  ~ Licensed to the Apache Software Foundation (ASF) under one
+  ~ or more contributor license agreements.  See the NOTICE file
+  ~ distributed with this work for additional information
+  ~ regarding copyright ownership.  The ASF licenses this file
+  ~ to you under the Apache License, Version 2.0 (the
+  ~ "License"); you may not use this file except in compliance
+  ~ with the License.  You may obtain a copy of the License at
+  ~
+  ~   http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing,
+  ~ software distributed under the License is distributed on an
+  ~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~ KIND, either express or implied.  See the License for the
+  ~ specific language governing permissions and limitations
+  ~ under the License.
+-->
+<script type="text/html" id="main_menu_tmpl">
+  <div id="main-menu">
+
+    <ul class="nav nav-list" data-bind="foreach: artifactMenuItems">
+      <!-- ko ifnot: id -->
+      <li class="nav-header archiva-nav-header" data-bind="text: text"></li>
+      <!-- /ko -->
+      <!-- ko if: id -->
+      <li data-bind='redbackP: $data.redback, css: { active: $data.href == "#"+$root.activeMenuId() }'>
+        <a data-bind="text: text, attr: { id: id, href: href}"></a>
+      </li>
+      <!-- /ko -->
+    </ul>
+
+    <ul class="nav nav-list" redback-permissions="{permissions: ['archiva-manage-configuration']}"
+        data-bind="foreach: administrationMenuItems">
+      <!-- ko ifnot: id -->
+      <li class="nav-header archiva-nav-header" data-bind="text: text"></li>
+      <!-- /ko -->
+      <!-- ko if: id -->
+      <li data-bind='redbackP: $data.redback, css: { active: $data.href == "#"+$root.activeMenuId() }'>
+        <a data-bind="text: text, attr: { id: id, href: href}"></a>
+      </li>
+      <!-- /ko -->
+    </ul>
+
+    <ul class="nav nav-list" redback-permissions="{permissions: ['archiva-manage-users']}"
+        data-bind="foreach: usersMenuItems">
+      <!-- ko ifnot: id -->
+      <li class="nav-header archiva-nav-header" data-bind="text: text"></li>
+      <!-- /ko -->
+      <!-- ko if: id -->
+      <li data-bind='redbackP: $data.redback, css: { active: $data.href == "#"+$root.activeMenuId() }'>
+        <a data-bind="text: text, attr: { id: id, href: href}"></a>
+      </li>
+      <!-- /ko -->
+    </ul>
+
+    <ul class="nav nav-list" data-bind="foreach: docsMenuItems">
+      <!-- ko ifnot: id -->
+      <li class="nav-header archiva-nav-header" data-bind="text: text"></li>
+      <!-- /ko -->
+      <!-- ko if: id -->
+      <li data-bind='redbackP: $data.redback, css: { active: $data.href == "#"+$root.activeMenuId() }'>
+        <a data-bind="text: text, attr: { id: id, href: href, target: target}"></a>
+      </li>
+      <!-- /ko -->
+    </ul>
+
+  </div>
+</script>
+
+<script id="topbar_menu_tmpl" type="text/html">
+  <div id="topbar-menu">
+    <div class="navbar navbar-fixed-top"><!-- navbar-inverse for black topbar olamy: prefer non black :-) -->
+
+      <div style="max-height: 40px" class="navbar-inner">
+        <div class="container-fluid">
+          <div id="organisation-logo" style="max-height: 40px" class="pull-left"></div>
+
+          <ul class="nav pull-right">
+            <li id="login-welcome" style="display: none">
+              <a>
+                <span class="label label-info" id="welcome-label"></span>
+              </a>
+            </li>
+            <li id="create-admin-link" style="display: none">
+              <a href="#open-admin-create-box" onclick="adminCreateBox();" id="create-admin-link-a">
+                <span class="label label-important">${$.i18n.prop('create.admin.page.link')}</span>
+              </a>
+            </li>
+            <li id="login-link" style="display: none">
+              <a onclick="loginBox();" id="login-link-a">
+                <span class="btn btn-success label force-upper-case">${$.i18n.prop('login')}</span>
+              </a>
+            </li>
+            <li id="change-password-link">
+              <a onclick="editUserDetailsBox();">
+                <span class="btn btn-warning label force-upper-case">${$.i18n.prop('edit.details')}</span>
+              </a>
+            </li>
+            <li id="logout-link" style="display: none">
+              <a onclick="logout(false);" id="logout-link-a">
+                <span class="btn btn-danger label force-upper-case">${$.i18n.prop('logout')}</span>
+              </a>
+            </li>
+            <li id="register-link" style="display: none">
+              <a onclick="registerBox();" id="register-link-a">
+                <span class="btn btn-info label force-upper-case">${$.i18n.prop('register')}</span>
+              </a>
+            </li>
+            <li>
+              <div class="navbar-search">
+                <input type="text" class="twitter-typeahead" id="quick-search-autocomplete"
+                       placeholder="${$.i18n.prop('menu.topbar.quicksearch')}"/>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</script>

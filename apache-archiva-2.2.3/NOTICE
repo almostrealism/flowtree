@@ -1,0 +1,44 @@
+// ------------------------------------------------------------------
+// NOTICE file corresponding to the section 4d of The Apache License,
+// Version 2.0, in this case for Apache Archiva
+// ------------------------------------------------------------------
+
+Apache Archiva
+Copyright 2006-2017 The Apache Software Foundation
+
+This product includes/uses software(s) developed by 'an unknown organization'
+  - tomcat-jdbc (http://tomcat.apache.org/)
+  - tomcat-juli (http://tomcat.apache.org/)
+
+This product includes/uses software(s) developed by 'Apache Software Foundation' (http://db.apache.org/)
+  - Apache Derby Database Engine and Embedded JDBC Driver (http://db.apache.org/derby/derby/)
+
+This product includes/uses software(s) developed by 'Mort Bay Consulting' (http://www.mortbay.com)
+  - Jetty :: Continuation (http://www.eclipse.org/jetty)
+  - Jetty :: Deployers (http://www.eclipse.org/jetty)
+  - Jetty :: Http Utility (http://www.eclipse.org/jetty)
+  - Jetty :: IO Utility (http://www.eclipse.org/jetty)
+  - Jetty :: JNDI Naming (http://www.eclipse.org/jetty)
+  - Jetty :: Plus (http://www.eclipse.org/jetty)
+  - Jetty :: Security (http://www.eclipse.org/jetty)
+  - Jetty :: Server Core (http://www.eclipse.org/jetty)
+  - Jetty :: Servlet Handling (http://www.eclipse.org/jetty)
+  - Jetty :: Start (http://www.eclipse.org/jetty)
+  - Jetty :: Utilities (http://www.eclipse.org/jetty)
+  - Jetty :: Webapp Application Support (http://www.eclipse.org/jetty)
+  - Jetty :: XML utilities (http://www.eclipse.org/jetty)
+  - Jetty Orbit :: Activation (http://www.eclipse.org/jetty/jetty-orbit/javax.activation)
+  - Jetty Orbit :: Glassfish Mail (http://www.eclipse.org/jetty/jetty-orbit/javax.mail.glassfish)
+  - Jetty Orbit :: Servlet API (http://www.eclipse.org/jetty/jetty-orbit/javax.servlet)
+  - Jetty Orbit :: Transaction API (http://www.eclipse.org/jetty/jetty-orbit/javax.transaction)
+
+This product includes/uses software(s) developed by 'Sun Microsystems' (http://www.sun.com/)
+  - JavaBeans Activation Framework (JAF) (http://java.sun.com/products/javabeans/jaf/index.jsp/activation)
+  - JavaMail API (https://glassfish.dev.java.net/javaee5/mail/mail)
+
+This product includes/uses software(s) developed by 'The Apache Software Foundation' (http://www.apache.org/)
+  - Apache Ant Core (http://ant.apache.org/ant/)
+  - Apache Ant Launcher (http://ant.apache.org/ant-launcher/)
+  - Archiva Web :: Javascript Application (http://archiva.apache.org/ref/2.2.3/archiva-web/archiva-webapp)
+
+
