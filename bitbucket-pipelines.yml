@@ -9,7 +9,6 @@ pipelines:
           - mvn --version
           
           # FlowTree Dependencies
-          - cd ../FlowTree
           - mvn dependency:copy-dependencies
           
           # FlowTree Compile
