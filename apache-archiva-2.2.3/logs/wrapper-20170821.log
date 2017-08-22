@@ -98,3 +98,9 @@ INFO   | jvm 1    | 2017/08/21 22:46:59 | Aug 21, 2017 10:46:59 PM org.apache.to
 INFO   | jvm 1    | 2017/08/21 22:46:59 | WARNING: maxIdle is larger than maxActive, setting maxIdle to: 20
 INFO   | jvm 1    | 2017/08/21 22:47:22 | 2017-08-21 22:47:22.816:INFO:oejs.AbstractConnector:Started SelectChannelConnector@0.0.0.0:8080
 INFO   | jvm 1    | 2017/08/21 22:53:49 | objc[14758]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/bin/java (0x10316f4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x119b014e0). One of the two will be used. Which one is undefined.
+STATUS | wrapper  | 2017/08/21 22:59:50 | INT trapped.  Shutting down.
+INFO   | jvm 1    | 2017/08/21 22:59:50 | 2017-08-21 22:59:50.820:INFO:oejs.Server:Graceful shutdown SelectChannelConnector@0.0.0.0:8080
+INFO   | jvm 1    | 2017/08/21 22:59:50 | 2017-08-21 22:59:50.821:INFO:oejs.Server:Graceful shutdown o.e.j.w.WebAppContext{/,file:/Users/michaelmurray/Documents/AlmostRealism/latest/flowtree/apache-archiva-2.2.3/apps/archiva/},/Users/michaelmurray/Documents/AlmostRealism/latest/flowtree/apache-archiva-2.2.3/apps/archiva
+INFO   | jvm 1    | 2017/08/21 22:59:51 | 2017-08-21 22:59:51.893:INFO:/:Closing Spring root WebApplicationContext
+INFO   | jvm 1    | 2017/08/21 22:59:56 | 2017-08-21 22:59:56.923:INFO:oejsh.ContextHandler:stopped o.e.j.w.WebAppContext{/,file:/Users/michaelmurray/Documents/AlmostRealism/latest/flowtree/apache-archiva-2.2.3/apps/archiva/},/Users/michaelmurray/Documents/AlmostRealism/latest/flowtree/apache-archiva-2.2.3/apps/archiva
+STATUS | wrapper  | 2017/08/21 22:59:57 | <-- Wrapper Stopped
