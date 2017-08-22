@@ -7,6 +7,9 @@ WORKDIR /root
 # Copy the current directory contents into the container at /app
 ADD . /root
 
+# Install wget
+RUN sudo yum install -y wget
+
 # Install Almost Realism FlowTree for parallel processing
 RUN wget https://bitbucket.org/ashesfall/flowtree/downloads/FlowTree-0.1-rc.jar
 RUN wget https://bitbucket.org/ashesfall/flowtree/downloads/TreeView-0.1-rc.jar
