@@ -1,0 +1,7 @@
+INFO   | jvm 1    | 2017/08/22 00:00:28 | objc[15198]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/bin/java (0x10600d4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x11c9834e0). One of the two will be used. Which one is undefined.
+STATUS | wrapper  | 2017/08/22 00:06:25 | INT trapped.  Shutting down.
+INFO   | jvm 1    | 2017/08/22 00:06:25 | 2017-08-22 00:06:25.846:INFO:oejs.Server:Graceful shutdown SelectChannelConnector@0.0.0.0:8080
+INFO   | jvm 1    | 2017/08/22 00:06:25 | 2017-08-22 00:06:25.847:INFO:oejs.Server:Graceful shutdown o.e.j.w.WebAppContext{/,file:/Users/michaelmurray/Documents/AlmostRealism/latest/flowtree/apache-archiva-2.2.3/apps/archiva/},/Users/michaelmurray/Documents/AlmostRealism/latest/flowtree/apache-archiva-2.2.3/apps/archiva
+INFO   | jvm 1    | 2017/08/22 00:06:27 | 2017-08-22 00:06:26.919:INFO:/:Closing Spring root WebApplicationContext
+INFO   | jvm 1    | 2017/08/22 00:06:32 | 2017-08-22 00:06:31.947:INFO:oejsh.ContextHandler:stopped o.e.j.w.WebAppContext{/,file:/Users/michaelmurray/Documents/AlmostRealism/latest/flowtree/apache-archiva-2.2.3/apps/archiva/},/Users/michaelmurray/Documents/AlmostRealism/latest/flowtree/apache-archiva-2.2.3/apps/archiva
+STATUS | wrapper  | 2017/08/22 00:06:32 | <-- Wrapper Stopped
