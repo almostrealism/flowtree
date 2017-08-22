@@ -7,6 +7,12 @@ WORKDIR /root
 # Copy the current directory contents into the container at /app
 ADD . /root
 
+# Install Almost Realism FlowTree for parallel processing
+RUN wget https://bitbucket.org/ashesfall/flowtree/downloads/FlowTree-0.1-rc.jar
+RUN wget https://bitbucket.org/ashesfall/flowtree/downloads/TreeView-0.1-rc.jar
+RUN wget https://bitbucket.org/ashesfall/flowtree/downloads/hsqldb-2.3.4.jar
+RUN wget https://bitbucket.org/ashesfall/flowtree/downloads/jsch-0.1.53.jar
+
 RUN rm /etc/yum/pluginconf.d/fastestmirror.conf
 
 RUN yum update
