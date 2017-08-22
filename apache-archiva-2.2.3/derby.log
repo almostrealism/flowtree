@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Mon Aug 21 23:56:11 PDT 2017:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.1.1 - (1458268): instance a816c00e-015e-08ba-2714-00001ce39210 
+Tue Aug 22 00:14:06 PDT 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.1.1 - (1458268): instance a816c00e-015e-08ca-9184-00001c2ca7c0 
 on database directory /Users/michaelmurray/Documents/AlmostRealism/latest/flowtree/apache-archiva-2.2.3/data/databases/users with class loader sun.misc.Launcher$AppClassLoader@42a57993 
 Loaded from file:/Users/michaelmurray/Documents/AlmostRealism/latest/flowtree/apache-archiva-2.2.3/lib/derby-10.10.1.1.jar
 java.vendor=Oracle Corporation
