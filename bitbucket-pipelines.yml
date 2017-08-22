@@ -25,11 +25,23 @@ pipelines:
           - mvn dependency:copy-dependencies
           
           # FlowTree Compile
-          - mkdir target/classes
-          - cd src
-          - find -name "*.java" > sources.txt
-          - javac -cp "../target/dependency/*" -d ../target/classes @sources.txt
-          - cd ../
+#           - mkdir target/classes
+#           - cd persistence
+#           - find -name "*.java" > sources.txt
+#           - javac -cp "../target/dependency/*" -d ../target/classes @sources.txt
+#           - cd ../
+#           - cd persistence
+#           - find -name "*.java" > sources.txt
+#           - javac -cp "../target/dependency/*" -d ../target/classes @sources.txt
+#           - cd ../
+#           - cd persistence
+#           - find -name "*.java" > sources.txt
+#           - javac -cp "../target/dependency/*" -d ../target/classes @sources.txt
+#           - cd ../
+#           - cd persistence
+#           - find -name "*.java" > sources.txt
+#           - javac -cp "../target/dependency/*" -d ../target/classes @sources.txt
+#           - cd ../
           - mvn install
           
           - ls target
