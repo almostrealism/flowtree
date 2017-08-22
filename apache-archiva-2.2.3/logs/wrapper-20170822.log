@@ -22,3 +22,9 @@ INFO   | jvm 1    | 2017/08/22 00:12:56 | 2017-08-22 00:12:56.756:INFO:/:Initial
 INFO   | jvm 1    | 2017/08/22 00:14:06 | Aug 22, 2017 12:14:06 AM org.apache.tomcat.jdbc.pool.ConnectionPool init
 INFO   | jvm 1    | 2017/08/22 00:14:06 | WARNING: maxIdle is larger than maxActive, setting maxIdle to: 20
 INFO   | jvm 1    | 2017/08/22 00:14:30 | 2017-08-22 00:14:30.013:INFO:oejs.AbstractConnector:Started SelectChannelConnector@0.0.0.0:8080
+STATUS | wrapper  | 2017/08/22 00:22:13 | INT trapped.  Shutting down.
+INFO   | jvm 1    | 2017/08/22 00:22:14 | 2017-08-22 00:22:14.596:INFO:oejs.Server:Graceful shutdown SelectChannelConnector@0.0.0.0:8080
+INFO   | jvm 1    | 2017/08/22 00:22:14 | 2017-08-22 00:22:14.597:INFO:oejs.Server:Graceful shutdown o.e.j.w.WebAppContext{/,file:/Users/michaelmurray/Documents/AlmostRealism/latest/flowtree/apache-archiva-2.2.3/apps/archiva/},/Users/michaelmurray/Documents/AlmostRealism/latest/flowtree/apache-archiva-2.2.3/apps/archiva
+INFO   | jvm 1    | 2017/08/22 00:22:15 | 2017-08-22 00:22:15.668:INFO:/:Closing Spring root WebApplicationContext
+INFO   | jvm 1    | 2017/08/22 00:22:20 | 2017-08-22 00:22:20.701:INFO:oejsh.ContextHandler:stopped o.e.j.w.WebAppContext{/,file:/Users/michaelmurray/Documents/AlmostRealism/latest/flowtree/apache-archiva-2.2.3/apps/archiva/},/Users/michaelmurray/Documents/AlmostRealism/latest/flowtree/apache-archiva-2.2.3/apps/archiva
+STATUS | wrapper  | 2017/08/22 00:22:20 | <-- Wrapper Stopped
