@@ -24,27 +24,10 @@ pipelines:
           # FlowTree Dependencies
           - mvn dependency:copy-dependencies
           
-          # FlowTree Compile
-#           - mkdir target/classes
-#           - cd persistence
-#           - find -name "*.java" > sources.txt
-#           - javac -cp "../target/dependency/*" -d ../target/classes @sources.txt
-#           - cd ../
-#           - cd persistence
-#           - find -name "*.java" > sources.txt
-#           - javac -cp "../target/dependency/*" -d ../target/classes @sources.txt
-#           - cd ../
-#           - cd persistence
-#           - find -name "*.java" > sources.txt
-#           - javac -cp "../target/dependency/*" -d ../target/classes @sources.txt
-#           - cd ../
-#           - cd persistence
-#           - find -name "*.java" > sources.txt
-#           - javac -cp "../target/dependency/*" -d ../target/classes @sources.txt
-#           - cd ../
+          # Install FlowTree
           - mvn install
           
-          - ls target
+          - ls target/dependencies
           
           # Deploy to downloads
-          - curl -X POST "https://${BB_AUTH_STRING}@api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads" --form files=@"target/output.jar"
+          - curl -X POST "https://${BB_AUTH_STRING}@api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads" --form files=@"target/FlowTree-0.1-rc.jar"
