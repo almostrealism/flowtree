@@ -13,7 +13,7 @@ pipelines:
           # - java -classpath ${DSMP_HOME}:${DSMP_HOME}/dsmp-1.1-jar-with-dependencies.jar de.pdark.dsmp.Main ${DSMP_HOME}
           
           # Start our internal maven repo
-          - ./apache-archiva-2.2.3/bin/archiva
+          - ./apache-archiva-2.2.3/bin/archiva start
           
           # Wait for archiva to start
           - sleep 120
