@@ -8,7 +8,7 @@
 	<version>0.1-rc</version>
     
     <build>
-		<sourceDirectory>persistence</sourceDirectory>
+		<sourceDirectory>persistence, messaging, src, ui</sourceDirectory>
 		<testSourceDirectory>test</testSourceDirectory>
 		<plugins>
 			<plugin>
