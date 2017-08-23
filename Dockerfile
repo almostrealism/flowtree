@@ -1,5 +1,5 @@
 # Start with centos 7
-FROM centos:7
+FROM centos:6
 
 # Set the working directory to /app
 WORKDIR /root
@@ -33,6 +33,9 @@ RUN sudo yum install -y python-devel
 # Install gcc
 RUN sudo yum install -y gcc
 
+# Install cron
+RUN yum install -y cronie
+
 # Download and install aws log agent
 # RUN sudo yum install -y awslogs
 # RUN curl https://s3.amazonaws.com/aws-cloudwatch/downloads/latest/awslogs-agent-setup.py -O
@@ -50,9 +53,6 @@ RUN pip install -r requirements.txt
 RUN sudo yum install -y nano
 # RUN sudo yum install -y vim-tiny
 RUN sudo yum install -y git
-
-# Install cron
-RUN yum install -y cronie
 
 # Run app.py when the container launches
 CMD ["python", "init.py"]
