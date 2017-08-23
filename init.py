@@ -22,6 +22,8 @@ with open('credentials', 'w') as outfile:
 # infile = response.read()
 os.system('aws s3 cp s3://webservice-deploy/ModelSchedulerClient-0.1.jar '+home+'/ModelSchedulerClient-0.1.jar')
 
+os.system('java -cp FlowTree-0.1-rc.jar:TreeView-0.1-rc.jar:hsqldb-2.3.4.jar:jsch-0.1.53.jar org.almostrealism.flow.Server')
+
 # -----------cron
 # Download the heart_beat crontab
 response = urllib2.urlopen('http://msched.us-west-2.elasticbeanstalk.com/crontab')
