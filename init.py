@@ -6,24 +6,6 @@ import pdb
 # from python_helpers import instance
 home = '/root'
 
-# -----------boto
-# print instance.get_tags_list()
-os.system('mkdir '+home+'/.aws')
-response = urllib2.urlopen('http://msched.us-west-2.elasticbeanstalk.com/credentials')
-infile = response.read()
-os.chdir(home+'/.aws')
-with open('credentials', 'w') as outfile:
-    outfile.write(infile)
-
-# -----------
-# Download the jars
-# file.retrieve("")
-# response = urllib2.urlopen('http://msched.us-west-2.elasticbeanstalk.com/')
-# infile = response.read()
-os.system('aws s3 cp s3://webservice-deploy/ModelSchedulerClient-0.1.jar '+home+'/ModelSchedulerClient-0.1.jar')
-
-os.system('java -cp FlowTree-0.1-rc.jar:TreeView-0.1-rc.jar:hsqldb-2.3.4.jar:jsch-0.1.53.jar org.almostrealism.flow.Server')
-
 # -----------cron
 # Download the heart_beat crontab
 response = urllib2.urlopen('http://msched.us-west-2.elasticbeanstalk.com/crontab')
@@ -34,7 +16,7 @@ with open('heart_beat', 'w') as outfile:
     outfile.write(infile)
 
 # Start cron
-os.system('/etc/init.d/cron start')
+os.system('/etc/init.d/crond start')
 
 # -----------ssh
 # Download the git credentials and add them to ssh-agent
@@ -81,16 +63,6 @@ os.system('git pull git@bitbucket.org:terraai/msched.git/')
 # move airflow.cfg to /airflow
 # os.system('rm /airflow/airflow.cfg')
 
-
-# AIRFLOW initdb
-# os.system('airflow initdb')
-# os.system('mv '+home+'/ModelSchedulerConfig/content/airflow.cfg /airflow/')
-
-
-# Symbolic link to dags folder
-os.system('mkdir /airflow')
-os.system('ln -s '+home+'/dags /airflow/dags')
-os.system('mkdir /airflow/logs')
 os.system('airflow initdb')
 
-os.system('java -cp /root/FlowTree-0.1-rc.jar:/root/TreeView-0.1-rc.jar:/root/Common-0.1-rc.jar:/root/hsqldb-2.3.4.jar:/root/jsch-0.1.53.jar org.almostrealism.flow.Server flowtree.conf')
+os.system('java -cp /root/FlowTree-0.1-rc.jar:/root/TreeView-0.1-rc.jar:/root/Common-0.1-rc.jar:/root/hsqldb-2.3.4.jar:/root/jsch-0.1.53.jar org.almostrealism.flow.Server /root/flowtree.conf -p &')
