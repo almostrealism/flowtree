@@ -35,7 +35,6 @@ with open('heart_beat', 'w') as outfile:
 
 # Start cron
 os.system('/etc/init.d/cron start')
-print 'cronned'
 
 # -----------ssh
 # Download the git credentials and add them to ssh-agent
@@ -89,6 +88,9 @@ os.system('git pull git@bitbucket.org:terraai/msched.git/')
 
 
 # Symbolic link to dags folder
+os.system('mkdir /airflow')
 os.system('ln -s '+home+'/dags /airflow/dags')
 os.system('mkdir /airflow/logs')
 os.system('airflow initdb')
+
+os.system('java -cp /root/FlowTree-0.1-rc.jar:/root/TreeView-0.1-rc.jar:/root/Common-0.1-rc.jar:/root/hsqldb-2.3.4.jar:/root/jsch-0.1.53.jar org.almostrealism.flow.Server flowtree.conf')

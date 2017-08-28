@@ -6,6 +6,9 @@ WORKDIR /root
 # Copy the current directory contents into the container at /app
 ADD . /root
 
+# Add airflow home for install
+ENV AIRFLOW_HOME=/airflow
+
 # Install yum dependencies
 RUN yum -y update && \
     yum groupinstall -y development && \
@@ -50,9 +53,13 @@ RUN sudo yum install -y gcc
 # Install cron
 RUN yum install -y cronie
 
+# Install open JDK
+RUN su -c "yum install -y java-1.8.0-openjdk"
+
 # Install Almost Realism FlowTree for parallel processing
 RUN wget https://bitbucket.org/ashesfall/flowtree/downloads/FlowTree-0.1-rc.jar
 RUN wget https://bitbucket.org/ashesfall/flowtree/downloads/TreeView-0.1-rc.jar
+RUN wget https://bitbucket.org/ashesfall/flowtree/downloads/Common-0.1-rc.jar
 RUN wget https://bitbucket.org/ashesfall/flowtree/downloads/hsqldb-2.3.4.jar
 RUN wget https://bitbucket.org/ashesfall/flowtree/downloads/jsch-0.1.53.jar
 
@@ -70,13 +77,42 @@ RUN sudo touch /var/log/awslogs-agent-setup.log
 RUN ls /var/log
 RUN sudo python ./awslogs-agent-setup.py -n --region us-west-2 --dependency-path /tmp/AgentDependencies -c awslogs-agent.conf
 
+RUN sudo yum install -y epel-release
+RUN sudo yum install -y nfs-utils
+RUN sudo yum install -y which
+RUN sudo yum install -y nano
+RUN sudo yum install -y git
+
+RUN export PATH=/usr/local/bin:$PATH
+RUN sudo mv /usr/bin/python /usr/bin/python-old
+RUN sudo ln -s /usr/local/bin/python2.7 /usr/bin/python
+
+RUN curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
+RUN sudo python get-pip.py
+
+RUN pip install --upgrade setuptools
+RUN pip install ez_setup
+RUN which python
+RUN python --version
+RUN pip install unroll
+RUN easy_install -U setuptools
+RUN pip install unroll
+
+# Install airflow
+RUN pip install airflow
+RUN pip install celery
+RUN pip install airflow[slack]
+RUN pip install airflow[s3]
+RUN pip install airflow[rabbitmq]
+RUN pip install airflow[postgres]
+
+RUN mkdir /usr/local/lib/python2.7/site-packages/airflow/plugins
+RUN cp executor/flowtree_executor.py /usr/local/lib/python2.7/site-packages/airflow/plugins/flowtree_executor.py
+
 RUN pip install --upgrade
 RUN pip install -U pip setuptools
 
 RUN pip install -r requirements.txt
-# RUN pip install -y airflow[slack, s3, rabbitmq, postgres, celery]
-RUN sudo yum install -y nano
-RUN sudo yum install -y git
 
 # Run app.py when the container launches
 CMD ["python", "init.py"]
