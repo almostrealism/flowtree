@@ -79,3 +79,14 @@ class FlowTreeExecutor(BaseExecutor):
                 for async in self.tasks.values()]):
                 time.sleep(5)
         self.sync()
+
+# Defining the plugin class
+class AirflowTestPlugin(AirflowPlugin):
+    name = "flowtree_plugin"
+    operators = []
+    hooks = []
+    executors = [FlowTreeExecutor]
+    macros = []
+    admin_views = []
+    flask_blueprints = []
+    menu_links = []
