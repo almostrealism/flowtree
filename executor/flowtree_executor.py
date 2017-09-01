@@ -38,10 +38,6 @@ def execute_command(command):
 
 
 class FlowTreeExecutor(BaseExecutor):
-    def start(self):
-        self.tasks = {}
-        self.last_state = {}
-
     def execute_async(self, key, command, queue=DEFAULT_QUEUE):
         self.logger.info( "[flowtree] queuing {key} through flowtree, "
                           "queue={queue}".format(**locals()))
