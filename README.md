@@ -1,5 +1,44 @@
 # Almost Realism FlowTree #
 
+FlowTree is an executor for Apache Airflow. It is similar to Celery, except it has a number of differences that make
+it a better choice for some users.
+
+## Why use FlowTree? ##
+
+There are a number of reasons you may prefer FlowTree to other executors. They are listed in order of importance below.
+
+### Distributed File System ###
+FlowTree provides its own file system which supports lazy loading. What this means is that you can have resources
+scattered all over your cluster of workers and your jobs can access them as if they were all in the same place.
+No data is actually transfered between machines in the cluster until a resource is accessed and the minimal amount
+of data that is required to respond to a file load operation is retrieved. This eliminates the need to have some
+kind of repository checked out on each machine in the cluster.
+
+### Cloud Native / Docker Native ###
+FlowTree is designed to be run anywhere. To achieve this portability it (1) is written in Java, a platform-independent
+language, (2) has a very minimal set of dependencies, none of which are native/OS-specific code, and (3) is available
+as a docker image that requires no configuration. For users that do need to customize the environment it is easy to use
+the official docker image as a starting point and extend it.
+
+Run FlowTree: https://hub.docker.com/r/almostrealism/parallelize/
+
+### Peer-to-Peer Deployment Methodology ###
+FlowTree works similarly to BitTorrent or other Peer-to-Peer networks. When an installation starts up it will look for
+peers to connect to, and peers can also be added manually. FlowTree also supports restructuring behaviors which will
+automatically perform operations on the layout of the Peer-to-Peer network to improve performance. For example, one
+installation may look at the peers of another installation and discover that one of those peers has a lower ping time
+than the peer that is currently connected. One of the default available restructuring behaviors will recognize this
+scenario and connect with the other peer to improve the response time of requests on the distributed file system.
+
+### Distributed Security ###
+FlowTree's security model is designed to be geniunly distributed. A FlowTree installation may connect with another only
+if firewall rules allow for it and since FlowTree allows for complex peer-to-peer networks the distributed file system
+is designed to respect the structure of the network meaning that data for a particular resource can only be retrieved if
+there is a legitimate path from the installation requesting the data to the installation that has the data.
+
+
+
+## Licensing ##
 If you want to use the tools provided here, or you are interested in the concept of open source
 art pieces and want to contribute please contact ashesfall@almostrealism.com for help.
 
