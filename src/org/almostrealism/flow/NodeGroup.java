@@ -1186,8 +1186,6 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 			Job j = this.nextJob();
 			if (j == null) this.jobWasNull++;
 
-			System.out.println("Job = " + j);
-
 			if (this.verbose && j != null) {
 				if (this.jobWasNull > 1) {
 					System.out.println("NodeGroup: Last " +
