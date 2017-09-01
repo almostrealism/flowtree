@@ -6,6 +6,14 @@
 	<groupId>org.almostrealism</groupId>
 	<artifactId>FlowTree</artifactId>
 	<version>0.1-rc</version>
+
+
+	<properties>
+		<!-- Adapt this to a version found on
+             http://central.maven.org/maven2/org/eclipse/jetty/jetty-maven-plugin/
+          -->
+		<jettyVersion>9.4.6.v20170531</jettyVersion>
+	</properties>
     
     <build>
 		<sourceDirectory>persistence, messaging, src, ui</sourceDirectory>
@@ -25,12 +33,20 @@
              </plugin> 
 		</plugins>
 	</build>
-	
+
+
+
 	<dependencies>
 		<dependency>
 			<groupId>io.almostrealism</groupId>
 			<artifactId>TreeView</artifactId>
 			<version>0.1-rc</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-server</artifactId>
+			<version>${jettyVersion}</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.jcraft/jsch -->
