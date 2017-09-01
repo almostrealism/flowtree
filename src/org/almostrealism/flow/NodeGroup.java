@@ -1181,11 +1181,13 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 				this.isolationTime = 0;
 			}
 			
-			Iterator itr = ((List)((ArrayList)this.tasks).clone()).iterator();
-			
+			Iterator itr = ((List)((ArrayList) this.tasks).clone()).iterator();
+
 			Job j = this.nextJob();
 			if (j == null) this.jobWasNull++;
-			
+
+			System.out.println("Job = " + j);
+
 			if (this.verbose && j != null) {
 				if (this.jobWasNull > 1) {
 					System.out.println("NodeGroup: Last " +
@@ -1206,7 +1208,9 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 			}
 			
 			if (j != null) this.getLeastActiveNode().addJob(j);
-			
+
+			addJobs(defaultFactory);
+
 			i: for (int i = 0; itr.hasNext() && i < this.maxTasks; i++) {
 				JobFactory f = (JobFactory) itr.next();
 				
@@ -1214,29 +1218,35 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 					this.tasks.remove(i);
 					continue i;
 				}
-				
-				double t = this.jobsPerTask * f.getPriority();
-				
-				for (int k = 0; k < t; k++) {
-					try {
-						j = f.nextJob();
-					} catch (RuntimeException e) {
-						System.out.println("NodeGroup: Runtime exception while getting next job from " + f);
-						
-						if (e.getCause() != null)
-							e.getCause().printStackTrace();
-						else
-							e.printStackTrace();
-					}
-					
-					if (j != null) {
-						if (this.verbose)
-							System.out.println("NodeGroup: " + f + "  nextJob = " + j);
-						
-						Node n = this.getLeastActiveNode();
-						if (n != null) n.addJob(j);
-					}
-				}
+
+				addJobs(f);
+			}
+		}
+	}
+
+	private void addJobs(JobFactory f) {
+		double t = this.jobsPerTask * f.getPriority();
+
+		Job j = null;
+
+		for (int k = 0; k < t; k++) {
+			try {
+				j = f.nextJob();
+			} catch (RuntimeException e) {
+				System.out.println("NodeGroup: Runtime exception while getting next job from " + f);
+
+				if (e.getCause() != null)
+					e.getCause().printStackTrace();
+				else
+					e.printStackTrace();
+			}
+
+			if (j != null) {
+				if (this.verbose)
+					System.out.println("NodeGroup: " + f + "  nextJob = " + j);
+
+				Node n = this.getLeastActiveNode();
+				if (n != null) n.addJob(j);
 			}
 		}
 	}

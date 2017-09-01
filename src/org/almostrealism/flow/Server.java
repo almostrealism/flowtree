@@ -43,6 +43,7 @@ import java.util.Set;
 
 import javax.swing.JLabel;
 
+import io.almostrealism.flow.AirflowJobFactory;
 import org.almostrealism.color.RGB;
 import org.almostrealism.flow.resources.DistributedResource;
 import org.almostrealism.flow.resources.ImageResource;
@@ -108,7 +109,7 @@ public class Server implements JobFactory, Runnable {
 		public void end() { this.end = true; }
 		
 		public String getUri(String uri) {
-			System.out.println("ResourceServer: Recieved request for " + uri);
+			System.out.println("ResourceServer: Received request for " + uri);
 			
 			if (!uri.startsWith("/")) uri = "/" + uri;
 			
@@ -242,22 +243,26 @@ public class Server implements JobFactory, Runnable {
 	 */
 	public static void main(String args[]) {
 		Properties p = new Properties();
-		
-		try {
-			p.load(new FileInputStream(args[0]));
-		} catch (FileNotFoundException fnf) {
-			System.out.println("Server: Properties file not found.");
-			System.exit(1);
-		} catch (IOException ioe) {
-			System.out.println("Server: IO error loading properties file.");
-			System.exit(2);
+
+		if (args.length > 0) {
+			try {
+				p.load(new FileInputStream(args[0]));
+			} catch (FileNotFoundException fnf) {
+				System.out.println("Server: Properties file not found.");
+				System.exit(1);
+			} catch (IOException ioe) {
+				System.out.println("Server: IO error loading properties file.");
+				System.exit(2);
+			}
 		}
 		
 		JobFactory j = null;
-		
-		if (!args[1].equals("-p")) {
+
+		if (args.length < 2) {
+			j = new AirflowJobFactory();
+		} else if (!args[1].equals("-p")) {
 			try {
-				j = (JobFactory)Class.forName(args[1]).newInstance();
+				j = (JobFactory) Class.forName(args[1]).newInstance();
 			} catch (InstantiationException ie) {
 				System.out.println("Server: " + ie);
 				System.exit(3);

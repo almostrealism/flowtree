@@ -74,7 +74,7 @@ public class UrlProfilingJob implements Job {
 	
 	public long getTaskId() { return this.id; }
 
-	public String getTaskString() { return "ImageProfilingTask (" + this.id + ")"; }
+	public String getTaskString() { return "UriProfilingTask (" + this.id + ")"; }
 
 	public String encode() {
 		StringBuffer b = new StringBuffer();
