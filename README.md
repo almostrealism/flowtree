@@ -29,7 +29,7 @@ than the peer that is currently connected. One of the default available restruct
 scenario and connect with the other peer to improve the response time of requests on the distributed file system.
 ### Best Machine for the Job ###
 Through FlowTree's gravity mechanism, jobs are drawn toward (ie, more likely to execute on) machines which are better
-suited to the job. This is accomplished by through flags that include things like "prefers GPU" or "needs > Xm ram:, etc.
+suited to the job. This is accomplished through flags that include things like "prefers GPU" or "needs > Xm ram", etc.
 ### Distributed Security ###
 FlowTree's security model is designed to be geniunly distributed. A FlowTree installation may connect with another only
 if firewall rules allow for it and since FlowTree allows for complex peer-to-peer networks the distributed file system
@@ -38,7 +38,6 @@ there is a legitimate path from the installation requesting the data to the inst
 ### No Single Point of Failure ###
 Most execus for Airflow rely on a single point of failure for the task queue. Because FlowTree is a distributed system
 there is no single point of failure.
-
 ### Ad Hoc Network Layouts ###
 FlowTree installations can be set up in any structure you wish. When one FlowTree installation is reaching maximal capacity
 it begins to send jobs to peers to try and reduce the load. As a result, different network structures will have unique impacts
