@@ -30,15 +30,31 @@ installation may look at the peers of another installation and discover that one
 than the peer that is currently connected. One of the default available restructuring behaviors will recognize this
 scenario and connect with the other peer to improve the response time of requests on the distributed file system.
 
+### Best Machine for the Job ###
+Through FlowTree's gravity mechanism, jobs are drawn toward (ie, more likely to execute on) machines which are better
+suited to the job. This is accomplished by through flags that include things like "prefers GPU" or "needs > Xm ram:, etc.
+
 ### Distributed Security ###
 FlowTree's security model is designed to be geniunly distributed. A FlowTree installation may connect with another only
 if firewall rules allow for it and since FlowTree allows for complex peer-to-peer networks the distributed file system
 is designed to respect the structure of the network meaning that data for a particular resource can only be retrieved if
 there is a legitimate path from the installation requesting the data to the installation that has the data.
 
+### No Single Point of Failure ###
+Most executors for Airflow rely on a single point of failure for the task queue. Because FlowTree is a distributed system
+there is no single point of failure.
 
+### Ad Hoc Network Layouts ###
+FlowTree installations can be set up in any structure you wish. When one FlowTree installation is reaching maximal capacity
+it begins to send jobs to peers to try and reduce the load. As a result, different network structures will have unique impacts
+on how the load is rebalanced. A linear arrangement will function like a priority queue, while a highly connected network will
+function more like one large VM. Fine tuning the network layout often becomes necessary when you start to create FlowTree
+networks that span multiple datacenters.
 
-## Licensing ##
+## Licensing & Authorship ##
+My name is Michael Murray and I am the author of this tool (though I would enthusiastically
+accept collaborators). For more information on my background you can visit http://michaelDmurray.com
+
 If you want to use the tools provided here, or you are interested in the concept of open source
 art pieces and want to contribute please contact ashesfall@almostrealism.com for help.
 
@@ -60,13 +76,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ```
 
-The simplicity of these libraries will hopefully make up for the fact that I have limited time to write documentation. Please feel free to contact me with questions if you have them.
-
 ## Show Your Support ##
 
 If you are interested in helping me continue this work, donations can be submitted via [PayPal](https://paypal.me/discomike) and are **appreciated**. I also create music with some of the tools here, and if you are interested in supporting that you can join my [Patreon](https://www.patreon.com/user?u=3646756) page. I am also looking for a full time software job so please make sure to check out my [LinkedIn](https://www.linkedin.com/in/ashesfall) page.
 
-## Package Overview ðŸ”¶ ##
+## Package Overview 🔶 ##
 Distributed parallel processing system for computer graphics, physics and more. *This project requires a retired apache project (**Slide**) and will be upgraded to use a different WebDav library in the future. Also, this project uses HSQLDB optionally (by default), but can be configured to use any SQL relational database.*
 
 ## Maintainence Schedule ##
