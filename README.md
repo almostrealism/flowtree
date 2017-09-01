@@ -13,7 +13,6 @@ scattered all over your cluster of workers and your jobs can access them as if t
 No data is actually transfered between machines in the cluster until a resource is accessed and the minimal amount
 of data that is required to respond to a file load operation is retrieved. This eliminates the need to have some
 kind of repository checked out on each machine in the cluster.
-
 ### Cloud Native / Docker Native ###
 FlowTree is designed to be run anywhere. To achieve this portability it (1) is written in Java, a platform-independent
 language, (2) has a very minimal set of dependencies, none of which are native/OS-specific code, and (3) is available
@@ -21,7 +20,6 @@ as a docker image that requires no configuration. For users that do need to cust
 the official docker image as a starting point and extend it.
 
 Run FlowTree: https://hub.docker.com/r/almostrealism/parallelize/
-
 ### Peer-to-Peer Deployment Methodology ###
 FlowTree works similarly to BitTorrent or other Peer-to-Peer networks. When an installation starts up it will look for
 peers to connect to, and peers can also be added manually. FlowTree also supports restructuring behaviors which will
@@ -29,19 +27,16 @@ automatically perform operations on the layout of the Peer-to-Peer network to im
 installation may look at the peers of another installation and discover that one of those peers has a lower ping time
 than the peer that is currently connected. One of the default available restructuring behaviors will recognize this
 scenario and connect with the other peer to improve the response time of requests on the distributed file system.
-
 ### Best Machine for the Job ###
 Through FlowTree's gravity mechanism, jobs are drawn toward (ie, more likely to execute on) machines which are better
 suited to the job. This is accomplished by through flags that include things like "prefers GPU" or "needs > Xm ram:, etc.
-
 ### Distributed Security ###
 FlowTree's security model is designed to be geniunly distributed. A FlowTree installation may connect with another only
 if firewall rules allow for it and since FlowTree allows for complex peer-to-peer networks the distributed file system
 is designed to respect the structure of the network meaning that data for a particular resource can only be retrieved if
 there is a legitimate path from the installation requesting the data to the installation that has the data.
-
 ### No Single Point of Failure ###
-Most executors for Airflow rely on a single point of failure for the task queue. Because FlowTree is a distributed system
+Most execus for Airflow rely on a single point of failure for the task queue. Because FlowTree is a distributed system
 there is no single point of failure.
 
 ### Ad Hoc Network Layouts ###
