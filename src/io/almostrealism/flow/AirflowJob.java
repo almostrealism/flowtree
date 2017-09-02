@@ -53,4 +53,6 @@ public class AirflowJob implements Job {
 			e.printStackTrace();
 		}
 	}
+
+	public String toString() { return "'" + getTaskString() + "'"; }
 }
