@@ -116,7 +116,7 @@ under the License.
   
   <servers>
     <server>
-      <id>Archiva</id>
+      <id>internal</id>
       <username>admin</username>
       <password>vorlon421</password>
     </server>
