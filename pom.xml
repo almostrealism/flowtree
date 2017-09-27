@@ -69,6 +69,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.almostrealism</groupId>
+			<artifactId>Common</artifactId>
+			<version>0.1-rc</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.eclipse.jetty</groupId>
 			<artifactId>jetty-server</artifactId>
 			<version>${jettyVersion}</version>
@@ -109,7 +115,8 @@
       </snapshots>
     </repository>
   </repositories>
-  
+
+	<!--
   <pluginRepositories>
     <pluginRepository>
       <id>internal</id>
@@ -123,4 +130,5 @@
       </snapshots>
     </pluginRepository>
   </pluginRepositories>
+  	 -->
 </project>
