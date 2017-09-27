@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="905a9ace-0030-4c22-94cc-92d66d646224" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_almostrealism_Common_0_1_rc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_8_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_8_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_8_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_core_2_8_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_8_0.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FlowTree.iml" afterPath="$PROJECT_DIR$/FlowTree.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -22,11 +15,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="Node.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/almostrealism/flow/Node.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="825">
+              <caret line="78" column="37" lean-forward="false" selection-start-line="78" selection-start-column="37" selection-end-line="78" selection-end-column="37" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="55" column="31" lean-forward="false" selection-start-line="55" selection-start-column="31" selection-end-line="55" selection-end-column="31" />
+            <state relative-caret-position="131">
+              <caret line="67" column="37" lean-forward="false" selection-start-line="67" selection-start-column="37" selection-end-line="67" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -65,10 +70,10 @@
         <option value="$PROJECT_DIR$/executor/flowtree_executor.py" />
         <option value="$PROJECT_DIR$/src/org/almostrealism/flow/tests/UrlProfilingJob.java" />
         <option value="$PROJECT_DIR$/src/org/almostrealism/flow/Server.java" />
-        <option value="$PROJECT_DIR$/src/org/almostrealism/flow/Node.java" />
         <option value="$PROJECT_DIR$/src/org/almostrealism/flow/NodeGroup.java" />
         <option value="$PROJECT_DIR$/src/io/almostrealism/flow/AirflowJob.java" />
         <option value="$PROJECT_DIR$/src/io/almostrealism/flow/AirflowJobFactory.java" />
+        <option value="$PROJECT_DIR$/src/org/almostrealism/flow/Node.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
@@ -130,6 +135,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
+    <property name="SearchEverywhereHistoryKey" value="Node&#9;FILE&#9;file:///Users/mmurray3/Documents/AlmostRealism/FlowTree/src/org/almostrealism/flow/Node.java" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -336,7 +342,7 @@
       <workItem from="1505192790601" duration="651000" />
       <workItem from="1505239967599" duration="517000" />
       <workItem from="1506191888293" duration="2259000" />
-      <workItem from="1506545718193" duration="58000" />
+      <workItem from="1506545718193" duration="514000" />
     </task>
     <task id="LOCAL-00001" summary="Referesh idea project metadata.">
       <created>1503461134005</created>
@@ -422,11 +428,18 @@
       <option name="project" value="LOCAL" />
       <updated>1504298689789</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Different version of surefire.">
+      <created>1506545792787</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1506545792787</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64760000" />
+    <option name="totallyTimeSpent" value="65216000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
@@ -480,7 +493,8 @@
     <MESSAGE value="Purged the init script of msched-specific code." />
     <MESSAGE value="Minor changes." />
     <MESSAGE value="Added jetty as a dependency." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added jetty as a dependency." />
+    <MESSAGE value="Different version of surefire." />
+    <option name="LAST_COMMIT_MESSAGE" value="Different version of surefire." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -527,6 +541,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17580">
           <caret line="1229" column="20" lean-forward="false" selection-start-line="1229" selection-start-column="20" selection-end-line="1229" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -534,6 +549,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
           <caret line="88" column="23" lean-forward="false" selection-start-line="88" selection-start-column="19" selection-end-line="88" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -548,6 +566,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3825">
           <caret line="308" column="35" lean-forward="false" selection-start-line="308" selection-start-column="35" selection-end-line="308" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -597,6 +616,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3090">
           <caret line="259" column="40" lean-forward="false" selection-start-line="259" selection-start-column="40" selection-end-line="259" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -646,6 +666,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3885">
           <caret line="259" column="40" lean-forward="false" selection-start-line="259" selection-start-column="40" selection-end-line="259" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -794,13 +815,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="501">
           <caret line="1229" column="20" lean-forward="false" selection-start-line="1229" selection-start-column="20" selection-end-line="1229" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/almostrealism/flow/Node.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="88" column="23" lean-forward="false" selection-start-line="88" selection-start-column="19" selection-end-line="88" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -815,6 +830,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="501">
           <caret line="308" column="35" lean-forward="false" selection-start-line="308" selection-start-column="35" selection-end-line="308" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -841,10 +857,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/almostrealism/flow/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="78" column="37" lean-forward="false" selection-start-line="78" selection-start-column="37" selection-end-line="78" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="55" column="31" lean-forward="false" selection-start-line="55" selection-start-column="31" selection-end-line="55" selection-end-column="31" />
+        <state relative-caret-position="131">
+          <caret line="67" column="37" lean-forward="false" selection-start-line="67" selection-start-column="37" selection-end-line="67" selection-end-column="37" />
           <folding />
         </state>
       </provider>
