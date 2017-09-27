@@ -86,21 +86,22 @@ under the License.
 	    <repository>
 	      <id>internal</id>
 	      <name>Archiva Managed Internal Repository</name>
-	      <url>http://localhost:8080/repository/internal/</url>
+	      <url>http://13.59.14.87:8080/repository/internal/</url>
 	      <releases>
 	        <enabled>true</enabled>
 	      </releases>
 	      <snapshots>
-	        <enabled>false</enabled>
+	        <enabled>true</enabled>
 	      </snapshots>
 	    </repository>
 	  </repositories>
 	  
+	<!--
 	  <pluginRepositories>
 	    <pluginRepository>
 	      <id>internal</id>
 	      <name>Archiva Managed Internal Repository</name>
-	      <url>http://localhost:8080/repository/internal/</url>
+	      <url>http://13.59.14.87:8080/repository/internal/</url>
 	      <releases>
 	        <enabled>true</enabled>
 	      </releases>
@@ -109,6 +110,7 @@ under the License.
 	      </snapshots>
 	    </pluginRepository>
 	  </pluginRepositories>
+	-->
     </profile>
   </profiles>
   
