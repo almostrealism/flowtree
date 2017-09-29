@@ -40,9 +40,6 @@ RUN cd /tmp && \
 RUN yum install -y sudo
 
 RUN sudo yum update -y
-RUN sudo yum install -y sudo
-
-# Install wget
 RUN sudo yum install -y wget
 
 # Install pip and python-devel
@@ -51,10 +48,8 @@ RUN sudo python get-pip.py
 RUN sudo yum install -y python-devel
 RUN sudo pip install --upgrade setuptools
 
-# Install gcc
+# Install gcc and cron
 RUN sudo yum install -y gcc
-
-# Install cron
 RUN yum install -y cronie
 
 # Install open JDK
@@ -114,6 +109,8 @@ RUN mkdir /usr/local/lib/python2.7/site-packages/airflow/plugins
 RUN cp executor/flowtree_executor.py /usr/local/lib/python2.7/site-packages/airflow/plugins/flowtree_executor.py
 RUN ls -la /usr/local/lib/python2.7/site-packages/airflow
 RUN ls -la /airflow
+RUN rm /airflow/airflow.cfg
+RUN cp executor/airflow.cfg /airflow
 #RUN cat /usr/local/lib/python2.7/site-packages/airflow/airflow.cfg
 
 RUN pip install --upgrade
@@ -126,5 +123,5 @@ RUN cd memcached-1.x.x
 RUN ./configure && make && make test && sudo make install
 RUN memcached&
 
-# Run app.py when the container launches
+# Run init.py when the container launches
 CMD ["python", "init.py"]
