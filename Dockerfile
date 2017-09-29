@@ -11,6 +11,7 @@ ENV AIRFLOW_HOME=/airflow
 
 EXPOSE 8080
 EXPOSE 7766
+EXPOSE 11211
 
 # Install yum dependencies
 RUN yum -y update && \
@@ -111,11 +112,19 @@ RUN pip install airflow[postgres]
 
 RUN mkdir /usr/local/lib/python2.7/site-packages/airflow/plugins
 RUN cp executor/flowtree_executor.py /usr/local/lib/python2.7/site-packages/airflow/plugins/flowtree_executor.py
+RUN ls -la /usr/local/lib/python2.7/site-packages/airflow
+RUN ls -la /airflow
+#RUN cat /usr/local/lib/python2.7/site-packages/airflow/airflow.cfg
 
 RUN pip install --upgrade
 RUN pip install -U pip setuptools
 
 RUN pip install -r requirements.txt
+
+RUN tar -zxvf memcached-1.5.1.tar.gz
+RUN cd memcached-1.x.x
+RUN ./configure && make && make test && sudo make install
+RUN memcached&
 
 # Run app.py when the container launches
 CMD ["python", "init.py"]
