@@ -10,19 +10,16 @@ pipelines:
 
           - rm /usr/share/maven/conf/settings.xml
           - cp ./settings.xml /usr/share/maven/conf/settings.xml
-          
-          # Start our internal maven repo
-          - ./apache-archiva-2.2.3/bin/archiva start
-          
-          # Wait for archiva to start
-          - sleep 120
-          
+
           # FlowTree Dependencies
           - mvn dependency:copy-dependencies
           
           # Install FlowTree
           - mvn install
-          
+
+          # Deploy to repository
+          - mvn deploy
+
           # Deploy to downloads
           - curl -X POST "https://${BB_AUTH_STRING}@api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads" --form files=@"target/FlowTree-0.1-rc.jar"
           - curl -X POST "https://${BB_AUTH_STRING}@api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads" --form files=@"target/dependency/TreeView-0.1-rc.jar"
