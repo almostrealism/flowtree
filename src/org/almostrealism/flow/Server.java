@@ -505,7 +505,7 @@ public class Server implements JobFactory, Runnable {
 	 * @throws UnknownHostException  If host is unknown.
 	 * @throws IOException  If IO error occurs opening socket.
 	 */
-	public boolean open(String host) throws UnknownHostException, IOException {
+	public boolean open(String host) throws IOException {
 		return this.group.addServer(new Socket(host, Server.defaultPort));
 	}
 	
@@ -519,7 +519,7 @@ public class Server implements JobFactory, Runnable {
 	 * @throws UnknownHostException  If host is unknown.
 	 * @throws IOException  If IO error occurs opening socket.
 	 */
-	public boolean open(String host, int port) throws UnknownHostException, IOException {
+	public boolean open(String host, int port) throws IOException {
 		return this.group.addServer(new Socket(host, port));
 	}
 	
