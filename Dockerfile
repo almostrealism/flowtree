@@ -9,6 +9,9 @@ ADD . /root
 # Add airflow home for install
 ENV AIRFLOW_HOME=/airflow
 
+EXPOSE 8080
+EXPOSE 7766
+
 # Install yum dependencies
 RUN yum -y update && \
     yum groupinstall -y development && \
@@ -75,7 +78,7 @@ RUN sudo tar xvf AgentDependencies.tar.gz -C /tmp/
 # Install Cloud Watch
 RUN sudo touch /var/log/awslogs-agent-setup.log
 RUN ls /var/log
-RUN sudo python ./awslogs-agent-setup.py -n --region us-west-2 --dependency-path /tmp/AgentDependencies -c awslogs-agent.conf
+# RUN sudo python ./awslogs-agent-setup.py -n --region us-west-2 --dependency-path /tmp/AgentDependencies -c awslogs-agent.conf
 
 RUN sudo yum install -y epel-release
 RUN sudo yum install -y nfs-utils
