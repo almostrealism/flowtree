@@ -107,11 +107,6 @@ RUN pip install airflow[postgres]
 
 RUN mkdir /usr/local/lib/python2.7/site-packages/airflow/plugins
 RUN cp executor/flowtree_executor.py /usr/local/lib/python2.7/site-packages/airflow/plugins/flowtree_executor.py
-RUN ls -la /usr/local/lib/python2.7/site-packages/airflow
-RUN ls -la /airflow
-RUN rm /airflow/airflow.cfg
-RUN cp executor/airflow.cfg /airflow
-#RUN cat /usr/local/lib/python2.7/site-packages/airflow/airflow.cfg
 
 RUN pip install --upgrade
 RUN pip install -U pip setuptools
@@ -119,8 +114,7 @@ RUN pip install -U pip setuptools
 RUN pip install -r requirements.txt
 
 RUN tar -zxvf memcached-1.5.1.tar.gz
-RUN cd memcached-1.x.x
-RUN ./configure && make && make test && sudo make install
+RUN cd memcached-1.5.1 ; chmod +x ./configure ; ./configure && make && make test && sudo make install
 RUN memcached&
 
 # Run init.py when the container launches

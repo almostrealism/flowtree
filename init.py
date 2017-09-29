@@ -30,4 +30,6 @@ os.system('airflow initdb')
 
 os.system('java -cp /root/FlowTree-0.1-rc.jar:/root/TreeView-0.1-rc.jar:/root/Common-0.1-rc.jar:/root/hsqldb-2.3.4.jar:/root/jsch-0.1.53.jar org.almostrealism.flow.Server /root/flowtree.conf -p &')
 
+os.system('rm /airflow/airflow.cfg')
+os.system('cp executor/airflow.cfg /airflow')
 os.system('airflow webserver')
