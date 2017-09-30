@@ -13,6 +13,7 @@ EXPOSE 8080
 EXPOSE 7766
 EXPOSE 11211
 EXPOSE 8161
+EXPOSE 61616
 
 # Install yum dependencies
 RUN yum -y update && \
@@ -82,6 +83,10 @@ RUN sudo yum install -y nfs-utils
 RUN sudo yum install -y which
 RUN sudo yum install -y nano
 RUN sudo yum install -y git
+
+RUN sudo yum install -y postgresql-server postgresql-contrib
+RUN sudo postgresql-setup initdb
+RUN sudo createdb airflow
 
 RUN export PATH=/usr/local/bin:$PATH
 RUN sudo mv /usr/bin/python /usr/bin/python-old
