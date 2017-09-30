@@ -33,6 +33,7 @@ os.system('java -cp /root/FlowTree-0.1-rc.jar:/root/TreeView-0.1-rc.jar:/root/Co
 
 os.system('/root/apache-activemq-5.15.0/bin/activemq start')
 
+os.system('sudo mkdir /airflow/plugins/')
 os.system('cp /root/executor/flowtree_executor.py /airflow/plugins/flowtree_executor.py')
 os.system('rm /airflow/airflow.cfg')
 os.system('sudo cp /root/executor/airflow.cfg /airflow');

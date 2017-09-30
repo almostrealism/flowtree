@@ -38,8 +38,8 @@
       <file leaf-file-name="init.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/init.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="21" column="26" lean-forward="false" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
+            <state relative-caret-position="385">
+              <caret line="35" column="39" lean-forward="false" selection-start-line="35" selection-start-column="39" selection-end-line="35" selection-end-column="39" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -530,7 +530,7 @@
       <workItem from="1506713715793" duration="16283000" />
       <workItem from="1506731615185" duration="15245000" />
       <workItem from="1506750258583" duration="11723000" />
-      <workItem from="1506765110974" duration="188000" />
+      <workItem from="1506765110974" duration="1134000" />
     </task>
     <task id="LOCAL-00001" summary="Referesh idea project metadata.">
       <created>1503461134005</created>
@@ -756,11 +756,18 @@
       <option name="project" value="LOCAL" />
       <updated>1506762769195</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Minor changes.">
+      <created>1506765311325</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1506765311325</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110711000" />
+    <option name="totallyTimeSpent" value="111657000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="6" />
@@ -813,7 +820,6 @@
     <MESSAGE value="Implemented toString." />
     <MESSAGE value="Removed archiva, as we now have a real instance in the cloud." />
     <MESSAGE value="Minor change to workspace." />
-    <MESSAGE value="Minor changes." />
     <MESSAGE value="Updated Dockerfile to reflect new airflow design." />
     <MESSAGE value="Working towards running airflow on flowtree." />
     <MESSAGE value="Almost there." />
@@ -828,7 +834,8 @@
     <MESSAGE value="Migrated flow tree executor plugin install to init.py." />
     <MESSAGE value="More customization of flow tree plugin." />
     <MESSAGE value="Updated configuration to point at full path of FlowTreeExecutor." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated configuration to point at full path of FlowTreeExecutor." />
+    <MESSAGE value="Minor changes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor changes." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1198,8 +1205,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/init.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="21" column="26" lean-forward="false" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
+        <state relative-caret-position="385">
+          <caret line="35" column="39" lean-forward="false" selection-start-line="35" selection-start-column="39" selection-end-line="35" selection-end-column="39" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
