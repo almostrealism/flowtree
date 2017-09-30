@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="905a9ace-0030-4c22-94cc-92d66d646224" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libevent-2.1.8-stable.tar.gz" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Dockerfile" afterPath="$PROJECT_DIR$/Dockerfile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/init.py" afterPath="$PROJECT_DIR$/init.py" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,8 +38,8 @@
       <file leaf-file-name="init.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/init.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="34" column="30" lean-forward="false" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
+            <state relative-caret-position="480">
+              <caret line="32" column="36" lean-forward="true" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -159,8 +158,8 @@
         <option value="$PROJECT_DIR$/src/org/almostrealism/flow/Server.java" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/executor/airflow.cfg" />
-        <option value="$PROJECT_DIR$/init.py" />
         <option value="$PROJECT_DIR$/Dockerfile" />
+        <option value="$PROJECT_DIR$/init.py" />
       </list>
     </option>
   </component>
@@ -537,7 +536,7 @@
       <workItem from="1504306149256" duration="3979000" />
       <workItem from="1506300372655" duration="5424000" />
       <workItem from="1506713715793" duration="16283000" />
-      <workItem from="1506731615185" duration="394000" />
+      <workItem from="1506731615185" duration="904000" />
     </task>
     <task id="LOCAL-00001" summary="Referesh idea project metadata.">
       <created>1503461134005</created>
@@ -693,11 +692,18 @@
       <option name="project" value="LOCAL" />
       <updated>1506728594006</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Working towards a stable docker image for flowtree.">
+      <created>1506732025588</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1506732025588</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83949000" />
+    <option name="totallyTimeSpent" value="84459000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1440" width="2560" height="1440" extended-state="6" />
@@ -760,7 +766,8 @@
     <MESSAGE value="Working towards running airflow on flowtree." />
     <MESSAGE value="Almost there." />
     <MESSAGE value="Almost have this thing working." />
-    <option name="LAST_COMMIT_MESSAGE" value="Almost have this thing working." />
+    <MESSAGE value="Working towards a stable docker image for flowtree." />
+    <option name="LAST_COMMIT_MESSAGE" value="Working towards a stable docker image for flowtree." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1127,8 +1134,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/init.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="30" lean-forward="false" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
+        <state relative-caret-position="480">
+          <caret line="32" column="36" lean-forward="true" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
