@@ -29,13 +29,13 @@ os.system('/etc/init.d/crond start')
 os.system('sudo systemctl start postgresql')
 os.system('sudo su postgres -c "mkdir /home/postgres/data"')
 os.system('airflow initdb')
+os.system('cp executor/flowtree_executor.py /airflow/plugins/flowtree_executor.py')
 
 os.system('java -cp /root/FlowTree-0.1-rc.jar:/root/TreeView-0.1-rc.jar:/root/Common-0.1-rc.jar:/root/hsqldb-2.3.4.jar:/root/jsch-0.1.53.jar org.almostrealism.flow.Server /root/flowtree.conf -p &')
 
 os.system('/root/apache-activemq-5.15.0/bin/activemq start')
 
 os.system('rm /airflow/airflow.cfg')
-os.system('sudo cp /root/executor/airflow.cfg /airflow')
-os.system('airflow initdb')
+os.system('sudo cp /root/executor/airflow.cfg /airflow');
 
 os.system('airflow webserver')

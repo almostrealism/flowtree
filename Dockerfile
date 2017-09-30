@@ -112,9 +112,6 @@ RUN pip install airflow[s3]
 RUN pip install airflow[rabbitmq]
 RUN pip install airflow[postgres]
 
-RUN mkdir /usr/local/lib/python2.7/site-packages/airflow/plugins
-RUN cp executor/flowtree_executor.py /usr/local/lib/python2.7/site-packages/airflow/plugins/flowtree_executor.py
-
 RUN pip install --upgrade
 RUN pip install -U pip setuptools
 

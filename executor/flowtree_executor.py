@@ -25,10 +25,10 @@ PARALLELISM = configuration.get('core', 'PARALLELISM')
 
 DEFAULT_QUEUE = configuration.get('flowtree', 'DEFAULT_QUEUE')
 
-app = FlowTree()
+# app = FlowTree()
 
 
-@app.task
+# @app.task
 def execute_command(command):
     try:
         subprocess.check_call(command, shell=True)
