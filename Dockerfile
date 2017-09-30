@@ -85,8 +85,9 @@ RUN sudo yum install -y nano
 RUN sudo yum install -y git
 
 RUN sudo yum install -y postgresql-server postgresql-contrib
-RUN pg_ctl start -l ~/pglog
-RUN createdb airflow
+RUN sudo mkdir /home/postgres ; sudo chown postgres /home/postgres
+RUN sudo su postgres -c "mkdir /home/postgres/data"
+RUN export PGDATA=/home/postgres/data ; su postgres -c "pg_ctl start -l /home/postgres/pglog"
 
 RUN export PATH=/usr/local/bin:$PATH
 RUN sudo mv /usr/bin/python /usr/bin/python-old
@@ -121,6 +122,7 @@ RUN pip install -r requirements.txt
 
 RUN tar -zxvf apache-activemq-5.15.0-bin.tar.gz
 RUN /root/apache-activemq-5.15.0/bin/activemq start
+
 RUN tar -zxvf libevent-2.1.8-stable.tar.gz
 RUN cd /root/libevent-2.1.8-stable ; chmod +x ./configure ; ./configure --prefix /usr/lib ; make ; sudo make install
 RUN cd /root ; tar -zxvf memcached-1.5.1.tar.gz
