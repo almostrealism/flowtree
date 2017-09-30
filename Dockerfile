@@ -113,9 +113,11 @@ RUN pip install -U pip setuptools
 
 RUN pip install -r requirements.txt
 
-RUN tar -zxvf memcached-1.5.1.tar.gz
-RUN cd memcached-1.5.1 ; chmod +x ./configure ; ./configure && make && make test && sudo make install
-RUN memcached&
+#RUN tar -zxvf libevent-2.1.8-stable.tar.gz
+#RUN cd libevent-2.1.8-stable ; chmod +x ./configure ; ./configure && make && sudo make install
+#RUN cd /root ; tar -zxvf memcached-1.5.1.tar.gz
+#RUN cd memcached-1.5.1 ; chmod +x ./configure ; ./configure && make && make test && sudo make install
+#RUN memcached&
 
 # Run init.py when the container launches
 CMD ["python", "init.py"]
