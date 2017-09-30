@@ -85,8 +85,8 @@ RUN sudo yum install -y nano
 RUN sudo yum install -y git
 
 RUN sudo yum install -y postgresql-server postgresql-contrib
-RUN sudo postgresql-setup initdb
-RUN sudo createdb airflow
+RUN pg_ctl start -l ~/pglog
+RUN createdb airflow
 
 RUN export PATH=/usr/local/bin:$PATH
 RUN sudo mv /usr/bin/python /usr/bin/python-old
