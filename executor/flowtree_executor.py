@@ -20,6 +20,7 @@ import time
 from airflow.exceptions import AirflowException
 from airflow.executors.base_executor import BaseExecutor
 from airflow import configuration
+from airflow.plugins_manager import AirflowPlugin
 
 PARALLELISM = configuration.get('core', 'PARALLELISM')
 
@@ -77,7 +78,7 @@ class FlowTreeExecutor(BaseExecutor):
         self.sync()
 
 # Defining the plugin class
-class AirflowTestPlugin(AirflowPlugin):
+class FlowTreePlugin(AirflowPlugin):
     name = "flowtree_plugin"
     operators = []
     hooks = []

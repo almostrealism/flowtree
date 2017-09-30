@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="905a9ace-0030-4c22-94cc-92d66d646224" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Dockerfile" afterPath="$PROJECT_DIR$/Dockerfile" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/executor/flowtree_executor.py" afterPath="$PROJECT_DIR$/executor/flowtree_executor.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/init.py" afterPath="$PROJECT_DIR$/init.py" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,7 +38,7 @@
       <file leaf-file-name="init.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/init.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
+            <state relative-caret-position="303">
               <caret line="31" column="83" lean-forward="false" selection-start-line="31" selection-start-column="83" selection-end-line="31" selection-end-column="83" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
@@ -52,9 +50,11 @@
       <file leaf-file-name="flowtree_executor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/executor/flowtree_executor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="31" column="11" lean-forward="true" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="11" />
-              <folding />
+            <state relative-caret-position="330">
+              <caret line="22" column="49" lean-forward="false" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="49" />
+              <folding>
+                <element signature="e#567#594#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -540,7 +540,7 @@
       <workItem from="1506300372655" duration="5424000" />
       <workItem from="1506713715793" duration="16283000" />
       <workItem from="1506731615185" duration="15245000" />
-      <workItem from="1506750258583" duration="6458000" />
+      <workItem from="1506750258583" duration="8120000" />
     </task>
     <task id="LOCAL-00001" summary="Referesh idea project metadata.">
       <created>1503461134005</created>
@@ -745,11 +745,18 @@
       <option name="project" value="LOCAL" />
       <updated>1506756929943</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Migrated flow tree executor plugin install to init.py.">
+      <created>1506757823897</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1506757823897</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105258000" />
+    <option name="totallyTimeSpent" value="106920000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="6" />
@@ -792,7 +799,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Working Dockerfile for parallelize image." />
     <MESSAGE value="Added some more dependencies to docker build." />
     <MESSAGE value="Introduced the flowtree_executor which will run operators from airflow in the FlowTree sandbox." />
     <MESSAGE value="Setup plugin definition for flowtree_executor." />
@@ -817,10 +823,13 @@
     <MESSAGE value="Working toward a functioning postgres install." />
     <MESSAGE value="Minor changes to build and deploy." />
     <MESSAGE value="Start activemq in init.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Start activemq in init.py" />
+    <MESSAGE value="Migrated flow tree executor plugin install to init.py." />
+    <option name="LAST_COMMIT_MESSAGE" value="Migrated flow tree executor plugin install to init.py." />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="atlassian-ide-plugin-workspace-issues">
@@ -1176,7 +1185,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/init.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
+        <state relative-caret-position="303">
           <caret line="31" column="83" lean-forward="false" selection-start-line="31" selection-start-column="83" selection-end-line="31" selection-end-column="83" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
@@ -1186,9 +1195,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/executor/flowtree_executor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="31" column="11" lean-forward="true" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="11" />
-          <folding />
+        <state relative-caret-position="330">
+          <caret line="22" column="49" lean-forward="false" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="49" />
+          <folding>
+            <element signature="e#567#594#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
