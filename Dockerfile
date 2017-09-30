@@ -121,7 +121,6 @@ RUN pip install -U pip setuptools
 RUN pip install -r requirements.txt
 
 RUN tar -zxvf apache-activemq-5.15.0-bin.tar.gz
-RUN /root/apache-activemq-5.15.0/bin/activemq start
 
 RUN tar -zxvf libevent-2.1.8-stable.tar.gz
 RUN cd /root/libevent-2.1.8-stable ; chmod +x ./configure ; ./configure --prefix /usr/lib ; make ; sudo make install
