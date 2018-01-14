@@ -20,9 +20,10 @@
 
 package org.almostrealism.flow.tests;
 
-import org.almostrealism.flow.Job;
-import org.almostrealism.flow.JobFactory;
 import org.almostrealism.flow.Server;
+
+import io.flowtree.job.Job;
+import io.flowtree.job.JobFactory;
 
 public class UrlProfilingTask implements JobFactory {
 	public static interface Producer {

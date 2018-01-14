@@ -28,11 +28,11 @@ import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.almostrealism.flow.Job;
 import org.almostrealism.io.JobOutput;
 import org.almostrealism.io.OutputHandler;
 
 import io.almostrealism.db.Client;
+import io.flowtree.job.Job;
 
 public class UrlProfilingJob implements Job {
 	public static class Handler implements OutputHandler {

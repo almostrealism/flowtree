@@ -37,6 +37,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -54,6 +55,8 @@ import io.almostrealism.db.Client;
 import io.almostrealism.msg.Connection;
 import io.almostrealism.msg.Message;
 import io.almostrealism.msg.NodeProxy;
+import io.flowtree.job.Job;
+import io.flowtree.job.JobFactory;
 
 /**
  * A {@link NodeGroup} object represents a group of nodes (Node objects).
@@ -70,7 +73,8 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	
 	private JobFactory defaultFactory;
 	
-	private List nodes, servers, tasks, connecting;
+	private List<Node> nodes;
+	private List servers, tasks, connecting;
 	private List cachedTasks;
 	private List plisteners;
 	private int jobsPerTask = 1, maxTasks = 1;
@@ -355,6 +359,8 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	 * @return  The set of Node objects stored by this NodeGroup object.
 	 */
 	public Node[] getNodes() { return (Node[])this.nodes.toArray(new Node[0]); }
+	
+	protected Collection<Node> nodes() { return nodes; }
 	
 	/**
 	 * @return  The default JobFactory object used by this NodeGroup object.

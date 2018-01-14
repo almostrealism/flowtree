@@ -38,6 +38,8 @@ os.system('cp /root/executor/test_plugin.py /airflow/plugins/test_plugin.py')
 os.system('rm /airflow/airflow.cfg')
 os.system('sudo cp /root/executor/airflow.cfg /airflow');
 
+os.system('createdb airflow')
+
 os.system('airflow initdb')
 
 os.system('ls /airflow/plugins/')

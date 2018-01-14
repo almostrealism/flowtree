@@ -37,11 +37,11 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-import org.almostrealism.flow.Job;
 import org.almostrealism.io.JobOutput;
 import org.almostrealism.io.OutputHandler;
 
 import io.almostrealism.db.Query.ResultHandler;
+import io.flowtree.job.Job;
 
 /**
  * @author Mike Murray

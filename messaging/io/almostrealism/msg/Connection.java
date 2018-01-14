@@ -18,8 +18,9 @@ package io.almostrealism.msg;
 
 import java.io.IOException;
 
-import org.almostrealism.flow.Job;
 import org.almostrealism.flow.Node;
+
+import io.flowtree.job.Job;
 
 /**
  * A Connection object is used to relay information between a local node

@@ -1,8 +1,8 @@
 package io.almostrealism.flow;
 
-import org.almostrealism.flow.Job;
-
 import java.io.IOException;
+
+import io.flowtree.job.Job;
 
 public class AirflowJob implements Job {
 	private long taskId;

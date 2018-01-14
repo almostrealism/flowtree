@@ -25,8 +25,8 @@
 
 package org.almostrealism.flow.tests;
 
-import org.almostrealism.flow.Job;
-import org.almostrealism.flow.JobFactory;
+import io.flowtree.job.Job;
+import io.flowtree.job.JobFactory;
 
 /**
  * @author Mike Murray
@@ -94,12 +94,12 @@ public class TestJobFactory implements JobFactory {
 	public TestJobFactory(int sleep) { this.sleep = sleep; }
 	
 	/**
-	 * @see org.almostrealism.flow.JobFactory#nextJob()
+	 * @see io.flowtree.job.JobFactory#nextJob()
 	 */
 	public Job nextJob() { return new TestJob(this.jobs++, this.sleep, this.id); }
 	
 	/**
-	 * @see org.almostrealism.flow.JobFactory#createJob(java.lang.String)
+	 * @see io.flowtree.job.JobFactory#createJob(java.lang.String)
 	 */
 	public Job createJob(String data) { return org.almostrealism.flow.Server.instantiateJobClass(data); }
 	
@@ -133,7 +133,7 @@ public class TestJobFactory implements JobFactory {
 	public void setTaskId(long id) { this.id = id; }
 	
 	/**
-	 * @see org.almostrealism.flow.JobFactory#getTaskId()
+	 * @see io.flowtree.job.JobFactory#getTaskId()
 	 * @return  The task id (default -1).
 	 */
 	public long getTaskId() { return this.id; }

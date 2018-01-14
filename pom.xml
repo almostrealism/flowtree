@@ -5,7 +5,7 @@
 
 	<groupId>org.almostrealism</groupId>
 	<artifactId>FlowTree</artifactId>
-	<version>0.1-rc</version>
+	<version>0.2-rc</version>
 
 
 	<properties>
@@ -29,6 +29,7 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
+			
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
@@ -49,6 +50,7 @@
 					</execution>
 				</executions>
 			</plugin>
+			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
@@ -58,20 +60,18 @@
 			</plugin>
 		</plugins>
 	</build>
-
-
-
+	
 	<dependencies>
 		<dependency>
 			<groupId>io.almostrealism</groupId>
 			<artifactId>TreeView</artifactId>
-			<version>0.1-rc</version>
+			<version>0.2-rc</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.almostrealism</groupId>
 			<artifactId>Common</artifactId>
-			<version>0.1-rc</version>
+			<version>0.2-rc</version>
 		</dependency>
 
 		<dependency>
@@ -93,16 +93,23 @@
 		    <artifactId>hsqldb</artifactId>
 		    <version>2.3.4</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+		<dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-api</artifactId>
+		    <version>1.7.25</version>
+		</dependency>
 	</dependencies>
 
 	<distributionManagement>
 		<repository>
 			<id>internal</id>
-			<url>http://13.59.14.87:8080/repository/internal/</url>
+			<url>http://mvn.almostrealism.org:8080/repository/internal/</url>
 		</repository>
 		<snapshotRepository>
 			<id>internal</id>
-			<url>http://13.59.14.87:8080/repository/internal/</url>
+			<url>http://mvn.almostrealism.org:8080/repository/internal/</url>
 		</snapshotRepository>
 	</distributionManagement>
 
@@ -125,7 +132,7 @@
     <pluginRepository>
       <id>internal</id>
       <name>Archiva Managed Internal Repository</name>
-      <url>http://13.59.14.87:8080/repository/internal/</url>
+      <url>http://mvn.almostrealism.org:8080/repository/internal/</url>
       <releases>
         <enabled>true</enabled>
       </releases>

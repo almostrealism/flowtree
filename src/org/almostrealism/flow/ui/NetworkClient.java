@@ -34,13 +34,13 @@ import java.security.spec.InvalidKeySpecException;
 
 import javax.crypto.NoSuchPaddingException;
 
-import org.almostrealism.flow.Job;
 import org.almostrealism.flow.Node;
 import org.almostrealism.flow.tests.TestJobFactory;
 import org.ietf.jgss.GSSException;
 
 import io.almostrealism.msg.Connection;
 import io.almostrealism.msg.NodeProxy;
+import io.flowtree.job.Job;
 
 /**
  * A NetworkClient instance can be used to send jobs/messages to a server.

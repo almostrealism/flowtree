@@ -32,12 +32,14 @@ import java.net.Socket;
 import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.Set;
 
@@ -56,6 +58,8 @@ import io.almostrealism.db.DatabaseConnection;
 import io.almostrealism.db.Query;
 import io.almostrealism.msg.Message;
 import io.almostrealism.msg.NodeProxy;
+import io.flowtree.job.Job;
+import io.flowtree.job.JobFactory;
 
 // TODO Consider performing routine tasks (eg Garbage Collector, delete unused db rows, etc.)
 //      during time when activity rating is low.
@@ -341,9 +345,9 @@ public class Server implements JobFactory, Runnable {
 			this.rthread.setDaemon(true);
 		}
 		
-		Iterator itr = p.entrySet().iterator();
+		Iterator<Entry<Object, Object>> itr = p.entrySet().iterator();
 		w: while (itr.hasNext()) {
-			Map.Entry ent = (Map.Entry) itr.next();
+			Entry ent = itr.next();
 			String key = (String) ent.getKey();
 			if (!key.startsWith("resource://")) continue w;
 			String value = (String) ent.getValue();
@@ -424,6 +428,8 @@ public class Server implements JobFactory, Runnable {
 	 * @return  The NodeGroup object stored by this Server object.
 	 */
 	public NodeGroup getNodeGroup() { return this.group; }
+	
+	protected Collection<Node> nodes() { return this.group.nodes(); }
 	
 	/**
 	 * @return  The local address of this server. This seems to work in a different way
@@ -1188,12 +1194,12 @@ public class Server implements JobFactory, Runnable {
 	}
 	
 	/**
-	 * @see org.almostrealism.flow.JobFactory#nextJob()
+	 * @see io.flowtree.job.JobFactory#nextJob()
 	 */
 	public Job nextJob() { return this.group.nextJob(); }
 	
 	/**
-	 * @see org.almostrealism.flow.JobFactory#createJob(java.lang.String)
+	 * @see io.flowtree.job.JobFactory#createJob(java.lang.String)
 	 */
 	public Job createJob(String data) { return Server.instantiateJobClass(data); }
 	
