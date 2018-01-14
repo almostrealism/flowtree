@@ -43,7 +43,7 @@
 								<source>messaging</source>
 								<source>src</source>
 								<source>ui</source>
-								<source>bitcoinj-minimal</source>
+								<source>libdohj/core/src/main/java</source>
 							</sources>
 						</configuration>
 					</execution>
@@ -92,7 +92,21 @@
 			<artifactId>hsqldb</artifactId>
 			<version>2.3.4</version>
 		</dependency>
-		
+
+		<!-- https://mvnrepository.com/artifact/org.fusesource.leveldbjni/leveldbjni-all -->
+<!-- 		<dependency>
+			<groupId>org.fusesource.leveldbjni</groupId>
+			<artifactId>leveldbjni-all</artifactId>
+			<version>1.8</version>
+		</dependency> -->
+
+		<!-- https://mvnrepository.com/artifact/org.iq80.leveldb/leveldb -->
+<!-- 		<dependency>
+			<groupId>org.iq80.leveldb</groupId>
+			<artifactId>leveldb</artifactId>
+			<version>0.10</version>
+		</dependency> -->
+
 		<dependency>
 			<groupId>org.bitcoinj</groupId>
 			<artifactId>bitcoinj-core</artifactId>
@@ -124,9 +138,4 @@
 			</snapshots>
 		</repository>
 	</repositories>
-
-	<!-- <pluginRepositories> <pluginRepository> <id>internal</id> <name>Archiva 
-		Managed Internal Repository</name> <url>http://mvn.almostrealism.org:8080/repository/internal/</url> 
-		<releases> <enabled>true</enabled> </releases> <snapshots> <enabled>false</enabled> 
-		</snapshots> </pluginRepository> </pluginRepositories> -->
 </project>
