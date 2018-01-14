@@ -4,6 +4,5 @@
         <wb-resource deploy-path="/" source-path="/persistence"/>
         <wb-resource deploy-path="/" source-path="/ui"/>
         <wb-resource deploy-path="/" source-path="/messaging"/>
-        <wb-resource deploy-path="/" source-path="/bitcoinj-minimal"/>
     </wb-module>
 </project-modules>
