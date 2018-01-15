@@ -6,5 +6,11 @@
         <wb-resource deploy-path="/" source-path="/messaging"/>
         <wb-resource deploy-path="/" source-path="/libdohj/core/src/main/java"/>
         <wb-resource deploy-path="/" source-path="/libdohj/core/src/main/resources"/>
+        <wb-resource deploy-path="/" source-path="/java-stratum/stratum-protocol/src/main/java"/>
+        <wb-resource deploy-path="/" source-path="/java-stratum/stratum-protocol/src/main/resources"/>
+        <wb-resource deploy-path="/" source-path="/java-stratum/stratum-tools/src/main/java"/>
+        <wb-resource deploy-path="/" source-path="/java-stratum/stratum-tools/src/main/resources"/>
+        <wb-resource deploy-path="/" source-path="/ethereumj/ethereumj-core/src/main/java"/>
+        <wb-resource deploy-path="/" source-path="/ethereumj/ethereumj-core/src/main/resources"/>
     </wb-module>
 </project-modules>

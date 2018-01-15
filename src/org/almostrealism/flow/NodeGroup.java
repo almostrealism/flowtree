@@ -404,17 +404,17 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	}
 	
 	/**
-	 * @return  The Node object stored by this NodeGroup object with the lowest activity rating.
+	 * @return  The {@link Node} with the lowest activity rating.
 	 */
 	public Node getLeastActiveNode() {
-		List l = new ArrayList();
+		List<Node> l = new ArrayList<Node>();
 		double rating = -1.0;
 		
 		synchronized (this.nodes) {
-			Iterator itr = this.nodes.iterator();
+			Iterator<Node> itr = this.nodes.iterator();
 			
 			while (itr.hasNext()) {
-				Node next = (Node)itr.next();
+				Node next = itr.next();
 				double a = next.getActivityRating();
 				
 				if (rating == -1.0 || rating > a) {

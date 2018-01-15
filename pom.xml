@@ -44,6 +44,9 @@
 								<source>src</source>
 								<source>ui</source>
 								<source>libdohj/core/src/main/java</source>
+								<source>java-stratum/stratum-protocol/src/main/java</source>
+								<source>java-stratum/stratum-tools/src/main/java</source>
+								<source>ethereumj/ethereumj-core/src/main/java</source>
 							</sources>
 						</configuration>
 					</execution>
@@ -73,10 +76,131 @@
 			<version>0.2-rc</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.6</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-collections4 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+			<version>4.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.11</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.eclipse.jetty</groupId>
 			<artifactId>jetty-server</artifactId>
 			<version>${jettyVersion}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.netty/netty-all -->
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty-all</artifactId>
+			<version>4.1.19.Final</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>5.0.2.RELEASE</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-tx -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>5.0.2.RELEASE</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.xerial.snappy/snappy-java -->
+		<dependency>
+			<groupId>org.xerial.snappy</groupId>
+			<artifactId>snappy-java</artifactId>
+			<version>1.1.7.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.iq80.leveldb/leveldb -->
+		<dependency>
+			<groupId>org.iq80.leveldb</groupId>
+			<artifactId>leveldb</artifactId>
+			<version>0.10</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.fusesource.leveldbjni/leveldbjni-all -->
+		<dependency>
+			<groupId>org.fusesource.leveldbjni</groupId>
+			<artifactId>leveldbjni-all</artifactId>
+			<version>1.8</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.cedarsoftware/java-util -->
+		<dependency>
+			<groupId>com.cedarsoftware</groupId>
+			<artifactId>java-util</artifactId>
+			<version>1.34.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.typesafe/config -->
+		<dependency>
+			<groupId>com.typesafe</groupId>
+			<artifactId>config</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.2.3</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-core -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+			<version>1.2.3</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.2.3</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.googlecode.concurrent-locks/concurrent-locks -->
+		<dependency>
+			<groupId>com.googlecode.concurrent-locks</groupId>
+			<artifactId>concurrent-locks</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.madgag.spongycastle/core -->
+		<dependency>
+			<groupId>com.madgag.spongycastle</groupId>
+			<artifactId>core</artifactId>
+			<version>1.58.0.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.madgag.spongycastle/prov -->
+		<dependency>
+			<groupId>com.madgag.spongycastle</groupId>
+			<artifactId>prov</artifactId>
+			<version>1.58.0.0</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.jcraft/jsch -->
@@ -93,19 +217,19 @@
 			<version>2.3.4</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.fusesource.leveldbjni/leveldbjni-all -->
-<!-- 		<dependency>
-			<groupId>org.fusesource.leveldbjni</groupId>
-			<artifactId>leveldbjni-all</artifactId>
-			<version>1.8</version>
-		</dependency> -->
+		<!-- https://mvnrepository.com/artifact/net.sf.jopt-simple/jopt-simple -->
+		<dependency>
+			<groupId>net.sf.jopt-simple</groupId>
+			<artifactId>jopt-simple</artifactId>
+			<version>5.0.4</version>
+		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.iq80.leveldb/leveldb -->
-<!-- 		<dependency>
-			<groupId>org.iq80.leveldb</groupId>
-			<artifactId>leveldb</artifactId>
-			<version>0.10</version>
-		</dependency> -->
+		<!-- https://mvnrepository.com/artifact/org.jboss.aesh/aesh -->
+		<dependency>
+			<groupId>org.jboss.aesh</groupId>
+			<artifactId>aesh</artifactId>
+			<version>0.66.19</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.bitcoinj</groupId>
