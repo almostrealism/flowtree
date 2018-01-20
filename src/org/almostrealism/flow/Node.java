@@ -229,9 +229,10 @@ public class Node implements Runnable {
 	/**
 	 * Starts the thread that manages the activity of this node.
 	 */
-	public void start() {
+	public Node start() {
 		this.stop = false;
 		this.nodeThread.start();
+		return this;
 	}
 	
 	/**
@@ -408,6 +409,8 @@ public class Node implements Runnable {
 	 * @return  The maximum number of jobs that this Node object will keep in the queue.
 	 */
 	public int getMaxJobs() { return this.maxJobs; }
+	
+	public void setMaxJobs(int m) { this.maxJobs = m; }
 	
 	public void setMaxSleepC(double msc) { this.maxSleepC  = msc; }
 	

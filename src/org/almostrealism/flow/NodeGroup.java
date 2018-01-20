@@ -213,7 +213,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	 * Starts the thread that manages the activity of this NodeGroup and the threads
 	 * for the child nodes stored by this NodeGroup.
 	 */
-	public void start() {
+	public Node start() {
 		this.stop = false;
 		this.thread.start();
 		
@@ -221,6 +221,8 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 			Iterator itr = this.nodes.iterator();
 			while (itr.hasNext()) ((Node)itr.next()).start();
 		}
+		
+		return this;
 	}
 	
 	public void startMonitor(int priority, int sleep) {
@@ -304,7 +306,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 		} else if (name.equals("group.nverbose")) {
 			this.verbose = Boolean.parseBoolean(value);
 		} else if (name.equals("group.taskjobs")) {
-			msg = "TasksPerJob = " + value;
+			msg = "JobsPerTask = " + value;
 			this.jobsPerTask = Integer.parseInt(value);
 		} else if (name.equals("group.taskmax")) {
 			msg = "MaxTasks = " + value;
@@ -694,7 +696,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	}
 	
 	/**
-	 * Constructs a JobFactory object and adds it as a task for this NodeGroup.
+	 * Constructs a {@link JobFactory} and adds it as a task for this {@link NodeGroup}.
 	 * 
 	 * @param f  Encoded JobFactory to use as task.
 	 * @return  True if added, false otherwise.
@@ -718,8 +720,8 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	}
 	
 	/**
-	 * Sends an encoded JobFactory instance to a server that this NodeGroup object
-	 * is connected to.
+	 * Sends an encoded {@link JobFactory} instance to a server that
+	 * this {@link NodeGroup} is connected to.
 	 * 
 	 * @param data  Encoded JobFactory.
 	 * @param server  Server index.
@@ -802,8 +804,8 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	
 	public void setParentalRelayP(double parp) {
 		if (this.nodes == null) return;
-		Iterator itr = this.nodes.iterator();
-		while (itr.hasNext()) ((Node)itr.next()).setParentalRelayP(parp);
+		Iterator<Node> itr = this.nodes.iterator();
+		while (itr.hasNext()) itr.next().setParentalRelayP(parp);
 	}
 	
 	/**

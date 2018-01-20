@@ -23,7 +23,7 @@ import org.almostrealism.flow.Node;
 import io.flowtree.job.Job;
 
 /**
- * A Connection object is used to relay information between a local node
+ * A {@link Connection} is used to relay information between a local node
  * and a remote node.
  * 
  * @author Mike Murray
