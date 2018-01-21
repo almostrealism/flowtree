@@ -12,5 +12,6 @@
         <wb-resource deploy-path="/" source-path="/java-stratum/stratum-tools/src/main/resources"/>
         <wb-resource deploy-path="/" source-path="/ethereumj/ethereumj-core/src/main/java"/>
         <wb-resource deploy-path="/" source-path="/ethereumj/ethereumj-core/src/main/resources"/>
+        <wb-resource deploy-path="/" source-path="/java-smartcolors/core/src/main/java"/>
     </wb-module>
 </project-modules>
