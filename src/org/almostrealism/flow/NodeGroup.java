@@ -74,10 +74,11 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	private JobFactory defaultFactory;
 	
 	private List<Node> nodes;
-	private List servers, tasks, connecting;
+	private List servers, connecting;
+	private List<JobFactory> tasks;
 	private List cachedTasks;
 	private List plisteners;
-	private int jobsPerTask = 1, maxTasks = 1;
+	private int jobsPerTask = 1, maxTasks = 10;
 	
 	private char passwd[];
 	private String crypt;

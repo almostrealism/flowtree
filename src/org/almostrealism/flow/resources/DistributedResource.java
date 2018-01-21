@@ -43,7 +43,7 @@ import io.almostrealism.db.OutputServer;
 import io.almostrealism.db.Query;
 
 /**
- * A DistributedResource object represents a file in the distributed content repository.
+ * A {@link DistributedResource} represents a file in the distributed content repository.
  * The content repository is designed to break up an array of bytes into uniform size
  * chunks of data that can be moved around and mirrored to store the contents of some
  * resource across many running clients. A DistributedResource object may have some
