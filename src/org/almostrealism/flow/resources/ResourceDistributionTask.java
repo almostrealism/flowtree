@@ -39,11 +39,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.almostrealism.flow.Resource;
 import org.almostrealism.flow.Server;
 import org.almostrealism.flow.Server.ResourceProvider;
 import org.almostrealism.io.JobOutput;
 import org.almostrealism.io.OutputHandler;
+import org.almostrealism.io.Resource;
 
 import io.almostrealism.db.Client;
 import io.almostrealism.db.DatabaseConnection;

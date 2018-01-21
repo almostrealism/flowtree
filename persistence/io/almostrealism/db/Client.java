@@ -190,7 +190,7 @@ public class Client {
 	 * @return  Resource loaded.
 	 * @throws IOException 
 	 */
-	public org.almostrealism.flow.Resource loadResource(String uri) throws IOException {
+	public org.almostrealism.io.Resource loadResource(String uri) throws IOException {
 		return this.server.loadResource(uri);
 	}
 	

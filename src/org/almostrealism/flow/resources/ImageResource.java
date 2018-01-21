@@ -32,9 +32,8 @@ import java.io.InputStream;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
 
-import org.almostrealism.flow.Resource;
-import org.almostrealism.flow.Server;
-import org.almostrealism.flow.Server.IOStreams;
+import org.almostrealism.io.IOStreams;
+import org.almostrealism.io.Resource;
 
 import io.almostrealism.db.Client;
 
@@ -66,7 +65,7 @@ public class ImageResource implements Resource {
 	public int getWidth() { return this.w; }
 	public int getHeight() { return this.h; }
 	
-	public void load(Server.IOStreams io) throws IOException {
+	public void load(IOStreams io) throws IOException {
 		io.out.writeInt(this.x);
 		io.out.writeInt(this.y);
 		io.out.writeInt(this.w);
@@ -194,7 +193,7 @@ public class ImageResource implements Resource {
 		}
 	}
 	
-	public void send(Server.IOStreams io) throws IOException {
+	public void send(IOStreams io) throws IOException {
 		if (this.data == null) return;
 		
 		int sx = this.x;

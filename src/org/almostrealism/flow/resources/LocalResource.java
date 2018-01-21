@@ -33,8 +33,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import org.almostrealism.flow.Resource;
-import org.almostrealism.flow.Server.IOStreams;
+import org.almostrealism.io.IOStreams;
+import org.almostrealism.io.Resource;
 
 public class LocalResource implements Resource {
 	private String uri;

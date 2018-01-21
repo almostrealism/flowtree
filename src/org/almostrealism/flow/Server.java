@@ -51,6 +51,8 @@ import org.almostrealism.flow.resources.DistributedResource;
 import org.almostrealism.flow.resources.ImageResource;
 import org.almostrealism.flow.resources.LocalResource;
 import org.almostrealism.flow.resources.ResourceDistributionTask;
+import org.almostrealism.io.IOStreams;
+import org.almostrealism.io.Resource;
 import org.almostrealism.texture.GraphicsConverter;
 
 import io.almostrealism.db.Client;
@@ -71,25 +73,6 @@ import io.flowtree.job.JobFactory;
  * @author Mike Murray
  */
 public class Server implements JobFactory, Runnable {
-	public static class IOStreams {
-		public DataInputStream in;
-		public DataOutputStream out;
-		public String host;
-		
-		public IOStreams() { }
-		
-		public IOStreams(Socket s) throws IOException {
-			this.in = new DataInputStream(s.getInputStream());
-			this.out = new DataOutputStream(s.getOutputStream());
-			this.host = s.getInetAddress().toString();
-		}
-		
-		public void close() throws IOException {
-			this.in.close();
-			this.out.close();
-		}
-	}
-	
 	public static interface ResourceProvider {
 		public Resource loadResource(String uri);
 		public Resource loadResource(String uri, String exclude);

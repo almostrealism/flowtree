@@ -34,8 +34,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.almostrealism.flow.Resource;
-import org.almostrealism.flow.Server.IOStreams;
+import org.almostrealism.io.IOStreams;
+import org.almostrealism.io.Resource;
 
 import io.almostrealism.db.Client;
 import io.almostrealism.db.DatabaseConnection;
