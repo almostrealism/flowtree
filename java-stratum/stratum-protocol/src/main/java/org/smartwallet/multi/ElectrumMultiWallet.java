@@ -195,7 +195,7 @@ public class ElectrumMultiWallet extends SmartMultiWallet implements WalletExten
     }
 
     @Override
-    public void completeTx(Wallet.SendRequest req) throws InsufficientMoneyException {
+    public void completeTx(SendRequest req) throws InsufficientMoneyException {
         checkArgument(req.coinSelector instanceof BitcoinCoinSelector, "Must provide a BitcoinCoinSelector");
         wallet.lock();
         try {
@@ -283,7 +283,7 @@ public class ElectrumMultiWallet extends SmartMultiWallet implements WalletExten
             // Record the exchange rate that was valid when the transaction was completed.
             req.tx.setExchangeRate(req.exchangeRate);
             req.tx.setMemo(req.memo);
-            req.fee = calculatedFee;
+//            req.fee = calculatedFee;
             log.info("  completed: {}", req.tx);
         } finally {
             wallet.unlock();
