@@ -78,7 +78,7 @@ class FlowTreeExecutor(BaseExecutor):
         self.sync()
 
 # Defining the plugin class
-class FlowTreePlugin(object):
+class FlowTreePlugin(AirflowPlugin):
     name = "flowtree_plugin"
     operators = []
     hooks = []
