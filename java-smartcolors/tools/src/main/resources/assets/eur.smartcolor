@@ -1,0 +1,13 @@
+{
+  "name" : "EUR",
+  "definition" : "01f88b1300000000000000000000000000000000013f43c18813f9105487e11146bae76a0e92cad976729342785e60bc5b0334d9f10000000080ade20400",
+  "issuer": "Standard Issuer, Inc.",
+  "Unit Name": "Euros",
+  "unit": "EUR",
+  "total_unit": "100000",
+  "divisibility": 2,
+  "Asset Type": "Currency",
+  "Settlement": "Physical Delivery",
+  "Signature": "TBD",
+  "Asset Information": "https://standardissuer.com/issues/28jf3k3"
+}

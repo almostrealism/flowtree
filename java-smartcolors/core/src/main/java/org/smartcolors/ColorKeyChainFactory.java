@@ -3,7 +3,6 @@ package org.smartcolors;
 import org.bitcoinj.crypto.DeterministicKey;
 import org.bitcoinj.crypto.HDUtils;
 import org.bitcoinj.crypto.KeyCrypter;
-import org.bitcoinj.store.UnreadableWalletException;
 import org.bitcoinj.wallet.*;
 
 import java.util.List;

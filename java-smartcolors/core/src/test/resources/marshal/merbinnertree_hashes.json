@@ -1,0 +1,136 @@
+[
+["Test the basic node types and behavior with serialization to make the structure clear"],
+
+["Empty"],
+[{},
+ "serialize",
+ "00"
+],
+
+["Leaf"],
+[{"ffffffff":"deadbeef"},
+ "serialize",
+ "01ffffffffdeadbeef"
+],
+
+["Inner with left and right leaf children"],
+[{"ffffffff":"deadbeef",
+  "00000000":"cafebabe"},
+ "serialize",
+ "02 01ffffffffdeadbeef 0100000000cafebabe"
+],
+
+["Inner with collision on first bit"],
+[{"ffffffff":"deadbeef",
+  "80000000":"cafebabe"},
+ "serialize",
+ "02  02 01ffffffffdeadbeef 0180000000cafebabe  00"
+],
+
+["As above, but opposite side"],
+[{"7fffffff":"deadbeef",
+  "00000000":"cafebabe"},
+ "serialize",
+ "02  00  02 017fffffffdeadbeef 0100000000cafebabe"
+],
+
+["First two bits collide"],
+[{"ffffffff":"deadbeef",
+  "c0000000":"cafebabe"},
+ "serialize",
+ "02  02 0201ffffffffdeadbeef01c0000000cafebabe 00  00"
+],
+
+["As above, but opposite side"],
+[{"3fffffff":"deadbeef",
+  "00000000":"cafebabe"},
+ "serialize",
+ "02  00 02 00 02013fffffffdeadbeef0100000000cafebabe"
+],
+
+["Three items"],
+[{"ffffffff":"deadbeef",
+  "bfffffff":"cafebabe",
+  "00000000":"baadf00d"},
+ "serialize",
+ "02  02 01ffffffffdeadbeef 01bfffffffcafebabe  0100000000baadf00d"
+],
+
+["Four items"],
+[{"ffffffff":"deadbeef",
+  "bfffffff":"cafebabe",
+  "40000000":"feedface",
+  "00000000":"baadf00d"},
+ "serialize",
+ "02  02 01ffffffffdeadbeef 01bfffffffcafebabe  02 0140000000feedface 0100000000baadf00d"
+],
+
+
+["Above test cases repeated, but with hashing rather than serialization."],
+
+["Empty"],
+[{},
+ "hash",
+ "ae135d71df652ca291b2025b06165c285aaa0f8ce9609783294d210d371ac8d9"
+],
+
+["Leaf"],
+[{"ffffffff":"deadbeef"},
+ "hash",
+ "7b9f6282fa917a0c391bcf96accaad457a40fe31dcd4cdfc17e49dfba311dffb"
+],
+
+["Inner with left and right leaf children"],
+[{"ffffffff":"deadbeef",
+  "00000000":"cafebabe"},
+ "hash",
+ "65ada255d463e50f569a2ac79a10772d1a3a5262deab2b3ca4bbef466abe8702"
+],
+
+["Inner with collision on first bit"],
+[{"ffffffff":"deadbeef",
+  "80000000":"cafebabe"},
+ "hash",
+ "6d00bce57a2178c209ab6ba3811022d98bd57d8ddc7129f4f9681de6aabc6f71"
+],
+
+["As above, but opposite side"],
+[{"7fffffff":"deadbeef",
+  "00000000":"cafebabe"},
+ "hash",
+ "24f6f56a2b5adb196a18d3589eff608e765a84e03fd85dcce74fbc705bf4c806"
+],
+
+["First two bits collide"],
+[{"ffffffff":"deadbeef",
+  "c0000000":"cafebabe"},
+ "hash",
+ "a1bca9a7a7cd753583d4acdf524806310c6282e5599a4f50eb88179e44e1397d"
+],
+
+["As above, but opposite side"],
+[{"3fffffff":"deadbeef",
+  "00000000":"cafebabe"},
+ "hash",
+ "b73208ee8b5d7fb805ee2277ea269d162f5c80d3314cd1077e1319b3ce6cdecb"
+],
+
+["Three items"],
+[{"ffffffff":"deadbeef",
+  "bfffffff":"cafebabe",
+  "00000000":"baadf00d"},
+ "hash",
+ "d393bf646ad233030f3f07be74738bf5a211647376abe81d21df9e03a6f8f635"
+],
+
+["Four items"],
+[{"ffffffff":"deadbeef",
+  "bfffffff":"cafebabe",
+  "40000000":"feedface",
+  "00000000":"baadf00d"},
+ "hash",
+ "663caed10ecde194d948110f53e937e7ea95d8abe2b9f18c85b169ead7613460"
+],
+
+["keep diffs clean"]
+]

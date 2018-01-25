@@ -270,12 +270,10 @@ public class PaymentProtocol {
 
         @Override
         public String toString() {
-            return Objects.toStringHelper(this)
-                    .add("displayName", displayName)
-                    .add("rootAuthorityName", rootAuthorityName)
-                    .add("merchantSigningKey", merchantSigningKey)
-                    .add("rootAuthority", rootAuthority)
-                    .toString();
+            return "PaymentProtocol[displayName=" + displayName + "," +
+                    "rootAuthorityName=" + rootAuthorityName + "," +
+                    "merchantSigningKey=" + merchantSigningKey + "," +
+                    "rootAuthority=" + rootAuthority + "]";
         }
     }
 

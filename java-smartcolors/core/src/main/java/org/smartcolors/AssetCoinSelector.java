@@ -4,6 +4,8 @@ import org.bitcoinj.core.*;
 import org.bitcoinj.script.Script;
 import org.bitcoinj.wallet.CoinSelection;
 import org.bitcoinj.wallet.KeyChain;
+import org.bitcoinj.wallet.SendRequest;
+import org.bitcoinj.wallet.Wallet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.smartcolors.core.ColorDefinition;
@@ -88,7 +90,7 @@ public class AssetCoinSelector extends DefaultCoinSelector {
      * @param req     request with a BitcoinCoinSelector
      * @throws InsufficientMoneyException
      */
-    public void completeTx(MultiWallet wallet, Wallet.SendRequest req, long assetAmount) throws InsufficientMoneyException {
+    public void completeTx(MultiWallet wallet, SendRequest req, long assetAmount) throws InsufficientMoneyException {
         checkArgument(req.coinSelector instanceof BitcoinCoinSelector, "Must provide a BitcoinCoinSelector");
         wallet.lock();
         try {
@@ -207,7 +209,7 @@ public class AssetCoinSelector extends DefaultCoinSelector {
             // Record the exchange rate that was valid when the transaction was completed.
             req.tx.setExchangeRate(req.exchangeRate);
             req.tx.setMemo(req.memo);
-            req.fee = calculatedFee;
+//            req.fee = calculatedFee;
             log.info("  completed: {}", req.tx);
         } finally {
             wallet.unlock();

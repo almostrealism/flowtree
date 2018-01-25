@@ -1,0 +1,12 @@
+{
+  "definition": "01c4f312bb2dd52197f92e97a4ec66b203546604016f4ff37e1d7ba22fd3cbbd701fdcdfb55d79c03d858f9d1c25485bfa79e7d4b800000000d0860300",
+  "name" : "Gold",
+  "issuer": "Gold Issuer",
+  "Unit Name": "Ounces",
+  "unit": "oz",
+  "total_unit": "42000",
+  "Asset Type": "Commodity",
+  "Settlement": "Physical Delivery",
+  "Signature": "TBD",
+  "Asset Information": "https://standardgold.com/issues"
+}

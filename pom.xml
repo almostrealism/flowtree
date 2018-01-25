@@ -48,6 +48,7 @@
 								<source>java-stratum/stratum-protocol/src/main/java</source>
 								<source>java-stratum/stratum-tools/src/main/java</source>
 								<source>ethereumj/ethereumj-core/src/main/java</source>
+								<source>ethereumj/ethereumj-core/src/main/java</source>
 							</sources>
 						</configuration>
 					</execution>
@@ -96,6 +97,20 @@
 			<groupId>commons-codec</groupId>
 			<artifactId>commons-codec</artifactId>
 			<version>1.11</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.4</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.nanohttpd/nanohttpd -->
+		<dependency>
+			<groupId>org.nanohttpd</groupId>
+			<artifactId>nanohttpd-webserver</artifactId>
+			<version>2.3.1</version>
 		</dependency>
 
 		<dependency>
@@ -165,7 +180,6 @@
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
 			<version>1.2.3</version>
-			<scope>test</scope>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-core -->
@@ -173,14 +187,6 @@
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-core</artifactId>
 			<version>1.2.3</version>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>1.2.3</version>
-			<scope>test</scope>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.googlecode.concurrent-locks/concurrent-locks -->

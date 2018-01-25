@@ -1,0 +1,13 @@
+{
+  "name" : "USD",
+  "definition" : "01f18b130000000000000000000000000000000001fa901cb8bfe1f337551f1963714a9bd48fcc26317a3292ef749eeb055261a98e0000000080ade20400",
+  "issuer": "Standard Issuer, Inc.",
+  "Unit Name": "Dollars",
+  "unit": "USD",
+  "total_unit": "100000",
+  "divisibility": 2,
+  "Asset Type": "Currency",
+  "Settlement": "Physical Delivery",
+  "Signature": "TBD",
+  "Asset Information": "https://standardissuer.com/issues/28jf3k3"
+}

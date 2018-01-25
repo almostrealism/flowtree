@@ -4,6 +4,8 @@ import com.google.common.base.Function;
 import com.google.common.collect.*;
 import com.google.common.util.concurrent.SettableFuture;
 import org.bitcoinj.core.*;
+import org.bitcoinj.core.listeners.AbstractPeerEventListener;
+import org.bitcoinj.core.listeners.BlockChainListener;
 import org.bitcoinj.script.Script;
 import org.bitcoinj.script.ScriptChunk;
 import org.bitcoinj.script.ScriptOpCodes;
@@ -21,7 +23,7 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * A blockchain and peer listener that keeps a set of color trackers updated with blockchain events.
  * <p/>
- * <p>You must call {@link org.smartcolors.AbstractColorScanner#addAllPending(org.bitcoinj.core.Wallet, java.util.Collection)} after deserializing the wallet
+ * <p>You must call {@link org.smartcolors.AbstractColorScanner#addAllPending(org.bitcoinj.wallet.Wallet, java.util.Collection)} after deserializing the wallet
  * so that we pick up any pending transactions that were saved with the wallet but we didn't get to save.
  * The peer will not let us know about it again, and we will be unable to find it when its hash
  * gets into a block.
@@ -118,11 +120,11 @@ public class SPVColorScanner extends AbstractColorScanner<SPVColorTrack> impleme
         }
     }
 
-    @Override
-    public boolean isTransactionRelevant(Transaction tx) throws ScriptException {
-        log.info("isRelevant {}", tx.getHash());
-        return isRelevant(tx);
-    }
+//    @Override
+//    public boolean isTransactionRelevant(Transaction tx) throws ScriptException {
+//        log.info("isRelevant {}", tx.getHash());
+//        return isRelevant(tx);
+//    }
 
     @Override
     public void receiveFromBlock(Transaction tx, StoredBlock block, AbstractBlockChain.NewBlockType blockType, int relativityOffset) throws VerificationException {

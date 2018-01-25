@@ -1,0 +1,12 @@
+core/target
+namecoin/target
+.project
+.classpath
+.settings
+.idea
+*.iml
+*.chain
+*.spvchain
+*.wallet
+/nbproject/private/
+/build/

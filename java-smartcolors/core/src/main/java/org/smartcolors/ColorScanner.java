@@ -3,6 +3,7 @@ package org.smartcolors;
 import com.google.common.hash.HashCode;
 import com.google.common.util.concurrent.ListenableFuture;
 import org.bitcoinj.core.*;
+import org.bitcoinj.wallet.Wallet;
 import org.smartcolors.core.ColorDefinition;
 
 import java.util.List;

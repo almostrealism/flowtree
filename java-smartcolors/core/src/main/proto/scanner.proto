@@ -1,0 +1,48 @@
+package smartcolors;
+
+option java_package = "org.smartcolors.protos";
+option java_outer_classname = "Protos";
+
+message SortedTransaction {
+    // Bitcoin serialized transaction
+    required bytes transaction = 1;
+    // Index of transaction output used by this input.
+    required uint32 index = 2;
+}
+
+message BlockToSortedTransaction {
+    required bytes block_hash = 1;
+    required SortedTransaction transaction = 2;
+}
+
+message OutPointValue {
+    // Hash of the transaction.
+    required bytes hash = 1;
+    // Index of transaction output.
+    required uint64 index = 2;
+    required uint64 value = 3;
+}
+
+message ColorDefinition {
+    required bytes hash = 1;
+    optional string json = 2;
+}
+
+message ColorProof {
+    required bytes body = 1;
+}
+
+message ColorTrack {
+    required ColorDefinition color_definition = 1;
+    repeated OutPointValue outputs = 2;
+    repeated OutPointValue unspent_outputs = 3;
+    repeated SortedTransaction txs = 4;
+
+    repeated ColorProof proofs = 10;
+}
+
+message ColorScanner {
+    repeated BlockToSortedTransaction block_to_transaction = 1;
+    repeated ColorTrack tracks = 2;
+    repeated bytes pending = 3;
+}

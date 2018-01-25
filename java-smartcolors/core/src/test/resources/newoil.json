@@ -1,0 +1,12 @@
+{
+  "definition": "01c4f31225c00712f0ec35ff408df4e75414a02a015f06c8a415cd1e829f34a5eee1ae590f2042db4086e957482f3f94d2d30d687301000000d0860300",
+  "name" : "Oil",
+  "issuer": "Standard Oil Company, Inc.",
+  "Unit Name": "Barrels",
+  "unit": "bbl",
+  "total_unit": "42000",
+  "Asset Type": "Commodity",
+  "Settlement": "Physical Delivery",
+  "Signature": "TBD",
+  "Asset Information": "https://standardoil.com/issues/28jf3k3"
+}
