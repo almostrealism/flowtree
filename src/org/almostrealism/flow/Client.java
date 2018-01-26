@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Michael Murray
+ * Copyright 2018 Michael Murray
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.almostrealism.db;
+package org.almostrealism.flow;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -31,11 +31,11 @@ import java.util.Properties;
 
 import javax.swing.JLabel;
 
-import org.almostrealism.flow.resources.ResourceDistributionTask;
 import org.almostrealism.io.JobOutput;
 
 import com.almostrealism.flow.LoginDialog;
 
+import io.almostrealism.db.Query;
 import io.almostrealism.msg.Message;
 
 /**

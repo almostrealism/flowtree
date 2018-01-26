@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Michael Murray
+ * Copyright 2018 Michael Murray
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,10 +14,6 @@
  * limitations under the License.
  */
 
-/*
- * Copyright (C) 2006  Mike Murray
- */
-
 package org.almostrealism.flow.tests;
 
 import java.io.BufferedWriter;
@@ -28,10 +24,10 @@ import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import org.almostrealism.flow.Client;
 import org.almostrealism.io.JobOutput;
 import org.almostrealism.io.OutputHandler;
 
-import io.almostrealism.db.Client;
 import io.flowtree.job.Job;
 
 public class UrlProfilingJob implements Job {

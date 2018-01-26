@@ -51,7 +51,6 @@ import org.almostrealism.io.RSSFeed;
 import org.almostrealism.util.Defaults;
 import org.almostrealism.util.Graph;
 
-import io.almostrealism.db.Client;
 import io.almostrealism.msg.Connection;
 import io.almostrealism.msg.Message;
 import io.almostrealism.msg.NodeProxy;
@@ -59,11 +58,11 @@ import io.flowtree.job.Job;
 import io.flowtree.job.JobFactory;
 
 /**
- * A {@link NodeGroup} object represents a group of nodes (Node objects).
+ * A {@link NodeGroup} object represents a group of {@link Node}s
  * The {@link NodeGroup} object is responsible for moderating communication
  * with each of its children.
  * 
- * @author Mike Murray
+ * @author  Michael Murray
  */
 public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener,
 														Node.ActivityListener {
@@ -1091,7 +1090,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 		
 		if (Message.verbose) System.out.println("NodeGroup: Getting dbs info...");
 		
-		io.almostrealism.db.OutputServer dbs = io.almostrealism.db.OutputServer.getCurrentServer();
+		org.almostrealism.flow.OutputServer dbs = org.almostrealism.flow.OutputServer.getCurrentServer();
 		if (dbs != null) {
 			if (this.tpLast % this.tpFreq == 0) {
 				this.throughputGraph.addEntry(dbs.getThroughput());

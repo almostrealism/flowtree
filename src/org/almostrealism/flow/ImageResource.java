@@ -23,7 +23,7 @@
  *
  */
 
-package org.almostrealism.flow.resources;
+package org.almostrealism.flow;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
@@ -35,7 +35,7 @@ import java.io.PipedOutputStream;
 import org.almostrealism.io.IOStreams;
 import org.almostrealism.io.Resource;
 
-import io.almostrealism.db.Client;
+import io.almostrealism.persist.ScpDownloader;
 
 public class ImageResource implements Resource {
 	private String uri;

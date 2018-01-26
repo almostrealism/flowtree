@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Michael Murray
+ * Copyright 2018 Michael Murray
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,16 +14,7 @@
  * limitations under the License.
  */
 
-/*
- * Copyright (C) 2006  Mike Murray
- *
- *  All rights reserved.
- *  This document may not be reused without
- *  express written permission from Mike Murray.
- *
- */
-
-package org.almostrealism.flow.resources;
+package org.almostrealism.flow;
 
 
 import java.io.IOException;
@@ -39,20 +30,19 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.almostrealism.flow.Server;
+import org.almostrealism.flow.ConcatenatedResource.ConcatenatedResourceHeaderParser;
 import org.almostrealism.flow.Server.ResourceProvider;
 import org.almostrealism.io.JobOutput;
 import org.almostrealism.io.OutputHandler;
 import org.almostrealism.io.Resource;
 
-import io.almostrealism.db.Client;
 import io.almostrealism.db.DatabaseConnection;
-import io.almostrealism.db.OutputServer;
 import io.almostrealism.db.Query;
 import io.almostrealism.db.QueryHandler;
 import io.almostrealism.db.Query.ResultHandler;
 import io.almostrealism.msg.Message;
 import io.almostrealism.msg.NodeProxy;
+import io.almostrealism.persist.ResourceHeaderParser;
 import io.flowtree.job.Job;
 import io.flowtree.job.JobFactory;
 
@@ -329,7 +319,7 @@ public class ResourceDistributionTask implements JobFactory, OutputHandler, Quer
 		long toa = handler.getToa();
 		if (toa <= 0) return false;
 		
-		return db.configureJob(j, toa);
+		return db.configureProperties(j, toa);
 	}
 	
 	public synchronized DistributedResource createResource(String uri) {

@@ -23,7 +23,7 @@
  *
  */
 
-package org.almostrealism.flow.resources;
+package org.almostrealism.flow;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -37,19 +37,17 @@ import java.util.Map;
 import org.almostrealism.io.IOStreams;
 import org.almostrealism.io.Resource;
 
-import io.almostrealism.db.Client;
 import io.almostrealism.db.DatabaseConnection;
-import io.almostrealism.db.OutputServer;
 import io.almostrealism.db.Query;
 
 /**
  * A {@link DistributedResource} represents a file in the distributed content repository.
  * The content repository is designed to break up an array of bytes into uniform size
  * chunks of data that can be moved around and mirrored to store the contents of some
- * resource across many running clients. A DistributedResource object may have some
- * number of these chunks stored in an internal (in memory) cache. When the getData method is
- * called, as many chunks of data as possible are loaded from the cache. Other data is
- * then requested from a ResourceDistributionTask, if one is currently running on the
+ * resource across many running clients. A {@link DistributedResource} may have some
+ * number of these chunks stored in an internal (in memory) cache. When the {@link #getData()}
+ * method is called, as many chunks of data as possible are loaded from the cache. Other
+ * data is then requested from a ResourceDistributionTask, if one is currently running on the
  * currently running Server. The ResourceDistributionTask stores chunks of data in a
  * hard disk cache. If more chunks of data are required for the resource to be completely
  * loaded and returned, the DistributedResource object will request this data from peers

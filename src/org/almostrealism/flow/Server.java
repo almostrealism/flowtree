@@ -47,19 +47,15 @@ import javax.swing.JLabel;
 
 import io.almostrealism.flow.AirflowJobFactory;
 import org.almostrealism.color.RGB;
-import org.almostrealism.flow.resources.DistributedResource;
-import org.almostrealism.flow.resources.ImageResource;
-import org.almostrealism.flow.resources.LocalResource;
-import org.almostrealism.flow.resources.ResourceDistributionTask;
 import org.almostrealism.io.IOStreams;
 import org.almostrealism.io.Resource;
 import org.almostrealism.texture.GraphicsConverter;
 
-import io.almostrealism.db.Client;
 import io.almostrealism.db.DatabaseConnection;
 import io.almostrealism.db.Query;
 import io.almostrealism.msg.Message;
 import io.almostrealism.msg.NodeProxy;
+import io.almostrealism.persist.LocalResource;
 import io.flowtree.job.Job;
 import io.flowtree.job.JobFactory;
 
@@ -67,10 +63,10 @@ import io.flowtree.job.JobFactory;
 //      during time when activity rating is low.
 
 /**
- * A Server object encapsulates a NodeGroup instance and manages a thread
+ * A {@link Server} encapsulates a {@link NodeGroup} and manages a {@link Thread}
  * that waits for client connections.
  * 
- * @author Mike Murray
+ * @author  Michael Murray
  */
 public class Server implements JobFactory, Runnable {
 	public static interface ResourceProvider {
@@ -1105,7 +1101,7 @@ public class Server implements JobFactory, Runnable {
 	}
 	
 	public Message executeQuery(Query q, NodeProxy p, long timeout) throws IOException {
-		io.almostrealism.db.OutputServer dbs = io.almostrealism.db.OutputServer.getCurrentServer();
+		org.almostrealism.flow.OutputServer dbs = org.almostrealism.flow.OutputServer.getCurrentServer();
 		
 		StringBuffer result = new StringBuffer();
 		

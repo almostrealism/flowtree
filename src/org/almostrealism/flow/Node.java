@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Michael Murray
+ * Copyright 2018 Michael Murray
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -12,15 +12,6 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
-
-/*
- * Copyright (C) 2004-06  Mike Murray
- *
- *  All rights reserved.
- *  This document may not be reused without
- *  express written permission from Mike Murray.
- *
  */
 
 package org.almostrealism.flow;
@@ -43,7 +34,6 @@ import javax.swing.JLabel;
 import org.almostrealism.io.RSSFeed;
 import org.almostrealism.util.Graph;
 
-import io.almostrealism.db.Client;
 import io.almostrealism.msg.Connection;
 import io.almostrealism.msg.Message;
 import io.almostrealism.msg.NodeProxy;
@@ -51,11 +41,12 @@ import io.flowtree.job.Job;
 import io.flowtree.job.JobFactory;
 
 /**
- * A Node object represents a node in the distributed network.
- * A Node is tied to a parent (NodeGroup) and is assigned an
- * id that is unique for that parent.
+ * A {@link Node} represents a member of the distributed network
+ * which can process one {@link Job} at a time. A {@link Node} is
+ * tied to a parent {@link NodeGroup} and is assigned an id that
+ * is unique for that parent.
  * 
- * @author Mike Murray
+ * @author  Michael Murray
  */
 public class Node implements Runnable {
 	protected static NumberFormat pFormat = NumberFormat.getPercentInstance();

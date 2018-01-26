@@ -71,7 +71,13 @@
 			<artifactId>TreeView</artifactId>
 			<version>0.2-rc</version>
 		</dependency>
-
+		
+		<dependency>
+			<groupId>io.almostrealism</groupId>
+			<artifactId>GraphPersist</artifactId>
+			<version>0.2-rc</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.almostrealism</groupId>
 			<artifactId>Common</artifactId>
@@ -208,13 +214,6 @@
 			<groupId>com.madgag.spongycastle</groupId>
 			<artifactId>prov</artifactId>
 			<version>1.58.0.0</version>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/com.jcraft/jsch -->
-		<dependency>
-			<groupId>com.jcraft</groupId>
-			<artifactId>jsch</artifactId>
-			<version>0.1.53</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.hsqldb/hsqldb -->

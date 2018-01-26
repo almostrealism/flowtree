@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Michael Murray
+ * Copyright 2018 Michael Murray
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.almostrealism.db;
+package org.almostrealism.flow;
 
 import java.io.EOFException;
 import java.io.Externalizable;
@@ -31,8 +31,12 @@ import org.almostrealism.io.JobOutput;
 import org.almostrealism.io.OutputHandler;
 import org.hsqldb.Server;
 
+import io.almostrealism.db.DatabaseConnection;
+import io.almostrealism.db.Query;
+import io.almostrealism.db.QueryHandler;
+
 /**
- * @author Mike Murray
+ * @author  Michael Murray
  */
 public class OutputServer implements Runnable {
 	private static OutputServer current;
