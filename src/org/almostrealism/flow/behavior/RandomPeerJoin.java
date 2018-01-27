@@ -29,7 +29,6 @@ import java.io.IOException;
 import java.io.PrintStream;
 
 import org.almostrealism.flow.Server;
-import org.almostrealism.flow.ServerBehavior;
 import org.almostrealism.util.Defaults;
 
 public class RandomPeerJoin implements ServerBehavior {

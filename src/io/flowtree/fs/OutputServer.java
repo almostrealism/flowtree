@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.almostrealism.flow;
+package io.flowtree.fs;
 
 import java.io.EOFException;
 import java.io.Externalizable;
@@ -27,6 +27,7 @@ import java.net.Socket;
 import java.util.Hashtable;
 import java.util.Properties;
 
+import org.almostrealism.flow.Client;
 import org.almostrealism.io.JobOutput;
 import org.almostrealism.io.OutputHandler;
 import org.hsqldb.Server;
@@ -59,9 +60,10 @@ public class OutputServer implements Runnable {
 	}
 	
 	public OutputServer() { }
-	public OutputServer(Properties p) throws IOException { init(p); }
+	public OutputServer(Properties p) throws IOException { init(p, Client.getCurrentClient().getServer()); }
+	public OutputServer(Properties p, org.almostrealism.flow.Server s) throws IOException { init(p, s); }
 	
-	public void init(Properties p) throws IOException {
+	public void init(Properties p, org.almostrealism.flow.Server s) throws IOException {
 		String output = p.getProperty("db.tables.output", "output");
 		String driver = p.getProperty("db.driver");
 		String dburi = p.getProperty("db.uri");
@@ -123,8 +125,7 @@ public class OutputServer implements Runnable {
 		this.socket = new ServerSocket(port);
 		
 		ThreadGroup g = null;
-		Client c = Client.getCurrentClient();
-		if (c != null) g = c.getServer().getThreadGroup();
+		if (s != null) g = s.getThreadGroup();
 		Thread t = new Thread(g, this);
 		t.setName("DB Server Thread");
 		t.setPriority(org.almostrealism.flow.Server.HIGH_PRIORITY);

@@ -1090,7 +1090,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 		
 		if (Message.verbose) System.out.println("NodeGroup: Getting dbs info...");
 		
-		org.almostrealism.flow.OutputServer dbs = org.almostrealism.flow.OutputServer.getCurrentServer();
+		io.flowtree.fs.OutputServer dbs = io.flowtree.fs.OutputServer.getCurrentServer();
 		if (dbs != null) {
 			if (this.tpLast % this.tpFreq == 0) {
 				this.throughputGraph.addEntry(dbs.getThroughput());

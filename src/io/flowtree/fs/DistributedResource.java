@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Michael Murray
+ * Copyright 2018 Michael Murray
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,16 +14,7 @@
  * limitations under the License.
  */
 
-/*
- * Copyright (C) 2006-07  Mike Murray
- *
- *  All rights reserved.
- *  This document may not be reused without
- *  express written permission from Mike Murray.
- *
- */
-
-package org.almostrealism.flow;
+package io.flowtree.fs;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -34,7 +25,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.almostrealism.flow.Client;
 import org.almostrealism.io.IOStreams;
+import org.almostrealism.io.Permissions;
 import org.almostrealism.io.Resource;
 
 import io.almostrealism.db.DatabaseConnection;
@@ -58,7 +51,7 @@ import io.almostrealism.db.Query;
  * is identical to the one just presented here. This process is repeated until the resource
  * is fully loaded.
  * 
- * @author Mike Murray
+ * @author  Michael Murray
  */
 public class DistributedResource implements Resource {
 	public static boolean verbose = false;  // server.resource.verbose
@@ -74,11 +67,14 @@ public class DistributedResource implements Resource {
 	private long toa[];
 	private byte data[][];
 	
+	private Permissions permissions;
+	
 	protected DistributedResource() {
 		this.size = -1;
 		this.loaded = null;
 		this.toa = null;
 		this.data = null;
+		this.permissions = new Permissions();
 	}
 	
 	protected DistributedResource(String uri) {
@@ -87,9 +83,19 @@ public class DistributedResource implements Resource {
 		this.loaded = null;
 		this.toa = null;
 		this.data = null;
+		this.permissions = new Permissions();
 	}
 	
-	protected DistributedResource(String uri, long size) {
+	protected DistributedResource(String uri, Permissions permissions) {
+		this.uri = uri;
+		this.size = -1;
+		this.loaded = null;
+		this.toa = null;
+		this.data = null;
+		this.permissions = permissions;
+	}
+	
+	protected DistributedResource(String uri, Permissions permissions, long size) {
 		this.uri = uri;
 		
 		this.tot = size;
@@ -97,6 +103,7 @@ public class DistributedResource implements Resource {
 		this.loaded = new boolean[this.size];
 		this.toa = new long[this.size];
 		this.data = new byte[this.size][0];
+		this.permissions = permissions;
 	}
 	
 	protected DistributedResource(Resource res) {
@@ -415,6 +422,8 @@ public class DistributedResource implements Resource {
 		
 		if (this.commitAtEnd) this.commitToLocalDB();
 	}
+	
+	public Permissions getPermissions() { return permissions; }
 	
 	private void loadFromLocalDB() {
 		this.clearCache();
@@ -786,7 +795,7 @@ public class DistributedResource implements Resource {
 	}
 	
 	public static DistributedResource createDistributedResource(String uri, int size) {
-		return getResource(new DistributedResource(uri, size));
+		return getResource(new DistributedResource(uri, new Permissions(), size));
 	}
 	
 	private static DistributedResource getResource(DistributedResource res) {

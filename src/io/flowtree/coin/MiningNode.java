@@ -80,7 +80,7 @@ public class MiningNode extends Node {
 		});
 
 		Address sendToAddress = kit.wallet().currentReceiveKey().toAddress(params);
-		System.out.println("Send coins to: " + sendToAddress);
+		System.out.println("\nSend coins to: " + sendToAddress);
 		System.out.println("Waiting for coins to arrive.");
 	}
 	

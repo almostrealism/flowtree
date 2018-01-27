@@ -23,7 +23,7 @@
  *
  */
 
-package org.almostrealism.flow;
+package io.flowtree.fs;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
@@ -32,7 +32,9 @@ import java.io.InputStream;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
 
+import org.almostrealism.flow.Client;
 import org.almostrealism.io.IOStreams;
+import org.almostrealism.io.Permissions;
 import org.almostrealism.io.Resource;
 
 import io.almostrealism.persist.ScpDownloader;
@@ -43,9 +45,13 @@ public class ImageResource implements Resource {
 	private int data[];
 	private int x, y, w, h;
 	
-	public ImageResource() {}
+	private Permissions permissions;
 	
-	public ImageResource(String uri, int data[]) {
+	public ImageResource() {
+		this.permissions = new Permissions();
+	}
+	
+	public ImageResource(String uri, int data[], Permissions permissions) {
 		this.uri = uri;
 		this.data = data;
 		
@@ -53,6 +59,8 @@ public class ImageResource implements Resource {
 			this.w = this.data[0];
 			this.h = this.data[1];
 		}
+		
+		this.permissions = permissions;
 	}
 	
 	public void setX(int x) { this.x = x; }
@@ -64,6 +72,8 @@ public class ImageResource implements Resource {
 	public int getY() { return this.y; }
 	public int getWidth() { return this.w; }
 	public int getHeight() { return this.h; }
+	
+	public Permissions getPermissions() { return permissions; }
 	
 	public void load(IOStreams io) throws IOException {
 		io.out.writeInt(this.x);

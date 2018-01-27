@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.almostrealism.flow;
+package io.flowtree.fs;
 
 
 import java.io.IOException;
@@ -23,15 +23,19 @@ import java.io.OutputStream;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 import java.util.Set;
 
-import org.almostrealism.flow.ConcatenatedResource.ConcatenatedResourceHeaderParser;
+import org.almostrealism.flow.Client;
+import org.almostrealism.flow.Server;
 import org.almostrealism.flow.Server.ResourceProvider;
+import org.almostrealism.graph.Graph;
 import org.almostrealism.io.JobOutput;
 import org.almostrealism.io.OutputHandler;
 import org.almostrealism.io.Resource;
@@ -43,6 +47,7 @@ import io.almostrealism.db.Query.ResultHandler;
 import io.almostrealism.msg.Message;
 import io.almostrealism.msg.NodeProxy;
 import io.almostrealism.persist.ResourceHeaderParser;
+import io.flowtree.fs.ConcatenatedResource.ConcatenatedResourceHeaderParser;
 import io.flowtree.job.Job;
 import io.flowtree.job.JobFactory;
 
@@ -61,10 +66,11 @@ import io.flowtree.job.JobFactory;
  * a collection of data files in a local directory or any other way of storing information 
  * on the local machine.
  * 
- * @author Mike Murray
+ * @author  Michael Murray
  */
 public class ResourceDistributionTask implements JobFactory, OutputHandler, QueryHandler,
-													NodeProxy.EventListener, Server.ResourceProvider {
+													NodeProxy.EventListener, Server.ResourceProvider,
+													Graph<Resource> {
 	public static boolean verbose = false;
 	public static boolean queryVerbose = false;
 	public static long maxCache = 250 * 1000 * 1000;
@@ -299,7 +305,7 @@ public class ResourceDistributionTask implements JobFactory, OutputHandler, Quer
 	}
 	
 	/**
-	 * This is a direct put to the items hash table. Be carefull.
+	 * This is a direct put to the items hash table. Be careful.
 	 * 
 	 * @param uri  URI to use as key.
 	 * @param d  DistributedResource to store.
@@ -769,5 +775,212 @@ public class ResourceDistributionTask implements JobFactory, OutputHandler, Quer
 	
 	public String toString() {
 		return "ResourceDistributionTask (" + this.jobs.size() + ", " + this.sleep + ")";
+	}
+
+	/* (non-Javadoc)
+	 * @see java.util.List#size()
+	 */
+	@Override
+	public int size() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.util.List#isEmpty()
+	 */
+	@Override
+	public boolean isEmpty() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.util.List#contains(java.lang.Object)
+	 */
+	@Override
+	public boolean contains(Object o) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.util.List#iterator()
+	 */
+	@Override
+	public Iterator<Resource> iterator() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.util.List#toArray()
+	 */
+	@Override
+	public Object[] toArray() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.util.List#toArray(java.lang.Object[])
+	 */
+	@Override
+	public <T> T[] toArray(T[] a) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.util.List#add(java.lang.Object)
+	 */
+	@Override
+	public boolean add(Resource e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.util.List#remove(java.lang.Object)
+	 */
+	@Override
+	public boolean remove(Object o) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.util.List#containsAll(java.util.Collection)
+	 */
+	@Override
+	public boolean containsAll(Collection<?> c) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.util.List#addAll(java.util.Collection)
+	 */
+	@Override
+	public boolean addAll(Collection<? extends Resource> c) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.util.List#addAll(int, java.util.Collection)
+	 */
+	@Override
+	public boolean addAll(int index, Collection<? extends Resource> c) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.util.List#removeAll(java.util.Collection)
+	 */
+	@Override
+	public boolean removeAll(Collection<?> c) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.util.List#retainAll(java.util.Collection)
+	 */
+	@Override
+	public boolean retainAll(Collection<?> c) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.util.List#clear()
+	 */
+	@Override
+	public void clear() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see java.util.List#get(int)
+	 */
+	@Override
+	public Resource get(int index) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.util.List#set(int, java.lang.Object)
+	 */
+	@Override
+	public Resource set(int index, Resource element) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.util.List#add(int, java.lang.Object)
+	 */
+	@Override
+	public void add(int index, Resource element) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see java.util.List#remove(int)
+	 */
+	@Override
+	public Resource remove(int index) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.util.List#indexOf(java.lang.Object)
+	 */
+	@Override
+	public int indexOf(Object o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.util.List#lastIndexOf(java.lang.Object)
+	 */
+	@Override
+	public int lastIndexOf(Object o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.util.List#listIterator()
+	 */
+	@Override
+	public ListIterator<Resource> listIterator() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.util.List#listIterator(int)
+	 */
+	@Override
+	public ListIterator<Resource> listIterator(int index) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.util.List#subList(int, int)
+	 */
+	@Override
+	public List<Resource> subList(int fromIndex, int toIndex) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

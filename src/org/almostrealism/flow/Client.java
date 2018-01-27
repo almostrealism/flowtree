@@ -37,6 +37,7 @@ import com.almostrealism.flow.LoginDialog;
 
 import io.almostrealism.db.Query;
 import io.almostrealism.msg.Message;
+import io.flowtree.fs.ResourceDistributionTask;
 
 /**
  * A Client object is used to send output produced by executing a Job
@@ -46,7 +47,7 @@ import io.almostrealism.msg.Message;
  * A Client object also encapsulates a network.Server instance and keeps
  * track of login information.
  * 
- * @author Mike Murray
+ * @author  Michael Murray
  */
 public class Client {
 	private static Client client;
@@ -106,7 +107,7 @@ public class Client {
 	
 	/**
 	 * Constructs a new Client object. This constructor will
-	 * start the net.sf.j3d.network.Server thread.
+	 * start the {@link Server} thread.
 	 * 
 	 * @param p  Properties object to pass to Server.
 	 * @param user  Username to use when sending job output.
@@ -121,7 +122,7 @@ public class Client {
 		this.outputHost = p.getProperty("servers.output.host", "localhost");
 		this.outputPort = Integer.parseInt(p.getProperty("servers.output.port", "7788"));
 		
-		this.server = new org.almostrealism.flow.Server(p, null);
+		this.server = new Server(p, null);
 		this.setStatusLabel(status);
 		this.server.start();
 		this.startTime = System.currentTimeMillis();
@@ -138,7 +139,7 @@ public class Client {
 	
 	public void setStatusLabel(JLabel label) { if (this.server != null) this.server.setStatusLabel(label); }
 	
-	public org.almostrealism.flow.Server getServer() { return this.server; }
+	public Server getServer() { return this.server; }
 	
 	/**
 	 * Returns an OutputStream that can be used to write data to the specified uri on

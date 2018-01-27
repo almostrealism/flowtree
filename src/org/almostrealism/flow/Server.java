@@ -56,6 +56,9 @@ import io.almostrealism.db.Query;
 import io.almostrealism.msg.Message;
 import io.almostrealism.msg.NodeProxy;
 import io.almostrealism.persist.LocalResource;
+import io.flowtree.fs.DistributedResource;
+import io.flowtree.fs.ImageResource;
+import io.flowtree.fs.ResourceDistributionTask;
 import io.flowtree.job.Job;
 import io.flowtree.job.JobFactory;
 
@@ -1101,7 +1104,7 @@ public class Server implements JobFactory, Runnable {
 	}
 	
 	public Message executeQuery(Query q, NodeProxy p, long timeout) throws IOException {
-		org.almostrealism.flow.OutputServer dbs = org.almostrealism.flow.OutputServer.getCurrentServer();
+		io.flowtree.fs.OutputServer dbs = io.flowtree.fs.OutputServer.getCurrentServer();
 		
 		StringBuffer result = new StringBuffer();
 		
@@ -1153,6 +1156,13 @@ public class Server implements JobFactory, Runnable {
 		Message m = new Message(Message.StringMessage, -1);
 		m.setString(result.toString());
 		return m;
+	}
+	
+	public ResourceDistributionTask startResourceDist(int jobs, int jsleep) {
+		ResourceDistributionTask rtask = new ResourceDistributionTask(jobs, jsleep);
+		addTask(rtask);
+		System.out.println("Server: Added task " + rtask);
+		return rtask;
 	}
 	
 	public void run() {
