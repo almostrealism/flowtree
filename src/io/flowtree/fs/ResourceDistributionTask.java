@@ -32,7 +32,6 @@ import java.util.ListIterator;
 import java.util.Map;
 import java.util.Set;
 
-import org.almostrealism.flow.Client;
 import org.almostrealism.flow.Server;
 import org.almostrealism.flow.Server.ResourceProvider;
 import org.almostrealism.graph.Graph;
@@ -466,14 +465,14 @@ public class ResourceDistributionTask implements JobFactory, OutputHandler, Quer
 	/**
 	 * This method calls getResource using the specified uri.
 	 * 
-	 * @see getResource(String)
+	 * @see  #getResource(String)
 	 */
 	public Resource loadResource(String uri) { return this.getResource(uri); }
 	
 	/**
 	 * This method calls getResource using the specified uri and exclude string.
 	 * 
-	 * @see getResource(String, String)
+	 * @see  #getResource(String, String)
 	 */
 	public Resource loadResource(String uri, String exclude) {
 		return this.getResource(uri, exclude);
@@ -577,7 +576,7 @@ public class ResourceDistributionTask implements JobFactory, OutputHandler, Quer
 	protected int notifyPeers(String uri, int type) {
 		this.fireInvalidate();
 		
-		NodeProxy p[] = Client.getCurrentClient().getServer().getNodeGroup().getServers();
+		NodeProxy p[] = OutputServer.getCurrentServer().getNodeServer().getNodeGroup().getServers();
 		int tot = 0;
 		
 		for (int i = 0; i < p.length; i++) {
@@ -623,10 +622,12 @@ public class ResourceDistributionTask implements JobFactory, OutputHandler, Quer
 	public long getTaskId() { return this.id; }
 	
 	public Job nextJob() {
-		if (Client.getCurrentClient().getServer().getPeers().length <= 0)
-			return null;
 		if (OutputServer.getCurrentServer() == null)
 			return null;
+
+		if (OutputServer.getCurrentServer().getNodeServer().getPeers().length <= 0)
+			return null;
+
 		
 		Iterator itr = this.jobs.iterator();
 		

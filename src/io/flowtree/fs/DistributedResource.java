@@ -147,10 +147,10 @@ public class DistributedResource implements Resource {
 	 * different data to a client than the data stored in the database such as dynamic
 	 * content, the sub class must override this method (eg. ConcatenatedResource).
 	 * 
-	 * @return The size of this resource in bytes.
+	 * @return  The size of this resource in bytes.
 	 */
 	public long getTotalBytes() {
-		if (this.verbose) {
+		if (verbose) {
 			String loaded;
 			
 			if (this.isLoaded())
@@ -167,7 +167,7 @@ public class DistributedResource implements Resource {
 	}
 	
 	private void setData(int index, byte d[]) {
-		if (this.verbose) {
+		if (verbose) {
 			String msg = "DistributedResource (" + this.uri +
 								"): Set data[" + index + "] to ";
 			if (d == null)
@@ -277,7 +277,7 @@ public class DistributedResource implements Resource {
 		if (this.tot > 0)
 			ResourceDistributionTask.getCurrentTask().subtractCache(this.tot);
 		
-		if (this.verbose)
+		if (verbose)
 			System.out.println("DistributedResource (" + this.uri +
 								"): Cleared cache.");
 	}
@@ -314,10 +314,10 @@ public class DistributedResource implements Resource {
 		int t = Integer.MAX_VALUE;
 		
 		this.data = null;
-		List l = null;
+		List<byte[]> l = null;
 		
 		if (this.data == null) {
-			l = new ArrayList();
+			l = new ArrayList<byte[]>();
 		} else {
 			t = this.loaded.length;
 		}
@@ -400,12 +400,12 @@ public class DistributedResource implements Resource {
 			this.toa = new long[this.size];
 			this.data = new byte[this.size][0];
 			
-			if (this.verbose) {
+			if (verbose) {
 				System.out.println("DistributedResource: tot = " + this.tot);
 				System.out.println("DistributedResource: size = " + this.size);
 			}
 			
-			Iterator itr = l.iterator();
+			Iterator<byte[]> itr = l.iterator();
 			
 			byte b[];
 			
@@ -431,7 +431,7 @@ public class DistributedResource implements Resource {
 		OutputServer s = OutputServer.getCurrentServer();
 		if (s == null) return;
 		
-		if (this.verbose)
+		if (verbose)
 			System.out.println("DistributedResource (" + this.uri +
 								"): Loading from local DB...");
 		
@@ -477,7 +477,7 @@ public class DistributedResource implements Resource {
 	}
 	
 	private byte[] loadFromLocalDB(int index) {
-		if (this.verbose)
+		if (verbose)
 			System.out.println("DistributedResource (" + this.uri + "): Loading chunk " +
 								index + " from local DB...");
 		
@@ -657,7 +657,7 @@ public class DistributedResource implements Resource {
 		
 		int s = io.in.readInt();
 		
-		if (this.verbose)
+		if (verbose)
 			System.out.println("DistributedResource.load: " + s + " chunks to load.");
 		
 		byte b[][] = new byte[0][0];
@@ -666,7 +666,7 @@ public class DistributedResource implements Resource {
 			b = this.data;
 			this.data = null;
 			
-			if (this.verbose)
+			if (verbose)
 				System.out.println("DistributedResource.load: Existing data was incomplete.");
 		}
 		
@@ -705,7 +705,7 @@ public class DistributedResource implements Resource {
 			
 			if (!this.commitAtEnd) this.commitToLocalDB(i);
 			
-			if (this.verbose)
+			if (verbose)
 				System.out.println("DistributedResource.load: Loaded chunk " + i);
 		}
 		
@@ -713,7 +713,7 @@ public class DistributedResource implements Resource {
 		
 		io.out.writeInt(-1);
 		
-		if (this.verbose)
+		if (verbose)
 			System.out.println("DistributedResource.load: Sent end.");
 		
 		if (commitAtEnd) this.commitToLocalDB();
@@ -724,7 +724,7 @@ public class DistributedResource implements Resource {
 	public synchronized void send(IOStreams io) throws IOException {
 		if (this.data == null) this.getData(0, true);
 		
-		if (this.verbose)
+		if (verbose)
 			System.out.println("DistributedResource.send: " + this.data.length + " chunks.");
 		
 		io.out.writeInt(this.data.length);
@@ -749,11 +749,11 @@ public class DistributedResource implements Resource {
 			for (int j = 0; j < this.data[i].length; j++)
 				io.out.writeByte(this.data[i][j]);
 			
-			if (this.verbose)
+			if (verbose)
 				System.out.println("DistributedResource.send: Sent chunk " + i);
 		}
 		
-		if (this.verbose)
+		if (verbose)
 			System.out.println("DistributedResource.send: Recieved end.");
 	}
 	
