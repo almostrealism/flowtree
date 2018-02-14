@@ -46,8 +46,10 @@ import java.util.Set;
 import javax.swing.JLabel;
 
 import io.almostrealism.flow.AirflowJobFactory;
+import io.flowtree.www.TomcatNode;
 import org.almostrealism.color.RGB;
 import org.almostrealism.io.IOStreams;
+import org.almostrealism.io.Permissions;
 import org.almostrealism.io.Resource;
 import org.almostrealism.texture.GraphicsConverter;
 
@@ -294,6 +296,8 @@ public class Server implements JobFactory, Runnable {
 		} else {
 			this.group = new NodeGroup(p, j);
 		}
+
+		this.group.nodes().add(new TomcatNode(group, nodes().size()));
 		
 		int port = Integer.parseInt(p.getProperty("server.port",
 					String.valueOf(Server.defaultPort)));
@@ -459,7 +463,7 @@ public class Server implements JobFactory, Runnable {
 	/**
 	 * Pings a host that is connected to this server.
 	 * 
-	 * @see  getPeers
+	 * @see  #getPeers()
 	 * @param peer  Index of server.
 	 * @param size  Size of packet in characters (pairs of bytes).
 	 * @param timeout  Max time to wait for a response, in milliseconds.
@@ -472,7 +476,7 @@ public class Server implements JobFactory, Runnable {
 	/**
 	 * Pings a host that is connected to this server.
 	 * 
-	 * @see  getPeers
+	 * @see  #getPeers()
 	 * @param peer  Index of server.
 	 * @param size  Size of packet in characters (pairs of bytes).
 	 * @param timeout  Max time to wait for a response, in milliseconds.
@@ -514,7 +518,7 @@ public class Server implements JobFactory, Runnable {
 	/**
 	 * Closes the connection maintained between this server and the specified peer.
 	 * 
-	 * @see  getPeers()
+	 * @see  #getPeers()
 	 * @param peer  Index of peer in peer list (See getPeers).
 	 * @return  The total number of node connections dropped due to closing the group connection.
 	 */
@@ -1002,7 +1006,7 @@ public class Server implements JobFactory, Runnable {
 	 */
 	public RGB[][] loadImage(String uri, int ix, int iy, int iw, int ih,
 							boolean noReturn, boolean noCache) {
-		ImageResource res = new ImageResource(uri, null);
+		ImageResource res = new ImageResource(uri, null, new Permissions());
 		res.setWidth(iw);
 		res.setHeight(ih);
 		res.setX(ix);
@@ -1058,7 +1062,7 @@ public class Server implements JobFactory, Runnable {
 		return io;
 	}
 	
-	public IOStreams getResourceStream(String host, int port, String uri) throws UnknownHostException, IOException {
+	public IOStreams getResourceStream(String host, int port, String uri) throws IOException {
 		if (host == null || host.equals("") || host.equals("localhost"))
 			return null;
 		

@@ -368,7 +368,7 @@ public class ResourceDistributionTask implements JobFactory, OutputHandler, Quer
 		
 		return true;
 	}
-	
+
 	public synchronized boolean deleteResource(String uri) {
 		if (!this.items.containsKey(uri)) return false;
 		if (uri.equals("/")) return false;
@@ -493,7 +493,7 @@ public class ResourceDistributionTask implements JobFactory, OutputHandler, Quer
 	}
 	
 	protected void checkFull() {
-		//TODO Add inteligent clutter removal...
+		//TODO Add intelligent clutter removal...
 		
 		if (this.cacheTot > this.maxCache) {
 			Object o[] = this.items.entrySet().toArray();
