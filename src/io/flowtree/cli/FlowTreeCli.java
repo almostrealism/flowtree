@@ -16,5 +16,66 @@
 
 package io.flowtree.cli;
 
+import org.jboss.aesh.console.AeshConsole;
+import org.jboss.aesh.console.AeshConsoleBuilder;
+import org.jboss.aesh.console.Console;
+import org.jboss.aesh.console.Prompt;
+import org.jboss.aesh.console.command.registry.AeshCommandRegistryBuilder;
+import org.jboss.aesh.console.command.registry.CommandRegistry;
+import org.jboss.aesh.console.helper.InterruptHook;
+import org.jboss.aesh.console.settings.Settings;
+import org.jboss.aesh.console.settings.SettingsBuilder;
+import org.jboss.aesh.edit.actions.Action;
+import org.jboss.aesh.terminal.Color;
+import org.jboss.aesh.terminal.TerminalColor;
+import org.jboss.aesh.terminal.TerminalString;
+
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 public class FlowTreeCli {
+	protected static final boolean enableConsoleStop = false;
+
+	private AeshConsole console;
+
+	public FlowTreeCli() {
+		CommandRegistry r = new AeshCommandRegistryBuilder()
+								.command(new OpenConnection())
+								.command(new SourcesList())
+								.create();
+
+		Settings s = new SettingsBuilder()
+				.logging(false).persistHistory(false)
+				.interruptHook(new InterruptHook() {
+					@Override
+					public void handleInterrupt(Console console, Action action) {
+						if (enableConsoleStop && action == Action.EOF) {
+							console.stop();
+						}
+					}
+				}).create();
+		console = new AeshConsoleBuilder()
+				.commandRegistry(r)
+				.settings(s)
+				.prompt(new Prompt(new TerminalString("[flowtree@" + getHostName() + "]$ ",
+						new TerminalColor(Color.WHITE, Color.BLACK, Color.Intensity.NORMAL))))
+				.create();
+	}
+
+	public void start() {
+		console.start();
+	}
+
+	public String getHostName() {
+		try {
+			return InetAddress.getLocalHost().getHostAddress();
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+			return "localhost";
+		}
+	}
+
+	public static void main(String... args) {
+		new FlowTreeCli().start();
+	}
 }
