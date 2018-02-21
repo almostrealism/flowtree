@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="905a9ace-0030-4c22-94cc-92d66d646224" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FlowTree.iml" afterPath="$PROJECT_DIR$/FlowTree.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -63,8 +64,8 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-616">
-              <caret line="7" column="16" lean-forward="false" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+            <state relative-caret-position="105">
+              <caret line="7" column="29" lean-forward="false" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -473,7 +474,7 @@
       <workItem from="1516818884207" duration="934000" />
       <workItem from="1517726031077" duration="2275000" />
       <workItem from="1518598211212" duration="1340000" />
-      <workItem from="1519217397972" duration="552000" />
+      <workItem from="1519217397972" duration="603000" />
     </task>
     <task id="LOCAL-00001" summary="Referesh idea project metadata.">
       <created>1503461134005</created>
@@ -734,11 +735,18 @@
       <option name="project" value="LOCAL" />
       <updated>1519217895958</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="This is version 0.2.">
+      <created>1519217963422</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1519217963422</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="132979000" />
+    <option name="totallyTimeSpent" value="133030000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="6" />
@@ -782,7 +790,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added jetty as a dependency." />
     <MESSAGE value="Some improvements to the handling of the default job factory, which for some reason was excluded from putting jobs into the pool. Also a lot of maven library files." />
     <MESSAGE value="Removed debugging." />
     <MESSAGE value="Implemented toString." />
@@ -807,7 +814,8 @@
     <MESSAGE value="Include a default queue for flow tree." />
     <MESSAGE value="Introduced TomcatNode." />
     <MESSAGE value="Introduced apache license. Introduced FlowTreeCli." />
-    <option name="LAST_COMMIT_MESSAGE" value="Introduced apache license. Introduced FlowTreeCli." />
+    <MESSAGE value="This is version 0.2." />
+    <option name="LAST_COMMIT_MESSAGE" value="This is version 0.2." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1166,8 +1174,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-616">
-          <caret line="7" column="16" lean-forward="false" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+        <state relative-caret-position="105">
+          <caret line="7" column="29" lean-forward="false" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
           <folding />
         </state>
       </provider>

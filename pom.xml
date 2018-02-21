@@ -5,7 +5,7 @@
 
 	<groupId>org.almostrealism</groupId>
 	<artifactId>FlowTree</artifactId>
-	<version>0.2</version>
+	<version>0.3-rc</version>
 
 
 	<properties>
@@ -81,7 +81,7 @@
 		<dependency>
 			<groupId>org.almostrealism</groupId>
 			<artifactId>Common</artifactId>
-			<version>0.2-rc</version>
+			<version>0.5-rc</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
