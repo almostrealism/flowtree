@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="905a9ace-0030-4c22-94cc-92d66d646224" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/Apache_License.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/io/flowtree/cli/FlowTreeCli.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FlowTree.iml" afterPath="$PROJECT_DIR$/FlowTree.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -51,7 +48,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FlowTreeCli.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FlowTreeCli.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/io/flowtree/cli/FlowTreeCli.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
@@ -59,6 +56,16 @@
               <folding>
                 <element signature="e#0#653#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-616">
+              <caret line="7" column="16" lean-forward="false" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -146,11 +153,11 @@
         <option value="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/SPVColorScanner.java" />
         <option value="$PROJECT_DIR$/libdohj/core/src/main/java/com/dogecoin/dogecoinj/protocols/payments/PaymentProtocol.java" />
         <option value="$PROJECT_DIR$/src/io/flowtree/fs/OutputServer.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/io/flowtree/www/TomcatNode.java" />
         <option value="$PROJECT_DIR$/src/org/almostrealism/flow/Server.java" />
         <option value="$PROJECT_DIR$/src/io/flowtree/fs/ResourceDistributionTask.java" />
         <option value="$PROJECT_DIR$/src/io/flowtree/cli/FlowTreeCli.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -173,7 +180,7 @@
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator currentView="PackagesPane" proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -466,7 +473,7 @@
       <workItem from="1516818884207" duration="934000" />
       <workItem from="1517726031077" duration="2275000" />
       <workItem from="1518598211212" duration="1340000" />
-      <workItem from="1519217397972" duration="469000" />
+      <workItem from="1519217397972" duration="552000" />
     </task>
     <task id="LOCAL-00001" summary="Referesh idea project metadata.">
       <created>1503461134005</created>
@@ -720,11 +727,18 @@
       <option name="project" value="LOCAL" />
       <updated>1518609319811</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Introduced apache license. Introduced FlowTreeCli.">
+      <created>1519217895958</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1519217895958</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="132896000" />
+    <option name="totallyTimeSpent" value="132979000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="6" />
@@ -768,7 +782,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Purged the init script of msched-specific code." />
     <MESSAGE value="Added jetty as a dependency." />
     <MESSAGE value="Some improvements to the handling of the default job factory, which for some reason was excluded from putting jobs into the pool. Also a lot of maven library files." />
     <MESSAGE value="Removed debugging." />
@@ -793,7 +806,8 @@
     <MESSAGE value="Create plugins directory." />
     <MESSAGE value="Include a default queue for flow tree." />
     <MESSAGE value="Introduced TomcatNode." />
-    <option name="LAST_COMMIT_MESSAGE" value="Introduced TomcatNode." />
+    <MESSAGE value="Introduced apache license. Introduced FlowTreeCli." />
+    <option name="LAST_COMMIT_MESSAGE" value="Introduced apache license. Introduced FlowTreeCli." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1105,14 +1119,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="239" column="60" lean-forward="false" selection-start-line="239" selection-start-column="58" selection-end-line="239" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/jboss/aesh/aesh/0.66.19/aesh-0.66.19-sources.jar!/org/jboss/aesh/console/command/registry/CommandRegistry.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -1155,6 +1161,14 @@
           <folding>
             <element signature="e#0#653#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-616">
+          <caret line="7" column="16" lean-forward="false" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
