@@ -23,11 +23,11 @@
  *
  */
 
-package org.almostrealism.flow.behavior;
+package io.flowtree.behavior;
 
 import java.io.PrintStream;
 
-import org.almostrealism.flow.Server;
+import io.flowtree.node.Server;
 
 public interface ServerBehavior {
 	public void behave(Server s, PrintStream out);

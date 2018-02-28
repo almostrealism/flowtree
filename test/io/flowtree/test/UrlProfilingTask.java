@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Michael Murray
+ * Copyright 2018 Michael Murray
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,13 +14,9 @@
  * limitations under the License.
  */
 
-/*
- * Copyright (C) 2006  Mike Murray
- */
+package io.flowtree.test;
 
-package org.almostrealism.flow.tests;
-
-import org.almostrealism.flow.Server;
+import io.flowtree.node.Server;
 
 import io.flowtree.job.Job;
 import io.flowtree.job.JobFactory;

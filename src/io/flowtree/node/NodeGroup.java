@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Michael Murray
+ * Copyright 2018 Michael Murray
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,16 +14,7 @@
  * limitations under the License.
  */
 
-/*
- * Copyright (C) 2004-06  Mike Murray
- *
- *  All rights reserved.
- *  This document may not be reused without
- *  express written permission from Mike Murray.
- *
- */
-
-package org.almostrealism.flow;
+package io.flowtree.node;
 
 import java.io.File;
 import java.io.IOException;

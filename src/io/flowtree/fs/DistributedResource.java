@@ -25,13 +25,14 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.almostrealism.flow.Client;
+import io.flowtree.node.Client;
 import org.almostrealism.io.IOStreams;
 import org.almostrealism.io.Permissions;
 import org.almostrealism.io.Resource;
 
 import io.almostrealism.db.DatabaseConnection;
 import io.almostrealism.db.Query;
+import org.apache.commons.lang3.NotImplementedException;
 
 /**
  * A {@link DistributedResource} represents a file in the distributed content repository.
@@ -292,7 +293,11 @@ public class DistributedResource implements Resource {
 	}
 	
 	protected void setExcludeHost(String host) { this.exclude = host; }
-	
+
+	public synchronized void load(byte data[], int offset, int len) {
+		throw new NotImplementedException("load");
+	}
+
 	/**
 	 * Reads the data from the specified InputStream and stores the data in
 	 * the data buffer for this DistributedResource.

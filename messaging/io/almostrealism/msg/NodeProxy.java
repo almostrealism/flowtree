@@ -51,10 +51,10 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.PBEParameterSpec;
 
-import org.almostrealism.flow.Client;
-import org.almostrealism.flow.NodeGroup;
-import org.almostrealism.flow.Proxy;
-import org.almostrealism.flow.Server;
+import io.flowtree.node.Client;
+import io.flowtree.node.NodeGroup;
+import io.flowtree.node.Proxy;
+import io.flowtree.node.Server;
 
 import io.almostrealism.db.Query;
 
@@ -288,7 +288,7 @@ public class NodeProxy implements Proxy, Runnable {
 		if (c != null) g = c.getServer().getThreadGroup();
 		Thread t = new Thread(g, this);
 		t.setName("NodeProxy for " + this.label);
-		t.setPriority(org.almostrealism.flow.Server.MODERATE_PRIORITY);
+		t.setPriority(Server.MODERATE_PRIORITY);
 		t.setDaemon(true);
 		t.start();
 	}
@@ -298,7 +298,7 @@ public class NodeProxy implements Proxy, Runnable {
 	}
 	
 	/**
-	 * @see org.almostrealism.flow.Proxy#writeObject(java.lang.Object, int)
+	 * @see Proxy#writeObject(java.lang.Object, int)
 	 * @throws IllegalArugmentException  If the object is not an instance of Message or Query.
 	 * @throws IOException  If an IOException occurs while writing to the output stream.
 	 */
@@ -479,7 +479,7 @@ public class NodeProxy implements Proxy, Runnable {
 	}
 	
 	/**
-	 * @see org.almostrealism.flow.Proxy#nextObject(int)
+	 * @see Proxy#nextObject(int)
 	 */
 	public Object nextObject(int id) {
 		StoredObject o[];
@@ -971,7 +971,7 @@ public class NodeProxy implements Proxy, Runnable {
 						this.fireRecievedMessage(m, m.getReciever());
 					} else if (ext instanceof Query) {
 						this.nullCount = 0;
-						org.almostrealism.flow.Server server = Client.getCurrentClient().getServer();
+						Server server = Client.getCurrentClient().getServer();
 						Message m = server.executeQuery((Query) ext, this, NodeProxy.queryTimeout);
 						this.writeObject(m, -2);
 					}

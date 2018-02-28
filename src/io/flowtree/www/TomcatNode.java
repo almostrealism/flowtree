@@ -1,7 +1,7 @@
 package io.flowtree.www;
 
-import org.almostrealism.flow.Node;
-import org.almostrealism.flow.NodeGroup;
+import io.flowtree.node.Node;
+import io.flowtree.node.NodeGroup;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.startup.Tomcat;
 import org.slf4j.LoggerFactory;

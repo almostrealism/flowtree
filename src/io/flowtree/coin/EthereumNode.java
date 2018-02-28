@@ -21,7 +21,7 @@ import ch.qos.logback.core.Appender;
 import ch.qos.logback.core.filter.Filter;
 import ch.qos.logback.core.spi.FilterReply;
 
-import org.almostrealism.flow.NodeGroup;
+import io.flowtree.node.NodeGroup;
 import org.ethereum.config.SystemProperties;
 import org.ethereum.core.*;
 import org.ethereum.facade.Ethereum;
@@ -38,12 +38,11 @@ import org.ethereum.util.ByteUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 
 import javax.annotation.PostConstruct;
 import java.util.*;
 
-public class EthereumNode extends org.almostrealism.flow.Node implements MinerListener {
+public class EthereumNode extends io.flowtree.node.Node implements MinerListener {
     public static final Logger sLogger = LoggerFactory.getLogger(EthereumNode.class);
     private static CustomFilter CUSTOM_FILTER;
 

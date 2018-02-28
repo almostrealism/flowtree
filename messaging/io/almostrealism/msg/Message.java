@@ -31,7 +31,7 @@ import java.io.ObjectInput;
 import java.io.ObjectOutput;
 import java.util.ArrayList;
 
-import org.almostrealism.flow.Node;
+import io.flowtree.node.Node;
 
 import io.flowtree.job.Job;
 

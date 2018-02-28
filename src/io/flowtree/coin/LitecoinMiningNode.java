@@ -15,9 +15,8 @@
  */
 package io.flowtree.coin;
 
-import org.almostrealism.flow.NodeGroup;
+import io.flowtree.node.NodeGroup;
 import org.bitcoinj.core.Address;
-import org.libdohj.params.DogecoinMainNetParams;
 import org.libdohj.params.LitecoinMainNetParams;
 
 /**

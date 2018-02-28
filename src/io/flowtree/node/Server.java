@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Michael Murray
+ * Copyright 2018 Michael Murray
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.almostrealism.flow;
+package io.flowtree.node;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -45,7 +45,7 @@ import java.util.Set;
 
 import javax.swing.JLabel;
 
-import io.almostrealism.flow.AirflowJobFactory;
+import io.flowtree.airflow.AirflowJobFactory;
 import io.flowtree.www.TomcatNode;
 import org.almostrealism.color.RGB;
 import org.almostrealism.io.IOStreams;

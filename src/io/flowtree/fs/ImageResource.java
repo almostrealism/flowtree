@@ -32,12 +32,13 @@ import java.io.InputStream;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
 
-import org.almostrealism.flow.Client;
+import io.flowtree.node.Client;
 import org.almostrealism.io.IOStreams;
 import org.almostrealism.io.Permissions;
 import org.almostrealism.io.Resource;
 
 import io.almostrealism.persist.ScpDownloader;
+import org.apache.commons.lang3.NotImplementedException;
 
 public class ImageResource implements Resource {
 	private String uri;
@@ -106,6 +107,10 @@ public class ImageResource implements Resource {
 			else if (i == four)
 				System.out.println("ImageResource: Load 100% Complete.");
 		}
+	}
+
+	public void load(byte[] data, int offset, int len) {
+		throw new NotImplementedException("load");
 	}
 	
 	public void loadFromURI() {

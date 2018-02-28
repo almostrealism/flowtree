@@ -23,12 +23,12 @@
  *
  */
 
-package org.almostrealism.flow.behavior;
+package io.flowtree.behavior;
 
 import java.io.IOException;
 import java.io.PrintStream;
 
-import org.almostrealism.flow.Server;
+import io.flowtree.node.Server;
 import org.almostrealism.util.Defaults;
 
 public class RandomPeerJoin implements ServerBehavior {

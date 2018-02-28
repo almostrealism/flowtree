@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.almostrealism.flow;
+package io.flowtree.node;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -65,11 +65,11 @@ public class Node implements Runnable {
 	private double parentalRelayP = 0.0;
 	private double parentalSleepP = 0.0;
 	
-	public static interface ActivityListener {
-		public void iteration(Node n);
-		public void startedWorking();
-		public void stoppedWorking();
-		public void becameIsolated();
+	public interface ActivityListener {
+		void iteration(Node n);
+		void startedWorking();
+		void stoppedWorking();
+		void becameIsolated();
 	}
 	
 	protected NodeGroup parent;

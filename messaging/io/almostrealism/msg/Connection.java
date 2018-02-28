@@ -18,7 +18,7 @@ package io.almostrealism.msg;
 
 import java.io.IOException;
 
-import org.almostrealism.flow.Node;
+import io.flowtree.node.Node;
 
 import io.flowtree.job.Job;
 

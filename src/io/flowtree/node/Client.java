@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.almostrealism.flow;
+package io.flowtree.node;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -58,7 +58,7 @@ public class Client {
 	
 	private long startTime;
 	
-	private org.almostrealism.flow.Server server;
+	private Server server;
 	
 	/**
 	 * Prompts for username and password and constructs a new

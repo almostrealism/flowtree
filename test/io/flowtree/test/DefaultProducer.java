@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Michael Murray
+ * Copyright 2018 Michael Murray
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,11 +14,7 @@
  * limitations under the License.
  */
 
-/*
- * Copyright (C) 2006  Mike Murray
- */
-
-package org.almostrealism.flow.tests;
+package io.flowtree.test;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -28,7 +24,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.almostrealism.flow.tests.UrlProfilingTask.Producer;
+import io.flowtree.test.UrlProfilingTask.Producer;
 import org.almostrealism.util.Defaults;
 
 public class DefaultProducer implements Producer {

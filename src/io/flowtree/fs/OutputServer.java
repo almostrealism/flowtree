@@ -27,7 +27,7 @@ import java.net.Socket;
 import java.util.Hashtable;
 import java.util.Properties;
 
-import org.almostrealism.flow.Client;
+import io.flowtree.node.Client;
 import org.almostrealism.io.JobOutput;
 import org.almostrealism.io.OutputHandler;
 import org.hsqldb.Server;
@@ -42,7 +42,7 @@ import io.almostrealism.db.QueryHandler;
 public class OutputServer implements Runnable {
 	private static OutputServer current;
 
-	private org.almostrealism.flow.Server nodeServer;
+	private io.flowtree.node.Server nodeServer;
 	
 	private boolean testMode;
 	private ServerSocket socket;
@@ -63,9 +63,9 @@ public class OutputServer implements Runnable {
 	
 	public OutputServer() { }
 	public OutputServer(Properties p) throws IOException { init(p, Client.getCurrentClient().getServer()); }
-	public OutputServer(Properties p, org.almostrealism.flow.Server s) throws IOException { init(p, s); }
+	public OutputServer(Properties p, io.flowtree.node.Server s) throws IOException { init(p, s); }
 	
-	public void init(Properties p, org.almostrealism.flow.Server s) throws IOException {
+	public void init(Properties p, io.flowtree.node.Server s) throws IOException {
 		this.nodeServer = s;
 
 		String output = p.getProperty("db.tables.output", "output");
@@ -132,7 +132,7 @@ public class OutputServer implements Runnable {
 		if (nodeServer != null) g = nodeServer.getThreadGroup();
 		Thread t = new Thread(g, this);
 		t.setName("DB Server Thread");
-		t.setPriority(org.almostrealism.flow.Server.HIGH_PRIORITY);
+		t.setPriority(io.flowtree.node.Server.HIGH_PRIORITY);
 		t.start();
 		
 		this.setCurrentServer();
@@ -145,7 +145,7 @@ public class OutputServer implements Runnable {
 	
 	public static OutputServer getCurrentServer() { return OutputServer.current; }
 
-	public org.almostrealism.flow.Server getNodeServer() { return this.nodeServer; }
+	public io.flowtree.node.Server getNodeServer() { return this.nodeServer; }
 	
 	public void storeOutput() { this.db.storeOutput(); }
 	

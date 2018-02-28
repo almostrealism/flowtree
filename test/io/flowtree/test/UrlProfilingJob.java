@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.almostrealism.flow.tests;
+package io.flowtree.test;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -24,7 +24,7 @@ import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.almostrealism.flow.Client;
+import io.flowtree.node.Client;
 import org.almostrealism.io.JobOutput;
 import org.almostrealism.io.OutputHandler;
 
