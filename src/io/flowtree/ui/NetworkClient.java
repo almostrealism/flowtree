@@ -37,8 +37,8 @@ import javax.crypto.NoSuchPaddingException;
 import io.flowtree.node.Node;
 import org.ietf.jgss.GSSException;
 
-import io.almostrealism.msg.Connection;
-import io.almostrealism.msg.NodeProxy;
+import io.flowtree.msg.Connection;
+import io.flowtree.msg.NodeProxy;
 import io.flowtree.job.Job;
 
 /**

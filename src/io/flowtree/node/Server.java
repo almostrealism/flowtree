@@ -55,8 +55,8 @@ import org.almostrealism.texture.GraphicsConverter;
 
 import io.almostrealism.db.DatabaseConnection;
 import io.almostrealism.db.Query;
-import io.almostrealism.msg.Message;
-import io.almostrealism.msg.NodeProxy;
+import io.flowtree.msg.Message;
+import io.flowtree.msg.NodeProxy;
 import io.almostrealism.persist.LocalResource;
 import io.flowtree.fs.DistributedResource;
 import io.flowtree.fs.ImageResource;

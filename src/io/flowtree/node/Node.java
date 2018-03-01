@@ -34,9 +34,9 @@ import javax.swing.JLabel;
 import org.almostrealism.io.RSSFeed;
 import org.almostrealism.util.Graph;
 
-import io.almostrealism.msg.Connection;
-import io.almostrealism.msg.Message;
-import io.almostrealism.msg.NodeProxy;
+import io.flowtree.msg.Connection;
+import io.flowtree.msg.Message;
+import io.flowtree.msg.NodeProxy;
 import io.flowtree.job.Job;
 import io.flowtree.job.JobFactory;
 

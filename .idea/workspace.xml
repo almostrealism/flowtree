@@ -2,61 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="905a9ace-0030-4c22-94cc-92d66d646224" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/io/flowtree/scheduler/ScheduledJobNode.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/io/almostrealism/flow/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/almostrealism/flow/Server.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/almostrealism/flow/behavior/ServerBehavior.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/almostrealism/flow/ui/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/almostrealism/flow/tests/DefaultProducer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/almostrealism/flow/Client.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/almostrealism/flow/ui/NetworkTreeNode.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/almostrealism/flow/ui/NetworkClient.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/io/almostrealism/flow/AirflowJob.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/almostrealism/flow/tests/UrlProfilingJob.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/io/almostrealism/flow/AirflowJobFactory.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/almostrealism/flow/Proxy.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/almostrealism/math/Functions.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/almostrealism/flow/tests/UrlProfilingTask.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/almostrealism/flow/tests/TestJobFactory.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/almostrealism/flow/behavior/RandomPeerJoin.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/almostrealism/flow/Node.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/almostrealism/math/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/almostrealism/flow/NodeGroup.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/com/almostrealism/flow/LoginDialog.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/messaging/io/almostrealism/msg/Message.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/messaging/io/almostrealism/msg/Connection.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/messaging/io/almostrealism/msg/package-info.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/messaging/io/almostrealism/msg/NodeProxy.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/com/almostrealism/flow/package-info.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FlowTree.iml" afterPath="$PROJECT_DIR$/FlowTree.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/init.py" afterPath="$PROJECT_DIR$/init.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/messaging/io/almostrealism/msg/Connection.java" afterPath="$PROJECT_DIR$/messaging/io/almostrealism/msg/Connection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/messaging/io/almostrealism/msg/Message.java" afterPath="$PROJECT_DIR$/messaging/io/almostrealism/msg/Message.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/messaging/io/almostrealism/msg/NodeProxy.java" afterPath="$PROJECT_DIR$/messaging/io/almostrealism/msg/NodeProxy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/flowtree/coin/BitcoinMiningNode.java" afterPath="$PROJECT_DIR$/src/io/flowtree/coin/BitcoinMiningNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/flowtree/coin/DogecoinMiningNode.java" afterPath="$PROJECT_DIR$/src/io/flowtree/coin/DogecoinMiningNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/flowtree/coin/EthereumNode.java" afterPath="$PROJECT_DIR$/src/io/flowtree/coin/EthereumNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/flowtree/coin/LitecoinMiningNode.java" afterPath="$PROJECT_DIR$/src/io/flowtree/coin/LitecoinMiningNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/flowtree/coin/MiningNode.java" afterPath="$PROJECT_DIR$/src/io/flowtree/coin/MiningNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/flowtree/fs/DistributedResource.java" afterPath="$PROJECT_DIR$/src/io/flowtree/fs/DistributedResource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/flowtree/fs/ImageResource.java" afterPath="$PROJECT_DIR$/src/io/flowtree/fs/ImageResource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/flowtree/fs/OutputServer.java" afterPath="$PROJECT_DIR$/src/io/flowtree/fs/OutputServer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/flowtree/fs/ResourceDistributionTask.java" afterPath="$PROJECT_DIR$/src/io/flowtree/fs/ResourceDistributionTask.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/flowtree/www/TomcatNode.java" afterPath="$PROJECT_DIR$/src/io/flowtree/www/TomcatNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/flowtree/www/WebServerNode.java" afterPath="$PROJECT_DIR$/src/io/flowtree/www/WebServerNode.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/io/almostrealism/flow/package-info.java" afterPath="$PROJECT_DIR$/src/io/flowtree/airflow/package-info.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/org/almostrealism/flow/Server.java" afterPath="$PROJECT_DIR$/src/io/flowtree/node/Server.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/org/almostrealism/flow/behavior/ServerBehavior.java" afterPath="$PROJECT_DIR$/src/io/flowtree/behavior/ServerBehavior.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/org/almostrealism/flow/ui/package-info.java" afterPath="$PROJECT_DIR$/src/io/flowtree/ui/package-info.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/org/almostrealism/flow/tests/DefaultProducer.java" afterPath="$PROJECT_DIR$/test/io/flowtree/test/DefaultProducer.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/org/almostrealism/flow/Client.java" afterPath="$PROJECT_DIR$/src/io/flowtree/node/Client.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/org/almostrealism/flow/ui/NetworkTreeNode.java" afterPath="$PROJECT_DIR$/src/io/flowtree/ui/NetworkTreeNode.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/org/almostrealism/flow/ui/NetworkClient.java" afterPath="$PROJECT_DIR$/src/io/flowtree/ui/NetworkClient.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/io/almostrealism/flow/AirflowJob.java" afterPath="$PROJECT_DIR$/src/io/flowtree/airflow/AirflowJob.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/org/almostrealism/flow/tests/UrlProfilingJob.java" afterPath="$PROJECT_DIR$/test/io/flowtree/test/UrlProfilingJob.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/io/almostrealism/flow/AirflowJobFactory.java" afterPath="$PROJECT_DIR$/src/io/flowtree/airflow/AirflowJobFactory.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/org/almostrealism/flow/Proxy.java" afterPath="$PROJECT_DIR$/src/io/flowtree/node/Proxy.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/org/almostrealism/flow/tests/UrlProfilingTask.java" afterPath="$PROJECT_DIR$/test/io/flowtree/test/UrlProfilingTask.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/org/almostrealism/flow/tests/TestJobFactory.java" afterPath="$PROJECT_DIR$/test/io/flowtree/test/TestJobFactory.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/org/almostrealism/flow/behavior/RandomPeerJoin.java" afterPath="$PROJECT_DIR$/src/io/flowtree/behavior/RandomPeerJoin.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/org/almostrealism/flow/Node.java" afterPath="$PROJECT_DIR$/src/io/flowtree/node/Node.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/org/almostrealism/flow/NodeGroup.java" afterPath="$PROJECT_DIR$/src/io/flowtree/node/NodeGroup.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/flowtree/node/Client.java" afterPath="$PROJECT_DIR$/src/io/flowtree/node/Client.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/flowtree/node/Node.java" afterPath="$PROJECT_DIR$/src/io/flowtree/node/Node.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/flowtree/node/NodeGroup.java" afterPath="$PROJECT_DIR$/src/io/flowtree/node/NodeGroup.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/flowtree/node/Server.java" afterPath="$PROJECT_DIR$/src/io/flowtree/node/Server.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/flowtree/ui/NetworkClient.java" afterPath="$PROJECT_DIR$/src/io/flowtree/ui/NetworkClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/flowtree/ui/NetworkTreeNode.java" afterPath="$PROJECT_DIR$/src/io/flowtree/ui/NetworkTreeNode.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ui/com/almostrealism/flow/LoginDialog.java" afterPath="$PROJECT_DIR$/src/io/flowtree/ui/LoginDialog.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/messaging/io/almostrealism/msg/Message.java" afterPath="$PROJECT_DIR$/src/io/flowtree/msg/Message.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/messaging/io/almostrealism/msg/Connection.java" afterPath="$PROJECT_DIR$/src/io/flowtree/msg/Connection.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/messaging/io/almostrealism/msg/package-info.java" afterPath="$PROJECT_DIR$/src/io/flowtree/msg/package-info.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/messaging/io/almostrealism/msg/NodeProxy.java" afterPath="$PROJECT_DIR$/src/io/flowtree/msg/NodeProxy.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -67,7 +31,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -144,6 +108,7 @@
         <option value="$PROJECT_DIR$/test/io/flowtree/test/UrlProfilingTask.java" />
         <option value="$PROJECT_DIR$/src/io/flowtree/node/Server.java" />
         <option value="$PROJECT_DIR$/src/io/flowtree/ui/NetworkClient.java" />
+        <option value="$PROJECT_DIR$/src/io/flowtree/ui/LoginDialog.java" />
       </list>
     </option>
   </component>
@@ -166,7 +131,7 @@
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator currentView="PackagesPane" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -180,60 +145,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="FlowTree" type="58d84e3e:PackageViewProjectNode" />
-              <item name="FlowTree" type="616d4139:PackageViewModuleNode" />
-            </path>
-            <path>
-              <item name="FlowTree" type="58d84e3e:PackageViewProjectNode" />
-              <item name="FlowTree" type="616d4139:PackageViewModuleNode" />
-              <item name="com" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="FlowTree" type="58d84e3e:PackageViewProjectNode" />
-              <item name="FlowTree" type="616d4139:PackageViewModuleNode" />
-              <item name="io" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="FlowTree" type="58d84e3e:PackageViewProjectNode" />
-              <item name="FlowTree" type="616d4139:PackageViewModuleNode" />
-              <item name="io" type="1f31426a:PackageElementNode" />
-              <item name="almostrealism" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="FlowTree" type="58d84e3e:PackageViewProjectNode" />
-              <item name="FlowTree" type="616d4139:PackageViewModuleNode" />
-              <item name="io" type="1f31426a:PackageElementNode" />
-              <item name="flowtree" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="FlowTree" type="58d84e3e:PackageViewProjectNode" />
-              <item name="FlowTree" type="616d4139:PackageViewModuleNode" />
-              <item name="org" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="FlowTree" type="58d84e3e:PackageViewProjectNode" />
-              <item name="FlowTree" type="616d4139:PackageViewModuleNode" />
-              <item name="org" type="1f31426a:PackageElementNode" />
-              <item name="almostrealism" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="FlowTree" type="58d84e3e:PackageViewProjectNode" />
-              <item name="FlowTree" type="616d4139:PackageViewModuleNode" />
-              <item name="org" type="1f31426a:PackageElementNode" />
-              <item name="almostrealism" type="1f31426a:PackageElementNode" />
-              <item name="flow" type="1f31426a:PackageElementNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -245,6 +157,24 @@
               <item name="FlowTree" type="b2602c69:ProjectViewProjectNode" />
               <item name="flowtree" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="FlowTree" type="58d84e3e:PackageViewProjectNode" />
+              <item name="FlowTree" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="FlowTree" type="58d84e3e:PackageViewProjectNode" />
+              <item name="FlowTree" type="616d4139:PackageViewModuleNode" />
+              <item name="io.flowtree" type="1f31426a:PackageElementNode" />
             </path>
           </expand>
           <select />
@@ -263,18 +193,20 @@
     <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/io/flowtree" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/io/flowtree/msg" />
+      <recent name="$PROJECT_DIR$/src/io/flowtree/airflow" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/lib" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="io.flowtree" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/io/flowtree/airflow" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/lib" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -519,7 +451,8 @@
       <workItem from="1517726031077" duration="2275000" />
       <workItem from="1518598211212" duration="1340000" />
       <workItem from="1519217397972" duration="4750000" />
-      <workItem from="1519847605098" duration="2110000" />
+      <workItem from="1519847605098" duration="2220000" />
+      <workItem from="1519935148153" duration="94000" />
     </task>
     <task id="LOCAL-00001" summary="Referesh idea project metadata.">
       <created>1503461134005</created>
@@ -801,45 +734,52 @@
       <option name="project" value="LOCAL" />
       <updated>1519222856917</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Reorganized packages so that everything is now in io.flowtree.*">
+      <created>1519855408911</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1519855408911</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="139287000" />
+    <option name="totallyTimeSpent" value="139491000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28199404" sideWeight="0.5015886" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38514444" sideWeight="0.49841145" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26009694" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38514444" sideWeight="0.49841145" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25605816" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Atlassian " active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -849,7 +789,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Implemented toString." />
     <MESSAGE value="Removed archiva, as we now have a real instance in the cloud." />
     <MESSAGE value="Minor change to workspace." />
     <MESSAGE value="Updated Dockerfile to reflect new airflow design." />
@@ -874,7 +813,8 @@
     <MESSAGE value="This is version 0.2." />
     <MESSAGE value="Starting version 0.3." />
     <MESSAGE value="Expanding functionality of the flow tree command line." />
-    <option name="LAST_COMMIT_MESSAGE" value="Expanding functionality of the flow tree command line." />
+    <MESSAGE value="Reorganized packages so that everything is now in io.flowtree.*" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reorganized packages so that everything is now in io.flowtree.*" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -890,7 +830,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/airflow/airflow.cfg" />
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -1021,7 +960,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
           <caret line="67" column="20" lean-forward="false" selection-start-line="67" selection-start-column="16" selection-end-line="67" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1029,7 +967,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="11" column="11" lean-forward="false" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1037,9 +974,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="27" lean-forward="true" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1068,7 +1002,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="29" lean-forward="false" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1111,7 +1044,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="557" column="30" lean-forward="false" selection-start-line="557" selection-start-column="30" selection-end-line="557" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1119,9 +1051,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="28" column="72" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="28" selection-end-column="72" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1129,10 +1058,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="124">
           <caret line="43" column="59" lean-forward="false" selection-start-line="43" selection-start-column="59" selection-end-line="43" selection-end-column="59" />
-          <folding>
-            <element signature="e#0#2500#0" expanded="true" />
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1141,7 +1066,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="14" selection-end-column="3" />
           <folding>
-            <element signature="e#0#26615#0" expanded="false" />
             <element signature="imports" expanded="false" />
           </folding>
         </state>
@@ -1151,9 +1075,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="35" column="110" lean-forward="false" selection-start-line="35" selection-start-column="110" selection-end-line="35" selection-end-column="110" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1161,7 +1082,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="13" column="47" lean-forward="true" selection-start-line="13" selection-start-column="3" selection-end-line="13" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1169,10 +1089,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="117" column="36" lean-forward="true" selection-start-line="117" selection-start-column="36" selection-end-line="117" selection-end-column="36" />
-          <folding>
-            <element signature="e#3072#3073#0" expanded="false" />
-            <element signature="e#3120#3121#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1190,7 +1106,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
           <caret line="298" column="5" lean-forward="true" selection-start-line="298" selection-start-column="5" selection-end-line="298" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1198,7 +1113,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="29" column="13" lean-forward="false" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1206,7 +1120,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1214,7 +1127,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="32" column="13" lean-forward="false" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1222,7 +1134,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1266,18 +1177,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/almostrealism/math/Functions.java">
+    <entry file="file://$PROJECT_DIR$/src/org/almostrealism/math/Functions.java" />
+    <entry file="file://$PROJECT_DIR$/src/io/flowtree/ui/NetworkClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="28" column="13" lean-forward="false" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+        <state relative-caret-position="210">
+          <caret line="37" column="34" lean-forward="true" selection-start-line="37" selection-start-column="34" selection-end-line="37" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/flowtree/ui/NetworkClient.java">
+    <entry file="file://$PROJECT_DIR$/src/io/flowtree/ui/LoginDialog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="36" column="29" lean-forward="false" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
+        <state relative-caret-position="135">
+          <caret line="34" column="13" lean-forward="false" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
           <folding />
         </state>
       </provider>

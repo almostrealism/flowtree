@@ -16,7 +16,7 @@
 
 package io.flowtree.ui;
 
-import io.almostrealism.msg.Connection;
+import io.flowtree.msg.Connection;
 import io.almostrealism.tree.ui.TreeNode;
 
 import java.util.Enumeration;

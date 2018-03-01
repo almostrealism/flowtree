@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.almostrealism.msg;
+package io.flowtree.msg;
 
 import java.io.EOFException;
 import java.io.Externalizable;

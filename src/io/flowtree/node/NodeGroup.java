@@ -42,9 +42,9 @@ import org.almostrealism.io.RSSFeed;
 import org.almostrealism.util.Defaults;
 import org.almostrealism.util.Graph;
 
-import io.almostrealism.msg.Connection;
-import io.almostrealism.msg.Message;
-import io.almostrealism.msg.NodeProxy;
+import io.flowtree.msg.Connection;
+import io.flowtree.msg.Message;
+import io.flowtree.msg.NodeProxy;
 import io.flowtree.job.Job;
 import io.flowtree.job.JobFactory;
 
@@ -1251,7 +1251,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	public void addProxyEventListener(NodeProxy.EventListener l) { this.plisteners.add(l); }
 	
 	/**
-	 * @see io.almostrealism.msg.NodeProxy.EventListener#connect(io.almostrealism.msg.NodeProxy)
+	 * @see NodeProxy.EventListener#connect(NodeProxy)
 	 */
 	public void connect(NodeProxy pr) {
 		if (this.connecting.contains(pr)) return;
@@ -1259,13 +1259,13 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	}
 	
 	/**
-	 * @see io.almostrealism.msg.NodeProxy.EventListener#disconnect(io.almostrealism.msg.NodeProxy)
+	 * @see NodeProxy.EventListener#disconnect(NodeProxy)
 	 * @return  The number of connections dropped.
 	 */
 	public int disconnect(NodeProxy p) { return this.removeServer(p); }
 	
 	/**
-	 * @see io.almostrealism.msg.NodeProxy.EventListener#recievedMessage(io.almostrealism.msg.Message, int)
+	 * @see NodeProxy.EventListener#recievedMessage(Message, int)
 	 */
 	public boolean recievedMessage(Message m, int reciever) {
 		if (reciever == -1) {

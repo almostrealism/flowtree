@@ -33,10 +33,10 @@ import javax.swing.JLabel;
 
 import org.almostrealism.io.JobOutput;
 
-import com.almostrealism.flow.LoginDialog;
+import io.flowtree.ui.LoginDialog;
 
 import io.almostrealism.db.Query;
-import io.almostrealism.msg.Message;
+import io.flowtree.msg.Message;
 import io.flowtree.fs.ResourceDistributionTask;
 
 /**

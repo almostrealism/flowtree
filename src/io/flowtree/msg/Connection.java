@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Michael Murray
+ * Copyright 2018 Michael Murray
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.almostrealism.msg;
+package io.flowtree.msg;
 
 import java.io.IOException;
 
@@ -174,7 +174,7 @@ public class Connection implements Runnable, NodeProxy.EventListener {
 	}
 	
 	/**
-	 * @see io.almostrealism.msg.NodeProxy.EventListener#connect(io.almostrealism.msg.NodeProxy)
+	 * @see NodeProxy.EventListener#connect(NodeProxy)
 	 */
 	public void connect(NodeProxy p) {
 		System.out.println(this.toString() + ": Connected to " + p);
@@ -182,7 +182,7 @@ public class Connection implements Runnable, NodeProxy.EventListener {
 	}
 
 	/**
-	 * @see io.almostrealism.msg.NodeProxy.EventListener#disconnect(io.almostrealism.msg.NodeProxy)
+	 * @see NodeProxy.EventListener#disconnect(NodeProxy)
 	 * @return  0.
 	 */
 	public int disconnect(NodeProxy p) {
@@ -194,7 +194,7 @@ public class Connection implements Runnable, NodeProxy.EventListener {
 	}
 
 	/**
-	 * @see io.almostrealism.msg.NodeProxy.EventListener#recievedMessage(io.almostrealism.msg.Message, int)
+	 * @see NodeProxy.EventListener#recievedMessage(Message, int)
 	 */
 	public boolean recievedMessage(Message m, int reciever) {
 		if (reciever != this.node.getId()) return false;
