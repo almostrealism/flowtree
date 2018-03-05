@@ -2,25 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="905a9ace-0030-4c22-94cc-92d66d646224" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/com/almostrealism/flow/LoginDialog.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/messaging/io/almostrealism/msg/Message.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/messaging/io/almostrealism/msg/Connection.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/messaging/io/almostrealism/msg/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/messaging/io/almostrealism/msg/NodeProxy.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/com/almostrealism/flow/package-info.java" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/io/flowtree/NetworkClient.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/io/flowtree/cli/HttpCommandServer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/io/flowtree/ui/NetworkDialog.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/io/flowtree/ui/SendTaskDialog.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/flowtree/fs/ResourceDistributionTask.java" afterPath="$PROJECT_DIR$/src/io/flowtree/fs/ResourceDistributionTask.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/flowtree/node/Client.java" afterPath="$PROJECT_DIR$/src/io/flowtree/node/Client.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/flowtree/node/Node.java" afterPath="$PROJECT_DIR$/src/io/flowtree/node/Node.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/flowtree/node/NodeGroup.java" afterPath="$PROJECT_DIR$/src/io/flowtree/node/NodeGroup.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/flowtree/node/Server.java" afterPath="$PROJECT_DIR$/src/io/flowtree/node/Server.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/flowtree/ui/NetworkClient.java" afterPath="$PROJECT_DIR$/src/io/flowtree/ui/NetworkClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/flowtree/ui/NetworkTreeNode.java" afterPath="$PROJECT_DIR$/src/io/flowtree/ui/NetworkTreeNode.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ui/com/almostrealism/flow/LoginDialog.java" afterPath="$PROJECT_DIR$/src/io/flowtree/ui/LoginDialog.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/messaging/io/almostrealism/msg/Message.java" afterPath="$PROJECT_DIR$/src/io/flowtree/msg/Message.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/messaging/io/almostrealism/msg/Connection.java" afterPath="$PROJECT_DIR$/src/io/flowtree/msg/Connection.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/messaging/io/almostrealism/msg/package-info.java" afterPath="$PROJECT_DIR$/src/io/flowtree/msg/package-info.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/messaging/io/almostrealism/msg/NodeProxy.java" afterPath="$PROJECT_DIR$/src/io/flowtree/msg/NodeProxy.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -48,7 +35,6 @@
       <find>ls</find>
       <find>run()</find>
       <find>job =</find>
-      <find>ServerSocket</find>
       <find>Socket</find>
       <find>Execjt</find>
       <find>executor</find>
@@ -63,6 +49,10 @@
       <find>ae</find>
       <find>aesh</find>
       <find>addJob</find>
+      <find>ServerSocket</find>
+      <find>telnet</find>
+      <find>server.terminal</find>
+      <find>run(</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -106,9 +96,15 @@
         <option value="$PROJECT_DIR$/src/io/flowtree/fs/ImageResource.java" />
         <option value="$PROJECT_DIR$/src/io/flowtree/fs/DistributedResource.java" />
         <option value="$PROJECT_DIR$/test/io/flowtree/test/UrlProfilingTask.java" />
-        <option value="$PROJECT_DIR$/src/io/flowtree/node/Server.java" />
         <option value="$PROJECT_DIR$/src/io/flowtree/ui/NetworkClient.java" />
         <option value="$PROJECT_DIR$/src/io/flowtree/ui/LoginDialog.java" />
+        <option value="$PROJECT_DIR$/src/io/flowtree/node/Server.java" />
+        <option value="$PROJECT_DIR$/src/io/flowtree/ui/SendTaskDialog.java" />
+        <option value="$PROJECT_DIR$/src/io/flowtree/node/NetworkDialog.java" />
+        <option value="$PROJECT_DIR$/src/io/flowtree/cli/HttpCommandServer.java" />
+        <option value="$PROJECT_DIR$/src/io/flowtree/node/NetworkClient.java" />
+        <option value="$PROJECT_DIR$/src/io/flowtree/ui/NetworkDialog.java" />
+        <option value="$PROJECT_DIR$/src/io/flowtree/NetworkClient.java" />
       </list>
     </option>
   </component>
@@ -125,9 +121,11 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="width" value="1280" />
-    <option name="height" value="800" />
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -145,7 +143,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -162,8 +160,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -196,17 +194,17 @@
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/io/flowtree" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/io/flowtree/msg" />
-      <recent name="$PROJECT_DIR$/src/io/flowtree/airflow" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/lib" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="io.flowtree" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/io/flowtree/msg" />
+      <recent name="$PROJECT_DIR$/src/io/flowtree/airflow" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/lib" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -256,7 +254,7 @@
     <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="io.flowtree.node.*" />
+          <option name="PATTERN" value="io.flowtree.ui.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -452,7 +450,8 @@
       <workItem from="1518598211212" duration="1340000" />
       <workItem from="1519217397972" duration="4750000" />
       <workItem from="1519847605098" duration="2220000" />
-      <workItem from="1519935148153" duration="94000" />
+      <workItem from="1519935148153" duration="3060000" />
+      <workItem from="1520214415885" duration="2606000" />
     </task>
     <task id="LOCAL-00001" summary="Referesh idea project metadata.">
       <created>1503461134005</created>
@@ -741,11 +740,18 @@
       <option name="project" value="LOCAL" />
       <updated>1519855408911</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="More migration to io.flowtree packages.">
+      <created>1519935278897</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1519935278897</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="139491000" />
+    <option name="totallyTimeSpent" value="145063000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="6" />
@@ -760,11 +766,13 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38514444" sideWeight="0.49841145" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38514444" sideWeight="0.49841145" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26009694" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2641357" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -779,7 +787,6 @@
       <window_info id="Atlassian " active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -789,7 +796,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Removed archiva, as we now have a real instance in the cloud." />
     <MESSAGE value="Minor change to workspace." />
     <MESSAGE value="Updated Dockerfile to reflect new airflow design." />
     <MESSAGE value="Working towards running airflow on flowtree." />
@@ -814,7 +820,8 @@
     <MESSAGE value="Starting version 0.3." />
     <MESSAGE value="Expanding functionality of the flow tree command line." />
     <MESSAGE value="Reorganized packages so that everything is now in io.flowtree.*" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reorganized packages so that everything is now in io.flowtree.*" />
+    <MESSAGE value="More migration to io.flowtree packages." />
+    <option name="LAST_COMMIT_MESSAGE" value="More migration to io.flowtree packages." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -830,34 +837,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="8" lean-forward="false" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dockerfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="117" column="35" lean-forward="false" selection-start-line="117" selection-start-column="35" selection-end-line="117" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/executor/airflow.cfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="17" lean-forward="false" selection-start-line="27" selection-start-column="17" selection-end-line="27" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/init.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/executor/test_plugin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -960,6 +939,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
           <caret line="67" column="20" lean-forward="false" selection-start-line="67" selection-start-column="16" selection-end-line="67" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1089,6 +1069,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="117" column="36" lean-forward="true" selection-start-line="117" selection-start-column="36" selection-end-line="117" selection-end-column="36" />
+          <folding>
+            <element signature="e#3072#3073#0" expanded="false" />
+            <element signature="e#3120#3121#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1096,9 +1080,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
           <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1106,6 +1087,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
           <caret line="298" column="5" lean-forward="true" selection-start-line="298" selection-start-column="5" selection-end-line="298" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1120,6 +1102,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1145,19 +1128,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/flowtree/node/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="73" column="26" lean-forward="true" selection-start-line="73" selection-start-column="26" selection-end-line="73" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/io/flowtree/node/Proxy.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="30" column="17" lean-forward="false" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1191,6 +1165,58 @@
         <state relative-caret-position="135">
           <caret line="34" column="13" lean-forward="false" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/flowtree/ui/SendTaskDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="28" column="27" lean-forward="false" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/flowtree/cli/HttpCommandServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="31" column="38" lean-forward="false" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/flowtree/node/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="103">
+          <caret line="198" column="46" lean-forward="true" selection-start-line="198" selection-start-column="46" selection-end-line="198" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/flowtree/ui/NetworkDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="51" column="13" lean-forward="false" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/flowtree/NetworkClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2011">
+          <caret line="312" column="19" lean-forward="false" selection-start-line="312" selection-start-column="19" selection-end-line="312" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1520226654352" expanded="false" signature="21643:21652" ph=" { " />
+            <marker date="1520226654352" expanded="false" signature="21665:21672" ph=" }" />
+            <marker date="1520226654352" expanded="false" signature="23131:23140" ph=" { " />
+            <marker date="1520226654352" expanded="false" signature="23153:23160" ph=" }" />
+            <marker date="1520226654352" expanded="false" signature="24619:24628" ph=" { " />
+            <marker date="1520226654352" expanded="false" signature="24641:24648" ph=" }" />
+          </folding>
         </state>
       </provider>
     </entry>

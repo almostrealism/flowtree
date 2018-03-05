@@ -71,12 +71,12 @@ import io.flowtree.job.JobFactory;
  * A {@link Server} encapsulates a {@link NodeGroup} and manages a {@link Thread}
  * that waits for client connections.
  * 
- * @author  Michael Murray
+ * @author  Michael Murrays
  */
 public class Server implements JobFactory, Runnable {
-	public static interface ResourceProvider {
-		public Resource loadResource(String uri);
-		public Resource loadResource(String uri, String exclude);
+	public interface ResourceProvider {
+		Resource loadResource(String uri);
+		Resource loadResource(String uri, String exclude);
 	}
 	
 
@@ -304,7 +304,7 @@ public class Server implements JobFactory, Runnable {
 		
 		this.displayMessage("Opening server socket on port " + port);
 		this.socket = new ServerSocket(port);
-		
+
 		this.thread = new Thread(this.threads, this);
 		this.thread.setName("Network Server");
 		this.thread.setPriority(Server.LOW_PRIORITY);
@@ -1186,39 +1186,25 @@ public class Server implements JobFactory, Runnable {
 		this.displayMessage("Thread stopped.");
 	}
 	
-	/**
-	 * @see io.flowtree.job.JobFactory#nextJob()
-	 */
+	/** @see io.flowtree.job.JobFactory#nextJob() */
 	public Job nextJob() { return this.group.nextJob(); }
 	
-	/**
-	 * @see io.flowtree.job.JobFactory#createJob(java.lang.String)
-	 */
+	/** @see io.flowtree.job.JobFactory#createJob(java.lang.String) */
 	public Job createJob(String data) { return Server.instantiateJobClass(data); }
 	
-	/**
-	 * @return  0.0.
-	 */
+	/** @return  0.0. */
 	public double getCompleteness() { return 0.0; }
 	
-	/**
-	 * @return  False.
-	 */
+	/** @return  False. */
 	public boolean isComplete() { return false; }
 	
-	/**
-	 * @return  "Server".
-	 */
+	/** @return  "Server". */
 	public String getName() { return "Server"; }
 	
-	/**
-	 * @return  -1.
-	 */
+	/** @return  -1. */
 	public long getTaskId() { return -1; }
 	
-	/**
-	 * @return  The class name for this class.
-	 */
+	/** @return  The class name for this class. */
 	public String encode() { return this.getClass().getName(); }
 	
 	/**
