@@ -31,6 +31,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.URL;
 import java.net.UnknownHostException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -45,7 +46,13 @@ import java.util.Set;
 
 import javax.swing.JLabel;
 
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.AWSCredentialsProvider;
+import com.amazonaws.auth.BasicAWSCredentials;
+import io.almostrealism.auth.Login;
 import io.flowtree.airflow.AirflowJobFactory;
+import io.flowtree.aws.CognitoLogin;
+import io.flowtree.aws.Encryptor;
 import io.flowtree.www.TomcatNode;
 import org.almostrealism.color.RGB;
 import org.almostrealism.io.IOStreams;
@@ -206,6 +213,8 @@ public class Server implements JobFactory, Runnable {
 	private String logCache;
 	private Map cache, cIndex, logItems;
 	private List loading;
+
+	private List<Login> logins;
 	
 	private NodeGroup group;
 	private ServerSocket socket;
@@ -309,6 +318,29 @@ public class Server implements JobFactory, Runnable {
 		this.thread.setName("Network Server");
 		this.thread.setPriority(Server.LOW_PRIORITY);
 		this.thread.setDaemon(true);
+
+		this.logins = new ArrayList<>();
+
+		if (System.getenv("AWS_ACCESS_KEY_ID") != null) {
+			System.out.println("Server: Starting CognitoLogin...");
+
+			try {
+				Encryptor e = new Encryptor(System.getenv("AWS_ACCESS_KEY_ID"),
+											System.getenv("AWS_SECRET_ACCESS_KEY"));
+
+				final BasicAWSCredentials c = new BasicAWSCredentials(System.getenv("AWS_ACCESS_KEY_ID"),
+																System.getenv("AWS_SECRET_ACCESS_KEY"));
+
+				this.logins.add(new CognitoLogin(e, new AWSCredentialsProvider() {
+					@Override public AWSCredentials getCredentials() {
+							return c;
+						}
+					@Override public void refresh() { }
+				}));
+			} catch (NoSuchAlgorithmException nsa) {
+				nsa.printStackTrace();
+			}
+		}
 		
 		String cs = p.getProperty("server.cache.max");
 		if (cs != null) this.setMaxCache(Integer.parseInt(cs));
