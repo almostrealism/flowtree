@@ -56,7 +56,7 @@ import org.apache.commons.lang3.NotImplementedException;
  */
 public class DistributedResource implements Resource {
 	public static boolean verbose = false;  // server.resource.verbose
-	public static boolean ioVerbose = false;  // server.resource.io.verbose
+	public static boolean ioVerbose = true;  // server.resource.io.verbose
 	
 	private int chunkSize = 500000;
 	private boolean commitAtEnd = false;

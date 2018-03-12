@@ -145,7 +145,7 @@ public class Server implements JobFactory, Runnable {
 				String uri = io.in.readUTF();
 				
 				if (Server.resourceVerbose)
-					System.out.println("ResourceServer: Recieved request for " + uri);
+					System.out.println("ResourceServer: Received request for " + uri);
 				
 				Object citem = Server.this.cache.get(uri);
 				
