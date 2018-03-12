@@ -593,6 +593,7 @@ public class Server implements JobFactory, Runnable {
 		this.thread.start();
 		if (this.rthread != null) this.rthread.start();
 		this.group.start();
+		this.startResourceDist();
 	}
 	
 	/**
@@ -1193,8 +1194,13 @@ public class Server implements JobFactory, Runnable {
 		m.setString(result.toString());
 		return m;
 	}
-	
+
+	public ResourceDistributionTask startResourceDist() {
+		return startResourceDist(10, 10000);
+	}
+
 	public ResourceDistributionTask startResourceDist(int jobs, int jsleep) {
+		if (ResourceDistributionTask.getCurrentTask() != null) return ResourceDistributionTask.getCurrentTask();
 		ResourceDistributionTask rtask = new ResourceDistributionTask(jobs, jsleep);
 		addTask(rtask);
 		System.out.println("Server: Added task " + rtask);
