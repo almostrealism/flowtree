@@ -54,6 +54,7 @@ public class OutputServer implements Runnable {
 			p.load(new FileInputStream(args[0]));
 			
 			OutputServer s = new OutputServer(p);
+			s.setCurrentServer();
 			
 			System.out.println("\nDB Server started");
 		} catch (Exception e) {
@@ -80,9 +81,9 @@ public class OutputServer implements Runnable {
 			
 			String args[] = new String[4];
 			args[0] = "-database.0";
-			args[1] = "file:ringsdb";
+			args[1] = "file:flowtreedb";
 			args[2] = "-dbname.0";
-			args[3] = "rings";
+			args[3] = "flowtree";
 			
 			System.out.println("OutputServer: HSQLDB file = " + args[1]);
 			System.out.println("OutputServer: HSQLDB name = " + args[3]);
@@ -91,7 +92,7 @@ public class OutputServer implements Runnable {
 			
 			DatabaseConnection.bytea = DatabaseConnection.hsqldbBytea;
 			driver = "org.hsqldb.jdbcDriver";
-			dburi = "jdbc:hsqldb:hsql://localhost/rings";
+			dburi = "jdbc:hsqldb:hsql://localhost/flowtree";
 			dbuser = "sa";
 			dbpasswd = "";
 		}

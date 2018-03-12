@@ -109,7 +109,7 @@ public class ImageResource implements Resource {
 		}
 	}
 
-	public void load(byte[] data, int offset, int len) {
+	public void load(byte[] data, long offset, int len) {
 		throw new NotImplementedException("load");
 	}
 	

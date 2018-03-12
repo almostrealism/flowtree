@@ -42,7 +42,7 @@ import io.flowtree.msg.NodeProxy;
 import io.flowtree.job.Job;
 
 /**
- * A NetworkClient instance can be used to send jobs/messages to a server.
+ * A FlowTreeCliServer instance can be used to send jobs/messages to a server.
  *
  * @author Mike Murray
  */
@@ -50,7 +50,7 @@ public class NetworkClient {
 	private Connection c;
 
 	/**
-	 * Constructs a new NetworkClient object using the specified host information
+	 * Constructs a new FlowTreeCliServer object using the specified host information
 	 * to connect to a server.
 	 *
 	 * @param host Hostname of server.

@@ -239,7 +239,7 @@ public class Client {
 	/**
 	 * Sends the specified JobOutput object to the output server.
 	 * 
-	 * @param out  Output to send.
+	 * @param o  Output to send.
 	 * @return  True if send is successful, false otherwise.
 	 */
 	public boolean writeOutput(JobOutput o) {

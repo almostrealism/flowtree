@@ -29,7 +29,6 @@ import java.util.Date;
 
 import io.flowtree.msg.Message;
 import io.flowtree.node.Client;
-import io.flowtree.NetworkClient;
 
 /**
  * TODO  Rewrite as a Jersey service.
@@ -106,7 +105,7 @@ public class HttpCommandServer implements Runnable {
 					this.ps.println("Content-Type: text/html");
 					this.ps.println("Connection: Close");
 					this.ps.println();
-					this.ps.println(NetworkClient.runCommand(command, ps));
+					this.ps.println(FlowTreeCliServer.runCommand(command, ps));
 					
 					if (Message.verbose)
 						System.out.println("HttpCommandServer: Sent HTTP header and output.");

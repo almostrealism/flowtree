@@ -293,7 +293,7 @@ public class DistributedResource implements Resource {
 	
 	protected void setExcludeHost(String host) { this.exclude = host; }
 
-	public synchronized void load(byte data[], int offset, int len) {
+	public synchronized void load(byte data[], long offset, int len) {
 		throw new NotImplementedException("load");
 	}
 
