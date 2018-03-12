@@ -25,7 +25,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import io.flowtree.node.Client;
 import org.almostrealism.io.IOStreams;
 import org.almostrealism.io.Permissions;
 import org.almostrealism.io.Resource;
@@ -506,7 +505,7 @@ public class DistributedResource implements Resource {
 		System.out.println("DistributedResource (" + this.uri +
 							"): Loading data from resource server...");
 		
-		Client.getCurrentClient().getServer().loadResource(this, this.exclude, true);
+		OutputServer.getCurrentServer().getNodeServer().loadResource(this, this.exclude, true);
 		this.exclude = null;
 	}
 	
@@ -772,7 +771,7 @@ public class DistributedResource implements Resource {
 			origUri = "http://" + this.uri.substring(6);
 		}
 		
-		IOStreams io = Client.getCurrentClient().getServer().parseResourceUri("resource:///" + this.uri);
+		IOStreams io = OutputServer.getCurrentServer().getNodeServer().parseResourceUri("resource:///" + this.uri);
 		
 		if (io == null) {
 			this.loadFromStream(new URL(origUri).openStream());
