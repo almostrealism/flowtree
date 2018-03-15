@@ -171,7 +171,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 		int port = Integer.parseInt(p.getProperty("server.terminal.port",
 					String.valueOf(FlowTreeCliServer.defaultPort)));
 		
-		if ("true".equals(p.getProperty("db.start", "true"))) {
+		if ("true".equals(p.getProperty("db.start", "false"))) {
 			try {
 				io.flowtree.fs.OutputServer s = new io.flowtree.fs.OutputServer(p);
 				System.out.println("DB Server started");
@@ -193,16 +193,16 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 			}
 		}
 		
-		if ("on".equals(p.getProperty("server.terminal", "off"))) {
+		if ("on".equals(p.getProperty("server.terminal", "on"))) {
 			try {
 				System.out.print("Terminal: ");
 				
 				String cgui = p.getProperty("client.gui", "false");
 				boolean gui = cgui.equals("on") || cgui.equals("true");
 				
-				Client c = Client.getCurrentClient();
+				OutputServer os = OutputServer.getCurrentServer();
 				ThreadGroup g = null;
-				if (c != null) g = c.getServer().getThreadGroup();
+				if (os != null) g = os.getNodeServer().getThreadGroup();
 				FlowTreeCliServer.current = new FlowTreeCliServer(httpwww, jobSize, port, gui);
 				Thread t = new Thread(g, FlowTreeCliServer.current);
 				t.setName("Server Terminal");
@@ -223,16 +223,6 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 				System.out.println("RingsClient: Unable to start HTTP server (" +
 									ioe.getMessage() + ")");
 			}
-		}
-		
-		if ("on".equals(p.getProperty("server.resource.dist", "on"))) {
-			int jobs = Integer.parseInt(p.getProperty("server.resource.jobs", "10"));
-			int jsleep = Integer.parseInt(p.getProperty("server.resource.sleep", "10000"));
-			Client.getCurrentClient().getServer().startResourceDist(jobs, jsleep);
-		}
-		
-		if ("on".equals(p.getProperty("server.slide"))) {
-			throw new NotImplementedException("Slide is no longer implemented");
 		}
 		
 		OutputServer.getCurrentServer().getNodeServer().setParam(p);

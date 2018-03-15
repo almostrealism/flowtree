@@ -769,8 +769,11 @@ public class DistributedResource implements Resource {
 			this.uri = "/http/" + this.uri.substring(7);
 		} else if (this.uri.startsWith("/http/")) {
 			origUri = "http://" + this.uri.substring(6);
+		} else if (this.uri.startsWith("file:/")) {
+			origUri = this.uri;
+			this.uri = "/files/" + this.uri.substring(this.uri.lastIndexOf("/") + 1);
 		}
-		
+
 		IOStreams io = OutputServer.getCurrentServer().getNodeServer().parseResourceUri("resource:///" + this.uri);
 		
 		if (io == null) {
