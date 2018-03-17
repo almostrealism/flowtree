@@ -126,14 +126,14 @@ public class Encryptor implements EncryptionMaterialsProvider, AWSCredentialsPro
 
     public void doCrypt(String bucket, String key, String file)
             throws NoSuchAlgorithmException {
-        this.kms = new KMSEngine(System.in,this);
+        this.kms = new KMSEngine(null,this);
         AmazonS3Encryption encryptionClient = new AmazonS3EncryptionClientBuilder()
                 .withEncryptionMaterials(this)
                 .withRegion(getRegion())
                 .build();
 
         if (enableS3) {
-            byte[] plaintext = "Terra AI Core".getBytes();
+            byte[] plaintext = "Flow Tree Test".getBytes();
             System.out.println("plaintext's length: " + plaintext.length);
             encryptionClient.putObject(bucket, key, new File(file));
         }
@@ -143,7 +143,8 @@ public class Encryptor implements EncryptionMaterialsProvider, AWSCredentialsPro
         return kms;
     }
 
-    public String getKey() { return "arn:aws:kms:us-east-1:383046911776:key/a58571cd-fa4b-4d6b-a5cf-d4def5d2375a"; }
+    // TODO  This needs to be loaded from elsewhere
+    public String getKey() { return "arn:aws:kms:us-east-1:830543758886:key/03aa9b76-fb31-484f-9e58-9b9c9620843b"; }
 
     public String getRegion() { return AWSRegion.UsEast1.toString(); }
 

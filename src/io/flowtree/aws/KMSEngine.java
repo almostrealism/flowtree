@@ -55,18 +55,20 @@ public class KMSEngine {
         EnableKeyResult r = client.enableKey(req);
         System.out.println(r.getSdkResponseMetadata());
 
-        Thread t = new Thread(() -> {
-            Scanner s = new Scanner(commands);
+        if (commands != null) {
+            Thread t = new Thread(() -> {
+                Scanner s = new Scanner(commands);
 
-            while (true) {
-                this.setString(s.nextLine());
-                EncryptResult res = client.encrypt(new EncryptRequest().withPlaintext(next()));
-                DecryptResult result = client.decrypt(new DecryptRequest().withCiphertextBlob(res.getCiphertextBlob()));
-                System.out.println(result.getPlaintext());
-            }
-        });
+                while (true) {
+                    this.setString(s.nextLine());
+                    EncryptResult res = client.encrypt(new EncryptRequest().withPlaintext(next()));
+                    DecryptResult result = client.decrypt(new DecryptRequest().withCiphertextBlob(res.getCiphertextBlob()));
+                    System.out.println(result.getPlaintext());
+                }
+            });
 
-        t.start();
+            t.start();
+        }
     }
 
     public AWSKMSClient getClient() { return client; }

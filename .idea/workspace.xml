@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="905a9ace-0030-4c22-94cc-92d66d646224" name="Default" comment="">
+    <list default="true" id="905a9ace-0030-4c22-94cc-92d66d646224" name="Default" comment="Terminal is on by default. OutputServer is off by default. When loading a local file into DistributedResource, peel off the path and replace it with &quot;/files/&quot;.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/flowtree/aws/Encryptor.java" afterPath="$PROJECT_DIR$/src/io/flowtree/aws/Encryptor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/flowtree/aws/KMSEngine.java" afterPath="$PROJECT_DIR$/src/io/flowtree/aws/KMSEngine.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/flowtree/cli/FlowTreeCliServer.java" afterPath="$PROJECT_DIR$/src/io/flowtree/cli/FlowTreeCliServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/flowtree/fs/DistributedResource.java" afterPath="$PROJECT_DIR$/src/io/flowtree/fs/DistributedResource.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,7 +20,7 @@
       <file leaf-file-name="Server.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/io/flowtree/node/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="13110">
+            <state relative-caret-position="0">
               <caret line="951" column="20" lean-forward="false" selection-start-line="951" selection-start-column="20" selection-end-line="951" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -30,20 +31,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ResourceDistributionTask.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/io/flowtree/fs/ResourceDistributionTask.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3990">
-              <caret line="310" column="22" lean-forward="false" selection-start-line="310" selection-start-column="19" selection-end-line="310" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DistributedResource.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DistributedResource.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/io/flowtree/fs/DistributedResource.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-87">
+            <state relative-caret-position="11235">
               <caret line="771" column="46" lean-forward="false" selection-start-line="771" selection-start-column="46" selection-end-line="771" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -52,21 +43,51 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="104" column="25" lean-forward="false" selection-start-line="104" selection-start-column="25" selection-end-line="104" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="FlowTreeCliServer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/io/flowtree/cli/FlowTreeCliServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2250">
-              <caret line="225" column="9" lean-forward="false" selection-start-line="225" selection-start-column="9" selection-end-line="225" selection-end-column="9" />
+            <state relative-caret-position="145">
+              <caret line="159" column="71" lean-forward="false" selection-start-line="159" selection-start-column="71" selection-end-line="159" selection-end-column="71" />
               <folding>
-                <element signature="e#16552#16553#0" expanded="true" />
-                <element signature="e#16607#16608#0" expanded="true" />
-                <marker date="1520822548830" expanded="false" signature="21528:21537" ph=" { " />
-                <marker date="1520822548830" expanded="false" signature="21550:21557" ph=" }" />
-                <marker date="1520822548830" expanded="false" signature="23032:23041" ph=" { " />
-                <marker date="1520822548830" expanded="false" signature="23054:23061" ph=" }" />
-                <marker date="1520822548830" expanded="false" signature="24536:24545" ph=" { " />
-                <marker date="1520822548830" expanded="false" signature="24558:24565" ph=" }" />
+                <marker date="1521182921516" expanded="false" signature="21509:21518" ph=" { " />
+                <marker date="1521182921516" expanded="false" signature="21531:21538" ph=" }" />
+                <marker date="1521182921516" expanded="false" signature="23013:23022" ph=" { " />
+                <marker date="1521182921516" expanded="false" signature="23035:23042" ph=" }" />
+                <marker date="1521182921516" expanded="false" signature="24517:24526" ph=" { " />
+                <marker date="1521182921516" expanded="false" signature="24539:24546" ph=" }" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Encryptor.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/io/flowtree/aws/Encryptor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="208">
+              <caret line="133" column="0" lean-forward="true" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="KMSEngine.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/io/flowtree/aws/KMSEngine.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="201">
+              <caret line="41" column="20" lean-forward="false" selection-start-line="41" selection-start-column="11" selection-end-line="41" selection-end-column="20" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -111,6 +132,7 @@
       <find>items</find>
       <find>Client</find>
       <find>start()</find>
+      <find>Config file not found</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -158,8 +180,6 @@
         <option value="$PROJECT_DIR$/src/io/flowtree/node/NetworkClient.java" />
         <option value="$PROJECT_DIR$/src/io/flowtree/ui/NetworkDialog.java" />
         <option value="$PROJECT_DIR$/src/io/flowtree/aws/CognitoLogin.java" />
-        <option value="$PROJECT_DIR$/src/io/flowtree/aws/Encryptor.java" />
-        <option value="$PROJECT_DIR$/src/io/flowtree/aws/KMSEngine.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/io/flowtree/node/Server.java" />
         <option value="$PROJECT_DIR$/src/io/flowtree/fs/OutputServer.java" />
@@ -167,8 +187,10 @@
         <option value="$PROJECT_DIR$/src/io/flowtree/fs/ImageResource.java" />
         <option value="$PROJECT_DIR$/src/io/flowtree/NetworkClient.java" />
         <option value="$PROJECT_DIR$/src/io/flowtree/FlowTreeCliServer.java" />
-        <option value="$PROJECT_DIR$/src/io/flowtree/cli/FlowTreeCliServer.java" />
         <option value="$PROJECT_DIR$/src/io/flowtree/fs/DistributedResource.java" />
+        <option value="$PROJECT_DIR$/src/io/flowtree/cli/FlowTreeCliServer.java" />
+        <option value="$PROJECT_DIR$/src/io/flowtree/aws/KMSEngine.java" />
+        <option value="$PROJECT_DIR$/src/io/flowtree/aws/Encryptor.java" />
       </list>
     </option>
   </component>
@@ -185,7 +207,7 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
@@ -208,6 +230,22 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="FlowTree" type="58d84e3e:PackageViewProjectNode" />
+              <item name="FlowTree" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="FlowTree" type="58d84e3e:PackageViewProjectNode" />
+              <item name="FlowTree" type="616d4139:PackageViewModuleNode" />
+              <item name="io.flowtree" type="1f31426a:PackageElementNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -226,28 +264,19 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="flowtree" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="FlowTree" type="b2602c69:ProjectViewProjectNode" />
+              <item name="flowtree" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="flowtree" type="462c0819:PsiDirectoryNode" />
+              <item name="aws" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
       <pane id="Scope" />
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="FlowTree" type="58d84e3e:PackageViewProjectNode" />
-              <item name="FlowTree" type="616d4139:PackageViewModuleNode" />
-            </path>
-            <path>
-              <item name="FlowTree" type="58d84e3e:PackageViewProjectNode" />
-              <item name="FlowTree" type="616d4139:PackageViewModuleNode" />
-              <item name="io.flowtree" type="1f31426a:PackageElementNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -524,14 +553,8 @@
       <workItem from="1520214415885" duration="3156000" />
       <workItem from="1520324243982" duration="2597000" />
       <workItem from="1520814869220" duration="8389000" />
-      <workItem from="1520983441536" duration="1133000" />
-    </task>
-    <task id="LOCAL-00001" summary="Referesh idea project metadata.">
-      <created>1503461134005</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1503461134005</updated>
+      <workItem from="1520983441536" duration="3088000" />
+      <workItem from="1521182851482" duration="2929000" />
     </task>
     <task id="LOCAL-00002" summary="Install cron before cloudwatch and use centos 6 instead of 7.">
       <created>1503463082981</created>
@@ -869,46 +892,53 @@
       <option name="project" value="LOCAL" />
       <updated>1520821976623</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Terminal is on by default. OutputServer is off by default. When loading a local file into DistributedResource, peel off the path and replace it with &quot;/files/&quot;.">
+      <created>1521088144633</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1521088144636</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="157732000" />
+    <option name="totallyTimeSpent" value="162616000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28199404" sideWeight="0.5015886" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38514444" sideWeight="0.49841145" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26817447" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38514444" sideWeight="0.49841145" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26817447" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Atlassian " active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -918,7 +948,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Introduced activemq for messaging." />
     <MESSAGE value="Use postgres for our airflow database." />
     <MESSAGE value="Working toward a functioning postgres install." />
     <MESSAGE value="Minor changes to build and deploy." />
@@ -943,7 +972,8 @@
     <MESSAGE value="Use the OutputServer rather than the Client (which may not be initialized)." />
     <MESSAGE value="Added default parameters for starting resource distribution. Also, always start resource distribution." />
     <MESSAGE value="Moved NetworkClient to FlowTreeCliServer." />
-    <option name="LAST_COMMIT_MESSAGE" value="Moved NetworkClient to FlowTreeCliServer." />
+    <MESSAGE value="Terminal is on by default. OutputServer is off by default. When loading a local file into DistributedResource, peel off the path and replace it with &quot;/files/&quot;." />
+    <option name="LAST_COMMIT_MESSAGE" value="Terminal is on by default. OutputServer is off by default. When loading a local file into DistributedResource, peel off the path and replace it with &quot;/files/&quot;." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -959,13 +989,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/samples/BasicSample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="19" column="7" lean-forward="false" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/ColorScanner.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
@@ -1235,28 +1258,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/flowtree/aws/KMSEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="32" column="13" lean-forward="false" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/flowtree/aws/Encryptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="29" column="39" lean-forward="false" selection-start-line="29" selection-start-column="39" selection-end-line="29" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/io/flowtree/aws/CognitoLogin.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -1284,30 +1285,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="111" column="38" lean-forward="false" selection-start-line="111" selection-start-column="38" selection-end-line="111" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/flowtree/cli/FlowTreeCliServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2250">
-          <caret line="225" column="9" lean-forward="false" selection-start-line="225" selection-start-column="9" selection-end-line="225" selection-end-column="9" />
-          <folding>
-            <element signature="e#16552#16553#0" expanded="true" />
-            <element signature="e#16607#16608#0" expanded="true" />
-            <marker date="1520822548830" expanded="false" signature="21528:21537" ph=" { " />
-            <marker date="1520822548830" expanded="false" signature="21550:21557" ph=" }" />
-            <marker date="1520822548830" expanded="false" signature="23032:23041" ph=" { " />
-            <marker date="1520822548830" expanded="false" signature="23054:23061" ph=" }" />
-            <marker date="1520822548830" expanded="false" signature="24536:24545" ph=" { " />
-            <marker date="1520822548830" expanded="false" signature="24558:24565" ph=" }" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/io/flowtree/node/Server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13110">
+        <state relative-caret-position="0">
           <caret line="951" column="20" lean-forward="false" selection-start-line="951" selection-start-column="20" selection-end-line="951" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1321,14 +1304,62 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3990">
           <caret line="310" column="22" lean-forward="false" selection-start-line="310" selection-start-column="19" selection-end-line="310" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/io/flowtree/fs/DistributedResource.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-87">
+        <state relative-caret-position="11235">
           <caret line="771" column="46" lean-forward="false" selection-start-line="771" selection-start-column="46" selection-end-line="771" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="104" column="25" lean-forward="false" selection-start-line="104" selection-start-column="25" selection-end-line="104" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/flowtree/cli/FlowTreeCliServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="159" column="71" lean-forward="false" selection-start-line="159" selection-start-column="71" selection-end-line="159" selection-end-column="71" />
+          <folding>
+            <marker date="1521182921516" expanded="false" signature="21509:21518" ph=" { " />
+            <marker date="1521182921516" expanded="false" signature="21531:21538" ph=" }" />
+            <marker date="1521182921516" expanded="false" signature="23013:23022" ph=" { " />
+            <marker date="1521182921516" expanded="false" signature="23035:23042" ph=" }" />
+            <marker date="1521182921516" expanded="false" signature="24517:24526" ph=" { " />
+            <marker date="1521182921516" expanded="false" signature="24539:24546" ph=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/amazonaws/aws-java-sdk-costandusagereport/1.11.289/aws-java-sdk-costandusagereport-1.11.289.jar!/com/amazonaws/services/costandusagereport/model/AWSRegion.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="8" column="4" lean-forward="false" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/flowtree/aws/KMSEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="41" column="20" lean-forward="false" selection-start-line="41" selection-start-column="11" selection-end-line="41" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/flowtree/aws/Encryptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="133" column="0" lean-forward="true" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

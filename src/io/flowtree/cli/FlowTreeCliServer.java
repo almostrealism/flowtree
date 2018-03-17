@@ -158,7 +158,6 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 			System.exit(1);
 		} catch (FileNotFoundException fnf) {
 			System.out.println("Config file not found: " + configFile);
-			System.exit(2);
 		} catch (IOException ioe) {
 			System.out.println("IO error loading config file: " + configFile);
 			System.exit(3);
