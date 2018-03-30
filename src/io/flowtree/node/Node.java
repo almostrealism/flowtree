@@ -32,7 +32,7 @@ import java.util.Set;
 import javax.swing.JLabel;
 
 import org.almostrealism.io.RSSFeed;
-import org.almostrealism.util.Graph;
+import org.almostrealism.util.Chart;
 
 import io.flowtree.msg.Connection;
 import io.flowtree.msg.Message;
@@ -86,7 +86,7 @@ public class Node implements Runnable {
 	private int sleep;
 	private double relaySum, connectSum;
 	private int relayDiv, connectDiv;
-	protected Graph relayGraph, connectGraph, sleepGraph;
+	protected Chart relayGraph, connectGraph, sleepGraph;
 	
 	protected double sleepSum, totalSleepSum;
 	protected int sleepDiv, totalSleepDiv;
@@ -123,9 +123,9 @@ public class Node implements Runnable {
 		this.jobs = new ArrayList();
 		this.listeners = new ArrayList();
 		
-		this.relayGraph = new Graph();
+		this.relayGraph = new Chart();
 		this.relayGraph.setDivisions(40);
-		this.connectGraph = new Graph();
+		this.connectGraph = new Chart();
 		this.connectGraph.setDivisions(40);
 		
 		Client c = Client.getCurrentClient();

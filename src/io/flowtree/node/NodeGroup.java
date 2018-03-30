@@ -40,7 +40,7 @@ import javax.swing.JLabel;
 
 import org.almostrealism.io.RSSFeed;
 import org.almostrealism.util.Defaults;
-import org.almostrealism.util.Graph;
+import org.almostrealism.util.Chart;
 
 import io.flowtree.msg.Connection;
 import io.flowtree.msg.Message;
@@ -73,7 +73,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	private char passwd[];
 	private String crypt;
 	
-	private Graph activityGraph, throughputGraph;
+	private Chart activityGraph, throughputGraph;
 	private int tpFreq = 5, tpLast = 0;
 	private double activitySum, totalActivitySum;
 	private int activityDivisor, totalActivityDiv;
@@ -164,9 +164,9 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 		}
 		
 		this.plisteners = new ArrayList();
-		this.activityGraph = new Graph(Integer.MAX_VALUE - 1);
-		this.throughputGraph = new Graph();
-		super.sleepGraph = new Graph(Integer.MAX_VALUE - 1);
+		this.activityGraph = new Chart(Integer.MAX_VALUE - 1);
+		this.throughputGraph = new Chart();
+		super.sleepGraph = new Chart(Integer.MAX_VALUE - 1);
 		
 		Client c = Client.getCurrentClient();
 		ThreadGroup g = null;
@@ -689,7 +689,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	/**
 	 * Constructs a {@link JobFactory} and adds it as a task for this {@link NodeGroup}.
 	 * 
-	 * @param f  Encoded JobFactory to use as task.
+	 * @param data  Encoded {@link JobFactory} to use as task.
 	 * @return  True if added, false otherwise.
 	 */
 	public boolean addTask(String data) {
