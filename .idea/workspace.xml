@@ -2,8 +2,983 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="905a9ace-0030-4c22-94cc-92d66d646224" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/test/resources/org/bitcoinj/core/litecoin_block1.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/proto/scanner.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/resources/proofs/transferred/57fc75fb1722a6573e0dccfb405ec04652dfd38963035685d8cf50c3f70bc69b:8.scproof" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/resources/blockload/scenario1.dmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/test/resources/org/libdohj/names/namecoin_name_firstupdate_d_bitcoin.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/resources/blockload/scenario2.dmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/resources/trie/massive-upload.dmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/resources/proofs/transferred/57fc75fb1722a6573e0dccfb405ec04652dfd38963035685d8cf50c3f70bc69b:7.scproof" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/resources/rlp/block.go.snappy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/resources/proofs/scriptPubKey/340c79e8369c539c3100b4f49ec869a0499d81d9f8db9feaf4694272bf5b432e:0.scproof" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/resources/proofs/transferred/57fc75fb1722a6573e0dccfb405ec04652dfd38963035685d8cf50c3f70bc69b:6.scproof" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/resources/proofs/transferred/57fc75fb1722a6573e0dccfb405ec04652dfd38963035685d8cf50c3f70bc69b:5.scproof" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/test/resources/org/libdohj/params/dogecoin_block719.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/tools/bin/colortool" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/resources/proofs/transferred/57fc75fb1722a6573e0dccfb405ec04652dfd38963035685d8cf50c3f70bc69b:15.scproof" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/.gitattributes" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/AUTHORS" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/resources/proofs/transferred/57fc75fb1722a6573e0dccfb405ec04652dfd38963035685d8cf50c3f70bc69b:14.scproof" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/resources/proofs/transferred/57fc75fb1722a6573e0dccfb405ec04652dfd38963035685d8cf50c3f70bc69b:4.scproof" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/test/resources/org/libdohj/params/dogecoin_block479.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/tools/src/main/resources/assets/eur.smartcolor" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/test/resources/org/libdohj/script/namecoin_name_firstupdate_d_bitcoin.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/resources/proofs/genesis/1051584e9e19f740ddf32b7b3d30c274ae23f2ff2b706f1446e4f7815563c3fd:0.scproof" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/resources/proofs/transferred/57fc75fb1722a6573e0dccfb405ec04652dfd38963035685d8cf50c3f70bc69b:3.scproof" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/resources/proofs/transferred/57fc75fb1722a6573e0dccfb405ec04652dfd38963035685d8cf50c3f70bc69b:13.scproof" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/tools/src/main/resources/assets/oil.smartcolor" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/resources/proofs/transferred/57fc75fb1722a6573e0dccfb405ec04652dfd38963035685d8cf50c3f70bc69b:2.scproof" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/resources/proofs/transferred/57fc75fb1722a6573e0dccfb405ec04652dfd38963035685d8cf50c3f70bc69b:12.scproof" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/paymentrequest.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/gradle/wrapper/gradle-wrapper.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/test/resources/org/libdohj/params/dogecoin_block720.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-stratum/stratum-protocol/src/electrum.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/resources/proofs/transferred/57fc75fb1722a6573e0dccfb405ec04652dfd38963035685d8cf50c3f70bc69b:1.scproof" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/test/resources/org/libdohj/params/dogecoin_block480.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-stratum/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/resources/proofs/transferred/57fc75fb1722a6573e0dccfb405ec04652dfd38963035685d8cf50c3f70bc69b:11.scproof" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/resources/proofs/transferred/29ac0d5313882c337921dd34fee09efce6bd9fcc2d5c16155e9c22af1b4b9a13:2.scproof" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-stratum/stratum-protocol/src/main/resources/electrum-servers-testnet" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/test/resources/org/libdohj/script/namecoin_name_new_d_bitcoin.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/resources/proofs/transferred/57fc75fb1722a6573e0dccfb405ec04652dfd38963035685d8cf50c3f70bc69b:0.scproof" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/resources/proofs/transferred/57fc75fb1722a6573e0dccfb405ec04652dfd38963035685d8cf50c3f70bc69b:10.scproof" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/test/resources/org/bitcoinj/core/auxpow_merkle_branch.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-stratum/bin/stratumsh" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/resources/proofs/transferred/29ac0d5313882c337921dd34fee09efce6bd9fcc2d5c16155e9c22af1b4b9a13:0.scproof" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/test/resources/org/bitcoinj/core/dogecoin_block894863.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/test/resources/org/bitcoinj/core/dogecoin_block748634.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/resources/rlp/block.py.snappy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/COPYING" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/test/resources/org/libdohj/names/namecoin_name_new_d_bitcoin.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/resources/proofs/transferred/57fc75fb1722a6573e0dccfb405ec04652dfd38963035685d8cf50c3f70bc69b:9.scproof" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/tools/src/main/resources/assets/gold.smartcolor" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/resources/blockstore/light-load.dmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/test/resources/org/libdohj/script/namecoin_p2pkh.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/resources/gold.scdef" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/test/resources/org/libdohj/names/namecoin_p2pkh.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/resources/proofs/transferred/ceac36cf041b844c047fbba23fc3cbcac8f6a245c7e687da801a356f96ec2003:1.scproof" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/main/resources/org.litecoin.production.checkpoints" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/test/resources/org/libdohj/params/dogecoin_block239.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/resources/solidity/file1.sol" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/resources/solidity/file2.sol" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/test/resources/org/bitcoinj/core/auxpow_header.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/test/resources/org/bitcoinj/core/dogecoin_block1.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/resources/sync/main-b1-b10.dmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/resources/sync/fork-b1-b5-b8_.dmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/resources/proofs/genesis/2709f98721fbe6d3f78b45364cc2745e29da71c6c479498d4c91792af5c5fa9e:0.scproof" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/test/resources/org/bitcoinj/core/auxpow_merkle_branch2.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/tools/src/main/resources/assets/usd.smartcolor" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/test/resources/org/bitcoinj/core/dogecoin_block371337.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/main/resources/org.dogecoin.production.checkpoints" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-stratum/stratum-protocol/src/main/resources/electrum-servers" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/test/resources/org/bitcoinj/core/dogecoin_block250000.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/main/resources/org.dogecoin.test.checkpoints" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/test/resources/org/bitcoinj/core/auxpow_header_no_tx_header.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/test/resources/org/libdohj/names/namecoin_name_update_d_bitcoin.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/gradlew" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/resources/rlp/rlp-msg-1.dmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/test/resources/org/libdohj/script/namecoin_name_update_d_bitcoin.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/vm/trace/ProgramTrace.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/examples/src/main/java/com/dogecoin/dogecoinj/examples/DoubleSpend.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/java/org/smartcolors/tools/AddressVersionScan.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/FindNodeMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/samples/TestNetSample.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/util/ByteArrayMap.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/MessageCodesResolver.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/AuthInitiateMessageV4.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/vm/VMCustomTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/vm/GasCost.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/config/NodeFilter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/examples/src/main/java/com/dogecoin/dogecoinj/examples/Kit.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/sync/FastSyncManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/SortedTransaction.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/discover/table/NodeEntry.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/shh/ShhTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/main/java/org/libdohj/core/AuxPoWNetworkParameters.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/resources/unpadding.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/samples/PendingStateSample.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/datasource/XorDataSource.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/util/FastByteComparisons.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/namecoin/src/main/java/org/libdohj/names/NameLookupLatestRestHeightApi.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/discover/NodeManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/CryptoTestCase.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/discover/DiscoverTask.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/discover/table/DistanceComparator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/util/ByteArraySet.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/swarm/StringTrieTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/Start.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/core/Hashes.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/resources/marshal/valid_varuints.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/util/StandaloneBlockchainTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/RLPTestCase.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/main/java/org/libdohj/script/NameScript.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/validator/BlockHeaderRule.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/core/ImportResult.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/datasource/AsyncWriteCacheTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/resources/genesis/genesis-light.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/Utils.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/config/blockchain/ETCFork3M.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/java/org/smartcolors/ColorTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/validator/ProofOfWorkRule.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/crypto/ECIESCoder.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/util/RlpTestData.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/TransactionTestCase.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/sync/PeerState.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/shh/BloomFilter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/samples/TransactionBomb.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/test/java/org/libdohj/script/NameScriptTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/rlpx/KademliaTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/rlpx/SnappyConnectionTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/config/blockchain/DaoHFConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/util/HashUtilTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/vm/program/ProgramPrecompile.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/core/GenesisScriptColorProof.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/core/CloseTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/longrun/BasicNode.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/trie/TrieTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/Helper.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/swarm/MessageTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/ColorScanner.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/namecoin/src/main/java/org/libdohj/names/NameLookupByBlockHeightHashCache.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/resources/logback.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/eth/handler/Eth62.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/validator/BlockHeaderValidator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/swarm/MemStore.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/config/DefaultConfigTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/util/CopyOnWriteMap.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/longrun/PendingTxMonitor.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/util/RLPElement.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/core/CallTransaction.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/crypto/zksnark/BN128G2.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/samples/CheckFork.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/trie/Trie.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/longrun/FastSyncSanityTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/eth/EthVersion.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/validator/ParentGasLimitRule.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/eth/handler/EthHandlerFactory.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/vm/program/listener/ProgramListener.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/client/PeerClient.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/core/Bloom.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/config/BlockchainConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/SPVColorScanner.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/sync/HeadersDownloader.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/datasource/ReadCache.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/resources/genesis/genesis-light-old.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/resources/genesis/nonce-messy2.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/swarm/SectionReader.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-stratum/pom.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/sync/SyncQueueImplTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/AuthInitiateMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/samples/MordenSample.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-stratum/stratum-protocol/src/main/resources/checkpoints-testnet.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/dht/Peer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/datasource/inmem/HashMapDBSimple.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/resources/genesis/nonce-messy.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/GithubTrieTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/datasource/inmem/HashMapDB.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/config/blockchain/Eip150HFConfigTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/shh/BloomFilterTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/circle.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/p2p/P2pMessageFactory.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/InsufficientAssetException.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/namecoin/pom.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/vm/trace/Serializers.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/GitHubJSONTestSuite.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/server/Channel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/Base64Deserializer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/pom.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/shh/ShhEnvelopeMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/core/ImportTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/listener/CompositeEthereumListener.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/vm/program/Stack.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/core/TransactionTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/submit/TransactionTask.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/discover/NodeHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/sync/SyncQueueReverseImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/crypto/zksnark/Fp2.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/vm/DataWordTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/ContractDetailsImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/GitHubStateTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/vm/program/invoke/ProgramInvokeMockImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/longrun/BlockchainValidation.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/db/index/ArrayListIndex.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/datasource/ReadCacheTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/resources/tracker1.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/config/SystemPropertiesTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/SnappyCodec.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/shh/ShhHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/GitHubBlockTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/marshal/HashableSerializable.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/crypto/CryptoTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/validator/BlockHashRule.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/marshal/MerbinnerTree.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/main/java/org/libdohj/core/ScryptHash.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/mine/BlockMiner.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/json/JSONHelper.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/vm/PrecompiledContractTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/main/java/org/libdohj/params/LitecoinRegTestParams.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/core/BlockHeaderWrapper.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/core/TransactionExecutor.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/java/org/smartcolors/ClientColorScannerTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/longrun/SyncSanityTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/discover/DiscoverListener.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/core/genesis/GenesisLoadTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/NewBlockMessageTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/java/org/smartcolors/ColorDefinitionTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/vm/program/Program.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/config/blockchain/OlympicConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/datasource/QuotientFilter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/db/PeerSource.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/HexDeserializer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/swarm/NetStore.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/resources/genesis/ropsten.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/config/net/JsonNetConfigTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/vm/VMUtils.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/rlpx/EncryptionHandshakeTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/EnvTestRepository.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/TestCase.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/AbstractColorScanner.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/core/EventDispatchThread.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/shh/TopicTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/swarm/BzzProtocolTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/manager/WorldManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/swarm/Util.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/swarm/StringTrie.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/examples/src/main/java/com/dogecoin/dogecoinj/examples/PrintPeers.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/java/org/smartcolors/TestMultiWallet.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/util/CompactEncoderTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-stratum/stratum-protocol/src/test/java/org/smartwallet/multi/ElectrumMultiWalletTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/datasource/MultiThreadSourcesTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/core/SmartColors.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/main/java/org/libdohj/params/LitecoinMainNetParams.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/core/TransferColorProof.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/namecoin/src/main/java/org/libdohj/names/NameLookupByBlockHash.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/core/TransactionReceipt.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/mine/Miner.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/core/GenesisOutPointsMerbinnerTree.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/Logs.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/server/EthereumChannelInitializer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/resources/longrun/conf/live.conf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/marshal/StreamDeserializer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/model/EnvTck.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/java/org/smartcolors/SmartColorsTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/crypto/zksnark/Field.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/datasource/WriteCache.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/sync/BlockDownloader.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/test/java/org/libdohj/names/NameTransactionUtilsTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/crypto/jce/ECKeyAgreement.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/vm/VMComplexTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/java/org/smartcolors/ColorKeyChainTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/eth/message/GetBlockHeadersMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/facade/PendingState.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/VMTestSuite.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/core/BlockSummary.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/p2p/P2pMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/core/genesis/GenesisLoader.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-stratum/stratum-protocol/src/main/java/org/smartwallet/stratum/HeadersStore.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/examples/src/main/java/com/dogecoin/dogecoinj/examples/RestoreFromSeed.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/resources/longrun/conf/ropsten-fast.conf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/StateTestData.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/datasource/MultiCache.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/core/BlockchainGetHeadersTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/core/LogInfoTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/test/java/org/bitcoinj/core/AltcoinBlockTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/datasource/leveldb/LevelDbDataSource.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-stratum/stratum-tools/src/main/resources/checkpoints-testnet.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/sync/BlockTxForwardTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/message/Message.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-stratum/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/resources/padding.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/samples/BasicSample.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/util/RLPList.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/util/blockchain/Contract.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-stratum/stratum-protocol/pom.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/discover/table/TimeComparator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/solidity/AbiTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/TrieTestCase.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/jsonrpc/TransactionResultDTO.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/discover/table/KademliaOptions.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/eth/message/StatusMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/datasource/JournalSource.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/vm/program/InternalTransaction.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/crypto/MGF1BytesGeneratorExt.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/TestRunner.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/GitHubTransactionTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/trie/CollectFullSetOfNodes.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/samples/SendTransaction.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/core/BloomTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/datasource/JournalPruneTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/resources/wallet/ethersalewallet.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/swarm/Hive.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/discover/UDPListener.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/p2p/Peer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/util/ByteUtil.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/mine/ExternalMinerTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/main/java/org/libdohj/params/AbstractLitecoinParams.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/solidity/compiler/Solc.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/core/AccountStateTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/AuthResponseMessageV4.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/eth/handler/Eth63.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/crypto/cryptohash/Keccak512Test.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/eth/handler/Eth.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/db/PruneManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/db/QuotientFilterTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/facade/Ethereum.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/Handshaker.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/vm/program/listener/CompositeProgramListener.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-stratum/stratum-protocol/src/main/java/org/smartwallet/stratum/StratumException.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/sync/SyncPool.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/marshal/Serializable.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-stratum/stratum-protocol/src/main/java/org/smartwallet/multi/TransactionWithHeight.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/examples/src/main/java/com/dogecoin/dogecoinj/examples/FetchTransactions.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/crypto/zksnark/Fp.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/MessageQueue.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/examples/src/main/javascript/demo.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/crypto/ECIESPublicKeyEncoder.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/DifficultyTestCase.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/shh/ShhLongRun.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/util/blockchain/SolidityStorage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/mine/MinerTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/SPVColorTrack.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/client/ConfigCapabilities.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/crypto/ECKey.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/util/TimeUtils.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/shh/FilterTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/shh/WhisperImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/p2p/PeersMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/StateTestDataEntry.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/config/NoAutoscan.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-stratum/stratum-tools/src/main/java/org/smartwallet/stratum/StratumCli.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/samples/PrivateMinerSample.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/Transaction.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/swarm/SimpleDPA.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/CallCreate.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/config/net/MordenNetConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/datasource/WriteCacheTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/db/BlockStoreDummy.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/util/ExecutorPipeline.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/swarm/bzz/BzzStoreReqMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/trie/TraceAllNodes.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/vm/program/listener/ProgramListenerAware.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/datasource/BatchSourceWriter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/core/Repository.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/validator/ParentBlockHeaderValidator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/resources/longrun/conf/live-fast.conf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/datasource/LevelDbDataSourceTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/datasource/BatchSource.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/datasource/CountingBytesSource.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/SmartWallet.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/namecoin/src/main/java/org/libdohj/names/NameLookupLatestRestMerkleApi.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/manager/BlockLoader.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/db/IndexedBlockStore.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/config/net/MainNetConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/test/java/org/bitcoinj/core/AuxPoWTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/swarm/DPA.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/marshal/Serializer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/EthashTestCase.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/HexKeyDeserializer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/config/Initializer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/vm/VM.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/core/BlockchainImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/discover/table/NodeTable.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/shh/EnvelopeTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/namecoin/src/main/java/org/libdohj/names/NameLookupLatestRestMerkleApiSingleTx.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/sync/SyncQueueIfc.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/resources/genesis/frontier-morden.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/swarm/LocalStore.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/config/blockchain/TestBlockchainConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/config/net/TestNetConfigTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/AuthResponseMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/discover/DiscoveryExecutor.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/db/BlockStore.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/java/org/smartcolors/Utils.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/runners/TransactionTestRunner.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/marshal/MemoizedSerializer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/util/FileUtil.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/config/ConstantsAdapter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/DefaultCoinSelector.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/java/org/smartcolors/CoinSelectorTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/settings.gradle" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/gradlew.bat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/crypto/cryptohash/AbstractCryptoTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/core/PendingStateImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/core/genesis/GenesisJson.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/datasource/CountingBytesSourceTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/EncryptionHandshake.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/eth/message/TransactionsMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/FrameCodecHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/PingPongMessageTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/util/CollectionUtils.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/swarm/bzz/BzzStatusMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/mine/EthashAlgo.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/message/StaticMessages.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/util/blockchain/SolidityContract.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/solidity/compiler/SolidityCompiler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/util/BuildInfo.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/HandshakeMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/io/flowtree/coin/MiningNode.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/main/java/org/libdohj/params/AbstractNamecoinParams.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/config/blockchain/FrontierConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/core/PruneTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/build.gradle" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/MessageRoundtrip.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/util/UtilsTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/submit/TransactionExecutor.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/AddressableKeyChain.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/ColorKeyChain.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/builder/EnvBuilder.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/datasource/HashedKeySource.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/crypto/zksnark/BN128.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/protos/Protos.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/marshal/BytesDeserializer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/NewBlockHashesMessageTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/core/Blockchain.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/config/CommonConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/config/Constants.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/ABITestCase.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/Node.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/ClientColorTrack.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/shh/JsonRpcWhisper.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/swarm/bzz/BzzProtocol.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/main/java/org/libdohj/params/NamecoinMainNetParams.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/listener/TxStatus.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/examples/src/main/java/com/dogecoin/dogecoinj/examples/ForwardingService.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/p2p/EIP8P2pTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/PeerTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/Env.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/sync/SyncStatistics.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/build.gradle" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/config/blockchain/MordenConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/discover/RefreshTask.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/facade/EthereumImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/samples/EventListenerSample.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/resources/marshal/valid_bytes.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/ContractDetailsCacheImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/util/blockchain/SolidityCallResult.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/rlpx/RlpxConnectionTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/main/java/com/dogecoin/dogecoinj/protocols/payments/PaymentProtocol.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/swarm/Statter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/NeighborsMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/resources/dbdump/dbdump.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/eth/message/EthMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/datasource/AsyncWriteCache.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/PingMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/jsonrpc/JsonRpc.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/crypto/jce/ECKeyFactory.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/rlpx/SnappyCodecTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/samples/PrivateNetworkDiscoverySample.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/eth/handler/ProcessNewBlockHashesTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/JSONReader.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/swarm/TreeChunker.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/core/AccountState.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/marshal/HashSerializer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/marshal/Deserializer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/main/java/org/bitcoinj/core/MerkleBranch.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/core/PendingState.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/vm/DataWord.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/BlockTestCase.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/config/blockchain/HomesteadConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/config/blockchain/ByzantiumConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/model/TransactionTck.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/cli/CLIInterface.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/p2p/P2pHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/core/PrevoutProofsMerbinnerTree.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/test/java/org/libdohj/params/LitecoinTestNet3ParamsTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/config/net/BaseNetConfigTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/eth/message/Eth62MessageFactory.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/util/Value.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/vm/program/Storage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/resources/genesis/genesis-light-sb.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/config/net/TestNetConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/config/NodeFilterTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/model/LogTck.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/swarm/Key.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-stratum/stratum-protocol/src/main/resources/checkpoints-prodnet.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/config/blockchain/RopstenConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/core/GenesisOutPointColorProof.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/examples/src/main/java/com/dogecoin/dogecoinj/examples/ExamplePaymentChannelServer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/java/org/smartcolors/SPVColorTrackTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/resources/newgold.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/TxTestSuite.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/eth/message/BlockHeadersMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/resources/genesis/genesis-with-config.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/vm/program/listener/ProgramStorageChangeListener.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/db/RepositoryRoot.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/datasource/SourceCodec.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/tools/pom.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/resources/test-ethereumj.conf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/swarm/bzz/BzzMessageCodes.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/config/blockchain/AbstractConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/swarm/DBStore.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/resources/genesis/frontier-test.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/listener/BlockReplay.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/main/java/org/libdohj/params/package-info.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/io/flowtree/coin/LitecoinMiningNode.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/swarm/bzz/BzzRetrieveReqMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/message/ReasonCode.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-stratum/stratum-protocol/src/test/java/org/smartwallet/stratum/StratumMessageTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/UdpTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/util/ExecutorPipelineTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/db/ContractDetails.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/db/RepositoryImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/crypto/zksnark/Fp12.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/core/ColorDefinition.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/sync/SyncQueueImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/examples/src/main/java/com/dogecoin/dogecoinj/examples/FetchBlock.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/crypto/zksnark/BN128Fp.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/validator/BlockCustomHashRule.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/samples/FollowAccount.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/db/ByteArrayWrapper.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/log/DecodeLogTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/message/MessageFactory.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/crypto/HashUtil.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/db/DbFlushManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/vm/OpCode.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/eth/message/Eth63MessageFactory.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/parent.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/StandardKeyChain.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/vm/trace/ProgramTraceListener.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/pom.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/util/MinMaxMapTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/validator/ExtraDataRule.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/config/net/ETCNetConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-stratum/stratum-protocol/src/main/java/org/smartwallet/stratum/StratumChain.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/validator/DifficultyRule.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/validator/BestNumberRule.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/java/org/smartcolors/ClientColorTrackTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/mine/FutureTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/db/TransactionStore.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/eth/handler/EthHandlerFactoryImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/core/BlockIdentifier.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/main/java/org/libdohj/params/LitecoinTestNet3Params.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/util/Utils.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/swarm/KademliaTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/vm/ProgramMemoryTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/core/Chain.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/BitcoinCoinSelector.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/.travis.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/sync/BlockBodiesDownloader.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/TwoPeerTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/core/PendingTransaction.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/runners/StateTestRunner.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/swarm/Manifest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/io/flowtree/coin/DogecoinMiningNode.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/util/MinMaxMap.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/config/DefaultConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/config/SystemProperties.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/core/PendingStateLongRunTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/json/EtherObjectMapper.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/vm/program/Memory.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/util/blockchain/ContractStorage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/Message.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/vm/MemoryTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/core/Account.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/GitHubPowTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/mine/EthashAlgoSlow.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/MessageCodec.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/GitHubVMTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/vm/program/listener/ProgramListenerAdaptor.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/model/BlockTck.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/discover/MessageHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/eth/handler/EthHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/resources/db/StorageDictionaryTest_1.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/config/blockchain/Eip160HFConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/datasource/Serializer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/server/PeerStatistics.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-stratum/stratum-protocol/src/test/java/org/smartwallet/stratum/StratumChainTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-stratum/stratum-tools/pom.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/jsonrpc/TransactionReceiptDTOExt.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/examples/src/main/java/com/dogecoin/dogecoinj/examples/SendRequest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/validator/GasLimitRule.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/listener/GasPriceTracker.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/main/java/org/libdohj/params/AbstractDogecoinParams.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/crypto/zksnark/BN128Fp2.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/pom.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/core/ColorProof.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/tck/RunTck.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/sync/ShortSyncTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/main/java/org/libdohj/core/Utils.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/resources/genesis/sample-genesis.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/main/java/org/bitcoinj/core/AuxPoW.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/crypto/jce/ECKeyPairGenerator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/builder/TransactionBuilder.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/java/org/smartcolors/FixtureHelpers.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/resources/kernel.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/datasource/RepoNewTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/p2p/PingMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/discover/PacketDecoder.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/server/WireTrafficStats.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/ConcatKDFBytesGenerator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/NettyByteToMessageCodec.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/IterableTestRepository.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/validator/ValidationRule.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/mine/MinerListener.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/main/java/org/libdohj/names/NameTransactionUtils.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/datasource/BlockSerializerTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/crypto/EthereumIESEngine.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/DifficultyTestSuite.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/samples/RopstenSample.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/trie/CountAllNodes.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/util/blockchain/EtherUtil.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/BlockchainTestSuite.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/trie/Node.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/resources/genesis/olympic-messy.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/datasource/DataSourceArray.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/resources/version.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/util/blockchain/TransactionResult.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/Exec.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/config/InitializerTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/TestUtils.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/shh/MessageWatcher.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/resources/marshal/valid_boxed_objs.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-stratum/stratum-protocol/src/main/java/org/smartwallet/stratum/StratumMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/examples/src/main/java/com/dogecoin/dogecoinj/examples/RefreshWallet.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/crypto/cryptohash/Keccak256Test.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/config/net/JsonNetConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/marshal/SerializationState.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/test/java/org/bitcoinj/core/Util.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/namecoin/src/main/java/org/libdohj/names/NameLookupLatest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/eth/handler/HeaderMessageValidationTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/SPVMultiWallet.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/io/flowtree/coin/package-info.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/crypto/cryptohash/Keccak256.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/eth/message/GetNodeDataMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/util/RLPItem.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/eth/handler/EthAdapter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/examples/src/main/javascript/payprotocol.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/pom.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/namecoin/src/main/java/org/libdohj/names/NameLookupByBlockHashOneFullBlock.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/eth/message/BlockBodiesMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/listener/EventListener.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/config/DaoLightMiningTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/util/DecodeResult.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/HandshakeHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/sync/SyncManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/DisconnectMessageTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/shh/ShhMessageCodes.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/TransactionTestSuite.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/datasource/ObjectDataSource.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/util/RLPDump.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/validators/TransactionValidator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/eth/handler/LockBlockchainTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/resources/newoil.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/dht/Bucket.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/io/flowtree/coin/BitcoinMiningNode.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/swarm/bzz/BzzPeersMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/main/java/org/libdohj/core/AltcoinNetworkParameters.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/shh/ShhFilterMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/ClientColorScanner.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/EthashTestSuite.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/facade/Repository.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/validators/BlockHeaderValidator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/builder/RepositoryBuilder.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/core/Genesis.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/FrameCodec.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/builder/LogBuilder.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/AccountState.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/GithubABITest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/tools/tools.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/datasource/NoDeleteSource.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/crypto/zksnark/Params.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/io/flowtree/coin/EthereumNode.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/swarm/bzz/BzzMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/examples/src/main/javascript/forwarding.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/TestSuite.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/submit/WalletTransaction.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/StatusMessageTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/eth/message/GetBlockBodiesMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/config/blockchain/Eip150HFConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/db/RepositoryTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/main/java/com/dogecoin/protocols/payments/Protos.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/GitHubTestNetTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/datasource/AbstractChainedSource.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/TransactionsMessageTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/shh/Whisper.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-stratum/stratum-protocol/src/main/java/org/smartwallet/stratum/protos/Protos.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/eth/handler/GetBlockHeadersMessageWrapper.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/examples/src/main/java/com/dogecoin/dogecoinj/examples/ExamplePaymentChannelClient.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/java/org/smartcolors/SPVColorScannerTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/eth/message/NodeDataMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/examples/src/main/java/com/dogecoin/dogecoinj/examples/BackupToMnemonicSeed.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/vm/program/invoke/ProgramInvoke.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/datasource/BloomedSource.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/p2p/P2pMessageCodes.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/datasource/MemSizeEstimator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/resources/logback-test.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/namecoin/src/main/java/org/libdohj/names/NameLookupLatestLevelDBTransactionCache.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/swarm/ChunkerTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/util/SetAdapter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/GitHubRLPTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/shh/ShhMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/validator/ExtraDataPresenceRule.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/GitHubBasicTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/model/BlockHeaderTck.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/marshal/IterativeSerializable.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/config/ConfigTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/test/java/org/bitcoinj/core/LitecoinBlockTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/validator/GasValueRule.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/datasource/BloomFilter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/p2p/HelloMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-stratum/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/main/java/org/libdohj/params/DogecoinTestNet3Params.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/core/BlockWrapper.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/StateTestCase.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/core/TransactionInfo.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/swarm/bzz/BzzMessageFactory.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/util/AdvancedDeviceUtils.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/core/PendingStateTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-stratum/stratum-protocol/src/main/java/org/smartwallet/multi/ElectrumMultiWallet.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/marshal/DummySerializer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/TODO.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/mine/EthashMiner.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/trie/SecureTrie.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/resources/ethereumj.conf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/GitHubBlockStateTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/eth/message/GetReceiptsMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/db/IndexedBlockStoreTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/resources/genesis/genesis-alloc.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/config/net/BaseNetConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/swarm/GoPeerTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/datasource/ReadWriteCache.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/eth/message/NewBlockHashesMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/solidity/compiler/CompilationResult.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/mine/Ethash.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/db/TransactionStoreTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/ABITestSuite.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/datasource/ObjectDataSourceTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/test/java/org/libdohj/params/AbstractLitecoinParamsTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/core/StateTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/tools/checkpoints-testnet.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/PongMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/core/BlockHeader.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/validator/DependentBlockHeaderRuleAdapter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/mine/MineBlock.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/solidity/CompilerTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/samples/CreateContractSample.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/marshal/FileSerializer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/main/java/org/libdohj/params/DogecoinMainNetParams.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/core/BlockTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/facade/Blockchain.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/mine/EthashParams.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/resources/config/genesis-sample.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/resources/longrun/conf/live-noprune.conf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/examples/src/main/python/forwarding.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/examples/src/main/java/com/dogecoin/dogecoinj/examples/DumpWallet.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/wire/AdaptiveMessageIdsTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/swarm/RLPTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/swarm/bzz/PeerAddress.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/listener/EthereumListenerAdapter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/core/PremineRaw.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/.travis.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/util/CompactEncoder.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/eth/message/EthMessageCodes.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/RlpxConnection.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/rlpx/EIP8HandshakeTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/main/java/org/libdohj/core/AltcoinSerializer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/db/FlushDbManagerTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/sync/FastSyncDownloader.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/test/java/org/libdohj/params/LitecoinRegTestParamsTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/discover/NodeStatistics.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/resources/ropsten.conf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/trie/TrieKey.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/FeeCalculator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-stratum/stratum-protocol/src/main/java/org/smartwallet/stratum/StratumSubscription.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/builder/BlockHeaderBuilder.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/vm/program/InternalTransactionTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/core/Denomination.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/sync/LongSyncTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/datasource/Serializers.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/validators/RepositoryValidator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/BlockTestSuite.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/shh/Topic.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/core/ABITest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/eth/message/ReceiptsMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/resources/marshal/merbinnertree_hashes.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/SmartwalletExtension.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/ColorTrack.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/datasource/SourceChainBox.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/test/java/org/libdohj/params/AbstractDogecoinParamsTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/db/index/Index.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/p2p/GetPeersMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/facade/SyncStatus.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/crypto/jce/ECSignatureFactory.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/core/Transaction.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/util/BIUtilTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/discover/table/NodeBucket.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/resources/longrun/logback.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/marshal/MemoizedDeserializer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/datasource/CachedSource.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/vm/program/invoke/ProgramInvokeImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/resources/logback-detailed.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/marshal/DeserializationState.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/resources/genesis/genesis-low-difficulty.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/rlpx/RLPXTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/core/Block.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/marshal/StreamSerializer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/jsonrpc/TypeConverter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/ColorKeyChainFactory.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/facade/EthereumFactory.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/discover/DiscoveryEvent.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/validators/OutputValidator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/examples/src/main/java/com/dogecoin/dogecoinj/examples/PrivateKeys.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/util/RLP.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/main/java/com/dogecoin/dogecoinj/protocols/payments/package-info.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/mine/MinerIfc.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/jsonrpc/JsonRpcImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/vm/trace/Op.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/vm/VMHook.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsonrpc/JsonRpcTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/rlpx/discover/QueueTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/core/TransactionTouchedStorage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/gradle/wrapper/gradle-wrapper.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/solidity/compiler/ContractException.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/eth/message/NewBlockMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/marshal/BytesSerializer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/TestProgramInvokeFactory.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/AbstractContractDetails.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/model/AccountTck.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/vm/PrecompiledContracts.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/java/org/smartcolors/ColorProofTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/swarm/Chunker.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/resources/genesis/olympic.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/mine/EthashTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/validators/LogsValidator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/jsonrpc/TransactionReceiptDTO.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/AssetCoinSelector.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/trie/TrieImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/swarm/Chunk.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/util/blockchain/StandaloneBlockchain.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/datasource/DbSource.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/crypto/cryptohash/DigestEngine.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/crypto/jce/SpongyCastleProvider.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/core/TransactionExecutionSummaryTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/vm/program/ProgramResult.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/crypto/zksnark/PairingCheck.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/resources/marshal/summed_merbinnertree_hashes.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/datasource/Source.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/solidity/compiler/Sources.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/rlpx/FramingTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/resources/genesis/frontier.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/crypto/ECKeyTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/samples/StandaloneBlockchainSample.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/datasource/SourceCodecTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/util/blockchain/EasyBlockchain.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/p2p/DisconnectMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/resources/longrun/conf/ropsten.conf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/core/TransactionReceiptTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/HelloMessageTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/validator/ParentNumberRule.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/MultiWallet.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/namecoin/src/main/java/org/libdohj/names/NameLookupByBlockHeight.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/vm/program/invoke/ProgramInvokeFactoryImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/datasource/ReadWriteCacheTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/vm/CallCreate.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/builder/AccountBuilder.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/longrun/SyncWithLoadTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-stratum/TODO.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/util/ByteUtilTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/config/net/RopstenNetConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/db/StateSource.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/db/RepositoryWrapper.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/main/java/org/bitcoinj/core/AltcoinBlock.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/validator/AbstractValidationRule.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/core/GenesisScriptMerbinnerTree.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/tools/src/main/java/org/smartcolors/tools/ColorTool.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/resources/genesis/genesis-harder.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/test/java/org/smartcolors/MarshalTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/core.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/core/genesis/GenesisConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/io/flowtree/coin/MiningJob.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/examples/pom.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/p2p/PongMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/resources/wallet/ethersalewallet_broken.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/dht/DHTUtils.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/NettyTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/vm/VMTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/datasource/AsyncFlushable.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/crypto/cryptohash/Digest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/main/java/com/dogecoin/dogecoinj/protocols/payments/PaymentProtocolException.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/marshal/SerializerHelper.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/crypto/zksnark/BN128G1.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/vm/trace/OpActions.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/manager/AdminInfo.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/validators/AccountValidator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/samples/PriceFeedSample.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/validator/ProofOfWorkRuleTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/crypto/jce/ECAlgorithmParameters.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/util/BIUtil.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/server/PeerServer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/rlpx/EIP8DiscoveryTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/db/SlowHashMapDb.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/util/ALock.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/builder/BlockBuilder.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/util/RLPTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/core/TransactionExecutionSummary.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/shh/ShhMessageFactory.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/config/BlockchainNetConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/StateTestSuite.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/crypto/cryptohash/KeccakCore.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/config/net/ETCNetConfigTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/db/AbstractBlockstore.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/util/ValueTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/crypto/cryptohash/Keccak512.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/main/java/com/dogecoin/dogecoinj/protocols/payments/PaymentSession.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/model/PostDataTck.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/sync/ReceiptsDownloader.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/util/blockchain/LocalBlockchain.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/examples/src/main/java/com/dogecoin/dogecoinj/examples/PeerMonitor.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/test/java/org/bitcoinj/core/DogecoinBlockTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/util/blockchain/SolidityFunction.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/config/blockchain/AbstractDaoConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/vm/MessageCall.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/solidity/SolidityType.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/listener/EthereumListener.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-stratum/stratum-protocol/src/main/java/org/smartwallet/stratum/StratumClient.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/datasource/AbstractCachedSource.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/solidity/compiler/SourceArtifact.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/client/Capability.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/server/ChannelManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/.coveralls.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/SmartMultiWallet.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/crypto/ECIESTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/validator/DependentBlockHeaderRule.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/rlpx/discover/PeerConnectionTester.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/model/TransactionDataTck.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/rlpx/SanityLongRunTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/vm/program/invoke/ProgramInvokeFactory.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/shh/ShhStatusMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/db/ByteArrayWrapperTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/core/ImportLightTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/GeneralStateTestSuite.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/swarm/ChunkStore.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/jsonrpc/LogFilter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/swarm/bzz/BzzHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/resources/genesis/keys-addr.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/config/blockchain/DaoNoHFConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/java-smartcolors/core/src/main/java/org/smartcolors/marshal/SerializationException.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/mine/AnyFuture.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/resources/longrun/conf/ropsten-noprune.conf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/vm/LogInfo.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libdohj/core/src/test/java/org/bitcoinj/core/MerkleBranchTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/net/shh/WhisperMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/track-untrack-local.bat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/jsontestsuite/suite/TrieTestSuite.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/solidity/Abi.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/net/swarm/ManifestTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/main/java/org/ethereum/crypto/zksnark/Fp6.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ethereumj/ethereumj-core/src/test/java/org/ethereum/crypto/ECIESCoderTest.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/flowtree/node/Node.java" afterPath="$PROJECT_DIR$/src/io/flowtree/node/Node.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FlowTree.iml" afterPath="$PROJECT_DIR$/FlowTree.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/flowtree/node/NodeGroup.java" afterPath="$PROJECT_DIR$/src/io/flowtree/node/NodeGroup.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -16,58 +991,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="NodeProxy.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/io/flowtree/msg/NodeProxy.java">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2295">
-              <caret line="207" column="20" lean-forward="false" selection-start-line="207" selection-start-column="11" selection-end-line="207" selection-end-column="20" />
+            <state relative-caret-position="79">
+              <caret line="258" column="21" lean-forward="false" selection-start-line="258" selection-start-column="21" selection-end-line="258" selection-end-column="21" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NetworkClient.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/io/flowtree/ui/NetworkClient.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="74" column="17" lean-forward="false" selection-start-line="74" selection-start-column="17" selection-end-line="74" selection-end-column="17" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Connection.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/io/flowtree/msg/Connection.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="58" column="21" lean-forward="false" selection-start-line="58" selection-start-column="16" selection-end-line="58" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Node.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/io/flowtree/node/Node.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-10818">
-              <caret line="126" column="41" lean-forward="false" selection-start-line="126" selection-start-column="41" selection-end-line="126" selection-end-column="41" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NodeGroup.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/io/flowtree/node/NodeGroup.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="691" column="62" lean-forward="false" selection-start-line="691" selection-start-column="62" selection-end-line="691" selection-end-column="62" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -161,7 +1090,6 @@
         <option value="$PROJECT_DIR$/src/io/flowtree/node/NetworkClient.java" />
         <option value="$PROJECT_DIR$/src/io/flowtree/ui/NetworkDialog.java" />
         <option value="$PROJECT_DIR$/src/io/flowtree/aws/CognitoLogin.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/io/flowtree/node/Server.java" />
         <option value="$PROJECT_DIR$/src/io/flowtree/fs/OutputServer.java" />
         <option value="$PROJECT_DIR$/src/io/flowtree/node/Client.java" />
@@ -174,6 +1102,7 @@
         <option value="$PROJECT_DIR$/src/io/flowtree/aws/Encryptor.java" />
         <option value="$PROJECT_DIR$/src/io/flowtree/node/Node.java" />
         <option value="$PROJECT_DIR$/src/io/flowtree/node/NodeGroup.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -521,14 +1450,7 @@
       <workItem from="1521508783433" duration="134000" />
       <workItem from="1521511443408" duration="404000" />
       <workItem from="1522007905059" duration="1887000" />
-      <workItem from="1522356886317" duration="802000" />
-    </task>
-    <task id="LOCAL-00003" summary="Working Dockerfile for parallelize image.">
-      <created>1503715096121</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1503715096121</updated>
+      <workItem from="1522356886317" duration="3085000" />
     </task>
     <task id="LOCAL-00004" summary="Added some more dependencies to docker build.">
       <created>1503717212421</created>
@@ -866,11 +1788,18 @@
       <option name="project" value="LOCAL" />
       <updated>1521321383599</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Upgraded to match renamed Chart type.">
+      <created>1522379639255</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1522379639256</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="167979000" />
+    <option name="totallyTimeSpent" value="170262000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="6" />
@@ -915,7 +1844,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Working toward a functioning postgres install." />
     <MESSAGE value="Minor changes to build and deploy." />
     <MESSAGE value="Start activemq in init.py" />
     <MESSAGE value="Migrated flow tree executor plugin install to init.py." />
@@ -940,7 +1868,8 @@
     <MESSAGE value="Moved NetworkClient to FlowTreeCliServer." />
     <MESSAGE value="Terminal is on by default. OutputServer is off by default. When loading a local file into DistributedResource, peel off the path and replace it with &quot;/files/&quot;." />
     <MESSAGE value="Do not exit if there is no config file for FlowTreeCliServer. Do not prompt user on System.in for Encryptor." />
-    <option name="LAST_COMMIT_MESSAGE" value="Do not exit if there is no config file for FlowTreeCliServer. Do not prompt user on System.in for Encryptor." />
+    <MESSAGE value="Upgraded to match renamed Chart type." />
+    <option name="LAST_COMMIT_MESSAGE" value="Upgraded to match renamed Chart type." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1046,14 +1975,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="104" column="25" lean-forward="false" selection-start-line="104" selection-start-column="25" selection-end-line="104" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/io/flowtree/cli/FlowTreeCliServer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="370">
@@ -1087,6 +2008,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="771" column="51" lean-forward="false" selection-start-line="771" selection-start-column="51" selection-end-line="771" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1116,6 +2040,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="117" column="26" lean-forward="false" selection-start-line="117" selection-start-column="19" selection-end-line="117" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1180,7 +2105,7 @@
     <entry file="file://$PROJECT_DIR$/README.md" />
     <entry file="file://$PROJECT_DIR$/src/io/flowtree/msg/NodeProxy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2295">
+        <state relative-caret-position="0">
           <caret line="207" column="20" lean-forward="false" selection-start-line="207" selection-start-column="11" selection-end-line="207" selection-end-column="20" />
           <folding />
         </state>
@@ -1188,19 +2113,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/io/flowtree/ui/NetworkClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
+        <state relative-caret-position="133">
           <caret line="74" column="17" lean-forward="false" selection-start-line="74" selection-start-column="17" selection-end-line="74" selection-end-column="17" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/flowtree/msg/Connection.java">
+    <entry file="file://$PROJECT_DIR$/src/io/flowtree/node/NodeGroup.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="58" column="21" lean-forward="false" selection-start-line="58" selection-start-column="16" selection-end-line="58" selection-end-column="21" />
-          <folding />
+        <state relative-caret-position="302">
+          <caret line="700" column="38" lean-forward="true" selection-start-line="700" selection-start-column="38" selection-end-line="700" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1209,18 +2136,24 @@
         <state relative-caret-position="-10818">
           <caret line="126" column="41" lean-forward="false" selection-start-line="126" selection-start-column="41" selection-end-line="126" selection-end-column="41" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/flowtree/node/NodeGroup.java">
+    <entry file="file://$PROJECT_DIR$/src/io/flowtree/msg/Connection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="691" column="62" lean-forward="false" selection-start-line="691" selection-start-column="62" selection-end-line="691" selection-end-column="62" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="178">
+          <caret line="58" column="21" lean-forward="false" selection-start-line="58" selection-start-column="16" selection-end-line="58" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="79">
+          <caret line="258" column="21" lean-forward="false" selection-start-line="258" selection-start-column="21" selection-end-line="258" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>

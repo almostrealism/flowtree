@@ -17,11 +17,11 @@
       <sourceFolder url="file://$MODULE_DIR$/persistence" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/messaging" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ui" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ethereumj/ethereumj-core/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/java-smartcolors/core/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/java-stratum/stratum-protocol/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/java-stratum/stratum-tools/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/libdohj/core/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../cellspace/ethereumj/ethereumj-core/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../cellspace/java-smartcolors/core/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../cellspace/java-stratum/stratum-protocol/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../cellspace/java-stratum/stratum-tools/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../cellspace/libdohj/core/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
@@ -237,13 +237,5 @@
     <orderEntry type="library" name="Maven: net.sf.jopt-simple:jopt-simple:5.0.4" level="project" />
     <orderEntry type="library" name="Maven: org.jboss.aesh:aesh:0.66.19" level="project" />
     <orderEntry type="library" name="Maven: org.fusesource.jansi:jansi:1.16" level="project" />
-    <orderEntry type="library" name="Maven: org.bitcoinj:bitcoinj-core:0.14.5" level="project" />
-    <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:2.6.1" level="project" />
-    <orderEntry type="library" name="Maven: com.google.code.findbugs:jsr305:2.0.1" level="project" />
-    <orderEntry type="library" name="Maven: net.jcip:jcip-annotations:1.0" level="project" />
-    <orderEntry type="library" name="Maven: com.lambdaworks:scrypt:1.4.0" level="project" />
-    <orderEntry type="library" name="Maven: org.bitcoinj:orchid:1.2.1" level="project" />
-    <orderEntry type="library" name="Maven: com.squareup.okhttp:okhttp:2.7.2" level="project" />
-    <orderEntry type="library" name="Maven: com.squareup.okio:okio:1.6.0" level="project" />
   </component>
 </module>

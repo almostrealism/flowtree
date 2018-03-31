@@ -699,8 +699,8 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 		
 		if (super.getLog() != null && super.getLog().getLink() != null) {
 			String n = this.getName();
-			this.setName(n + "  Recieved task " + t);
-			this.displayMessage("Recieved task " + t, super.getLog().getLink() +
+			this.setName(n + "  Received task " + t);
+			this.displayMessage("Received task " + t, super.getLog().getLink() +
 								"NetworkRender-" + t.getTaskId() + ".jpg");
 			this.setName(n);
 		} else {

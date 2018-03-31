@@ -257,12 +257,6 @@
 			<artifactId>aesh</artifactId>
 			<version>0.66.19</version>
 		</dependency>
-
-		<dependency>
-			<groupId>org.bitcoinj</groupId>
-			<artifactId>bitcoinj-core</artifactId>
-			<version>0.14.5</version>
-		</dependency>
 	</dependencies>
 
 	<distributionManagement>
