@@ -39,16 +39,7 @@
 						</goals>
 						<configuration>
 							<sources>
-								<source>persistence</source>
-								<source>messaging</source>
 								<source>src</source>
-								<source>ui</source>
-								<source>libdohj/core/src/main/java</source>
-								<source>java-smartcolors/core/src/main/java</source>
-								<source>java-stratum/stratum-protocol/src/main/java</source>
-								<source>java-stratum/stratum-tools/src/main/java</source>
-								<source>ethereumj/ethereumj-core/src/main/java</source>
-								<source>ethereumj/ethereumj-core/src/main/java</source>
 							</sources>
 						</configuration>
 					</execution>

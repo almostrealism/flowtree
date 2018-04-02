@@ -38,6 +38,7 @@ import java.util.Properties;
 import javax.crypto.NoSuchPaddingException;
 import javax.swing.JLabel;
 
+import io.flowtree.fs.OutputServer;
 import org.almostrealism.io.RSSFeed;
 import org.almostrealism.util.Defaults;
 import org.almostrealism.util.Chart;
@@ -1379,7 +1380,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 				try {
 					Message response = new Message(Message.ResourceUri, -1, p);
 					
-					Server s = Client.getCurrentClient().getServer();
+					Server s = OutputServer.getCurrentServer().getNodeServer();
 					String r = s.getResourceUri(m.getData());
 					System.out.println("NodeGroup: Sending resource uri (" + r + ")");
 					response.setString(r);

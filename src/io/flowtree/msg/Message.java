@@ -217,6 +217,8 @@ public class Message implements Externalizable {
 				return l;
 			}
 		} else if (this.type == Message.ResourceRequest) {
+			System.out.println("Message: Sending resource request to " + this.proxy + " for " + this.data);
+
 			Message m = (Message) this.proxy.waitForMessage(Message.ResourceUri, null, 10000);
 			
 			if (m == null)

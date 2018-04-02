@@ -78,7 +78,7 @@ public class DistributedResource implements Resource {
 	}
 	
 	protected DistributedResource(String uri) {
-		this.uri = uri;
+		this.uri = processUri(uri);
 		this.size = -1;
 		this.loaded = null;
 		this.toa = null;
@@ -87,7 +87,7 @@ public class DistributedResource implements Resource {
 	}
 	
 	protected DistributedResource(String uri, Permissions permissions) {
-		this.uri = uri;
+		this.uri = processUri(uri);
 		this.size = -1;
 		this.loaded = null;
 		this.toa = null;
@@ -96,7 +96,7 @@ public class DistributedResource implements Resource {
 	}
 	
 	protected DistributedResource(String uri, Permissions permissions, long size) {
-		this.uri = uri;
+		this.uri = processUri(uri);
 		
 		this.tot = size;
 		this.size = (int) (size / this.chunkSize);
@@ -107,7 +107,7 @@ public class DistributedResource implements Resource {
 	}
 	
 	protected DistributedResource(Resource res) {
-		this.uri = res.getURI();
+		this.uri = processUri(res.getURI());
 		
 		Object o = res.getData();
 		if (o instanceof byte[][] == false)
@@ -128,6 +128,14 @@ public class DistributedResource implements Resource {
 		this.toa = new long[this.size];
 		this.toa[0] = System.currentTimeMillis();
 		for (int i = 1; i < this.toa.length; i++) this.toa[i] = this.toa[i - 1] + 2;
+	}
+
+	private String processUri(String uri) {
+		if (uri.startsWith("/")) {
+			uri = "resource://" + uri;
+		}
+
+		return uri;
 	}
 	
 	protected boolean isLoaded() {
