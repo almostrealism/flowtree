@@ -966,8 +966,10 @@ public class Server implements JobFactory, Runnable {
 	protected Resource loadResourceFromIO(Resource r, IOStreams io, boolean noCache) throws IOException {
 		if (io != null) {
 			r.load(io);
-		} else {
+		} else if (r.getURI() != null && !r.getURI().startsWith("resource:")) {
 			r.loadFromURI();
+		} else {
+			return DistributedResource.createDistributedResource(r.getURI());
 		}
 		
 		if (!noCache) synchronized (this.cache) {
