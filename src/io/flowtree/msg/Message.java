@@ -140,14 +140,10 @@ public class Message implements Externalizable {
 	 */
 	public int getReciever() { return this.reciever; }
 	
-	/**
-	 * @return  The integer type code for this message.
-	 */
+	/** @return  The integer type code for this message. */
 	public int getType() { return this.type; }
 	
-	/**
-	 * @return  The data stored by this message.
-	 */
+	/** @return  The data stored by this message. */
 	public String getData() { return this.data; }
 	
 	/**
