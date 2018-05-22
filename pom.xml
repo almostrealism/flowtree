@@ -58,6 +58,12 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>org.almostrealism</groupId>
+			<artifactId>FlowTreeAPI</artifactId>
+			<version>0.3-rc</version>
+		</dependency>
+
+		<dependency>
 			<groupId>io.almostrealism</groupId>
 			<artifactId>TreeView</artifactId>
 			<version>0.2-rc</version>

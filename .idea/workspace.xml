@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="905a9ace-0030-4c22-94cc-92d66d646224" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/io/flowtree/job/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/io/flowtree/job/Job.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/io/flowtree/job/HybridJobFactory.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/io/flowtree/job/JobFactory.java" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_almostrealism_FlowTreeAPI_0_3_rc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FlowTree.iml" afterPath="$PROJECT_DIR$/FlowTree.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,7 +16,18 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="157">
+              <caret line="62" column="24" lean-forward="false" selection-start-line="62" selection-start-column="24" selection-end-line="62" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -118,9 +127,9 @@
         <option value="$PROJECT_DIR$/src/io/flowtree/node/Server.java" />
         <option value="$PROJECT_DIR$/src/io/flowtree/msg/Message.java" />
         <option value="$PROJECT_DIR$/src/io/flowtree/fs/DistributedResource.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/io/flowtree/cli/InstallRepository.java" />
         <option value="$PROJECT_DIR$/src/io/flowtree/job/HybridJobFactory.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -491,14 +500,7 @@
       <workItem from="1522812068230" duration="1107000" />
       <workItem from="1523640253896" duration="351000" />
       <workItem from="1524170994660" duration="1090000" />
-      <workItem from="1526947700942" duration="187000" />
-    </task>
-    <task id="LOCAL-00006" summary="Setup plugin definition for flowtree_executor.">
-      <created>1503878617641</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1503878617641</updated>
+      <workItem from="1526947700942" duration="1387000" />
     </task>
     <task id="LOCAL-00007" summary="Working towards a docker image that can actually run the flow tree executor.">
       <created>1503894409445</created>
@@ -836,11 +838,18 @@
       <option name="project" value="LOCAL" />
       <updated>1522669274360</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="Migrated io.flowtree.job to FlowTreeAPI.">
+      <created>1526947931227</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1526947931229</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="177528000" />
+    <option name="totallyTimeSpent" value="178728000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="6" />
@@ -858,7 +867,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38514444" sideWeight="0.49841145" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27221325" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27221325" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -885,7 +894,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Migrated flow tree executor plugin install to init.py." />
     <MESSAGE value="More customization of flow tree plugin." />
     <MESSAGE value="Updated configuration to point at full path of FlowTreeExecutor." />
     <MESSAGE value="Minor changes." />
@@ -910,7 +918,8 @@
     <MESSAGE value="Upgraded to match renamed Chart type." />
     <MESSAGE value="Removed crypto libs." />
     <MESSAGE value="Fixed resource request system." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed resource request system." />
+    <MESSAGE value="Migrated io.flowtree.job to FlowTreeAPI." />
+    <option name="LAST_COMMIT_MESSAGE" value="Migrated io.flowtree.job to FlowTreeAPI." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1162,14 +1171,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="75" column="21" lean-forward="false" selection-start-line="75" selection-start-column="21" selection-end-line="75" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/io/flowtree/msg/NodeProxy.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1182,6 +1183,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="17" lean-forward="false" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="62" column="24" lean-forward="false" selection-start-line="62" selection-start-column="24" selection-end-line="62" selection-end-column="24" />
           <folding />
         </state>
       </provider>
