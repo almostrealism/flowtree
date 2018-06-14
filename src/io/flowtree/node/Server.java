@@ -53,6 +53,7 @@ import io.almostrealism.auth.Login;
 import io.flowtree.airflow.AirflowJobFactory;
 import io.flowtree.aws.CognitoLogin;
 import io.flowtree.aws.Encryptor;
+import io.flowtree.fs.OutputServer;
 import io.flowtree.www.TomcatNode;
 import org.almostrealism.color.RGB;
 import org.almostrealism.io.IOStreams;
@@ -593,7 +594,7 @@ public class Server implements JobFactory, Runnable {
 		this.thread.start();
 		if (this.rthread != null) this.rthread.start();
 		this.group.start();
-		this.startResourceDist();
+		this.startResourceDist(OutputServer.getCurrentServer());
 	}
 	
 	/**
@@ -1197,13 +1198,13 @@ public class Server implements JobFactory, Runnable {
 		return m;
 	}
 
-	public ResourceDistributionTask startResourceDist() {
-		return startResourceDist(10, 10000);
+	public ResourceDistributionTask startResourceDist(OutputServer server) {
+		return startResourceDist(server, 10, 10000);
 	}
 
-	public ResourceDistributionTask startResourceDist(int jobs, int jsleep) {
+	public ResourceDistributionTask startResourceDist(OutputServer server, int jobs, int jsleep) {
 		if (ResourceDistributionTask.getCurrentTask() != null) return ResourceDistributionTask.getCurrentTask();
-		ResourceDistributionTask rtask = new ResourceDistributionTask(jobs, jsleep);
+		ResourceDistributionTask rtask = new ResourceDistributionTask(server, jobs, jsleep);
 		addTask(rtask);
 		System.out.println("Server: Added task " + rtask);
 		return rtask;

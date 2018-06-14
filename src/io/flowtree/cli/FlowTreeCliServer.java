@@ -170,7 +170,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 		int port = Integer.parseInt(p.getProperty("server.terminal.port",
 					String.valueOf(FlowTreeCliServer.defaultPort)));
 		
-		if ("true".equals(p.getProperty("db.start", "false"))) {
+		if ("true".equals(p.getProperty("db.start", "true"))) {
 			try {
 				io.flowtree.fs.OutputServer s = new io.flowtree.fs.OutputServer(p);
 				System.out.println("DB Server started");
@@ -1311,26 +1311,6 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 				for(int i = 0; i < s.length; i++) r.append(s[i] + "\n");
 				
 				return r.toString();
-			} else if (c.startsWith("dres")) {
-				//TODO  Add this to the documentation!
-				
-				String s[] = FlowTreeCliServer.parseCommand(c);
-				
-				if (s.length <= 0) {
-					return "Usage: dres <command>";
-				} else if (s[0].equals("start")) {
-					int jobs = Integer.parseInt(s[1]);
-					int jsleep = Integer.parseInt(s[2]);
-					Client.getCurrentClient().getServer().startResourceDist(jobs, jsleep);
-					return "FlowTreeCliServer: Added " + ResourceDistributionTask.getCurrentTask();
-				} else if (s[0].equals("notify")) {
-					ResourceDistributionTask t = ResourceDistributionTask.getCurrentTask();
-					if (t == null) return "No running ResourceDistributionTask.";
-					int p = t.notifyPeers();
-					return "Notified peers of " + p + " resources.";
-				} else {
-					return "Unknown dRes command: " + s[0] + "\nTry start or notify.";
-				}
 			} else if (c.startsWith("dbs")) {
 				String s[] = FlowTreeCliServer.parseCommand(c);
 				

@@ -241,7 +241,7 @@ public class ResourceDistributionTask implements JobFactory, OutputHandler, Quer
 	private Hashtable items;
 	private OutputServer server;
 	
-	public ResourceDistributionTask(int jobs, int sleep) {
+	public ResourceDistributionTask(OutputServer server, int jobs, int sleep) {
 		ResourceDistributionTask.current = this;
 		
 		this.jobs = new HashSet();
@@ -249,7 +249,7 @@ public class ResourceDistributionTask implements JobFactory, OutputHandler, Quer
 		this.sleep = sleep;
 		
 		this.initDefaultResourceTypes();
-		this.initFiles();
+		this.initFiles(server);
 		this.initJobs(jobs);
 	}
 	
@@ -259,12 +259,12 @@ public class ResourceDistributionTask implements JobFactory, OutputHandler, Quer
 		System.out.println("ResourceDistributionTask: Added ConcatenatedResource type.");
 	}
 	
-	protected void initFiles() {
+	protected void initFiles(OutputServer server) {
 		Directory fdir = new Directory();
 		fdir.uri = "/files/";
 		this.items.put(fdir.uri, fdir);
 		
-		this.server = OutputServer.getCurrentServer();
+		this.server = server;
 		
 		System.out.println("ResourceDistributionTask: Loading file list from local DB.");
 		
