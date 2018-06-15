@@ -27,3 +27,5 @@ syntax: regexp
 .DS_Store
 syntax: regexp
 .icloud
+syntax: regexp
+.idea/workspace.xml
