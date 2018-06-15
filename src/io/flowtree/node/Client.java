@@ -31,6 +31,7 @@ import java.util.Properties;
 
 import javax.swing.JLabel;
 
+import io.flowtree.fs.OutputServer;
 import org.almostrealism.io.JobOutput;
 
 import io.flowtree.ui.LoginDialog;
@@ -124,6 +125,14 @@ public class Client {
 		
 		this.server = new Server(p, null);
 		this.setStatusLabel(status);
+
+		try {
+			OutputServer s = new OutputServer(p, server);
+			System.out.println("DB Server created");
+		} catch (IOException ioe) {
+			System.out.println("IO error starting DBS: " + ioe.getMessage());
+		}
+
 		this.server.start();
 		this.startTime = System.currentTimeMillis();
 	}

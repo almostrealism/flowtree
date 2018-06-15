@@ -48,8 +48,8 @@ public class TemporalJob implements Job {
 
 	@Override
 	public void run() {
-
-		temporal.tick();
+		for (int i = 0; i < iterations; i++)
+			temporal.tick();
 	}
 
 	@Override

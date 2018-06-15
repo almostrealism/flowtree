@@ -169,16 +169,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 		
 		int port = Integer.parseInt(p.getProperty("server.terminal.port",
 					String.valueOf(FlowTreeCliServer.defaultPort)));
-		
-		if ("true".equals(p.getProperty("db.start", "true"))) {
-			try {
-				io.flowtree.fs.OutputServer s = new io.flowtree.fs.OutputServer(p);
-				System.out.println("DB Server started");
-			} catch (IOException ioe) {
-				System.out.println("IO error starting DBS: " + ioe.getMessage());
-			}
-		}
-		
+
 		if (OutputServer.getCurrentServer() == null) {
 			System.out.println("Starting Server...");
 			
