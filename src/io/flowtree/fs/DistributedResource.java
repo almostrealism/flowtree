@@ -768,6 +768,21 @@ public class DistributedResource implements Resource {
 		if (verbose)
 			System.out.println("DistributedResource.send: Recieved end.");
 	}
+
+	public void cache() {
+		String origUri = this.uri;
+
+		if (this.uri.startsWith("http://")) {
+			this.uri = "/http/" + this.uri.substring(7);
+		} else if (this.uri.startsWith("/http/")) {
+			origUri = "http://" + this.uri.substring(6);
+		} else if (this.uri.startsWith("file:/")) {
+			origUri = this.uri;
+			this.uri = "/files/" + this.uri.substring(this.uri.lastIndexOf("/") + 1);
+		}
+
+		ResourceDistributionTask.getCurrentTask().put(this.uri, this);
+	}
 	
 	public void loadFromURI() throws IOException {
 		String origUri = this.uri;
@@ -811,6 +826,10 @@ public class DistributedResource implements Resource {
 	
 	public static DistributedResource createDistributedResource(String uri, int size) {
 		return getResource(new DistributedResource(uri, new Permissions(), size));
+	}
+
+	public static DistributedResource createDistributedResource(Resource r) {
+		return getResource(new DistributedResource(r));
 	}
 	
 	private static DistributedResource getResource(DistributedResource res) {

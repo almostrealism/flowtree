@@ -587,7 +587,7 @@ public class Server implements JobFactory, Runnable {
 	
 	/**
 	 * Starts the thread that awaits and accepts connections and
-	 * calls start on the underlying NodeGroup instance.
+	 * calls start on the underlying {@link NodeGroup} instance.
 	 */
 	public void start() {
 		this.stop = false;
@@ -599,7 +599,7 @@ public class Server implements JobFactory, Runnable {
 	
 	/**
 	 * Stops the thread that awaits and accepts connections and
-	 * calls stop on the underlying NodeGroup instance.
+	 * calls stop on the underlying {@link NodeGroup} instance.
 	 */
 	public void stop() {
 		this.stop = true;
