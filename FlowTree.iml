@@ -4,30 +4,16 @@
     <facet type="Spring" name="Spring">
       <configuration />
     </facet>
-    <facet type="Python" name="Python">
-      <configuration sdkName="" />
-    </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/resources" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/persistence" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/messaging" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ui" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../cellspace/ethereumj/ethereumj-core/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../cellspace/java-smartcolors/core/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../cellspace/java-stratum/stratum-protocol/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../cellspace/java-stratum/stratum-tools/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../cellspace/libdohj/core/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="jetty-all-9.4.6.v20170531-uber" level="project" />
     <orderEntry type="library" name="Maven: org.almostrealism:FlowTreeAPI:0.3-rc" level="project" />
     <orderEntry type="library" name="Maven: io.almostrealism:TreeView:0.2-rc" level="project" />
     <orderEntry type="library" name="Maven: io.almostrealism:GraphPersist:0.2-rc" level="project" />

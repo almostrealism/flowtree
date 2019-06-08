@@ -48,6 +48,7 @@ import io.flowtree.job.JobFactory;
  * 
  * @author  Michael Murray
  */
+// TODO  Implement JobQueue
 public class Node implements Runnable {
 	protected static NumberFormat pFormat = NumberFormat.getPercentInstance();
 	protected static NumberFormat dFormat = new DecimalFormat("#.000");

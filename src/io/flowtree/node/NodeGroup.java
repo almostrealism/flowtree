@@ -210,8 +210,8 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 		this.thread.start();
 		
 		synchronized (this.nodes) {
-			Iterator itr = this.nodes.iterator();
-			while (itr.hasNext()) ((Node)itr.next()).start();
+			Iterator<Node> itr = this.nodes.iterator();
+			while (itr.hasNext()) itr.next().start();
 		}
 		
 		return this;
@@ -352,7 +352,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	/**
 	 * @return  The set of Node objects stored by this NodeGroup object.
 	 */
-	public Node[] getNodes() { return (Node[])this.nodes.toArray(new Node[0]); }
+	public Node[] getNodes() { return this.nodes.toArray(new Node[0]); }
 	
 	protected Collection<Node> nodes() { return nodes; }
 	
@@ -422,7 +422,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 		}
 		
 		if (l.size() > 0)
-			return (Node) l.get(Defaults.random.nextInt(l.size()));
+			return l.get(Defaults.random.nextInt(l.size()));
 		else
 			return null;
 	}
@@ -926,6 +926,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	/**
 	 * @return  The value of this.getAverageActivityRating.
 	 */
+	@Override
 	public double getActivityRating() { return this.getAverageActivityRating(); }
 	
 	public double getAverageActivityRating() {

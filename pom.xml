@@ -5,7 +5,7 @@
 
 	<groupId>org.almostrealism</groupId>
 	<artifactId>FlowTree</artifactId>
-	<version>0.5-rc</version>
+	<version>0.5</version>
 
 
 	<properties>
