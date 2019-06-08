@@ -37,7 +37,7 @@
     <orderEntry type="library" name="Maven: org.glassfish.pfl:pfl-tf-tools:1.0.0-b001" level="project" />
     <orderEntry type="library" name="Maven: org.glassfish.pfl:pfl-basic-tools:1.0.0-b001" level="project" />
     <orderEntry type="library" name="Maven: com.jcraft:jsch:0.1.53" level="project" />
-    <orderEntry type="library" name="Maven: org.almostrealism:Common:0.6-rc" level="project" />
+    <orderEntry type="module" module-name="Common" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.8.3" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.8.0" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.8.3" level="project" />
