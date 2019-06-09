@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Michael Murray
+ * Copyright 2019 Michael Murray
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,6 +30,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 public class AirflowJobFactory extends AbstractHandler implements JobFactory {
 	private static AirflowJobFactory defaultFactory;
@@ -41,6 +42,8 @@ public class AirflowJobFactory extends AbstractHandler implements JobFactory {
 	private long nextId;
 
 	private List jobs;
+
+	private CompletableFuture<Void> future;
 
 	/**
 	 * Constructs a new AirflowJobFactory object and starts the {@link org.eclipse.jetty.util.Jetty} server.
@@ -145,6 +148,9 @@ public class AirflowJobFactory extends AbstractHandler implements JobFactory {
 	public void setPriority(double p) { this.pri = p; }
 
 	public double getPriority() { return this.pri; }
+
+	@Override
+	public CompletableFuture<Void> getCompletableFuture() { return future; }
 
 	public String toString() {
 		return "AirflowJobFactory: " + this.taskId;

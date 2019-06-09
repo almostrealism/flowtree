@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Michael Murray
+ * Copyright 2019 Michael Murray
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,6 +31,7 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 
 import io.flowtree.node.Server;
 import io.flowtree.node.Server.ResourceProvider;
@@ -240,6 +241,8 @@ public class ResourceDistributionTask implements JobFactory, OutputHandler, Quer
 	
 	private Hashtable items;
 	private OutputServer server;
+
+	private CompletableFuture<Void> future;
 	
 	public ResourceDistributionTask(OutputServer server, int jobs, int sleep) {
 		ResourceDistributionTask.current = this;
@@ -614,6 +617,10 @@ public class ResourceDistributionTask implements JobFactory, OutputHandler, Quer
 	
 	public void setPriority(double p) { }
 	public double getPriority() { return 1.0; }
+
+	@Override
+	public CompletableFuture<Void> getCompletableFuture() { return future; }
+
 	public double getCompleteness() { return 0; }
 	public boolean isComplete() { return false; }
 	

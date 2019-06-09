@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Michael Murray
+ * Copyright 2019 Michael Murray
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,6 +43,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 
 import javax.swing.JLabel;
 
@@ -220,6 +221,8 @@ public class Server implements JobFactory, Runnable {
 	private NodeGroup group;
 	private ServerSocket socket;
 	private ResourceServer rserver;
+
+	private CompletableFuture<Void> future;
 	
 	private String hostname;
 	
@@ -1304,7 +1307,10 @@ public class Server implements JobFactory, Runnable {
 	
 	public void setPriority(double p) { this.p = p; }
 	public double getPriority() { return this.p; }
-	
+
+	@Override
+	public CompletableFuture<Void> getCompletableFuture() { return future; }
+
 	/**
 	 * Does nothing.
 	 */
