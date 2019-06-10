@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Michael Murray
+ * Copyright 2019 Michael Murray
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,9 +19,12 @@ package io.flowtree.jobs;
 import io.flowtree.job.Job;
 import org.almostrealism.time.Temporal;
 
+import java.util.concurrent.CompletableFuture;
+
 public class TemporalJob implements Job {
 	private Temporal temporal;
 	private int iterations;
+	private CompletableFuture<Void> future = new CompletableFuture<>();
 
 	public TemporalJob() { }
 
@@ -47,9 +50,14 @@ public class TemporalJob implements Job {
 	}
 
 	@Override
+	public CompletableFuture<Void> getCompletableFuture() { return future; }
+
+	@Override
 	public void run() {
 		for (int i = 0; i < iterations; i++)
 			temporal.tick();
+
+		future.complete(null);
 	}
 
 	@Override

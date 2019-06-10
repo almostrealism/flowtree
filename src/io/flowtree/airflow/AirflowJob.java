@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Michael Murray
+ * Copyright 2019 Michael Murray
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,16 +17,19 @@
 package io.flowtree.airflow;
 
 import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
 
 import io.flowtree.job.Job;
 
 public class AirflowJob implements Job {
 	private long taskId;
 	private String command;
+	private CompletableFuture<Void> future;
 
 	public AirflowJob(long taskId, String command) {
 		this.taskId = taskId;
 		this.command = command;
+		this.future = new CompletableFuture<>();
 		System.out.println("Constructing " + getTaskString());
 	}
 
@@ -35,6 +38,9 @@ public class AirflowJob implements Job {
 
 	@Override
 	public String getTaskString() { return command; }
+
+	@Override
+	public CompletableFuture<Void> getCompletableFuture() { return future; }
 
 	@Override
 	public String encode() {
@@ -65,8 +71,10 @@ public class AirflowJob implements Job {
 		try {
 			System.out.println("Running " + command);
 			r.exec(command);
+			future.complete(null);
 		} catch (IOException e) {
 			e.printStackTrace();
+			future.completeExceptionally(e);
 		}
 	}
 

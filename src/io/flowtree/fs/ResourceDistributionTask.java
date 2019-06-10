@@ -33,6 +33,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
+import io.flowtree.job.AbstractJobFactory;
 import io.flowtree.node.Server;
 import io.flowtree.node.Server.ResourceProvider;
 import org.almostrealism.graph.Graph;
@@ -67,7 +68,7 @@ import io.flowtree.job.JobFactory;
  * 
  * @author  Michael Murray
  */
-public class ResourceDistributionTask implements JobFactory, OutputHandler, QueryHandler,
+public class ResourceDistributionTask extends AbstractJobFactory implements OutputHandler, QueryHandler,
 													NodeProxy.EventListener, Server.ResourceProvider,
 													Graph<Resource> {
 	public static boolean verbose = false;
@@ -152,6 +153,8 @@ public class ResourceDistributionTask implements JobFactory, OutputHandler, Quer
 		
 		private String uri, data;
 		private int index;
+
+		private CompletableFuture<Void> future = new CompletableFuture<>();
 		
 		private ResourceDistributionTask task;
 		
@@ -215,7 +218,11 @@ public class ResourceDistributionTask implements JobFactory, OutputHandler, Quer
 		
 		public long getTaskId() { return this.id; }
 		public String getTaskString() { return "ResourceDistributionTask (" + this.id + ")"; }
-		
+
+		/** Since this is a reusable Job, it is never marked complete. */
+		@Override
+		public CompletableFuture<Void> getCompletableFuture() { return future; }
+
 		/**
 		 * Sleeps for a set amount of time and then marks this ResourceDistributionJob
 		 * as ready to be reused.
