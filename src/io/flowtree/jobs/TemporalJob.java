@@ -25,8 +25,13 @@ public class TemporalJob implements Job {
 	private Temporal temporal;
 	private int iterations;
 	private CompletableFuture<Void> future = new CompletableFuture<>();
+	private boolean stopped;
 
 	public TemporalJob() { }
+
+	public TemporalJob(Temporal t) {
+		this(t, 0);
+	}
 
 	public TemporalJob(Temporal t, int iterations) {
 		setTemporal(t);
@@ -54,8 +59,19 @@ public class TemporalJob implements Job {
 
 	@Override
 	public void run() {
-		for (int i = 0; i < iterations; i++)
+		int index = 0;
+
+		while (!stopped) {
+			if (iterations > 0) {
+				index++;
+
+				if (index >= iterations) {
+					stopped = true;
+				}
+			}
+
 			temporal.tick();
+		}
 
 		future.complete(null);
 	}
@@ -66,7 +82,7 @@ public class TemporalJob implements Job {
 	}
 
 	@Override
-	public void set(String s, String s1) {
+	public void set(String k, String v) {
 
 	}
 }
