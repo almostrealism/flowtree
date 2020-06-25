@@ -4,6 +4,8 @@ image: maven:3.3.3
 pipelines:
   default:
     - step:
+        caches:
+          - maven
         script:
           # Maven details
           - mvn --version
