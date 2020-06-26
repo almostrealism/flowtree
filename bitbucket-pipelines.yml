@@ -10,17 +10,17 @@ pipelines:
           # Maven details
           - mvn --version
 
-          - rm /usr/share/maven/conf/settings.xml
-          - cp ./settings.xml /usr/share/maven/conf/settings.xml
+          # - rm /usr/share/maven/conf/settings.xml
+          # - cp ./settings.xml /usr/share/maven/conf/settings.xml
 
           # FlowTree Dependencies
           # - mvn dependency:copy-dependencies
           
           # Install FlowTree
-          - mvn install
+          - mvn -B install
 
           # Deploy to repository
-          - mvn deploy
+          - mvn -B deploy
 
           # Deploy to downloads
           - curl -X POST "https://${BB_AUTH_STRING}@api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads" --form files=@"target/FlowTree-0.1-rc.jar"
