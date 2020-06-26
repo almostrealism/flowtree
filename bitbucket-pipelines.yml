@@ -9,9 +9,8 @@ pipelines:
         script:
           # Maven details
           - mvn --version
-
-          # - rm /usr/share/maven/conf/settings.xml
-          # - cp ./settings.xml /usr/share/maven/conf/settings.xml
+          - rm /usr/share/maven/conf/settings.xml
+          - cp ./settings.xml /usr/share/maven/conf/settings.xml
 
           # FlowTree Dependencies
           # - mvn dependency:copy-dependencies
