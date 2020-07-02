@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Michael Murray
+ * Copyright 2020 Michael Murray
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,9 +28,13 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
 
 import javax.swing.JLabel;
 
+import io.flowtree.fs.OutputServer;
 import org.almostrealism.io.RSSFeed;
 import org.almostrealism.util.Chart;
 
@@ -49,9 +53,9 @@ import io.flowtree.job.JobFactory;
  * @author  Michael Murray
  */
 // TODO  Implement JobQueue
-public class Node implements Runnable {
-	protected static NumberFormat pFormat = NumberFormat.getPercentInstance();
-	protected static NumberFormat dFormat = new DecimalFormat("#.000");
+public class Node implements Runnable, ThreadFactory {
+	protected NumberFormat pFormat = NumberFormat.getPercentInstance();
+	protected NumberFormat dFormat = new DecimalFormat("#.000");
 	protected boolean verboseNews = true;
 	protected boolean verbose = false;
 	protected boolean weightPeers = false;
@@ -80,7 +84,8 @@ public class Node implements Runnable {
 	private int maxFailedJobs;
 	private double relay, connect;
 	private Set peers;
-	protected List jobs, listeners;
+	protected List<Job> jobs;
+	protected List listeners;
 	protected List failedJobs;
 	
 	private boolean stop, working;
@@ -93,8 +98,10 @@ public class Node implements Runnable {
 	protected int sleepDiv, totalSleepDiv;
 	private long totalWorkTime, totalComTime;
 	private int totalJobs, totalErrJobs, totalRelay;
-	
+
+	private int threadCount;
 	private Thread nodeThread, worker;
+	private ExecutorService pool;
 	private Job currentJob;
 	
 	private JLabel label;
@@ -135,8 +142,7 @@ public class Node implements Runnable {
 		this.nodeThread = new Thread(g, this, "Node " + this.id + " Activity Thread");
 		this.nodeThread.setPriority(Server.MODERATE_PRIORITY);
 		
-		this.worker = new Thread(new Runnable() {
-			public void run() {
+		this.worker = new Thread(() -> {
 				while (true) {
 					Job j = Node.this.nextJob();
 					Node.this.currentJob = j;
@@ -154,6 +160,7 @@ public class Node implements Runnable {
 						boolean complete = false;
 						
 						try {
+							j.setExecutorService(pool);
 							j.run();
 							complete = true;
 						} catch (Exception e) {
@@ -162,6 +169,8 @@ public class Node implements Runnable {
 															+ e.getMessage());
 							else
 								Node.this.displayMessage("Exception while working -- ");
+
+							e.printStackTrace();
 							
 							if (e instanceof NullPointerException) e.printStackTrace();
 							Node.this.totalErrJobs++;
@@ -198,10 +207,11 @@ public class Node implements Runnable {
 						}
 					}
 				}
-			}
 		}, "Node " + this.id + " Worker Thread");
 		this.worker.setPriority(Server.HIGH_PRIORITY);
 		this.worker.setDaemon(true);
+
+		this.pool = Executors.newFixedThreadPool(1, this);
 		
 		this.setSleep((int)(1.5 * this.minSleep));
 		this.setRelayProbability(1.0);
@@ -469,7 +479,15 @@ public class Node implements Runnable {
 	 * @return  The RSSFeed object stored by this node for logging.
 	 */
 	public RSSFeed getLog() { return this.log; }
-	
+
+	/**
+	 * @return  A named thread for parallelizing work by {@link Job}s of this {@link Node}.
+	 */
+	@Override
+	public Thread newThread(Runnable r) {
+		return new Thread(r, getName() + " Parallelism Thread " + (threadCount++));
+	}
+
 	/**
 	 * @return  True if this node is currently working on a job, false otherwise.
 	 */
@@ -544,25 +562,30 @@ public class Node implements Runnable {
 	public Job nextJob() {
 		synchronized (this.jobs) {
 			if (this.jobs.size() > 0)
-				return (Job) this.jobs.remove(0);
+				return prepareJob(this.jobs.remove(0));
 		}
 		
 		if (this.failedJobs == null) return null;
 		
 		synchronized (this.failedJobs) {
 			if (this.failedJobs.size() > 0)
-				return Server.instantiateJobClass((String) this.failedJobs.remove(0));
+				return prepareJob(Server.instantiateJobClass((String) this.failedJobs.remove(0)));
 		}
 		
 		return null;
 	}
+
+	private Job prepareJob(Job j) {
+		j.setOutputConsumer(OutputServer.getCurrentServer());
+		return j;
+	}
 	
 	public Job getCurrentJob() { return this.currentJob; }
 	
-	public void sendKill(long task, int relay) {
+	public void sendKill(String task, int relay) {
 		synchronized (this.jobs) {
 			Iterator itr = this.jobs.iterator();
-			while (itr.hasNext()) if (((Job)itr.next()).getTaskId() == task) itr.remove();
+			while (itr.hasNext()) if (((Job)itr.next()).getTaskId().equals(task)) itr.remove();
 		}
 		
 		Connection p[] = this.getPeers();
@@ -801,7 +824,7 @@ public class Node implements Runnable {
 		buf.append("Worked for " + Node.formatTime(this.totalWorkTime));
 		if (workP > 0.0) {
 			buf.append(" (");
-			buf.append(Node.pFormat.format(workP));
+			buf.append(pFormat.format(workP));
 			buf.append(")");
 		}
 		buf.append(" and completed " + this.totalJobs + " jobs");
@@ -818,7 +841,7 @@ public class Node implements Runnable {
 		buf.append("Communicated for " + Node.formatTime(this.totalComTime));
 		if (comP > 0.0) {
 			buf.append(" (");
-			buf.append(Node.pFormat.format(comP));
+			buf.append(pFormat.format(comP));
 			buf.append(")");
 		}
 		buf.append(" and relayed " + this.totalRelay + " jobs.");

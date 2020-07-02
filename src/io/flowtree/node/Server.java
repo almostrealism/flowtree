@@ -58,6 +58,7 @@ import io.flowtree.fs.OutputServer;
 import io.flowtree.www.TomcatNode;
 import org.almostrealism.color.RGB;
 import org.almostrealism.io.IOStreams;
+import org.almostrealism.io.OutputHandler;
 import org.almostrealism.io.Permissions;
 import org.almostrealism.io.Resource;
 import org.almostrealism.texture.GraphicsConverter;
@@ -115,7 +116,8 @@ public class Server implements JobFactory, Runnable {
 		}
 		
 		public void addProvider(ResourceProvider p) { providers.add(p); }
-		
+
+		@Override
 		public void run() {
 			System.out.println("ResourceServer: Awaiting connections.");
 			
@@ -310,7 +312,9 @@ public class Server implements JobFactory, Runnable {
 			this.group = new NodeGroup(p, j);
 		}
 
-		this.group.nodes().add(new TomcatNode(group, nodes().size()));
+		if (p.getProperty("nodes.tomcat.enabled", "false").equalsIgnoreCase("true")) {
+			this.group.nodes().add(new TomcatNode(group, nodes().size()));
+		}
 		
 		int port = Integer.parseInt(p.getProperty("server.port",
 					String.valueOf(Server.defaultPort)));
@@ -597,7 +601,10 @@ public class Server implements JobFactory, Runnable {
 		this.thread.start();
 		if (this.rthread != null) this.rthread.start();
 		this.group.start();
-		this.startResourceDist(OutputServer.getCurrentServer());
+
+		if (OutputServer.getCurrentServer() != null) {
+			this.startResourceDist(OutputServer.getCurrentServer());
+		}
 	}
 	
 	/**
@@ -718,8 +725,9 @@ public class Server implements JobFactory, Runnable {
 	}
 	
 	/**
-	 * Sends an encoded JobFactory instance to a server that this Server object
-	 * is connected to.
+	 * Sends an encoded {@link JobFactory} instance to a server that this Server object
+	 * is connected to and adds its {@link OutputHandler}, if there is one, to the
+	 * {@link OutputServer}.
 	 * 
 	 * @param f  JobFactory to transmit.
 	 * @param server  Server index.
@@ -730,17 +738,22 @@ public class Server implements JobFactory, Runnable {
 		} else {
 			this.group.sendTask(f, server);
 		}
+
+		OutputHandler h = f.getOutputHandler();
+		if (h != null) {
+			OutputServer.getCurrentServer().addOutputHandler(h);
+		}
 	}
 	
 	/**
 	 * Sends a kill signal to all servers connected to this one. Each server
-	 * that recieves a kill signal will remove any tasks or jobs that have
+	 * that receives a kill signal will remove any tasks or jobs that have
 	 * the specified task id.
 	 * 
 	 * @param task  Task id to kill.
 	 * @param relay  Relay count (depth in network).
 	 */
-	public void sendKill(long task, int relay) { this.group.sendKill(task, relay); }
+	public void sendKill(String task, int relay) { this.group.sendKill(task, relay); }
 	
 	/**
 	 * Queries each node of the node group for the current job being processed.
@@ -756,7 +769,7 @@ public class Server implements JobFactory, Runnable {
 	 * 
 	 * @param peer  The index of the peer to query.
 	 * @return  The servers that the specified peer is connected to (not including this one).
-	 * @throws IOException  If an IOException is thrown while sending the query.
+	 * @throws IOException  If an {@link IOException} is thrown while sending the query.
 	 */
 	public String[] getPeerList(int peer) throws IOException {
 		Message m = new Message(Message.ServerStatusQuery, -2,
@@ -1146,6 +1159,14 @@ public class Server implements JobFactory, Runnable {
 			return this.rserver.getUri(uri);
 	}
 	
+	public Message executeQuery(Query q) throws IOException {
+		return executeQuery(q, NodeProxy.queryTimeout);
+	}
+	
+	public Message executeQuery(Query q, long timeout) throws IOException {
+		return executeQuery(q, null, timeout);
+	}
+	
 	public Message executeQuery(Query q, NodeProxy p, long timeout) throws IOException {
 		io.flowtree.fs.OutputServer dbs = io.flowtree.fs.OutputServer.getCurrentServer();
 		
@@ -1158,7 +1179,7 @@ public class Server implements JobFactory, Runnable {
 			Hashtable h = dbs.getDatabaseConnection().executeQuery(q);
 			
 			if (Message.verbose)
-				System.out.println("Server: Recieved " + h.size() +
+				System.out.println("Server: Received " + h.size() +
 									" elements from query.");
 			
 			result.append(Query.toString(h));
@@ -1186,7 +1207,7 @@ public class Server implements JobFactory, Runnable {
 				Message m = (Message) peers[i].waitForMessage(Message.StringMessage, null, timeout);
 				
 				if (Message.verbose)
-					System.out.println("Server: Recieved " + m + " after waiting " +
+					System.out.println("Server: Received " + m + " after waiting " +
 										timeout + " msecs.");
 				
 				if (m != null && m.getData() != null && m.getData().length() > 0) {
@@ -1245,8 +1266,8 @@ public class Server implements JobFactory, Runnable {
 	/** @return  "Server". */
 	public String getName() { return "Server"; }
 	
-	/** @return  -1. */
-	public long getTaskId() { return -1; }
+	/** @return  null. */
+	public String getTaskId() { return null; }
 	
 	/** @return  The class name for this class. */
 	public String encode() { return this.getClass().getName(); }

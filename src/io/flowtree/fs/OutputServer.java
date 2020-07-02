@@ -26,6 +26,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Hashtable;
 import java.util.Properties;
+import java.util.function.Consumer;
 
 import io.flowtree.node.Client;
 import org.almostrealism.io.JobOutput;
@@ -39,7 +40,9 @@ import io.almostrealism.db.QueryHandler;
 /**
  * @author  Michael Murray
  */
-public class OutputServer implements Runnable {
+public class OutputServer implements Runnable, Consumer<JobOutput> {
+	private static String outputTable;
+
 	private static OutputServer current;
 
 	private io.flowtree.node.Server nodeServer;
@@ -69,7 +72,7 @@ public class OutputServer implements Runnable {
 	public void init(Properties p, io.flowtree.node.Server s) throws IOException {
 		this.nodeServer = s;
 
-		String output = p.getProperty("db.tables.output", "output");
+		outputTable = p.getProperty("db.tables.output", "output");
 		String driver = p.getProperty("db.driver");
 		String dburi = p.getProperty("db.uri");
 		String dbuser = p.getProperty("db.user", "rings");
@@ -100,7 +103,7 @@ public class OutputServer implements Runnable {
 		this.testMode = (Boolean.valueOf(p.getProperty("db.test", "false"))).booleanValue();
 		
 		this.db = new DatabaseConnection(driver, dburi, dbuser,
-											dbpasswd, output, !this.testMode);
+											dbpasswd, outputTable, !this.testMode);
 		
 		if (driver != null && this.testMode)
 			this.db.loadDriver(driver, dburi, dbuser, dbpasswd);
@@ -131,6 +134,8 @@ public class OutputServer implements Runnable {
 		
 		ThreadGroup g = null;
 		if (nodeServer != null) g = nodeServer.getThreadGroup();
+
+		// TODO This needs to be a pool of many threads
 		Thread t = new Thread(g, this);
 		t.setName("DB Server Thread");
 		t.setPriority(io.flowtree.node.Server.HIGH_PRIORITY);
@@ -146,10 +151,18 @@ public class OutputServer implements Runnable {
 	
 	public static OutputServer getCurrentServer() { return OutputServer.current; }
 
+	public static String getOutputTable() { return outputTable; }
+
 	public io.flowtree.node.Server getNodeServer() { return this.nodeServer; }
-	
+
+	public void addOutputHandler(OutputHandler handler) {
+		this.db.addOutputHandler(handler);
+	}
+
+	@Deprecated
 	public void storeOutput() { this.db.storeOutput(); }
-	
+
+	@Deprecated
 	public void storeOutput(Hashtable h) { this.db.storeOutput(h); }
 	
 	public boolean removeHandler(OutputHandler handler) {
@@ -167,7 +180,13 @@ public class OutputServer implements Runnable {
 	public double getTotalAverageThroughput() { return this.db.getTotalAverageThroughput(); }
 	
 	public double getThroughput() { return this.db.getThroughput(); } 
-	
+
+	@Override
+	public void accept(JobOutput output) {
+		this.db.storeOutput(output, false);
+	}
+
+	@Override
 	public void run() {
 		while (true) {
 			boolean done = false;
@@ -182,7 +201,7 @@ public class OutputServer implements Runnable {
 				if (o instanceof Externalizable)
 					((Externalizable)o).readExternal(in);
 				else
-					System.out.println("DBS: Recieved class that is not externalizable.");
+					System.out.println("DBS: Received class that is not externalizable.");
 				
 //				Object o = in.readObject();
 				
@@ -201,7 +220,7 @@ public class OutputServer implements Runnable {
 			} catch (EOFException eof) {
 				if (!done) System.out.println("DB Server: EOF Error (" + eof.getMessage() + ")");
 			} catch (ClassNotFoundException cnf) {
-				System.out.println("DB Server: Recieved an unknown class type.");
+				System.out.println("DB Server: Received an unknown class type.");
 			} catch (IOException ioe) {
 				if (!done) {
 					System.out.println("DB Server: IO Error (" + ioe.getMessage() + ")");

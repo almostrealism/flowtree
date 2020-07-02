@@ -22,11 +22,11 @@ import java.util.concurrent.CompletableFuture;
 import io.flowtree.job.Job;
 
 public class AirflowJob implements Job {
-	private long taskId;
+	private String taskId;
 	private String command;
 	private CompletableFuture<Void> future;
 
-	public AirflowJob(long taskId, String command) {
+	public AirflowJob(String taskId, String command) {
 		this.taskId = taskId;
 		this.command = command;
 		this.future = new CompletableFuture<>();
@@ -34,7 +34,7 @@ public class AirflowJob implements Job {
 	}
 
 	@Override
-	public long getTaskId() { return taskId; }
+	public String getTaskId() { return taskId; }
 
 	@Override
 	public String getTaskString() { return command; }
@@ -58,7 +58,7 @@ public class AirflowJob implements Job {
 	@Override
 	public void set(String key, String value) {
 		if (key.equals("id")) {
-			this.taskId = Long.parseLong(value);
+			this.taskId = value;
 		} else if (key.equals("cmd")) {
 			this.command = value;
 		}

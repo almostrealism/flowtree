@@ -45,8 +45,8 @@ public class TemporalJob implements Job {
 	protected void setIterations(int iterations) { this.iterations = iterations; }
 
 	@Override
-	public long getTaskId() {
-		return 0;
+	public String getTaskId() {
+		return "";
 	}
 
 	@Override

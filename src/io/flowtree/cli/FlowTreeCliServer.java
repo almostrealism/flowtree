@@ -830,7 +830,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 				index = s.indexOf(" ");
 				s = s.substring(index + 1);
 				index = s.indexOf(" ");
-				long task = Long.parseLong(s.substring(0, index));
+				String task = s.substring(0, index);
 				
 				index = s.indexOf(" ");
 				int relay = Integer.parseInt(s.substring(index + 1));
