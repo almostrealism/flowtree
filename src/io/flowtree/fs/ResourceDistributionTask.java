@@ -147,7 +147,7 @@ public class ResourceDistributionTask extends AbstractJobFactory implements Outp
 	}
 	
 	protected static class ResourceDistributionJob implements Job {
-		private long id;
+		private String id;
 		private int sleep;
 		private boolean use;
 		
@@ -176,6 +176,7 @@ public class ResourceDistributionTask extends AbstractJobFactory implements Outp
 		 * with the value String containing the piece of data, the data will be
 		 * sent to the output server specified by the remote Server.
 		 */
+		@Override
 		public String encode() {
 			if (this.task == null) return null;
 			
@@ -198,7 +199,8 @@ public class ResourceDistributionTask extends AbstractJobFactory implements Outp
 			
 			return b.toString();
 		}
-		
+
+		@Override
 		public void set(String key, String value) {
 			if (key.equals("uri")) {
 				this.uri = value;
@@ -216,7 +218,7 @@ public class ResourceDistributionTask extends AbstractJobFactory implements Outp
 			}
 		}
 		
-		public long getTaskId() { return this.id; }
+		public String getTaskId() { return this.id; }
 		public String getTaskString() { return "ResourceDistributionTask (" + this.id + ")"; }
 
 		/** Since this is a reusable Job, it is never marked complete. */
@@ -238,7 +240,7 @@ public class ResourceDistributionTask extends AbstractJobFactory implements Outp
 		}
 	}
 	
-	private long id;
+	private String id;
 	private Set jobs;
 	private int sleep;
 	
@@ -284,7 +286,13 @@ public class ResourceDistributionTask extends AbstractJobFactory implements Outp
 		q.setColumn(0, db.uriColumn);
 		q.setColumn(1, null);
 		q.setResultHandler(new ResultHandler() {
+			@Override
 			public void handleResult(String key, String value) {
+				if (value == null) {
+					System.out.println("WARN: Null value for key " + key);
+					return;
+				}
+
 				if (!ResourceDistributionTask.this.items.containsKey(value)) {
 					DistributedResource res = DistributedResource.createDistributedResource(value);
 					ResourceDistributionTask.this.items.put(value, res);
@@ -294,9 +302,10 @@ public class ResourceDistributionTask extends AbstractJobFactory implements Outp
 											" from local DB.");
 				}
 			}
-			
+
+			@Override
 			public void handleResult(String key, byte value[]) {
-					System.out.println("ResourceDistributionTask: Recieved bytes " +
+					System.out.println("ResourceDistributionTask: Received bytes " +
 										"when String was expected.");
 			}
 		});
@@ -313,7 +322,7 @@ public class ResourceDistributionTask extends AbstractJobFactory implements Outp
 	}
 	
 	/**
-	 * This is a direct put to the items hash table. Be careful.
+	 * This is a direct put to the items {@link Hashtable}. Be careful.
 	 * 
 	 * @param uri  URI to use as key.
 	 * @param d  DistributedResource to store.
@@ -632,7 +641,7 @@ public class ResourceDistributionTask extends AbstractJobFactory implements Outp
 	public boolean isComplete() { return false; }
 	
 	public String getName() { return "ResourceDistributionTask (" + this.id + ")"; }
-	public long getTaskId() { return this.id; }
+	public String getTaskId() { return this.id; }
 	
 	public Job nextJob() {
 		if (OutputServer.getCurrentServer() == null)

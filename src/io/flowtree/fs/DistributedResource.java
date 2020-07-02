@@ -582,13 +582,15 @@ public class DistributedResource implements Resource {
 	 * different data to a client than the data stored in the database such as dynamic
 	 * content, the sub class must override this method (eg. ConcatenatedResource).
 	 */
+	@Override
 	public InputStream getInputStream() {
 		InputStream in = new InputStream() {
 			long total;
 			int chunk, index;
 			byte b[];
-			
-			public int read() throws IOException {
+
+			@Override
+			public int read() {
 				if (chunk == 0 && this.index == 0 && DistributedResource.ioVerbose)
 					System.out.println("DistributedResource (" +
 										DistributedResource.this.uri +
@@ -611,7 +613,7 @@ public class DistributedResource implements Resource {
 				
 				if (this.b == null) {
 					this.b = DistributedResource.this.getData(chunk, true);
-					if (this.b == null) this.eof();
+					if (this.b == null) return this.eof();
 					
 					if (DistributedResource.ioVerbose) {
 						System.out.println("DistributedResource (" +
@@ -783,7 +785,8 @@ public class DistributedResource implements Resource {
 
 		ResourceDistributionTask.getCurrentTask().put(this.uri, this);
 	}
-	
+
+	@Override
 	public void loadFromURI() throws IOException {
 		String origUri = this.uri;
 		System.out.println("\t\t" + origUri);
@@ -812,10 +815,12 @@ public class DistributedResource implements Resource {
 //		throw new IOException("Tried to load DistributedResource from URI -- " + this.uri);
 	}
 
+	@Override
 	public void saveLocal(String file) throws IOException {
 		throw new IOException("Tried to store DistributedResource to file -- " + this.uri);
 	}
-	
+
+	@Override
 	public String toString() {
 		return "DistributedResource (" + this.uri + ")";
 	}

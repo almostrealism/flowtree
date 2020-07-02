@@ -292,14 +292,15 @@ public class NodeProxy implements Proxy, Runnable {
 		t.setDaemon(true);
 		t.start();
 	}
-	
+
+	@Override
 	public void writeObject(Object o, int id) throws IOException {
 		this.writeObject(o, id, this.useQueue);
 	}
 	
 	/**
 	 * @see Proxy#writeObject(java.lang.Object, int)
-	 * @throws IllegalArugmentException  If the object is not an instance of Message or Query.
+	 * @throws IllegalArgumentException  If the object is not an instance of Message or Query.
 	 * @throws IOException  If an IOException occurs while writing to the output stream.
 	 */
 	public void writeObject(Object o, int id, boolean useQueue) throws IOException {
@@ -481,6 +482,7 @@ public class NodeProxy implements Proxy, Runnable {
 	/**
 	 * @see Proxy#nextObject(int)
 	 */
+	@Override
 	public Object nextObject(int id) {
 		StoredObject o[];
 		
@@ -877,6 +879,7 @@ public class NodeProxy implements Proxy, Runnable {
 	 * @return  True if the specified Object is an instance of NodeProxy that is connected
 	 *          to the same inet address and port as this one, false otherwise.
 	 */
+	@Override
 	public boolean equals(Object o) {
 		if (o instanceof NodeProxy) {
 			NodeProxy p = (NodeProxy) o;
@@ -891,12 +894,14 @@ public class NodeProxy implements Proxy, Runnable {
 			return false;
 		}
 	}
-	
+
+	@Override
 	public int hashCode() { return this.getInetAddress().hashCode() + this.getRemotePort(); }
 	
 	/**
-	 *
+	 * Processes {@link Message}s and {@link Query}s from the peer.
 	 */
+	@Override
 	public void run() {
 		boolean h = false;
 		String head = null;
@@ -927,7 +932,7 @@ public class NodeProxy implements Proxy, Runnable {
 					h = false;
 					
 					if (Message.dverbose)
-						this.println("Recieved header " + head, true);
+						this.println("Received header " + head, true);
 					
 					if (head.equals(NodeProxy.msgHeader)) {
 						ext = new Message(this);
@@ -935,7 +940,7 @@ public class NodeProxy implements Proxy, Runnable {
 						ext = new Query();
 					} else {
 						this.nullCount++;
-						this.println("Recieved unknown header " + head);
+						this.println("Received unknown header " + head);
 						break i;
 					}
 					
@@ -944,23 +949,16 @@ public class NodeProxy implements Proxy, Runnable {
 						bw.readExternal(this.in);
 						
 						if (Message.dverbose)
-							this.println("Recieved " + bw, true);
+							this.println("Received " + bw, true);
 						
 						if (ext instanceof Message) {
-							((Message)ext).setBytes(bw.getBytes());
+							((Message) ext).setBytes(bw.getBytes());
 						} else if (ext instanceof Query) {
-							((Query)ext).setBytes(bw.getBytes());
+							((Query) ext).setBytes(bw.getBytes());
 						}
 					} else {
 						ext.readExternal(in);
 					}
-					
-//					if (o instanceof Message) {
-//						m = (Message) o;
-//					} else {
-//						System.out.println("NodeProxy: Recieved " + o);
-//						continue loop;
-//					}
 					
 					if (ext instanceof Message) {
 						Message m = (Message) ext;
@@ -971,7 +969,7 @@ public class NodeProxy implements Proxy, Runnable {
 						this.fireRecievedMessage(m, m.getReciever());
 					} else if (ext instanceof Query) {
 						this.nullCount = 0;
-						Server server = Client.getCurrentClient().getServer();
+						Server server = Client.getCurrentClient().getServer(); // TODO  Remove dependence on Client ?
 						Message m = server.executeQuery((Query) ext, this, NodeProxy.queryTimeout);
 						this.writeObject(m, -2);
 					}
@@ -1020,9 +1018,7 @@ public class NodeProxy implements Proxy, Runnable {
 			
 		System.out.println("NodeProxy: Thread ended");
 	}
-	
-	protected void finalize() { this.println("Finalizing."); }
-	
+
 	public void print(String msg) {
 		System.out.print("NodeProxy (" + this.toString() + "): " + msg);
 	}
@@ -1052,6 +1048,7 @@ public class NodeProxy implements Proxy, Runnable {
 	/**
 	 * @see java.lang.Object#toString()
 	 */
+	@Override
 	public String toString() { return this.toString(false); }
 	
 	public String toString(boolean showStat) {

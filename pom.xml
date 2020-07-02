@@ -5,7 +5,7 @@
 
 	<groupId>org.almostrealism</groupId>
 	<artifactId>FlowTree</artifactId>
-	<version>0.8</version>
+	<version>0.9</version>
 
 
 	<properties>
@@ -60,19 +60,19 @@
 		<dependency>
 			<groupId>org.almostrealism</groupId>
 			<artifactId>FlowTreeAPI</artifactId>
-			<version>0.7</version>
+			<version>0.8</version>
 		</dependency>
 
 		<dependency>
 			<groupId>io.almostrealism</groupId>
 			<artifactId>TreeView</artifactId>
-			<version>0.2-rc</version>
+			<version>0.3</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>io.almostrealism</groupId>
 			<artifactId>GraphPersist</artifactId>
-			<version>0.2-rc</version>
+			<version>0.3</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->

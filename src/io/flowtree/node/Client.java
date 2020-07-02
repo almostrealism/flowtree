@@ -41,11 +41,7 @@ import io.flowtree.msg.Message;
 import io.flowtree.fs.ResourceDistributionTask;
 
 /**
- * A Client object is used to send output produced by executing a Job
- * to a remote output host that can persist the data for later use.
- * The Client class provides a writeOutput method for sending output
- * and a sendQuery method for requesting persisted data.
- * A Client object also encapsulates a network.Server instance and keeps
+ * A {@link Client} encapsulates a {@link Server} instance and keeps
  * track of login information.
  * 
  * @author  Michael Murray
@@ -246,68 +242,15 @@ public class Client {
 	}
 	
 	/**
-	 * Sends the specified JobOutput object to the output server.
-	 * 
-	 * @param o  Output to send.
-	 * @return  True if send is successful, false otherwise.
-	 */
-	public boolean writeOutput(JobOutput o) {
-		boolean done = false;
-		int sleep = 3;
-		
-		for (int i = 0; !done; i++) {
-			try (Socket s = new Socket(this.outputHost, this.outputPort);
-				ObjectOutputStream out = new ObjectOutputStream(s.getOutputStream());
-				ObjectInputStream in = new ObjectInputStream(s.getInputStream())) {
-				
-				if (Message.verbose)
-					System.out.println("Client: Opened socket " + s);
-				
-				if (Message.verbose)
-					System.out.println("Client: Writing " + o + "...");
-				out.writeUTF(o.getClass().getName());
-				o.writeExternal(out);
-				
-//				out.writeObject(o);
-				
-				done = true;
-				
-				return true;
-			} catch (ConnectException ce) {
-				if (i >= 4) {
-					System.out.println("Client: Error connection to output host - giving up");
-					return false;
-				} else {
-					System.out.println("Client: Error connecting to output host - retry in " + sleep + " sec.");
-					try { Thread.sleep(sleep * 1000); } catch (InterruptedException ie) {}
-				}
-			} catch (UnknownHostException uh) {
-				System.out.println("Client: Output host (" + this.outputHost + ":"+ this.outputPort + ") not found.");
-				return false;
-			} catch (IOException ioe) {
-				System.out.println("Client: " + ioe);
-				ioe.printStackTrace(System.out);
-				return false;
-			} catch (Exception e) {
-				if (done)
-					System.out.println("Client.writeOutput: " + e);
-				else
-					System.out.println("Client.writeOutput: Ended prematurely due to " + e);
-			}
-		}
-		
-		return done;
-	}
-	
-	/**
-	 * Sets the Client to be returned by the getCurrentClient method.
+	 * Assigns the {@link Client} to be returned by the {@link #getCurrentClient()} method.
 	 * 
 	 * @param client  The Client instance to use.
 	 */
 	public static void setCurrentClient(Client client) { Client.client = client; }
 	
 	/**
-	 * @return  The Client started by the Client.main method.
+	 * @return  The {@link Client} started by the {@link Client#main(String[])} method,
+	 *          or otherwise assigned using {@link #setCurrentClient(Client)}.
 	 */
 	public static Client getCurrentClient() { return Client.client; }
 }

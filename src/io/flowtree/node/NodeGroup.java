@@ -107,7 +107,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 		this.crypt = p.getProperty("group.proxy.crypt");
 		
 		int nodeCount = Integer.parseInt(p.getProperty("nodes.initial", "1"));
-		int nodeMaxJobs = Integer.parseInt(p.getProperty("nodes.jobs.max", "1"));
+		int nodeMaxJobs = Integer.parseInt(p.getProperty("nodes.jobs.max", "4"));
 		int nodeMaxPeers = Integer.parseInt(p.getProperty("nodes.peers.max", "2"));
 		
 		int serverCount = Integer.parseInt(p.getProperty("servers.total", "0"));
@@ -208,10 +208,9 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	public Node start() {
 		this.stop = false;
 		this.thread.start();
-		
+
 		synchronized (this.nodes) {
-			Iterator<Node> itr = this.nodes.iterator();
-			while (itr.hasNext()) itr.next().start();
+			nodes.forEach(Node::start);
 		}
 		
 		return this;
@@ -224,9 +223,10 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	}
 	
 	/**
-	 * Stops the thread that manages the activity of this NodeGroup and the threads
-	 * for the child nodes stored by this NodeGroup.
+	 * Stops the thread that manages the activity of this {@link NodeGroup} and the
+	 * threads for the child nodes stored by this NodeGroup.
 	 */
+	@Override
 	public void stop() {
 		this.stop = true;
 		
@@ -237,8 +237,9 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	}
 	
 	/**
-	 * @return  True if any child node of this NodeGroup is working, false otherwise.
+	 * @return  True if any child node of this {@link NodeGroup} is working, false otherwise.
 	 */
+	@Override
 	public boolean isWorking() {
 		Iterator itr = this.nodes.iterator();
 		while (itr.hasNext()) if (((Node)itr.next()).isWorking()) return true;
@@ -322,6 +323,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	}
 	
 	// TODO Add tasks object value to documentation.
+	@Override
 	public Object getObject(String key) {
 		if (key.equals("group.tasks")) {
 			return this.taskList();
@@ -338,7 +340,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 			}
 			
 			int i = Integer.parseInt(key.substring(5, in));
-			Node n = (Node) this.nodes.get(i);
+			Node n = this.nodes.get(i);
 			
 			if (r)
 				return n;
@@ -357,8 +359,9 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	protected Collection<Node> nodes() { return nodes; }
 	
 	/**
-	 * @return  The default JobFactory object used by this NodeGroup object.
+	 * @return  The default {@link JobFactory} used by this {@link NodeGroup} object.
 	 */
+	@Override
 	public JobFactory getJobFactory() { return this.defaultFactory; }
 	
 	public String[] taskList() {
@@ -751,11 +754,11 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	 * @param task  Task id to kill.
 	 * @param relay  Number of times to relay the signal.
 	 */
-	public void sendKill(long task, int relay) {
+	public void sendKill(String task, int relay) {
 		synchronized (this.tasks) {
 			Iterator itr = this.tasks.iterator();
 			while (itr.hasNext()) {
-				if (((JobFactory)itr.next()).getTaskId() == task) {
+				if (((JobFactory)itr.next()).getTaskId().equals(task)) {
 					itr.remove();
 					System.out.println("NodeGroup: Killed task " + task);
 				}
@@ -1095,11 +1098,11 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 			synchronized (dbs) {
 				buf.append("<b>DBS Throughput</b>" + nl);
 				buf.append("Running Total Average = ");
-				buf.append(Node.dFormat.format(dbs.getTotalAverageThroughput()));
+				buf.append(dFormat.format(dbs.getTotalAverageThroughput()));
 				buf.append(" jobs per minute.");
 				buf.append(nl);
 				buf.append("Average Job Time = ");
-				buf.append(Node.dFormat.format(dbs.getTotalAverageJobTime() / 60000.0));
+				buf.append(dFormat.format(dbs.getTotalAverageJobTime() / 60000.0));
 				buf.append(" minutes per job.");
 				buf.append(nl);
 				buf.append("<pre><font size=\"-2\">" + nl);
@@ -1394,10 +1397,10 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 				if (m.getData() != null)
 					this.addTask(m.getData());
 				else
-					this.displayMessage("Recieved null task.");
+					this.displayMessage("Received null task.");
 			} else if (type == Message.Kill) {
 				int i = m.getData().indexOf(":");
-				long task = Long.parseLong(m.getData().substring(0, i));
+				String task = m.getData().substring(0, i);
 				int relay = Integer.parseInt(m.getData().substring(i + 1));
 				
 				this.sendKill(task, relay--);

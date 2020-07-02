@@ -20,6 +20,7 @@ import io.flowtree.job.Job;
 import io.flowtree.job.JobFactory;
 
 import io.flowtree.node.Client;
+import org.almostrealism.util.KeyUtils;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.AbstractHandler;
@@ -36,10 +37,8 @@ public class AirflowJobFactory extends AbstractHandler implements JobFactory {
 	private static AirflowJobFactory defaultFactory;
 
 	private double pri = 1.0;
-	private long taskId;
+	private String taskId;
 	private int i;
-
-	private long nextId;
 
 	private List jobs;
 
@@ -56,7 +55,7 @@ public class AirflowJobFactory extends AbstractHandler implements JobFactory {
 	/**
 	 * Constructs a new AirflowJobFactory object using the specified parameters.
 	 */
-	public AirflowJobFactory(long taskId) {
+	public AirflowJobFactory(String taskId) {
 		this.taskId = taskId;
 		this.jobs = new ArrayList();
 	}
@@ -76,11 +75,13 @@ public class AirflowJobFactory extends AbstractHandler implements JobFactory {
 		}
 	}
 
-	public long getTaskId() { return this.taskId; }
+	@Override
+	public String getTaskId() { return this.taskId; }
 
 	/**
 	 * @see io.flowtree.job.JobFactory#nextJob()
 	 */
+	@Override
 	public Job nextJob() {
 		if (this.jobs.size() > 0) return (Job) this.jobs.remove(0);
 		return null;
@@ -89,6 +90,7 @@ public class AirflowJobFactory extends AbstractHandler implements JobFactory {
 	/**
 	 * @see io.flowtree.job.JobFactory#createJob(java.lang.String)
 	 */
+	@Override
 	public Job createJob(String data) {
 		Client c = Client.getCurrentClient();
 
@@ -102,7 +104,7 @@ public class AirflowJobFactory extends AbstractHandler implements JobFactory {
 	public void handle(String target, Request baseRequest,
 					   HttpServletRequest request,
 					   HttpServletResponse response) throws IOException, ServletException {
-		long id = nextId++;
+		String id = KeyUtils.generateKey();
 		String cmd = request.getParameter("cmd");
 		if (cmd == null) return;
 		this.jobs.add(new AirflowJob(id, cmd));
@@ -116,6 +118,7 @@ public class AirflowJobFactory extends AbstractHandler implements JobFactory {
 	/**
 	 * @return A String encoding of this {@link AirflowJobFactory} object.
 	 */
+	@Override
 	public String encode() {
 		StringBuffer buf = new StringBuffer();
 		buf.append(this.getClass().getName());
@@ -125,12 +128,14 @@ public class AirflowJobFactory extends AbstractHandler implements JobFactory {
 	/**
 	 * @see io.flowtree.job.JobFactory#set(java.lang.String, java.lang.String)
 	 */
+	@Override
 	public void set(String key, String value) {
 		if (key.equals("id")) {
-			this.taskId = Long.parseLong(value);
+			this.taskId = value;
 		}
 	}
 
+	@Override
 	public String getName() {
 		StringBuffer b = new StringBuffer();
 		b.append("Airflow Worker - ");
@@ -138,20 +143,25 @@ public class AirflowJobFactory extends AbstractHandler implements JobFactory {
 		return b.toString();
 	}
 
+	@Override
 	public double getCompleteness() { return 0; }
 
 	/**
 	 * Always return false. Our work is never over.
 	 */
+	@Override
 	public boolean isComplete() { return false; }
 
+	@Override
 	public void setPriority(double p) { this.pri = p; }
 
+	@Override
 	public double getPriority() { return this.pri; }
 
 	@Override
 	public CompletableFuture<Void> getCompletableFuture() { return future; }
 
+	@Override
 	public String toString() {
 		return "AirflowJobFactory: " + this.taskId;
 	}

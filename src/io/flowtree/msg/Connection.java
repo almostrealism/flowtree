@@ -228,7 +228,7 @@ public class Connection implements Runnable, NodeProxy.EventListener {
 				}
 			} else if (m.getType() == Message.Kill) {
 				int i = m.getData().indexOf(":");
-				long task = Long.parseLong(m.getData().substring(0, i));
+				String task = m.getData().substring(0, i);
 				int relay = Integer.parseInt(m.getData().substring(i + 1));
 				
 				this.node.sendKill(task, relay--);
