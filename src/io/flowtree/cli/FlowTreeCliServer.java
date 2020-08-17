@@ -71,7 +71,6 @@ import org.almostrealism.swing.GraphDisplay;
 import org.almostrealism.swing.ScrollingTextDisplay;
 import org.almostrealism.texture.GraphicsConverter;
 import org.almostrealism.util.Help;
-import org.apache.commons.lang3.NotImplementedException;
 
 import io.almostrealism.db.Query;
 import io.almostrealism.db.QueryHandler;
@@ -193,7 +192,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 				OutputServer os = OutputServer.getCurrentServer();
 				ThreadGroup g = null;
 				if (os != null) g = os.getNodeServer().getThreadGroup();
-				FlowTreeCliServer.current = new FlowTreeCliServer(httpwww, jobSize, port, gui);
+				new FlowTreeCliServer(httpwww, jobSize, port, gui);
 				Thread t = new Thread(g, FlowTreeCliServer.current);
 				t.setName("Server Terminal");
 				t.start();
@@ -237,8 +236,17 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 			prop = "server.terminal.script." + i;
 		}
 	}
+
+	public FlowTreeCliServer(String httpwww, int jobSize) throws IOException {
+		this(httpwww, jobSize, defaultPort);
+	}
+
+	public FlowTreeCliServer(String httpwww, int jobSize, int port) throws IOException {
+		this(httpwww, jobSize, port, false);
+	}
 	
 	public FlowTreeCliServer(String httpwww, int jobSize, int port, boolean gui) throws IOException {
+		FlowTreeCliServer.current = this;
 		FlowTreeCliServer.httpwww = httpwww;
 		FlowTreeCliServer.jobSize = jobSize;
 		
@@ -309,14 +317,12 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 					final RGB color = new RGB(r, g, b);
 					
 					try {
-						SwingUtilities.invokeAndWait(new Runnable() {
-							public void run() {
-								if (FlowTreeCliServer.this.display == null) return;
-								
-								FlowTreeCliServer.this.display.setBackground(
-										GraphicsConverter.convertToAWTColor(color));
-								FlowTreeCliServer.this.display.repaint();
-							}
+						SwingUtilities.invokeAndWait(() -> {
+							if (FlowTreeCliServer.this.display == null) return;
+
+							FlowTreeCliServer.this.display.setBackground(
+									GraphicsConverter.convertToAWTColor(color));
+							FlowTreeCliServer.this.display.repaint();
 						});
 					} catch (InterruptedException e) {
 					} catch (InvocationTargetException e) {
@@ -353,37 +359,35 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 //			TODO  Separate UI elsewhere
 //			f.setVisible(true);
 			
-			Thread t = new Thread(new Runnable() {
-				public void run() {
-					while (true) {
-						try {
-							Thread.sleep(60000);
-							
-							Client c = Client.getCurrentClient();
-							Server s = c.getServer();
-							NodeGroup g = s.getNodeGroup();
-							
-							if (FlowTreeCliServer.this.activityGraph != null) {
-								FlowTreeCliServer.this.activityGraph.addEntry(
-										(int)(g.getAverageActivityRating() * 10));
-							}
-							
-							if (FlowTreeCliServer.this.sleepGraph != null) {
-								FlowTreeCliServer.this.sleepGraph.addEntry(
-										(int)(g.getSleep() / 10000));
-							}
-							
-							if (FlowTreeCliServer.this.dialog.isVisible() && c != null) {
-								SwingUtilities.invokeAndWait(new Runnable() {
-									public void run() {
-										FlowTreeCliServer.this.dialog.updateStatus();
-									}
-								});
-							}
-						} catch (InterruptedException ie) {
-						} catch (InvocationTargetException ite) {
-							ite.printStackTrace();
+			Thread t = new Thread((Runnable) () -> {
+				while (true) {
+					try {
+						Thread.sleep(60000);
+
+						Client c1 = Client.getCurrentClient();
+						Server s = c1.getServer();
+						NodeGroup g = s.getNodeGroup();
+
+						if (FlowTreeCliServer.this.activityGraph != null) {
+							FlowTreeCliServer.this.activityGraph.addEntry(
+									(int)(g.getAverageActivityRating() * 10));
 						}
+
+						if (FlowTreeCliServer.this.sleepGraph != null) {
+							FlowTreeCliServer.this.sleepGraph.addEntry(
+									(int)(g.getSleep() / 10000));
+						}
+
+						if (FlowTreeCliServer.this.dialog.isVisible() && c1 != null) {
+							SwingUtilities.invokeAndWait(new Runnable() {
+								public void run() {
+									FlowTreeCliServer.this.dialog.updateStatus();
+								}
+							});
+						}
+					} catch (InterruptedException ie) {
+					} catch (InvocationTargetException ite) {
+						ite.printStackTrace();
 					}
 				}
 			});
@@ -432,7 +436,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 				this.ps = new PrintStream(this.out, false, "US-ASCII");
 				System.out.println("FlowTreeCliServer: Constructed print stream...");
 				
-				this.write("Welcome to the Network Client\n");
+				this.write("Welcome to FlowTree.io\n");
 				System.out.println("FlowTreeCliServer: Wrote welcome message...");
 				
 				w: while(true) {
