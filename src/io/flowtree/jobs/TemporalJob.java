@@ -70,7 +70,7 @@ public class TemporalJob implements Job {
 				}
 			}
 
-			temporal.tick();
+			temporal.tick().run();
 		}
 
 		future.complete(null);
