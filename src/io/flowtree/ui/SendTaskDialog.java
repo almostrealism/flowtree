@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Michael Murray
+ * Copyright 2020 Michael Murray
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,13 +32,13 @@ import javax.swing.border.TitledBorder;
 
 import io.flowtree.node.Server;
 
-import org.almostrealism.util.Defaults;
+import org.almostrealism.algebra.Defaults;
 
 /**
- * A SendTaskDialog object provides a dialog for collecting input required
+ * A {@link SendTaskDialog} provides a dialog for collecting input required
  * to submit a rendering task.
  *
- * @author Mike Murray
+ * @author  Michael Murray
  */
 public class SendTaskDialog extends JPanel {
 	public static final String jobSizeOptions[] = {"1", "4", "9", "16", "25", "36", "49", "64", "81", "100"};

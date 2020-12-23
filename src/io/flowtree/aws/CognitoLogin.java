@@ -21,7 +21,7 @@ import com.amazonaws.services.cognitoidp.AWSCognitoIdentityProvider;
 import com.amazonaws.services.cognitoidp.AWSCognitoIdentityProviderClientBuilder;
 import com.amazonaws.services.cognitoidp.model.*;
 import com.amazonaws.services.s3.model.Region;
-import io.almostrealism.auth.Login;
+import org.almostrealism.auth.Login;
 
 import java.security.SecureRandom;
 import java.util.HashMap;

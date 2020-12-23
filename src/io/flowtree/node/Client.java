@@ -21,7 +21,6 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
-import java.net.ConnectException;
 import java.net.MalformedURLException;
 import java.net.Socket;
 import java.net.URL;
@@ -32,12 +31,10 @@ import java.util.Properties;
 import javax.swing.JLabel;
 
 import io.flowtree.fs.OutputServer;
-import org.almostrealism.io.JobOutput;
 
 import io.flowtree.ui.LoginDialog;
 
 import io.almostrealism.db.Query;
-import io.flowtree.msg.Message;
 import io.flowtree.fs.ResourceDistributionTask;
 
 /**
@@ -196,7 +193,7 @@ public class Client {
 	 * @return  Resource loaded.
 	 * @throws IOException 
 	 */
-	public org.almostrealism.io.Resource loadResource(String uri) throws IOException {
+	public io.almostrealism.code.Resource loadResource(String uri) throws IOException {
 		return this.server.loadResource(uri);
 	}
 	

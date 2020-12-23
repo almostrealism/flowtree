@@ -34,8 +34,8 @@ import java.io.PipedOutputStream;
 
 import io.flowtree.node.Client;
 import org.almostrealism.io.IOStreams;
-import org.almostrealism.io.Permissions;
-import org.almostrealism.io.Resource;
+import io.almostrealism.code.Permissions;
+import io.almostrealism.code.Resource;
 
 import io.almostrealism.persist.ScpDownloader;
 import org.apache.commons.lang3.NotImplementedException;

@@ -42,7 +42,7 @@ import javax.swing.JTextField;
 
 import io.flowtree.msg.NodeProxy;
 import io.flowtree.node.Client;
-import org.almostrealism.util.Defaults;
+import org.almostrealism.algebra.Defaults;
 
 /**
  * A {@link NetworkDialog} allows the user to set up a node group for a network.

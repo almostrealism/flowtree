@@ -26,8 +26,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.almostrealism.io.IOStreams;
-import org.almostrealism.io.Permissions;
-import org.almostrealism.io.Resource;
+import io.almostrealism.code.Permissions;
+import io.almostrealism.code.Resource;
 
 import io.almostrealism.db.DatabaseConnection;
 import io.almostrealism.db.Query;
@@ -434,7 +434,8 @@ public class DistributedResource implements Resource {
 		
 		if (this.commitAtEnd) this.commitToLocalDB();
 	}
-	
+
+	@Override
 	public Permissions getPermissions() { return permissions; }
 	
 	private void loadFromLocalDB() {

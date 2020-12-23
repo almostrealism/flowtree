@@ -39,8 +39,8 @@ import javax.crypto.NoSuchPaddingException;
 import javax.swing.JLabel;
 
 import io.flowtree.fs.OutputServer;
+import org.almostrealism.algebra.Defaults;
 import org.almostrealism.io.RSSFeed;
-import org.almostrealism.util.Defaults;
 import org.almostrealism.util.Chart;
 
 import io.flowtree.msg.Connection;

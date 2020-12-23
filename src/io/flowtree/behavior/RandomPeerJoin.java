@@ -29,7 +29,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 
 import io.flowtree.node.Server;
-import org.almostrealism.util.Defaults;
+import org.almostrealism.algebra.Defaults;
 
 public class RandomPeerJoin implements ServerBehavior {
 	public void behave(Server s, PrintStream out) {

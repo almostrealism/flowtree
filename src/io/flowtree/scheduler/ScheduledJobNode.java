@@ -17,10 +17,10 @@
 package io.flowtree.scheduler;
 
 import io.flowtree.job.Job;
-import org.almostrealism.econ.Time;
 import io.flowtree.node.Node;
 import io.flowtree.node.NodeGroup;
 import org.almostrealism.time.Frequency;
+import org.almostrealism.econ.Time;
 
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
