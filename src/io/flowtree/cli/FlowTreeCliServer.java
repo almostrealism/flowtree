@@ -1162,11 +1162,8 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 				
 				try (OutputStream out = server.getOutputStream(s[1])) {
 					if (out == null) return "Could not get out stream to " + s[1];
-					
-					if (((Storable)o).store(out))
-						return o + " stored to " + s[1];
-					else
-						return "Failed to store " + o;
+					((Storable)o).store(out);
+					return o + " stored to " + s[1];
 				}
 			} else if (c.startsWith("peers")) {
 				String s[] = Client.getCurrentClient().getServer().getPeers();
