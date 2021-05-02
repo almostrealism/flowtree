@@ -34,6 +34,7 @@ public class ScheduledJobNode extends Node {
 		this.exec = new ScheduledThreadPoolExecutor(maxJobs);
 	}
 
+	@Override
 	public int addJob(Job j) {
 		if (j instanceof FixedRate) {
 			FixedRate r = (FixedRate) j;
@@ -41,7 +42,7 @@ public class ScheduledJobNode extends Node {
 									(long) (1000.0 / r.getFrequency().asHertz()),
 									TimeUnit.MILLISECONDS);
 			// TODO  Do something with f
-			return (getMaxJobs() - 1);
+			return getMaxJobs() - 1;
 		} else {
 			return super.addJob(j);
 		}
