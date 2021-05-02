@@ -112,7 +112,7 @@ public class Server implements JobFactory, Runnable {
 			if (!uri.startsWith("/")) uri = "/" + uri;
 			
 			return "resource://" + Server.this.getLocalSocketAddress() +
-					":" + this.serv.getLocalPort() + uri;
+					ENTRY_SEPARATOR + this.serv.getLocalPort() + uri;
 		}
 		
 		public void addProvider(ResourceProvider p) { providers.add(p); }
@@ -1143,10 +1143,10 @@ public class Server implements JobFactory, Runnable {
 		String host = serv;
 		int port = ResourceServer.defaultPort;
 		
-		if (serv.contains(":")) {
-			int cindex = serv.indexOf(":");
+		if (serv.contains(ENTRY_SEPARATOR)) {
+			int cindex = serv.indexOf(ENTRY_SEPARATOR);
 			host = serv.substring(0, cindex);
-			port = Integer.parseInt(serv.substring(cindex + 1));
+			port = Integer.parseInt(serv.substring(cindex + ENTRY_SEPARATOR.length()));
 		}
 		
 		return this.getResourceStream(host, port, uri.substring(index + 1));
@@ -1252,6 +1252,7 @@ public class Server implements JobFactory, Runnable {
 	}
 	
 	/** @see io.flowtree.job.JobFactory#nextJob() */
+	@Override
 	public Job nextJob() { return this.group.nextJob(); }
 	
 	/** @see io.flowtree.job.JobFactory#createJob(java.lang.String) */
@@ -1267,6 +1268,7 @@ public class Server implements JobFactory, Runnable {
 	public String getName() { return "Server"; }
 	
 	/** @return  null. */
+	@Override
 	public String getTaskId() { return null; }
 	
 	/** @return  The class name for this class. */
@@ -1280,7 +1282,7 @@ public class Server implements JobFactory, Runnable {
 	 * @return  Instance of Job created.
 	 */
 	public static Job instantiateJobClass(String data) {
-		int index = data.indexOf(":");
+		int index = data.indexOf(JobFactory.ENTRY_SEPARATOR);
 		String className = data.substring(0, index);
 		
 		Job j = null;
@@ -1292,10 +1294,10 @@ public class Server implements JobFactory, Runnable {
 			
 			w: while (!end) {
 				data = data.substring(index + 1);
-				index = data.indexOf(":");
+				index = data.indexOf(JobFactory.ENTRY_SEPARATOR);
 				
-				while (data.charAt(index + 1) == '/' || (index > 0 && data.charAt(index - 1) == '\\'))
-					index = data.indexOf(":", index + 1);
+				while (data.charAt(index + JobFactory.ENTRY_SEPARATOR.length()) == '/' || index > 0 && data.charAt(index - 1) == '\\')
+					index = data.indexOf(JobFactory.ENTRY_SEPARATOR, index + JobFactory.ENTRY_SEPARATOR.length());
 				
 				String s = null;
 				
@@ -1306,15 +1308,16 @@ public class Server implements JobFactory, Runnable {
 					s = data.substring(0, index);
 				}
 				
-				int k = s.indexOf("=");
+				int k = s.indexOf(KEY_VALUE_SEPARATOR);
+				int len = KEY_VALUE_SEPARATOR.length();
 				
 				if (k > 0) {
 					String key = s.substring(0, k);
-					String value = s.substring(k + 1);
+					String value = s.substring(k + len);
 					j.set(key, value);
 				} else {
 					String key = s;
-					String value = data.substring(index + 1);
+					String value = data.substring(index + len);
 					j.set(key, value);
 					end = true;
 				}

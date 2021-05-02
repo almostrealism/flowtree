@@ -33,6 +33,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Properties;
 
 import javax.crypto.NoSuchPaddingException;
@@ -58,6 +59,8 @@ import io.flowtree.job.JobFactory;
  */
 public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener,
 														Node.ActivityListener {
+	public static final String KEY_VALUE_SEPARATOR = ":=";
+
 	private double activityO = -0.2;
 	
 	private int maxDuplicateConnections = 2;
@@ -633,7 +636,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	}
 	
 	protected JobFactory createTask(String data) {
-		int index = data.indexOf(":");
+		int index = data.indexOf(JobFactory.ENTRY_SEPARATOR);
 		String className = data.substring(0, index);
 		
 		Class c = null;
@@ -646,11 +649,11 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 			boolean end = false;
 			
 			w: while (!end) {
-				data = data.substring(index + 1);
-				index = data.indexOf(":");
+				data = data.substring(index + JobFactory.ENTRY_SEPARATOR.length());
+				index = data.indexOf(JobFactory.ENTRY_SEPARATOR);
 				
-				while (data.charAt(index + 1) == '/' || (index > 0 && data.charAt(index - 1) == '\\'))
-					index = data.indexOf(":", index + 1);
+				while (data.charAt(index + JobFactory.ENTRY_SEPARATOR.length()) == '/' || index > 0 && data.charAt(index - 1) == '\\')
+					index = data.indexOf(JobFactory.ENTRY_SEPARATOR, index + 1);
 				
 				String s = null;
 				
@@ -661,15 +664,17 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 					s = data.substring(0, index);
 				}
 				
-				String key = s.substring(0, s.indexOf("="));
-				String value = s.substring(s.indexOf("=") + 1);
+				String key = s.substring(0, s.indexOf(KEY_VALUE_SEPARATOR));
+				String value = s.substring(s.indexOf(KEY_VALUE_SEPARATOR) + KEY_VALUE_SEPARATOR.length());
 				
 				j.set(key, value);
 			}
 		} catch (ClassNotFoundException cnf) {
 			System.out.println("NodeGroup: Class not found: " + className);
 		} catch (ClassCastException cce) {
-			System.out.println("NodeGroup: Error casting " + c.getName() + " to JobFactory");
+			System.out.println("NodeGroup: Error casting " +
+					Optional.ofNullable(c).map(Class::getName).orElse(null) +
+					" to JobFactory");
 		} catch (Exception e) {
 			System.out.println("NodeGroup: " + e);
 		}
@@ -754,6 +759,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	 * @param task  Task id to kill.
 	 * @param relay  Number of times to relay the signal.
 	 */
+	@Override
 	public void sendKill(String task, int relay) {
 		synchronized (this.tasks) {
 			Iterator itr = this.tasks.iterator();
@@ -1324,15 +1330,15 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 				boolean h = false;
 				
 				for (int i = 0; i < s.length; i++) {
-					int index = s[i].indexOf(":");
+					int index = s[i].indexOf(JobFactory.ENTRY_SEPARATOR);
 					String v = "";
-					if (index > 0 && index < s[i].length() - 1) v = s[i].substring(index + 1);
+					if (index > 0 && index < s[i].length() - 1) v = s[i].substring(index + JobFactory.ENTRY_SEPARATOR.length());
 					
 					try {
-						if (s[i].startsWith("jobtime:")) {
+						if (s[i].startsWith("jobtime:")) { // TODO Should ":" be ENTRY_SEPARATOR?
 							p.setJobTime(Double.parseDouble(v));
 							h = true;
-						} else if (s[i].startsWith("activity:")) {
+						} else if (s[i].startsWith("activity:")) { // TODO Should ":" be ENTRY_SEPARATOR?
 							p.setActivityRating(Double.parseDouble(v));
 							h = true;
 						} else {
@@ -1399,9 +1405,9 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 				else
 					this.displayMessage("Received null task.");
 			} else if (type == Message.Kill) {
-				int i = m.getData().indexOf(":");
+				int i = m.getData().indexOf(JobFactory.ENTRY_SEPARATOR);
 				String task = m.getData().substring(0, i);
-				int relay = Integer.parseInt(m.getData().substring(i + 1));
+				int relay = Integer.parseInt(m.getData().substring(i + JobFactory.ENTRY_SEPARATOR.length()));
 				
 				this.sendKill(task, relay--);
 			} else {

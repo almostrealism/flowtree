@@ -39,6 +39,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.URL;
 import java.net.UnknownHostException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -77,6 +78,7 @@ import io.almostrealism.db.QueryHandler;
 import io.flowtree.fs.DistributedResource;
 import io.flowtree.fs.ResourceDistributionTask;
 import io.flowtree.job.JobFactory;
+import org.almostrealism.util.KeyUtils;
 
 // TODO  Add cd and pwd commands.
 // TODO  mkdir does not update nfs
@@ -129,7 +131,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 			
 			if (args.length >= 1) {
 				try {
-					in = (new URL(args[0])).openStream();
+					in = new URL(args[0]).openStream();
 					p.load(in);
 					System.out.println("FlowTreeCliServer: Loaded config from " + args[0]);
 					break t;
@@ -304,6 +306,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 			ScrollingTextDisplay.TextProducer producer = new ScrollingTextDisplay.TextProducer() {
 				private int last = 0;
 				
+				@Override
 				public String nextPhrase() {
 					if (OutputServer.getCurrentServer() == null) return "";
 					
@@ -324,7 +327,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 									GraphicsConverter.convertToAWTColor(color));
 							FlowTreeCliServer.this.display.repaint();
 						});
-					} catch (InterruptedException e) {
+					} catch (InterruptedException ignored) {
 					} catch (InvocationTargetException e) {
 						e.printStackTrace();
 					}
@@ -359,7 +362,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 //			TODO  Separate UI elsewhere
 //			f.setVisible(true);
 			
-			Thread t = new Thread((Runnable) () -> {
+			Thread t = new Thread(() -> {
 				while (true) {
 					try {
 						Thread.sleep(60000);
@@ -379,11 +382,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 						}
 
 						if (FlowTreeCliServer.this.dialog.isVisible() && c1 != null) {
-							SwingUtilities.invokeAndWait(new Runnable() {
-								public void run() {
-									FlowTreeCliServer.this.dialog.updateStatus();
-								}
-							});
+							SwingUtilities.invokeAndWait(() -> FlowTreeCliServer.this.dialog.updateStatus());
 						}
 					} catch (InterruptedException ie) {
 					} catch (InvocationTargetException ite) {
@@ -399,25 +398,25 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 	}
 	
 	protected void loadIcons() {
-		URL activeIconUrl = (FlowTreeCliServer.class).getClassLoader().getResource("active.gif");
+		URL activeIconUrl = FlowTreeCliServer.class.getClassLoader().getResource("active.gif");
 		if (activeIconUrl != null)
 			this.activeIcon = new ImageIcon(activeIconUrl);
 		else
 			this.activeIcon = new ImageIcon();
 		
-		URL inactiveIconUrl = (FlowTreeCliServer.class).getClassLoader().getResource("inactive.gif");
+		URL inactiveIconUrl = FlowTreeCliServer.class.getClassLoader().getResource("inactive.gif");
 		if (inactiveIconUrl != null)
 			this.inactiveIcon = new ImageIcon(inactiveIconUrl);
 		else
 			this.inactiveIcon = new ImageIcon();
 		
-		URL sleepIconUrl = (FlowTreeCliServer.class).getClassLoader().getResource("sleep.gif");
+		URL sleepIconUrl = FlowTreeCliServer.class.getClassLoader().getResource("sleep.gif");
 		if (sleepIconUrl != null)
 			this.sleepIcon = new ImageIcon(sleepIconUrl);
 		else
 			this.sleepIcon = new ImageIcon();
 		
-		URL closeIconUrl = (FlowTreeCliServer.class).getClassLoader().getResource("close.gif");
+		URL closeIconUrl = FlowTreeCliServer.class.getClassLoader().getResource("close.gif");
 		if (closeIconUrl != null)
 			this.closeIcon = new ImageIcon(closeIconUrl);
 		else
@@ -469,7 +468,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 	
 	public void write(String s) {
 		try {
-			this.out.write(s.getBytes("US-ASCII"));
+			this.out.write(s.getBytes(StandardCharsets.US_ASCII));
 		} catch (IOException ioe) {
 			System.out.println("FlowTreeCliServer: IO error writing message (" + ioe.getMessage() + ")");
 		}
@@ -484,7 +483,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 					byte b[] = new byte[in.available()];
 					this.in.read(b);
 					
-					return new String(b, "US-ASCII");
+					return new String(b, StandardCharsets.US_ASCII);
 				}
 				
 				try { Thread.sleep(500); } catch (InterruptedException ie) {}
@@ -500,12 +499,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 	
 	public PrintStream getPrintStream() {
 		if (this.ps == null) {
-			try {
-				this.ps = new PrintStream(this.out, false, "US-ASCII");
-			} catch (UnsupportedEncodingException uee) {
-				System.out.println("FlowTreeCliServer: Error creating print stream (" +
-									uee.getMessage() + ")");
-			}
+			this.ps = new PrintStream(this.out, false, StandardCharsets.US_ASCII);
 		}
 		
 		return this.ps;
@@ -784,13 +778,13 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 				
 				Object o = Class.forName(s[1]).newInstance();
 				
-				if (o instanceof JobFactory == false)
+				if (!(o instanceof JobFactory))
 					return s[1] + " is not a JobFactory.";
 				
 				final JobFactory f = (JobFactory) o;
 				
 				final int h = Integer.parseInt(s[0]);
-				long id = System.currentTimeMillis();
+				String id = KeyUtils.generateKey();
 				String peers[] = Client.getCurrentClient().getServer().getPeers();
 				String host;
 				
@@ -801,11 +795,11 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 				else
 					throw new IndexOutOfBoundsException("No peer with index " + h);
 				
-				f.set("id", String.valueOf(id));
+				f.set("id", id);
 				
 				for (int i = 2; i < s.length; i++) {
-					String key = s[i].substring(0, s[i].indexOf("="));
-					String value = s[i].substring(s[i].indexOf("=") + 1);
+					String key = s[i].substring(0, s[i].indexOf(":="));
+					String value = s[i].substring(s[i].indexOf(":=") + 2);
 					
 					f.set(key, value);
 				}
@@ -813,11 +807,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 				Client cl = Client.getCurrentClient();
 				ThreadGroup g = null;
 				if (cl != null) g = cl.getServer().getThreadGroup();
-				Thread t = new Thread(g, new Runnable() {
-					public void run() {
-						Client.getCurrentClient().getServer().sendTask(f, h);
-					}
-				});
+				Thread t = new Thread(g, () -> Client.getCurrentClient().getServer().sendTask(f, h));
 				
 				t.setName("Send Task Thread");
 				t.start();

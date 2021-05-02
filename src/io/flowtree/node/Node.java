@@ -84,7 +84,7 @@ public class Node implements Runnable, ThreadFactory {
 	private int maxFailedJobs;
 	private double relay, connect;
 	private Set peers;
-	protected List<Job> jobs;
+	protected final List<Job> jobs;
 	protected List listeners;
 	protected List failedJobs;
 	
@@ -584,17 +584,16 @@ public class Node implements Runnable, ThreadFactory {
 	
 	public void sendKill(String task, int relay) {
 		synchronized (this.jobs) {
-			Iterator itr = this.jobs.iterator();
-			while (itr.hasNext()) if (((Job)itr.next()).getTaskId().equals(task)) itr.remove();
+			this.jobs.removeIf(o -> o.getTaskId().equals(task));
 		}
 		
 		Connection p[] = this.getPeers();
 		
 		try {
 			Message msg = new Message(Message.Kill, this.id);
-			msg.setString(task + ":" + relay);
-			
-			for (int i = 0; i < p.length; i++) p[i].sendMessage(msg);
+			msg.setString(task + JobFactory.ENTRY_SEPARATOR + relay);
+
+			for (Connection connection : p) connection.sendMessage(msg);
 		} catch (IOException ioe) {
 			this.displayMessage("IO error sending kill signal (" + ioe.getMessage() + ")");
 		}

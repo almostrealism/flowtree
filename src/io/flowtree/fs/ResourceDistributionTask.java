@@ -626,8 +626,10 @@ public class ResourceDistributionTask extends AbstractJobFactory implements Outp
 		}
 	}
 	
+	@Override
 	public Job createJob(String data) { return Server.instantiateJobClass(data); }
 	
+	@Override
 	public String encode() { return null; }
 	
 	public void setPriority(double p) { }
@@ -637,11 +639,15 @@ public class ResourceDistributionTask extends AbstractJobFactory implements Outp
 	public CompletableFuture<Void> getCompletableFuture() { return future; }
 
 	public double getCompleteness() { return 0; }
+	@Override
 	public boolean isComplete() { return false; }
 	
+	@Override
 	public String getName() { return "ResourceDistributionTask (" + this.id + ")"; }
+	@Override
 	public String getTaskId() { return this.id; }
 	
+	@Override
 	public Job nextJob() {
 		if (OutputServer.getCurrentServer() == null)
 			return null;
@@ -665,6 +671,7 @@ public class ResourceDistributionTask extends AbstractJobFactory implements Outp
 		return null;
 	}
 	
+	@Override
 	public void set(String key, String value) { }
 	
 	/**
@@ -746,8 +753,10 @@ public class ResourceDistributionTask extends AbstractJobFactory implements Outp
 		}
 	}
 	
+	@Override
 	public int disconnect(NodeProxy p) { return 0; }
 	
+	@Override
 	public synchronized boolean recievedMessage(Message m, int reciever) {
 		if (!(m.getType() == Message.DistributedResourceUri ||
 			m.getType() == Message.DistributedResourceInvalidate)) return false;
@@ -755,11 +764,11 @@ public class ResourceDistributionTask extends AbstractJobFactory implements Outp
 		String data = m.getData();
 		int size = -1;
 		String uri = data;
-		int index = data.lastIndexOf(":");
+		int index = data.lastIndexOf(ENTRY_SEPARATOR);
 		
 		if (index > 0) {
 			uri = data.substring(0, index);
-			size = Integer.parseInt(data.substring(index + 1));
+			size = Integer.parseInt(data.substring(index + ENTRY_SEPARATOR.length()));
 		}
 		
 		if (m.getType() == Message.DistributedResourceInvalidate) {

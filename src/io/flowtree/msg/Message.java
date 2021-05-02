@@ -22,6 +22,7 @@ import java.io.ObjectInput;
 import java.io.ObjectOutput;
 import java.util.ArrayList;
 
+import io.flowtree.job.JobFactory;
 import io.flowtree.node.Node;
 
 import io.flowtree.job.Job;
@@ -198,7 +199,7 @@ public class Message implements Externalizable {
 				return null;
 			} else if (m.getData().startsWith("peers:")) {
 				String ps = m.getData();
-				ps = ps.substring(ps.indexOf(":") + 1);
+				ps = ps.substring(ps.indexOf(JobFactory.ENTRY_SEPARATOR) + JobFactory.ENTRY_SEPARATOR.length());
 				String peers[] = ps.split(",");
 				ArrayList l = new ArrayList(peers.length);
 				

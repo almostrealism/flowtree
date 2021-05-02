@@ -40,6 +40,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
+import io.flowtree.job.JobFactory;
 import io.flowtree.msg.NodeProxy;
 import io.flowtree.node.Client;
 import org.almostrealism.algebra.Defaults;
@@ -366,7 +367,7 @@ public class NetworkDialog extends JPanel {
 		
 		for (int i = 0; i < servers; i++) {
 			String s = (String)this.serverList.getModel().getElementAt(i);
-			int index = s.indexOf(":");
+			int index = s.indexOf(JobFactory.ENTRY_SEPARATOR);
 			
 			String host, port;
 			

@@ -36,7 +36,7 @@ import java.net.UnknownHostException;
 public class FlowTreeCli {
 	protected static final boolean enableConsoleStop = false;
 
-	private AeshConsole console;
+	private final AeshConsole console;
 
 	public FlowTreeCli() {
 		CommandRegistry r = new AeshCommandRegistryBuilder()

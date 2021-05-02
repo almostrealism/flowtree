@@ -18,6 +18,7 @@ package io.flowtree.msg;
 
 import java.io.IOException;
 
+import io.flowtree.job.JobFactory;
 import io.flowtree.node.Node;
 
 import io.flowtree.job.Job;
@@ -155,9 +156,9 @@ public class Connection implements Runnable, NodeProxy.EventListener {
 //						response.send(m.getSender());
 //					}
 //				} else if (m.getType() == Message.Kill) {
-//					int i = m.getData().indexOf(":");
+//					int i = m.getData().indexOf(ENTRY_SEPARATOR);
 //					long task = Long.parseLong(m.getData().substring(0, i));
-//					int relay = Integer.parseInt(m.getData().substring(i + 1));
+//					int relay = Integer.parseInt(m.getData().substring(i + ENTRY_SEPARATOR.length()));
 //					
 //					this.node.sendKill(task, relay--);
 //				}
@@ -227,9 +228,9 @@ public class Connection implements Runnable, NodeProxy.EventListener {
 					response.send(m.getSender());
 				}
 			} else if (m.getType() == Message.Kill) {
-				int i = m.getData().indexOf(":");
+				int i = m.getData().indexOf(JobFactory.ENTRY_SEPARATOR);
 				String task = m.getData().substring(0, i);
-				int relay = Integer.parseInt(m.getData().substring(i + 1));
+				int relay = Integer.parseInt(m.getData().substring(i + JobFactory.ENTRY_SEPARATOR.length()));
 				
 				this.node.sendKill(task, relay--);
 			}

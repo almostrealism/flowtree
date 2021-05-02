@@ -40,7 +40,7 @@ public class UrlProfilingJob implements Job {
 		}
 		
 		public void storeOutput(long time, int uid, JobOutput output) {
-			String s[] = output.getOutput().split(":");
+			String s[] = output.getOutput().split(JobFactory.ENTRY_SEPARATOR);
 			
 			StringBuffer b = new StringBuffer();
 			b.append(time);
@@ -129,13 +129,13 @@ public class UrlProfilingJob implements Job {
 		
 		StringBuffer b = new StringBuffer();
 		b.append(this.uri.substring(this.uri.lastIndexOf("/")));
-		b.append(":");
+		b.append(JobFactory.ENTRY_SEPARATOR);
 		b.append(this.size);
-		b.append(":");
+		b.append(JobFactory.ENTRY_SEPARATOR);
 		b.append(avgTime);
-		b.append(":");
+		b.append(JobFactory.ENTRY_SEPARATOR);
 		b.append(avgBs);
-		b.append(":");
+		b.append(JobFactory.ENTRY_SEPARATOR);
 		
 		Client.getCurrentClient().writeOutput(new JobOutput("", "", b.toString()));
 	}
