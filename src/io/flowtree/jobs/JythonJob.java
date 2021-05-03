@@ -16,17 +16,22 @@
 
 package io.flowtree.jobs;
 
+import io.almostrealism.code.FunctionalWriter;
 import io.flowtree.job.AbstractJobFactory;
 import io.flowtree.job.Job;
 import org.almostrealism.util.KeyUtils;
 import org.python.util.PythonInterpreter;
 
+import java.io.IOException;
+import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 public class JythonJob implements Job {
+	private static final ThreadLocal<PythonInterpreter> interpreters = new ThreadLocal<>();
+
 	private String taskId;
 	private String jython;
 
@@ -103,6 +108,31 @@ public class JythonJob implements Job {
 		@Override
 		public String toString() {
 			return super.encode();
+		}
+	}
+
+	protected static PythonInterpreter getInterpreter() {
+		if (interpreters.get() == null) {
+			interpreters.set(new PythonInterpreter());
+		}
+
+		return interpreters.get();
+	}
+
+	public static String execute(String instruction) {
+		StringBuilder buf = new StringBuilder();
+		getInterpreter().setOut(new FunctionalWriter(buf::append));
+		getInterpreter().setErr(new FunctionalWriter(buf::append));
+		getInterpreter().exec(instruction);
+		return buf.toString();
+	}
+
+	public static void closeInterpreter() {
+		PythonInterpreter interpreter = interpreters.get();
+
+		if (interpreter != null) {
+			interpreter.close();
+			interpreters.remove();
 		}
 	}
 }

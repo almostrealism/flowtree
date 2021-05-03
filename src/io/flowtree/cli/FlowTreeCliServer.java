@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Michael Murray
+ * Copyright 2021 Michael Murray
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,6 +57,7 @@ import javax.swing.SwingUtilities;
 
 import io.flowtree.behavior.ServerBehavior;
 import io.flowtree.fs.OutputServer;
+import io.flowtree.jobs.JythonJob;
 import io.flowtree.msg.Message;
 import io.flowtree.msg.NodeProxy;
 import io.flowtree.node.Client;
@@ -90,7 +91,9 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 	public interface Command {
 		String run(String command, PrintStream out);
 	}
-	
+
+	public static final boolean enableJython = true;
+
 	private static final String internalConfig = "node.conf";
 	private static final String plySceneLoaderClass = "com.almostrealism.raytracer.loaders.PlySceneLoader";
 	private static final String gtsSceneLoaderClass = "com.almostrealism.raytracer.loaders.GtsSceneLoader";
@@ -285,10 +288,10 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 			f.setLocation(d.width - 300, d.height - 60);
 			
 			this.button = new JButton(this.activeIcon);
-			this.button.addActionListener((e) -> FlowTreeCliServer.this.dialog.showDialog());
+			this.button.addActionListener(e -> FlowTreeCliServer.this.dialog.showDialog());
 			
 			JButton closeButton = new JButton(closeIcon);
-			closeButton.addActionListener((e) -> {
+			closeButton.addActionListener(e -> {
 					try {
 						Server s = OutputServer.getCurrentServer().getNodeServer();
 						
@@ -298,7 +301,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 										!= JOptionPane.YES_OPTION) {
 							return;
 						}
-					} catch (Exception ex) { }
+					} catch (Exception ignored) { }
 					
 					System.exit(0);
 				});
@@ -378,13 +381,13 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 
 						if (FlowTreeCliServer.this.sleepGraph != null) {
 							FlowTreeCliServer.this.sleepGraph.addEntry(
-									(int)(g.getSleep() / 10000));
+									g.getSleep() / 10000);
 						}
 
 						if (FlowTreeCliServer.this.dialog.isVisible() && c1 != null) {
 							SwingUtilities.invokeAndWait(() -> FlowTreeCliServer.this.dialog.updateStatus());
 						}
-					} catch (InterruptedException ie) {
+					} catch (InterruptedException ignored) {
 					} catch (InvocationTargetException ite) {
 						ite.printStackTrace();
 					}
@@ -423,6 +426,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 			this.closeIcon = new ImageIcon();
 	}
 	
+	@Override
 	public void run() {
 		while (true) {
 			try (Socket connection = this.socket.accept()) {
@@ -432,7 +436,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 				this.out = connection.getOutputStream();
 				System.out.println("FlowTreeCliServer: Got IO streams...");
 				
-				this.ps = new PrintStream(this.out, false, "US-ASCII");
+				this.ps = new PrintStream(this.out, false, StandardCharsets.US_ASCII);
 				System.out.println("FlowTreeCliServer: Constructed print stream...");
 				
 				this.write("Welcome to FlowTree.io\n");
@@ -462,6 +466,8 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 									ioe.getMessage() + ")");
 			} catch (Exception e) {
 				System.out.println("FlowTreeCliServer: " + e);
+			} finally {
+				JythonJob.closeInterpreter();
 			}
 		}
 	}
@@ -486,7 +492,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 					return new String(b, StandardCharsets.US_ASCII);
 				}
 				
-				try { Thread.sleep(500); } catch (InterruptedException ie) {}
+				try { Thread.sleep(500); } catch (InterruptedException ignored) {}
 				
 				if (System.currentTimeMillis() - s > 180000) return null;
 			}
@@ -529,7 +535,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 		if (in > 0) inc = c.substring(0, in);
 		
 		try {
-			if (c.startsWith("help")) {
+			if (c.startsWith("::help")) {
 				if (c.endsWith(" sendtask")) {
 					return "sendtask <host index> <JobFactory class name> [[key]=[value]]...\n" +
 							"Using -1 for host index sends the task to localhost.\n" +
@@ -568,7 +574,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 				} else {
 					return "No help info.";
 				}
-			} else if (c.startsWith("classhelp")) {
+			} else if (c.startsWith("::classhelp")) {
 				String s[] = FlowTreeCliServer.parseCommand(c);
 				Object o = Class.forName(s[0]).newInstance();
 				
@@ -577,7 +583,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 				} else {
 					return s[0] + " does not provide help.";
 				}
-			} else if (c.startsWith("confighelp")) {
+			} else if (c.startsWith("::confighelp")) {
 				if (c.endsWith("confighelp")) {
 					BufferedReader bufIn = new BufferedReader(
 								new InputStreamReader(
@@ -612,7 +618,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 				} else {
 					return "Unknown parameter.";
 				}
-			} else if (c.startsWith("render")) {
+			} else if (c.startsWith("::render")) {
 				String sceneName = "scene.xml";
 				String dim = "100x100";
 				String sdim = "1x1";
@@ -661,7 +667,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 				*/
 				
 				return "Started render thread: " + id; // + "@" + host;
-			} else if (c.startsWith("plyrender")) {
+			} else if (c.startsWith("::plyrender")) {
 				String sceneName = "scene.xml";
 				String dim = "100x100";
 				String sdim = "1x1";
@@ -714,7 +720,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 				*/
 				
 				return "Started render thread: " + id; // + "@" + host;
-			} else if (c.startsWith("gtsrender")) {
+			} else if (c.startsWith("::gtsrender")) {
 				String sceneName = "scene.xml";
 				String dim = "100x100";
 				String sdim = "1x1";
@@ -767,11 +773,11 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 				 */
 				
 				return "Started render thread: " + id; // + "@" + host;
-			} else if (c.equals("suicide")) {
+			} else if (c.equals("::suicide")) {
 				System.out.println("Terminal: Received suicide");
 				System.exit(9);
 				return "suicide";
-			} else if (c.startsWith("sendtask")) {
+			} else if (c.startsWith("::sendtask")) {
 				final String s[] = FlowTreeCliServer.parseCommand(c);
 				if (s.length <= 0) return "Please specify peer to send to.";
 				if (s.length <= 1) return "Please specify class name.";
@@ -813,11 +819,11 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 				t.start();
 				
 				return "Started sendtask thread: " + id + "@" + host;
-			} else if (c.startsWith("threads")) {
+			} else if (c.startsWith("::threads")) {
 				String s[] = Client.getCurrentClient().getServer().getThreadList();
 				for (int i = 0; i < s.length; i++) ps.println(s[i]);
 				return s.length + " active threads.";
-			} else if (c.startsWith("kill")) {
+			} else if (c.startsWith("::kill")) {
 				int index;
 				String s = c;
 				
@@ -833,7 +839,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 				
 				return "Send kill signal for task " + task +
 						" with relay count of " + relay + ".";
-			} else if (c.startsWith("work")) {
+			} else if (c.startsWith("::work")) {
 				// TODO Add work command to documentation.
 				
 				String w[] = Client.getCurrentClient().getServer().getCurrentWork();
@@ -861,7 +867,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 					nodes = nodes + "s.";
 				
 				return tot + jobs + w.length + nodes;
-			} else if (c.startsWith("loadimage")) {
+			} else if (c.startsWith("::loadimage")) {
 				String s[] = FlowTreeCliServer.parseCommand(c);
 				RGB rgb[][] = Client.getCurrentClient().getServer().loadImage(s[0]);
 				
@@ -869,7 +875,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 					return "No image data loaded.";
 				else
 					return "Loaded " + rgb.length + "x" + rgb[0].length + " image.";
-			} else if (c.startsWith("ccache")) {
+			} else if (c.startsWith("::ccache")) {
 				int index;
 				String s = c;
 				
@@ -896,7 +902,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 				} else {
 					return "Unknown cache: " + name;
 				}
-			} else if (c.startsWith("export")) {
+			} else if (c.startsWith("::export")) {
 				String s = c;
 				s = s.substring(s.indexOf(" ") + 1);
 				
@@ -914,7 +920,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 				}
 				
 				return "Wrote ~" + s;
-			} else if (c.startsWith("status")) {
+			} else if (c.startsWith("::status")) {
 				int index = c.indexOf(" ");
 				
 				if (index > 0) {
@@ -925,21 +931,21 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 					Client.getCurrentClient().getServer().printStatus(ps);
 					return "\n";
 				}
-			} else if (c.startsWith("jobtime")) {
+			} else if (c.startsWith("::jobtime")) {
 				return String.valueOf(
 						Client.getCurrentClient().getServer().
 						getNodeGroup().getAverageJobTime());
-			} else if (c.startsWith("inputrate")) {
+			} else if (c.startsWith("::inputrate")) {
 				String s[] = FlowTreeCliServer.parseCommand(c);
 				int peer = Integer.parseInt(s[0]);
 				return String.valueOf(Client.getCurrentClient().getServer().getInputRate(peer));
-			} else if (c.startsWith("paratio")) {
+			} else if (c.startsWith("::paratio")) {
 				return String.valueOf(Client.getCurrentClient().getServer().getPeerActivityRatio());
-			} else if (c.startsWith("parating")) {
+			} else if (c.startsWith("::parating")) {
 				String s[] = FlowTreeCliServer.parseCommand(c);
 				int peer = Integer.parseInt(s[0]);
 				return String.valueOf(Client.getCurrentClient().getServer().getActivityRating(peer));
-			} else if (c.startsWith("behave")) {
+			} else if (c.startsWith("::behave")) {
 				String s[] = FlowTreeCliServer.parseCommand(c);
 				if (s.length <= 0) return "Please specify a ServerBehavior.";
 				
@@ -961,7 +967,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 				Message.verbose = v;
 				
 				return "Executed behavior.";
-			} else if (c.startsWith("sbehave")) {
+			} else if (c.startsWith("::sbehave")) {
 				String s[] = FlowTreeCliServer.parseCommand(c);
 				if (s.length <= 0) return "Please specify a ServerBehavior.";
 				
@@ -991,7 +997,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 				t.start();
 				
 				return "Executed behavior in thread " + t + ".";
-			} else if (c.startsWith("output")) {
+			} else if (c.startsWith("::output")) {
 				int index = c.indexOf(" ");
 				
 				if (index > 0) {
@@ -1011,7 +1017,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 				} else {
 					return "Must specify output resource.";
 				}
-			} else if (c.startsWith("print")) {
+			} else if (c.startsWith("::print")) {
 				// TODO  Add print command to doumentation.
 				
 				String s[] = FlowTreeCliServer.parseCommand(c);
@@ -1037,7 +1043,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 					ps.println(o.toString());
 					return "An instance of " + o.getClass().getName();
 				}
-			} else if (c.startsWith("ls")) {
+			} else if (c.startsWith("::ls")) {
 				String s[] = FlowTreeCliServer.parseCommand(c);
 				String file = "/";
 				boolean useColor = false;
@@ -1097,7 +1103,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 				} else {
 					return file + " not found.";
 				}
-			} else if (c.startsWith("mkdir")) {
+			} else if (c.startsWith("::mkdir")) {
 				String s[] = FlowTreeCliServer.parseCommand(c);
 				if (s.length <= 0) return "Specify a URI.";
 				
@@ -1110,7 +1116,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 					return "Could not create " + s[0];
 				else
 					return "Created " + l;
-			} else if (c.startsWith("rmdir")) {
+			} else if (c.startsWith("::rmdir")) {
 				String s[] = FlowTreeCliServer.parseCommand(c);
 				if (s.length <= 0) return "Specify a URI.";
 				
@@ -1123,7 +1129,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 					return "Deleted " + s[0];
 				else
 					return "Some files could not be deleted.";
-			} else if (c.startsWith("rm ")) {
+			} else if (c.startsWith("::rm ")) {
 				String s[] = FlowTreeCliServer.parseCommand(c);
 				if (s.length <= 0) return "Specify a URI.";
 				
@@ -1136,7 +1142,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 					return "Deleted " + s[0];
 				else
 					return "Could not delete " + s[0];
-			} else if (c.startsWith("store")) {
+			} else if (c.startsWith("::store")) {
 				String s[] = FlowTreeCliServer.parseCommand(c);
 				if (s.length <= 0) return "Specify an object.";
 				if (s.length <= 1) return "Specify a URI.";
@@ -1155,12 +1161,12 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 					((Storable)o).store(out);
 					return o + " stored to " + s[1];
 				}
-			} else if (c.startsWith("peers")) {
+			} else if (c.startsWith("::peers")) {
 				String s[] = Client.getCurrentClient().getServer().getPeers();
 				StringBuffer b = new StringBuffer();
 				for (int i = 0; i < s.length; i++) b.append(s[i] + "\n");
 				return b.toString();
-			} else if (c.startsWith("pping")) {
+			} else if (c.startsWith("::pping")) {
 				String s[] = FlowTreeCliServer.parseCommand(c);
 				
 				int peer = 0;
@@ -1201,7 +1207,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 				} else {
 					return "No messages recieved.";
 				}
-			} else if (c.startsWith("open")) {
+			} else if (c.startsWith("::open")) {
 				String s[] = FlowTreeCliServer.parseCommand(c);
 				String host = s[0];
 				int port = Server.defaultPort;
@@ -1212,18 +1218,18 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 				} else {
 					return "Host was not opened.";
 				}
-			} else if (c.startsWith("close")) {
+			} else if (c.startsWith("::close")) {
 				String s[] = FlowTreeCliServer.parseCommand(c);
 				int h = Integer.parseInt(s[0]);
 				String p = Client.getCurrentClient().getServer().getPeers()[h];
 				int d = Client.getCurrentClient().getServer().close(h);
 				return "Dropped " + d + " node connections to " + p;
-			} else if (c.startsWith("uptime")) {
+			} else if (c.startsWith("::uptime")) {
 				double min = Client.getCurrentClient().getUptime() / 60000.0;
 				return "Client up for " + min + " minutes.";
-			} else if (c.startsWith("date")) {
+			} else if (c.startsWith("::date")) {
 				return new Date().toString();
-			} else if (c.startsWith("set")) {
+			} else if (c.startsWith("::set")) {
 				int index;
 				String s = c;
 				
@@ -1242,11 +1248,11 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 					return "Set " + param + " to " + value;
 				else
 					return "Unknown paramater: " + param;
-			} else if (c.startsWith("giterate")) {
+			} else if (c.startsWith("::giterate")) {
 				Node n = Client.getCurrentClient().getServer().getNodeGroup();
 				n.iteration(n);
 				return n.toString() + " iteration performed.";
-			} else if (c.startsWith("run")) {
+			} else if (c.startsWith("::run")) {
 				int index;
 				String s = c;
 				
@@ -1286,14 +1292,14 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 				}
 				
 				return "Unknown task type \"" + prg + "\"";
-			} else if (c.startsWith("tasks")) {
+			} else if (c.startsWith("::tasks")) {
 				String s[] = Client.getCurrentClient().getServer().getNodeGroup().taskList();
 				StringBuffer r = new StringBuffer();
 				
 				for(int i = 0; i < s.length; i++) r.append(s[i] + "\n");
 				
 				return r.toString();
-			} else if (c.startsWith("dbs")) {
+			} else if (c.startsWith("::dbs")) {
 				String s[] = FlowTreeCliServer.parseCommand(c);
 				
 				if (s.length <= 0) {
@@ -1348,7 +1354,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 				} else {
 					return "Unknown DBS command: " + s[0] + "\nTry start, create, or add.";
 				}
-			} else if (c.startsWith("dbnotify")) {
+			} else if (c.startsWith("::dbnotify")) {
 				io.flowtree.fs.OutputServer server = 
 					io.flowtree.fs.OutputServer.getCurrentServer();
 				if (server == null) return "No DBS running.";
@@ -1357,7 +1363,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 				server.storeOutput();
 				
 				return "Output from " + s[0] + " passed to output handlers.";
-			} else if (c.startsWith("dbupdate")) {
+			} else if (c.startsWith("::dbupdate")) {
 				io.flowtree.fs.OutputServer dbs = 
 					io.flowtree.fs.OutputServer.getCurrentServer();
 				if (dbs == null) return "No DBS running.";
@@ -1390,11 +1396,13 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 			} else if (commands != null && commands.containsKey(inc)) {
 				Command r = (Command) commands.get(inc);
 				return r.run(c, ps);
+			} else if (enableJython) {
+				return JythonJob.execute(c);
 			} else {
 				return "Command not found.";
 			}
 		} catch (NumberFormatException n) {
-			return "An error occured while parsing a number.";
+			return "An error occurred while parsing a number.";
 		} catch (IndexOutOfBoundsException ob) {
 			return ob.getMessage();
 		} catch (UnknownHostException h) {
@@ -1403,7 +1411,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 			return "Could not connect to host: " + ce.getMessage();
 		} catch (Exception e) {
 			e.printStackTrace();
-			return ("Exception while running commmand: " + e);
+			return "Exception while running command: " + e;
 		}
 	}
 	
