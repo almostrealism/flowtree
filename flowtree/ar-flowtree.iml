@@ -18,7 +18,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="GraphPersist" />
-    <orderEntry type="module" module-name="FlowTreeAPI" />
+    <orderEntry type="module" module-name="flowtreeapi" />
     <orderEntry type="module" module-name="ar-utils" />
     <orderEntry type="module" module-name="space" />
     <orderEntry type="module" module-name="graph" />
