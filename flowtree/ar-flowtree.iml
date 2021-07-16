@@ -54,6 +54,20 @@
     <orderEntry type="library" name="Maven: commons-beanutils:commons-beanutils:1.9.2" level="project" />
     <orderEntry type="library" name="Maven: commons-collections:commons-collections:3.2.1" level="project" />
     <orderEntry type="library" name="Maven: org.dcache:nfs4j-core:0.10.6" level="project" />
+    <orderEntry type="library" name="Maven: jline:jline:1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.dcache:oncrpc4j-core:2.3.4" level="project" />
+    <orderEntry type="library" name="Maven: org.glassfish.grizzly:grizzly-framework:2.3.12" level="project" />
+    <orderEntry type="library" name="Maven: org.dcache.common:dcache-auth:0.0.11" level="project" />
+    <orderEntry type="library" name="Maven: org.glassfish.gmbal:gmbal-api-only:3.2.0-b003" level="project" />
+    <orderEntry type="library" name="Maven: org.dcache.chimera:chimera-core:0.0.15-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.liquibase:liquibase-core:3.3.2" level="project" />
+    <orderEntry type="library" name="Maven: org.glassfish.gmbal:gmbal:3.2.0-b003" level="project" />
+    <orderEntry type="library" name="Maven: org.glassfish.external:management-api:3.0.0-b012" level="project" />
+    <orderEntry type="library" name="Maven: org.glassfish.pfl:pfl-basic:1.0.0-b001" level="project" />
+    <orderEntry type="library" name="Maven: org.glassfish.pfl:pfl-tf:1.0.0-b001" level="project" />
+    <orderEntry type="library" name="Maven: org.glassfish.pfl:pfl-asm:1.0.0-b001" level="project" />
+    <orderEntry type="library" name="Maven: org.glassfish.pfl:pfl-tf-tools:1.0.0-b001" level="project" />
+    <orderEntry type="library" name="Maven: org.glassfish.pfl:pfl-basic-tools:1.0.0-b001" level="project" />
     <orderEntry type="library" name="Maven: com.jcraft:jsch:0.1.53" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.6" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-collections4:4.1" level="project" />
