@@ -1,0 +1,5 @@
+io/flowtree/job/HybridJobFactory.class
+io/flowtree/job/JobFactory.class
+io/flowtree/job/Job.class
+io/flowtree/job/Output.class
+io/flowtree/job/AbstractJobFactory.class

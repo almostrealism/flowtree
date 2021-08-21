@@ -5,10 +5,11 @@
 
 	<groupId>org.almostrealism</groupId>
 	<artifactId>FlowTree</artifactId>
-	<version>0.10</version>
+	<version>0.11</version>
 
 	<modules>
 		<module>graphpersist</module>
+		<module>treeview</module>
 		<module>flowtreeapi</module>
 		<module>flowtree</module>
 	</modules>
