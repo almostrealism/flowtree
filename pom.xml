@@ -6,6 +6,9 @@
 	<properties>
 		<common.version>0.42</common.version>
 		<flowtree.version>0.13</flowtree.version>
+
+		<!-- Adapt this to a version found on http://central.maven.org/maven2/org/eclipse/jetty/jetty-maven-plugin/ -->
+		<jettyVersion>9.4.6.v20170531</jettyVersion>
 	</properties>
 
 	<groupId>org.almostrealism</groupId>
@@ -18,11 +21,6 @@
 		<module>flowtreeapi</module>
 		<module>flowtree</module>
 	</modules>
-
-	<properties>
-		<!-- Adapt this to a version found on http://central.maven.org/maven2/org/eclipse/jetty/jetty-maven-plugin/ -->
-		<jettyVersion>9.4.6.v20170531</jettyVersion>
-	</properties>
 
 	<!-- Output to jar format -->
 	<packaging>pom</packaging>
