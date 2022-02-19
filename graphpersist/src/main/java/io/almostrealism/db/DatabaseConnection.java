@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Michael Murray
+ * Copyright 2022 Michael Murray
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,7 +35,7 @@ import org.almostrealism.util.KeyValueStore;
 import io.almostrealism.db.Query.ResultHandler;
 
 /**
- * @author Mike Murray
+ * @author  Michael Murray
  */
 public class DatabaseConnection {
 	public static final String postgresBytea = "bytea";
