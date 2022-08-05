@@ -37,6 +37,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.Provider;
 import java.security.Security;
 import java.security.spec.InvalidKeySpecException;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -54,7 +55,7 @@ import javax.crypto.spec.PBEParameterSpec;
 import io.flowtree.node.Client;
 import io.flowtree.node.NodeGroup;
 import io.flowtree.node.Proxy;
-import io.flowtree.node.Server;
+import io.flowtree.Server;
 
 import io.almostrealism.db.Query;
 
@@ -255,13 +256,13 @@ public class NodeProxy implements Proxy, Runnable {
 			this.println("Done", false, false);
 		}
 		
-		this.print("Getting output stream... ");
+		this.print("Getting output stream... ", true);
 		this.out = new ObjectOutputStream(s.getOutputStream());
-		this.println("Done", false, false);
+		this.println("Done", true, false);
 		
-		this.print("Getting input stream... ");
+		this.print("Getting input stream... ", true);
 		this.in = new ObjectInputStream(s.getInputStream());
-		this.println("Done", false, false);
+		this.println("Done", true, false);
 		
 		if (Message.verbose) {
 			// TODO  Add socket dump file to documentation
@@ -318,7 +319,7 @@ public class NodeProxy implements Proxy, Runnable {
 		
 		if (o instanceof Message) {
 			Message m = (Message) o;
-			m.setReciever(id);
+			m.setReceiver(id);
 			
 			if (m.getType() == Message.ResourceRequest) {
 				Message x = (Message) this.nextMessage(Message.ResourceUri, null);
@@ -508,7 +509,7 @@ public class NodeProxy implements Proxy, Runnable {
 	}
 	
 	/**
-	 * Finds the next Message object of the specified type that has been recieved.
+	 * Finds the next Message object of the specified type that has been received.
 	 * 
 	 * @param type  The integer type code for the type of message to be returned.
 	 * @param data  The data contained in the message to be returned.
@@ -543,11 +544,11 @@ public class NodeProxy implements Proxy, Runnable {
 	}
 	
 	/**
-	 * Waits for the next Object to be recieved by the specified id.
+	 * Waits for the next Object to be received by the specified id.
 	 * 
-	 * @param id  Unique id of reciever.
+	 * @param id  Unique id of receiver.
 	 * @param timeout  Max time to wait msecs.
-	 * @return  Object recieved, null if wait times out.
+	 * @return  Object received, null if wait times out.
 	 */
 	public Object waitFor(final int id, int timeout) {
 		this.owait++;
@@ -583,7 +584,7 @@ public class NodeProxy implements Proxy, Runnable {
 	 * @param type  Integer type code for message to wait for.
 	 * @param data  Data contained in message to wait for. (If null, data will not be checked).
 	 * @param timeout  Max time to wait in msecs.
-	 * @return  Object recieved, null if wait times out.
+	 * @return  Object received, null if wait times out.
 	 */
 	public Object waitForMessage(final int type, final String data, long timeout) {
 		this.mwait++;
@@ -616,7 +617,7 @@ public class NodeProxy implements Proxy, Runnable {
 		this.println("Storing message -- " + m, this.mwait > 0);
 		
 		synchronized (this.obj) {
-			this.obj.add(0, new StoredObject(m, m.getReciever()));
+			this.obj.add(0, new StoredObject(m, m.getReceiver()));
 			if (this.obj.size() > this.maxStore) this.obj.remove(this.obj.size() - 1);
 		}
 	}
@@ -757,7 +758,7 @@ public class NodeProxy implements Proxy, Runnable {
 		this.flushQueue();
 	}
 	
-	protected void fireRecievedMessage(Message m, int reciever) {
+	protected void fireReceivedMessage(Message m, int reciever) {
 		this.activateQueue();
 		boolean store = true;
 		
@@ -903,21 +904,26 @@ public class NodeProxy implements Proxy, Runnable {
 	 */
 	@Override
 	public void run() {
+		int count = 0;
+
 		boolean h = false;
 		String head = null;
 		Externalizable ext = null;
 		
 		loop: while (resets < 3) {
 			try {
+				count = (count + 1) % 1000;
 				Thread.sleep(NodeProxy.sleep);
 				
 				if (this.nullCount > this.timeout) {
-					this.println("Attempting to reconfirm connection...");
+					println("Attempting to reconfirm connection...");
 					Message m = new Message(Message.ConnectionConfirmation, -1, this);
 					
 					if (m.send(-1) == null) {
-						this.println("Connection timeout.");
+						println("Connection timeout.");
 						this.reset = true;
+					} else {
+						println("ConnectionConfirmation sent.");
 					}
 				}
 				
@@ -966,7 +972,7 @@ public class NodeProxy implements Proxy, Runnable {
 						this.totalMsgIn++;
 						this.currentMsgIn++;
 						this.nullCount = 0;
-						this.fireRecievedMessage(m, m.getReciever());
+						this.fireReceivedMessage(m, m.getReceiver());
 					} else if (ext instanceof Query) {
 						this.nullCount = 0;
 						Server server = Client.getCurrentClient().getServer(); // TODO  Remove dependence on Client ?
@@ -1007,6 +1013,8 @@ public class NodeProxy implements Proxy, Runnable {
 				this.println(cce.getMessage());
 			} catch (ClassNotFoundException cnf) {
 				this.println(cnf.toString());
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		}
 		

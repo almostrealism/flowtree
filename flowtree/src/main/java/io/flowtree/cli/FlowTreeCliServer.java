@@ -31,7 +31,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintStream;
-import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.ConnectException;
 import java.net.MalformedURLException;
@@ -63,7 +62,7 @@ import io.flowtree.msg.NodeProxy;
 import io.flowtree.node.Client;
 import io.flowtree.node.Node;
 import io.flowtree.node.NodeGroup;
-import io.flowtree.node.Server;
+import io.flowtree.Server;
 import io.flowtree.ui.NetworkDialog;
 import org.almostrealism.color.RGB;
 import org.almostrealism.io.OutputHandler;
@@ -1225,7 +1224,7 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 				int d = Client.getCurrentClient().getServer().close(h);
 				return "Dropped " + d + " node connections to " + p;
 			} else if (c.startsWith("::uptime")) {
-				double min = Client.getCurrentClient().getUptime() / 60000.0;
+				double min = Client.getCurrentClient().getServer().getUptime() / 60000.0;
 				return "Client up for " + min + " minutes.";
 			} else if (c.startsWith("::date")) {
 				return new Date().toString();

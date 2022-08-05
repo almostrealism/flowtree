@@ -6,7 +6,6 @@ import org.almostrealism.collect.PackedCollection;
 import org.almostrealism.collect.TraversalPolicy;
 import org.hsqldb.Server;
 
-import java.util.Map;
 import java.util.Properties;
 
 public class GraphPersist {

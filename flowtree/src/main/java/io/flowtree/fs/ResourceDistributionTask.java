@@ -34,8 +34,8 @@ import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 import io.flowtree.job.AbstractJobFactory;
-import io.flowtree.node.Server;
-import io.flowtree.node.Server.ResourceProvider;
+import io.flowtree.Server;
+import io.flowtree.Server.ResourceProvider;
 import io.almostrealism.code.Graph;
 import org.almostrealism.io.JobOutput;
 import org.almostrealism.io.OutputHandler;

@@ -62,7 +62,7 @@ public interface JobFactory {
     /**
      * The encode method must return a string of the form:
      * "classname:key0=value0:key1=value1:key2=value2..."
-     * Where classname is the name of the class that is implmenting JobFactory, and the
+     * Where classname is the name of the class that is implementing JobFactory, and the
      * key=value pairs are pairs of keys and values that will be passed to the set method
      * of the class to initialize the state of the object after it has been transmitted
      * from one node to another.

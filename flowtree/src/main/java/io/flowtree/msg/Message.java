@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Michael Murray
+ * Copyright 2022 Michael Murray
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,9 +28,9 @@ import io.flowtree.node.Node;
 import io.flowtree.job.Job;
 
 /**
- * A Message object is used to send a message using a Proxy.
+ * A {@link Message} is used to send a message using a Proxy.
  * 
- * @author Mike Murray
+ * @author Michael Murray
  */
 public class Message implements Externalizable {
 	public static final int Job = 1;
@@ -52,7 +52,7 @@ public class Message implements Externalizable {
 	public static boolean sverbose = false;
 	
 	private transient int type;
-	private transient int sender = -1, reciever = -1;
+	private transient int sender = -1, receiver = -1;
 	
 	private transient NodeProxy proxy;
 	private transient Node node;
@@ -66,8 +66,8 @@ public class Message implements Externalizable {
 	}
 	
 	/**
-	 * Constructs a Message object that will be treated as a message
-	 * that was recieved from a remote node.
+	 * Constructs a {@link Message} that will be treated as a message
+	 * that was received from a remote node.
 	 */
 	public Message(NodeProxy p) {
 		this.local = false;
@@ -75,7 +75,7 @@ public class Message implements Externalizable {
 	}
 	
 	/**
-	 * Constructs a new Message object of the specified type.
+	 * Constructs a new {@link Message} of the specified type.
 	 * 
 	 * @param type  Type of message.
 	 * @param id  Id of sending node.
@@ -86,7 +86,7 @@ public class Message implements Externalizable {
 	}
 	
 	/**
-	 * Constructs a new Message object using the specified IO streams and type code.
+	 * Constructs a new {@link Message} using the specified IO streams and type code.
 	 * 
 	 * @param type  Type of message.
 	 * @param id  Id of sending node.
@@ -134,12 +134,12 @@ public class Message implements Externalizable {
 	 * 
 	 * @param id  Integer id to use.
 	 */
-	public void setReciever(int id) { this.reciever = id; }
+	public void setReceiver(int id) { this.receiver = id; }
 	
 	/**
 	 * @return  The integer id of the node that is the reciever of this message.
 	 */
-	public int getReciever() { return this.reciever; }
+	public int getReceiver() { return this.receiver; }
 	
 	/** @return  The integer type code for this message. */
 	public int getType() { return this.type; }
@@ -234,7 +234,7 @@ public class Message implements Externalizable {
 		if (Message.verbose) System.out.println("Write " + this.toString());
 		
 		out.writeInt(this.sender);
-		out.writeInt(this.reciever);
+		out.writeInt(this.receiver);
 		out.writeInt(this.type);
 		out.writeObject(this.data);
 	}
@@ -244,7 +244,7 @@ public class Message implements Externalizable {
 	 */
 	public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
 		this.sender = in.readInt();
-		this.reciever = in.readInt();
+		this.receiver = in.readInt();
 		this.type = in.readInt();
 		
 		this.data = (String) in.readObject();
@@ -257,7 +257,7 @@ public class Message implements Externalizable {
 	
 	public void setBytes(byte b[]) {
 		this.sender = b[0];
-		this.reciever = b[1];
+		this.receiver = b[1];
 		this.type = b[2];
 		
 		if (b.length > 3)
@@ -276,7 +276,7 @@ public class Message implements Externalizable {
 		byte b[] = new byte[3 + db.length];
 		
 		b[0] = (byte) this.sender;
-		b[1] = (byte) this.reciever;
+		b[1] = (byte) this.receiver;
 		b[2] = (byte) this.type;
 		
 		for (int i = 0; i < db.length; i++) b[3 + i] = db[i];
@@ -318,6 +318,6 @@ public class Message implements Externalizable {
 		String s = this.data;
 		if (s != null && s.length() > 100) s = s.substring(0, 100) + "...";
 		
-		return "Message: "+ this.sender + " " + this.reciever + " " + t + " " + s;
+		return "Message: "+ this.sender + " " + this.receiver + " " + t + " " + s;
 	}
 }

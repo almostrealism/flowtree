@@ -6,11 +6,59 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="FlowTree" />
+        <module name="ar-flowtree" />
+        <module name="ar-treeview" />
+        <module name="flowtree-shaded" />
+        <module name="ar-flowtreeapi" />
+        <module name="ar-graphpersist" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="FlowTree" target="1.8" />
+      <module name="ar-algebra" target="11" />
+      <module name="ar-chemistry" target="11" />
+      <module name="ar-code" target="11" />
+      <module name="ar-collect" target="11" />
+      <module name="ar-color" target="11" />
+      <module name="ar-economics" target="11" />
+      <module name="ar-geometry" target="11" />
+      <module name="ar-graph" target="11" />
+      <module name="ar-hardware" target="11" />
+      <module name="ar-heredity" target="11" />
+      <module name="ar-io" target="11" />
+      <module name="ar-optimize" target="11" />
+      <module name="ar-physics" target="11" />
+      <module name="ar-relation" target="11" />
+      <module name="ar-space" target="11" />
+      <module name="ar-stats" target="11" />
+      <module name="ar-swing" target="11" />
+      <module name="ar-time" target="11" />
+      <module name="ar-uml" target="11" />
+      <module name="ar-utils" target="11" />
+      <module name="Common" target="11" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ar-algebra" options="-h target/headers" />
+      <module name="ar-chemistry" options="-h target/headers" />
+      <module name="ar-code" options="-h target/headers" />
+      <module name="ar-collect" options="-h target/headers" />
+      <module name="ar-color" options="-h target/headers" />
+      <module name="ar-economics" options="-h target/headers" />
+      <module name="ar-geometry" options="-h target/headers" />
+      <module name="ar-graph" options="-h target/headers" />
+      <module name="ar-hardware" options="-h target/headers" />
+      <module name="ar-heredity" options="-h target/headers" />
+      <module name="ar-io" options="-h target/headers" />
+      <module name="ar-optimize" options="-h target/headers" />
+      <module name="ar-physics" options="-h target/headers" />
+      <module name="ar-relation" options="-h target/headers" />
+      <module name="ar-space" options="-h target/headers" />
+      <module name="ar-stats" options="-h target/headers" />
+      <module name="ar-swing" options="-h target/headers" />
+      <module name="ar-time" options="-h target/headers" />
+      <module name="ar-uml" options="-h target/headers" />
+      <module name="ar-utils" options="-h target/headers" />
+    </option>
   </component>
 </project>

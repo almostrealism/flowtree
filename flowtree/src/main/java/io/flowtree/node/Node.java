@@ -23,6 +23,7 @@ import java.io.PrintStream;
 import java.net.SocketException;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -34,6 +35,7 @@ import java.util.concurrent.ThreadFactory;
 
 import javax.swing.JLabel;
 
+import io.flowtree.Server;
 import io.flowtree.fs.OutputServer;
 import org.almostrealism.io.RSSFeed;
 import org.almostrealism.util.Chart;
@@ -716,7 +718,7 @@ public class Node implements Runnable, ThreadFactory {
 	 * @param image  URL of image.
 	 */
 	protected void displayMessage(String message, String image) {
-		String s = "[" + this.toString() + "]: " + message;
+		String s = Instant.now() + " [" + this.toString() + "]: " + message;
 		
 		this.lastMessage = s;
 		
@@ -814,8 +816,8 @@ public class Node implements Runnable, ThreadFactory {
 		
 		double workP = -1.0, comP = -1;
 		Client c = Client.getCurrentClient();
-		if (c != null) {
-			double up = c.getUptime();
+		if (c != null) { // TODO  Should be able to do this even without a current client
+			double up = c.getServer().getUptime();
 			workP = this.totalWorkTime / up;
 			comP = this.totalComTime / up;
 		}
@@ -1009,7 +1011,7 @@ public class Node implements Runnable, ThreadFactory {
 			
 			this.relaySum += r;
 			this.relayDiv++;
-			
+
 			r: if (js > this.minJobs && Math.random() < r) {
 				Connection c;
 				

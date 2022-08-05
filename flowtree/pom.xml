@@ -4,7 +4,7 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<parent>
 		<artifactId>FlowTree</artifactId>
-		<groupId>org.almostrealism</groupId>
+		<groupId>io.flowtree</groupId>
 		<version>0.13</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
@@ -21,19 +21,19 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.almostrealism</groupId>
+			<groupId>io.flowtree</groupId>
 			<artifactId>ar-flowtreeapi</artifactId>
 			<version>0.13</version>
 		</dependency>
 
 		<dependency>
-			<groupId>org.almostrealism</groupId>
+			<groupId>io.flowtree</groupId>
 			<artifactId>ar-treeview</artifactId>
 			<version>0.13</version>
 		</dependency>
 
 		<dependency>
-			<groupId>org.almostrealism</groupId>
+			<groupId>io.flowtree</groupId>
 			<artifactId>ar-graphpersist</artifactId>
 			<version>0.13</version>
 		</dependency>

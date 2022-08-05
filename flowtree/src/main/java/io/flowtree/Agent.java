@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Michael Murray
+ * Copyright 2022 Michael Murray
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,21 +14,20 @@
  * limitations under the License.
  */
 
-/*
- * Copyright (C) 2006  Mike Murray
- *
- *  All rights reserved.
- *  This document may not be reused without
- *  express written permission from Mike Murray.
- *
- */
+package io.flowtree;
 
-package io.flowtree.behavior;
+import java.io.IOException;
+import java.util.Properties;
 
-import java.io.PrintStream;
-
-import io.flowtree.Server;
-
-public interface ServerBehavior {
-	public void behave(Server s, PrintStream out);
+public class Agent {
+    public static void main(String[] args) throws IOException {
+        Properties p = new Properties();
+        p.setProperty("server.port", "-1");
+        p.setProperty("nodes.peers.max", "4");
+        p.setProperty("nodes.jobs.max", "10");
+        p.setProperty("network.msg.verbose", "false");
+        p.setProperty("network.msg.dverbose", "true");
+        Server server = new Server(p);
+        server.start();
+    }
 }

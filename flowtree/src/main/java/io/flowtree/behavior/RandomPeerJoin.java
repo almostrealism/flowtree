@@ -19,7 +19,7 @@ package io.flowtree.behavior;
 import java.io.IOException;
 import java.io.PrintStream;
 
-import io.flowtree.node.Server;
+import io.flowtree.Server;
 import org.almostrealism.algebra.Defaults;
 
 public class RandomPeerJoin implements ServerBehavior {

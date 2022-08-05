@@ -95,7 +95,7 @@ public class HttpCommandServer implements Runnable {
 				}
 				
 				if (Message.verbose)
-					System.out.println("HttpCommandServer: Recieved " + command);
+					System.out.println("HttpCommandServer: Received " + command);
 				
 				if (command != null) {
 					String date = HttpCommandServer.format.format(new Date());
@@ -110,7 +110,7 @@ public class HttpCommandServer implements Runnable {
 					if (Message.verbose)
 						System.out.println("HttpCommandServer: Sent HTTP header and output.");
 				} else {
-					System.out.println("HttpCommandServer: Recieved null command");
+					System.out.println("HttpCommandServer: Received null command");
 				}
 				
 				this.in.close();

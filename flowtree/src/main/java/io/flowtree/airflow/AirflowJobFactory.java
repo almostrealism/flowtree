@@ -97,7 +97,7 @@ public class AirflowJobFactory extends AbstractHandler implements JobFactory {
 		if (c != null && c.getServer() != null)
 			return c.getServer().createJob(data);
 		else
-			return io.flowtree.node.Server.instantiateJobClass(data);
+			return io.flowtree.Server.instantiateJobClass(data);
 	}
 
 	@Override
