@@ -47,7 +47,7 @@ public class Manager {
         Properties p = new Properties();
         p.setProperty("nodes.peers.max", "100");
         p.setProperty("group.taskjobs", "5");
-        p.setProperty("nodes.jobs.max", "10");
+        p.setProperty("nodes.jobs.max", "2");
         p.setProperty("server.status.file", "manager");
         p.setProperty("network.msg.verbose", "false");
         p.setProperty("network.msg.dverbose", "true");

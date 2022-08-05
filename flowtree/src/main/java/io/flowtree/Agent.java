@@ -24,7 +24,7 @@ public class Agent {
         Properties p = new Properties();
         p.setProperty("server.port", "-1");
         p.setProperty("nodes.peers.max", "4");
-        p.setProperty("nodes.jobs.max", "10");
+        p.setProperty("nodes.jobs.max", "3");
         p.setProperty("network.msg.verbose", "false");
         p.setProperty("network.msg.dverbose", "true");
         Server server = new Server(p);

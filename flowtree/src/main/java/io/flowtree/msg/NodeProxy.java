@@ -675,7 +675,7 @@ public class NodeProxy implements Proxy, Runnable {
 	}
 	
 	/**
-	 * @return  The average number of messages recieved per minute since
+	 * @return  The average number of messages received per minute since
 	 *          the last time this method was called.
 	 */
 	public double getInputRate() {
@@ -762,7 +762,7 @@ public class NodeProxy implements Proxy, Runnable {
 		this.activateQueue();
 		boolean store = true;
 		
-		if (m.getType() == Message.Ping) this.println("Recieved ping.", true);
+		if (m.getType() == Message.Ping) this.println("Received ping.", true);
 		
 		Iterator itr = null;
 		
@@ -877,7 +877,7 @@ public class NodeProxy implements Proxy, Runnable {
 	}
 	
 	/**
-	 * @return  True if the specified Object is an instance of NodeProxy that is connected
+	 * @return  True if the specified Object is an instance of {@link NodeProxy} that is connected
 	 *          to the same inet address and port as this one, false otherwise.
 	 */
 	@Override
@@ -890,7 +890,7 @@ public class NodeProxy implements Proxy, Runnable {
 			if (adp == null || adt == null)
 				return false;
 			else
-				return adp.getHostAddress().equals(adt.getHostAddress());
+				return adp.getHostAddress().equals(adt.getHostAddress()) && p.getRemotePort() == this.getRemotePort();
 		} else {
 			return false;
 		}
