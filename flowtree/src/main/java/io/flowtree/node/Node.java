@@ -415,8 +415,13 @@ public class Node implements Runnable, ThreadFactory {
 	public int getMaxJobs() { return this.maxJobs; }
 	
 	public void setMaxJobs(int m) { this.maxJobs = m; }
+
+	public double getMaxSleepC() {
+		if (getParent() != null) return getParent().getMaxSleepC();
+		return maxSleepC;
+	}
 	
-	public void setMaxSleepC(double msc) { this.maxSleepC  = msc; }
+	public void setMaxSleepC(double msc) { this.maxSleepC = msc; }
 	
 	public void setActivitySleepC(double acs) { this.activitySleepC = acs; }
 	
@@ -669,7 +674,7 @@ public class Node implements Runnable, ThreadFactory {
 	 */
 	public void setSleep(int millis) {
 		this.sleep = (int) Math.max(this.minSleep, millis);
-		double max = this.minSleep * this.maxSleepC;
+		double max = this.minSleep * getMaxSleepC();
 		if (this.sleep > max) this.sleep = (int) max;
 		
 		if (this.verbose)

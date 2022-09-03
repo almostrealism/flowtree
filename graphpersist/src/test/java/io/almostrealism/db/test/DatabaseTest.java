@@ -25,8 +25,8 @@ public class DatabaseTest implements TestFeatures {
 
 		GraphPersist.local().save("/test", t.pack());
 		PackedCollection r = GraphPersist.local().read("/test", new TraversalPolicy(2, 3, 2));
-		List<ScalarBank> banks = r.traverse(1).extract(ScalarBank::new).collect(Collectors.toList());
-		assertEquals(3, banks.get(0).get(2));
-		assertEquals(5, banks.get(1).get(1));
+		List banks = (List) r.traverse(1).extract(ScalarBank::new).collect(Collectors.toList());
+		assertEquals(3, ((Scalar) banks.get(0)).get(2));
+		assertEquals(5, ((Scalar) banks.get(1)).get(1));
 	}
 }

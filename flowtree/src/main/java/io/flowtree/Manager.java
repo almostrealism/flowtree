@@ -41,6 +41,10 @@ public class Manager {
             }
         });
 
+        if (!commands.isEmpty()) {
+            tasks.add(new ArrayList<>(commands));
+        }
+
         ExternalProcessJob.Factory task = new ExternalProcessJob.Factory(tasks.toArray(new List[0]));
         task.setPriority(5.0);
 
@@ -48,6 +52,7 @@ public class Manager {
         p.setProperty("nodes.peers.max", "100");
         p.setProperty("group.taskjobs", "5");
         p.setProperty("nodes.jobs.max", "2");
+        p.setProperty("group.msc", "30");
         p.setProperty("server.status.file", "manager");
         p.setProperty("network.msg.verbose", "false");
         p.setProperty("network.msg.dverbose", "true");

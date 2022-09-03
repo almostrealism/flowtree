@@ -85,7 +85,7 @@ public class ExternalProcessJob implements Job {
             System.out.println("!/bin/sh");
             for (String cmd : commands) {
                 out.write(cmd + "\n");
-                System.out.println(cmd + "\n");
+                System.out.println(cmd);
             }
         } catch (IOException e) {
             e.printStackTrace();

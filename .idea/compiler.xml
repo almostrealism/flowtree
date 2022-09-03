@@ -7,10 +7,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ar-flowtree" />
-        <module name="ar-treeview" />
         <module name="flowtree-shaded" />
         <module name="ar-flowtreeapi" />
         <module name="ar-graphpersist" />
+        <module name="ar-treeview" />
+        <module name="ar-flowtree-shaded" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
