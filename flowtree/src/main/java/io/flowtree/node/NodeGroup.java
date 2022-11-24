@@ -39,6 +39,7 @@ import java.util.Properties;
 import javax.crypto.NoSuchPaddingException;
 import javax.swing.JLabel;
 
+import io.flowtree.Server;
 import io.flowtree.fs.OutputServer;
 import org.almostrealism.algebra.Defaults;
 import org.almostrealism.io.RSSFeed;
@@ -64,11 +65,13 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	private double activityO = -0.2;
 	
 	private int maxDuplicateConnections = 2;
-	
+
+	@Deprecated
 	private JobFactory defaultFactory;
 	
 	private List<Node> nodes;
-	private List servers, connecting;
+	private List<NodeProxy> servers;
+	private List connecting;
 	private List<JobFactory> tasks;
 	private List cachedTasks;
 	private List plisteners;
@@ -132,6 +135,14 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 		this.setParam(p);
 		
 		this.servers = new ArrayList(serverCount);
+
+		String rootHost = System.getenv("FLOWTREE_ROOT_HOST");
+		String rootPort = System.getenv("FLOWTREE_ROOT_PORT");
+
+		if (rootHost != null) {
+			if (rootPort == null) rootPort = String.valueOf(Server.defaultPort);
+			startPersistentHost(rootHost, Integer.parseInt(rootPort));
+		}
 		
 		if (serverCount > 0) System.out.println("NodeGroup: Opening server connections...");
 		
@@ -359,7 +370,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	 */
 	public Node[] getNodes() { return this.nodes.toArray(new Node[0]); }
 	
-	protected Collection<Node> nodes() { return nodes; }
+	public Collection<Node> nodes() { return nodes; }
 	
 	/**
 	 * @return  The default {@link JobFactory} used by this {@link NodeGroup} object.
@@ -555,6 +566,36 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 		
 		return tot;
 	}
+
+	public void startPersistentHost(String host, int port){
+		new Thread(() -> {
+			w: while (true) {
+				try {
+					Thread.sleep(30 * 1000l);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+					return;
+				}
+
+				if (getServers().length > 0)
+					continue w;
+
+				System.out.println("NodeGroup: Connecting to root server...");
+
+				try {
+					addServer(new Socket(host, port));
+				} catch (UnknownHostException uh) {
+					System.out.println("NodeGroup: Server " + host + " is unknown host");
+				} catch (IOException ioe) {
+					System.out.println("NodeGroup: IO error while connecting to server " +
+							host + " -- " + ioe.getMessage());
+				} catch (SecurityException se) {
+					System.out.println("NodeGroup: Security exception while connecting to server " + host +
+							" (" + se.getMessage() + ")");
+				}
+			}
+		}, "Persistent Host Attempt").start();
+	}
 	
 	public String[] getCurrentWork() {
 		synchronized (this.nodes) {
@@ -578,7 +619,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	
 	public NodeProxy[] getServers() {
 		synchronized (this.servers) {
-			return (NodeProxy[])this.servers.toArray(new NodeProxy[0]);
+			return this.servers.toArray(new NodeProxy[0]);
 		}
 	}
 	
@@ -683,7 +724,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	}
 	
 	/**
-	 * Adds the specified JobFactory object as a task for this NodeGroup.
+	 * Adds the specified {@link JobFactory} as a task for this {@link NodeGroup}.
 	 * 
 	 * @param f  JobFactory to use as task.
 	 * @return  True if added, false otherwise.
@@ -737,7 +778,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	}
 	
 	/**
-	 * Sends an encoded JobFactory instance to a server that this NodeGroup object
+	 * Sends an encoded JobFactory instance to a server that this {@link NodeGroup}
 	 * is connected to.
 	 * 
 	 * @param f  JobFactory to transmit.
@@ -745,7 +786,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	 */
 	public synchronized void sendTask(JobFactory f, int server) {
 		try {
-			Message m = new Message(Message.Task, -1, (NodeProxy)this.servers.get(server));
+			Message m = new Message(Message.Task, -1, this.servers.get(server));
 			m.setString(f.encode());
 			m.send(-1);
 		} catch (IOException ioe) {
@@ -1278,15 +1319,15 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	/**
 	 * @see NodeProxy.EventListener#recievedMessage(Message, int)
 	 */
-	public boolean recievedMessage(Message m, int reciever) {
-		if (reciever == -1) {
+	public boolean recievedMessage(Message m, int receiver) {
+		if (receiver == -1) {
 			NodeProxy p = m.getNodeProxy();
 			
 			int type = m.getType();
 			int remoteId = m.getSender();
 			
 			if (type == Message.Job) {
-				System.out.println("NodeGroup: Recieved job. Data = " + m.getData());
+				System.out.println("NodeGroup: Received job. Data = " + m.getData());
 				this.getLeastActiveNode().addJob(this.defaultFactory.createJob(m.getData()));
 			} else if (type == Message.StringMessage) {
 				System.out.println("Message from " + p.toString() + ": " + m.getData());

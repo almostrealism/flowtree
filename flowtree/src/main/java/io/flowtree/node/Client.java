@@ -30,6 +30,7 @@ import java.util.Properties;
 
 import javax.swing.JLabel;
 
+import io.flowtree.Server;
 import io.flowtree.fs.OutputServer;
 
 import io.flowtree.ui.LoginDialog;
@@ -49,8 +50,6 @@ public class Client {
 	private String user, passwd;
 	private String outputHost;
 	private int outputPort;
-	
-	private long startTime;
 	
 	private Server server;
 	
@@ -86,7 +85,7 @@ public class Client {
 				public void run() {
 					String user = l.getUser();
 					String passwd = l.getPassword();
-					
+
 					try {
 						Client.client = new Client(p, user, passwd, null);
 					} catch (IOException e) {
@@ -127,7 +126,6 @@ public class Client {
 		}
 
 		this.server.start();
-		this.startTime = System.currentTimeMillis();
 	}
 	
 	public String getUser() { return this.user; }
@@ -196,17 +194,6 @@ public class Client {
 	public io.almostrealism.code.Resource loadResource(String uri) throws IOException {
 		return this.server.loadResource(uri);
 	}
-	
-	/**
-	 * Returns this time in milliseconds since the client was initialized.
-	 */
-	public long getUptime() { return System.currentTimeMillis() - this.startTime; }
-	
-	/**
-	 * Returns the time in milliseconds (System.currentTimeMillis method) when the
-	 * client was initialized.
-	 */
-	public long getStartTime() { return this.startTime; }
 	
 	/**
 	 * Sends the specified Query to the output server.

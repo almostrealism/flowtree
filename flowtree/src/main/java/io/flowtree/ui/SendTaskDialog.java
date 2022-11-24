@@ -30,7 +30,7 @@ import javax.swing.JWindow;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
-import io.flowtree.node.Server;
+import io.flowtree.Server;
 
 import org.almostrealism.algebra.Defaults;
 

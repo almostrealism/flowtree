@@ -45,7 +45,7 @@ public class OutputServer implements Runnable, Consumer<JobOutput> {
 
 	private static OutputServer current;
 
-	private io.flowtree.node.Server nodeServer;
+	private io.flowtree.Server nodeServer;
 	
 	private boolean testMode;
 	private ServerSocket socket;
@@ -67,9 +67,9 @@ public class OutputServer implements Runnable, Consumer<JobOutput> {
 	
 	public OutputServer() { }
 	public OutputServer(Properties p) throws IOException { init(p, Client.getCurrentClient().getServer()); }
-	public OutputServer(Properties p, io.flowtree.node.Server s) throws IOException { init(p, s); }
+	public OutputServer(Properties p, io.flowtree.Server s) throws IOException { init(p, s); }
 	
-	public void init(Properties p, io.flowtree.node.Server s) throws IOException {
+	public void init(Properties p, io.flowtree.Server s) throws IOException {
 		this.nodeServer = s;
 
 		outputTable = p.getProperty("db.tables.output", "output");
@@ -138,7 +138,7 @@ public class OutputServer implements Runnable, Consumer<JobOutput> {
 		// TODO This needs to be a pool of many threads
 		Thread t = new Thread(g, this);
 		t.setName("DB Server Thread");
-		t.setPriority(io.flowtree.node.Server.HIGH_PRIORITY);
+		t.setPriority(io.flowtree.Server.HIGH_PRIORITY);
 		t.start();
 		
 		this.setCurrentServer();
@@ -153,7 +153,7 @@ public class OutputServer implements Runnable, Consumer<JobOutput> {
 
 	public static String getOutputTable() { return outputTable; }
 
-	public io.flowtree.node.Server getNodeServer() { return this.nodeServer; }
+	public io.flowtree.Server getNodeServer() { return this.nodeServer; }
 
 	public void addOutputHandler(OutputHandler handler) {
 		this.db.addOutputHandler(handler);

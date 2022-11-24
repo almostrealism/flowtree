@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Michael Murray
+ * Copyright 2022 Michael Murray
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,21 +14,7 @@
  * limitations under the License.
  */
 
-/*
- * Copyright (C) 2006  Mike Murray
- *
- *  All rights reserved.
- *  This document may not be reused without
- *  express written permission from Mike Murray.
- *
- */
+package io.flowtree;
 
-package io.flowtree.behavior;
-
-import java.io.PrintStream;
-
-import io.flowtree.Server;
-
-public interface ServerBehavior {
-	public void behave(Server s, PrintStream out);
+public class Blank {
 }

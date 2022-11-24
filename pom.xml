@@ -10,7 +10,7 @@
 		<jettyVersion>9.4.6.v20170531</jettyVersion>
 	</properties>
 
-	<groupId>org.almostrealism</groupId>
+	<groupId>io.flowtree</groupId>
 	<artifactId>FlowTree</artifactId>
 	<version>0.13</version>
 
@@ -19,7 +19,8 @@
 		<module>treeview</module>
 		<module>flowtreeapi</module>
 		<module>flowtree</module>
-	</modules>
+        <module>flowtree-shaded</module>
+    </modules>
 
 	<!-- Output to jar format -->
 	<packaging>pom</packaging>

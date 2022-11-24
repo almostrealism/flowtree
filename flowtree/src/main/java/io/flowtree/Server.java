@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Michael Murray
+ * Copyright 2018 Michael Murray
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.flowtree.node;
+package io.flowtree;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -50,6 +50,9 @@ import javax.swing.JLabel;
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
+import io.flowtree.node.Client;
+import io.flowtree.node.Node;
+import io.flowtree.node.NodeGroup;
 import org.almostrealism.auth.Login;
 import io.flowtree.airflow.AirflowJobFactory;
 import io.flowtree.aws.CognitoLogin;
@@ -227,6 +230,7 @@ public class Server implements JobFactory, Runnable {
 	private CompletableFuture<Void> future;
 	
 	private String hostname;
+	private long startTime;
 	
 	private double p;
 	
@@ -289,10 +293,31 @@ public class Server implements JobFactory, Runnable {
 			System.exit(7);
 		}
 	}
+
+	/**
+	 * Constructs a new Server object. The server
+	 * will operate in passive mode.
+	 *
+	 * @throws IOException  If an IO error occurs while opening a server socket.
+	 */
+	public Server() throws IOException {
+		this(new Properties(), null);
+	}
+
+	/**
+	 * Constructs a new Server object. The server
+	 * will operate in passive mode.
+	 *
+	 * @param p  Properties to use for Server and NodeGroup.
+	 * @throws IOException  If an IO error occurs while opening a server socket.
+	 */
+	public Server(Properties p) throws IOException {
+		this(p, null);
+	}
 	
 	/**
 	 * Constructs a new Server object. If j is null, the server
-	 * will opperate in passive mode.
+	 * will operate in passive mode.
 	 * 
 	 * @param p  Properties to use for Server and NodeGroup.
 	 * @param j  JobFactory to use for NodeGroup.
@@ -318,9 +343,11 @@ public class Server implements JobFactory, Runnable {
 		
 		int port = Integer.parseInt(p.getProperty("server.port",
 					String.valueOf(Server.defaultPort)));
-		
-		this.displayMessage("Opening server socket on port " + port);
-		this.socket = new ServerSocket(port);
+
+		if (port > 0) {
+			this.displayMessage("Opening server socket on port " + port);
+			this.socket = new ServerSocket(port);
+		}
 
 		this.thread = new Thread(this.threads, this);
 		this.thread.setName("Network Server");
@@ -355,7 +382,7 @@ public class Server implements JobFactory, Runnable {
 		
 		this.logCache = p.getProperty("server.cache.logdir");
 		
-		if (p.getProperty("server.resource", "on").equals("on")) {
+		if (p.getProperty("server.resource", "off").equals("on")) { // TODO  Default maybe should be "on"
 			ResourceServer rs;
 			
 			String rsp = p.getProperty("server.resource.port");
@@ -385,7 +412,9 @@ public class Server implements JobFactory, Runnable {
 		if (!p.getProperty("server.resource.disableHttpRedirect", "no").equals("yes")) {
 			this.cIndex.put("/http/", "http://");
 		}
-		
+
+		this.startTime = System.currentTimeMillis();
+
 		String s = p.getProperty("server.status.file");
 		int sl = Integer.parseInt(p.getProperty("server.status.sleep", "1200"));
 		int slr = Integer.parseInt(p.getProperty("server.status.samples", "4"));
@@ -690,7 +719,7 @@ public class Server implements JobFactory, Runnable {
 			if (this.hostname != null)
 				file = file + "-" + this.hostname;
 			
-			long time = Client.getCurrentClient().getStartTime() % 10000;
+			long time = getStartTime() % 10000;
 			
 			OutputStream out = this.getOutputStream("/files/logs/" + file +
 													"-" + time + "-stat.html");
@@ -708,10 +737,19 @@ public class Server implements JobFactory, Runnable {
 		
 		return this.group.addTask(task);
 	}
-	
+
 	/**
-	 * Sends an encoded JobFactory instance to a server that this Server object
-	 * is connected to.
+	 * Send the task to this {@link Server}.
+	 *
+	 * @param data  Encoded JobFactory.
+	 */
+	public void sendTask(String data) {
+		sendTask(data, -1);
+	}
+
+	/**
+	 * Sends an encoded {@link JobFactory} instance to another server
+	 * that this {@link Server} is connected to.
 	 * 
 	 * @param data  Encoded JobFactory.
 	 * @param server  Server index.
@@ -722,6 +760,17 @@ public class Server implements JobFactory, Runnable {
 		} else {
 			this.group.sendTask(data, server);
 		}
+	}
+
+	/**
+	 * Sends an encoded {@link JobFactory} instance to this {@link Server}
+	 * is connected to and adds its {@link OutputHandler}, if there is one,
+	 * to the {@link OutputServer}.
+	 *
+	 * @param f  JobFactory to transmit.
+	 */
+	public void sendTask(JobFactory f) {
+		sendTask(f, -1);
 	}
 	
 	/**
@@ -788,6 +837,17 @@ public class Server implements JobFactory, Runnable {
 	public double getJobTime(int peer) {
 		return this.group.getServers()[peer].getJobTime();
 	}
+
+	/**
+	 * Returns this time in milliseconds since the client was initialized.
+	 */
+	public long getUptime() { return System.currentTimeMillis() - this.startTime; }
+
+	/**
+	 * Returns the time in milliseconds (System.currentTimeMillis method) when the
+	 * client was initialized.
+	 */
+	public long getStartTime() { return this.startTime; }
 	
 	/**
 	 * Returns the last value a peer reported for group activity rating.
@@ -1235,6 +1295,8 @@ public class Server implements JobFactory, Runnable {
 	}
 	
 	public void run() {
+		if (socket == null) return;
+
 		this.displayMessage("Awaiting connections.");
 		
 		w: while (!this.stop) {
@@ -1293,7 +1355,7 @@ public class Server implements JobFactory, Runnable {
 			boolean end = false;
 			
 			w: while (!end) {
-				data = data.substring(index + 1);
+				data = data.substring(index + JobFactory.ENTRY_SEPARATOR.length());
 				index = data.indexOf(JobFactory.ENTRY_SEPARATOR);
 				
 				while (data.charAt(index + JobFactory.ENTRY_SEPARATOR.length()) == '/' || index > 0 && data.charAt(index - 1) == '\\')
