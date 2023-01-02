@@ -47,27 +47,29 @@
 	</build>
 
 	<distributionManagement>
+		<!--		<repository>-->
+		<!--			<id>internal</id>-->
+		<!--			<url>http://mvn.almostrealism.org:8080/repository/internal/</url>-->
+		<!--		</repository>-->
 		<repository>
-			<id>internal</id>
-			<url>http://mvn.almostrealism.org:8080/repository/internal/</url>
+			<id>central</id>
+			<url>https://almostrealism.jfrog.io/artifactory/default-libs-release</url>
 		</repository>
-		<snapshotRepository>
-			<id>internal</id>
-			<url>http://mvn.almostrealism.org:8080/repository/internal/</url>
-		</snapshotRepository>
 	</distributionManagement>
 
 	<repositories>
 		<repository>
-			<id>internal</id>
-			<name>Archiva Managed Internal Repository</name>
-			<url>http://mvn.almostrealism.org:8080/repository/internal/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
+			<id>central</id>
+			<url>https://almostrealism.jfrog.io/artifactory/default-libs-release</url>
+			<releases><enabled>true</enabled></releases>
+			<snapshots><enabled>true</enabled></snapshots>
 		</repository>
+		<!--		<repository>-->
+		<!--			<id>internal</id>-->
+		<!--			<name>Archiva Managed Internal Repository</name>-->
+		<!--			<url>http://mvn.almostrealism.org:8080/repository/internal/</url>-->
+		<!--			<releases><enabled>true</enabled></releases>-->
+		<!--			<snapshots><enabled>true</enabled></snapshots>-->
+		<!--		</repository>-->
 	</repositories>
 </project>
