@@ -30,6 +30,7 @@ import java.util.Properties;
 
 import javax.swing.JLabel;
 
+import io.almostrealism.resource.Resource;
 import io.flowtree.Server;
 import io.flowtree.fs.OutputServer;
 
@@ -191,7 +192,7 @@ public class Client {
 	 * @return  Resource loaded.
 	 * @throws IOException 
 	 */
-	public io.almostrealism.code.Resource loadResource(String uri) throws IOException {
+	public Resource loadResource(String uri) throws IOException {
 		return this.server.loadResource(uri);
 	}
 	

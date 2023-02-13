@@ -14,11 +14,10 @@
  * limitations under the License.
  */
 
-package io.almostrealism.nfs;
+package io.almostrealism.resource;
 
-import io.almostrealism.resource.Resource;
-import io.almostrealism.relation.Factory;
+import java.io.IOException;
 
-public interface FileSystemManager<T extends Resource> extends Factory<T>, SearchEngine,
-													DirectoryNotifier, DeletionNotifier {
+public interface ResourceTranscoder<IN extends Resource, OUT extends Resource> {
+	OUT transcode(IN r) throws IOException;
 }

@@ -60,10 +60,10 @@ import io.flowtree.aws.Encryptor;
 import io.flowtree.fs.OutputServer;
 import io.flowtree.www.TomcatNode;
 import org.almostrealism.color.RGB;
-import org.almostrealism.io.IOStreams;
+import io.almostrealism.resource.IOStreams;
 import org.almostrealism.io.OutputHandler;
-import io.almostrealism.code.Permissions;
-import io.almostrealism.code.Resource;
+import io.almostrealism.resource.Permissions;
+import io.almostrealism.resource.Resource;
 import org.almostrealism.texture.GraphicsConverter;
 
 import io.almostrealism.db.DatabaseConnection;

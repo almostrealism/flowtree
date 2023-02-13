@@ -39,7 +39,7 @@ import io.flowtree.Server.ResourceProvider;
 import io.almostrealism.code.Graph;
 import org.almostrealism.io.JobOutput;
 import org.almostrealism.io.OutputHandler;
-import io.almostrealism.code.Resource;
+import io.almostrealism.resource.Resource;
 
 import io.almostrealism.db.DatabaseConnection;
 import io.almostrealism.db.Query;

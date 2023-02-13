@@ -24,8 +24,8 @@ import java.util.List;
 import javax.security.auth.Subject;
 
 import io.almostrealism.code.Graph;
-import io.almostrealism.code.Permissions;
-import io.almostrealism.code.Resource;
+import io.almostrealism.resource.Permissions;
+import io.almostrealism.resource.Resource;
 import io.almostrealism.relation.Factory;
 import org.dcache.nfs.ChimeraNFSException;
 import org.dcache.nfs.v4.NfsIdMapping;

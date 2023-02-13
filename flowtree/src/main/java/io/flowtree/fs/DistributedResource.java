@@ -25,9 +25,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.almostrealism.io.IOStreams;
-import io.almostrealism.code.Permissions;
-import io.almostrealism.code.Resource;
+import io.almostrealism.resource.IOStreams;
+import io.almostrealism.resource.Permissions;
+import io.almostrealism.resource.Resource;
 
 import io.almostrealism.db.DatabaseConnection;
 import io.almostrealism.db.Query;

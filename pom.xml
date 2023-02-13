@@ -4,15 +4,14 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<properties>
-		<common.version>0.50</common.version>
-
+		<common.version>0.51</common.version>
 		<!-- Adapt this to a version found on http://central.maven.org/maven2/org/eclipse/jetty/jetty-maven-plugin/ -->
 		<jettyVersion>9.4.6.v20170531</jettyVersion>
 	</properties>
 
 	<groupId>io.flowtree</groupId>
 	<artifactId>FlowTree</artifactId>
-	<version>0.14</version>
+	<version>0.15</version>
 
 	<modules>
 		<module>graphpersist</module>

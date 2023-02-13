@@ -66,7 +66,7 @@ import io.flowtree.Server;
 import io.flowtree.ui.NetworkDialog;
 import org.almostrealism.color.RGB;
 import org.almostrealism.io.OutputHandler;
-import io.almostrealism.code.Resource;
+import io.almostrealism.resource.Resource;
 import org.almostrealism.io.Storable;
 import org.almostrealism.swing.GraphDisplay;
 import org.almostrealism.swing.ScrollingTextDisplay;

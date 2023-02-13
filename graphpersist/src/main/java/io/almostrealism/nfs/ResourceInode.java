@@ -16,9 +16,9 @@
 
 package io.almostrealism.nfs;
 
-import org.almostrealism.io.IOStreams;
-import io.almostrealism.code.Permissions;
-import io.almostrealism.code.Resource;
+import io.almostrealism.resource.IOStreams;
+import io.almostrealism.resource.Permissions;
+import io.almostrealism.resource.Resource;
 import org.dcache.nfs.vfs.FileHandle;
 import org.dcache.nfs.vfs.Inode;
 

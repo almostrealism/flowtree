@@ -14,11 +14,28 @@
  * limitations under the License.
  */
 
-package io.almostrealism.nfs;
+package io.almostrealism.resource;
 
-import io.almostrealism.resource.Resource;
-import io.almostrealism.relation.Factory;
+import java.io.IOException;
+import java.io.InputStream;
 
-public interface FileSystemManager<T extends Resource> extends Factory<T>, SearchEngine,
-													DirectoryNotifier, DeletionNotifier {
+/**
+ * @author  Michael Murray
+ */
+public interface Resource<T extends Object> {
+	void load(IOStreams io) throws IOException;
+	void load(byte data[], long offset, int len);
+	void loadFromURI() throws IOException;
+	
+	void send(IOStreams io) throws IOException;
+	
+	void saveLocal(String file) throws IOException;
+	
+	String getURI();
+	void setURI(String uri);
+	
+	T getData();
+	InputStream getInputStream();
+
+	Permissions getPermissions();
 }
