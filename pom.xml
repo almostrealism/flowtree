@@ -7,6 +7,7 @@
 		<common.version>0.52</common.version>
 		<!-- Adapt this to a version found on http://central.maven.org/maven2/org/eclipse/jetty/jetty-maven-plugin/ -->
 		<jettyVersion>9.4.6.v20170531</jettyVersion>
+		<dcache.version>0.24.1</dcache.version>
 	</properties>
 
 	<groupId>io.flowtree</groupId>

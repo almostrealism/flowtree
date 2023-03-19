@@ -26,6 +26,13 @@
 			<version>${common.version}</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>31.1-jre</version>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/c3p0/c3p0 -->
 		<dependency>
 			<groupId>c3p0</groupId>
@@ -50,7 +57,7 @@
 		<dependency>
 			<groupId>org.dcache</groupId>
 			<artifactId>nfs4j-core</artifactId>
-			<version>0.10.6</version>
+			<version>${dcache.version}</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.jcraft/jsch -->

@@ -23,13 +23,12 @@ import io.almostrealism.resource.Resource;
 import org.dcache.nfs.ExportFile;
 import org.dcache.nfs.v3.MountServer;
 import org.dcache.nfs.v3.NfsServerV3;
-import org.dcache.nfs.v4.DeviceManager;
-import org.dcache.nfs.v4.MDSOperationFactory;
+import org.dcache.nfs.v4.MDSOperationExecutor;
 import org.dcache.nfs.v4.NFSServerV41;
 import org.dcache.nfs.vfs.VirtualFileSystem;
-import org.dcache.xdr.OncRpcProgram;
-import org.dcache.xdr.OncRpcSvc;
-import org.dcache.xdr.OncRpcSvcBuilder;
+import org.dcache.oncrpc4j.rpc.OncRpcProgram;
+import org.dcache.oncrpc4j.rpc.OncRpcSvc;
+import org.dcache.oncrpc4j.rpc.OncRpcSvcBuilder;
 
 public class NetworkFileSystemServer {
 	private int port = 2049;
@@ -43,7 +42,7 @@ public class NetworkFileSystemServer {
 
 		ExportFile exportFile = null; // TODO specify file with export entries
 
-		NFSServerV41 nfs4 = new NFSServerV41(new MDSOperationFactory(), new DeviceManager(), vfs, exportFile);
+		NFSServerV41 nfs4 = new NFSServerV41(new MDSOperationExecutor(), null /*new DeviceManager()*/, vfs, exportFile);
 		NfsServerV3 nfs3 = new NfsServerV3(exportFile, vfs);
 		MountServer ms = new MountServer(exportFile, vfs);
 

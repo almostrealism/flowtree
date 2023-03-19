@@ -57,7 +57,7 @@ public class GraphFileSystem<T extends Resource> implements VirtualFileSystem {
 	}
 	
 	@Override
-	public int access(Inode inode, int mode) throws IOException {
+	public int access(Subject subject, Inode inode, int mode) throws IOException {
 		System.out.println("GraphFileSystem: Access " + inode);
 		return getModeForPermissions(((ResourceInode) inode).getPermissions()) & mode;
 	}
@@ -122,17 +122,18 @@ public class GraphFileSystem<T extends Resource> implements VirtualFileSystem {
 	}
 
 	@Override
-	public List<DirectoryEntry> list(Inode inode) throws IOException {
+	public DirectoryStream list(Inode inode, byte b[], long ll) throws IOException {
 		// TODO  Check permissions
 		List<DirectoryEntry> l = new ArrayList<>();
 
 		for (Resource r : search.search(path(inode) + "/*")) {
 			Stat s = new Stat();
 			s.setMode(getModeForPermissions(r.getPermissions()));
-			l.add(new DirectoryEntry(nameForUri(r.getURI()), new ResourceInode(r), s));
+			// TODO l.add(new DirectoryEntry(nameForUri(r.getURI()), new ResourceInode(r), s));
 		}
 
-		return l;
+		// TODO return l;
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
@@ -254,6 +255,21 @@ public class GraphFileSystem<T extends Resource> implements VirtualFileSystem {
 	public NfsIdMapping getIdMapper() {
 		System.out.println("GraphFileSystem: getIdMapper()");
 		return null;
+	}
+
+	@Override
+	public byte[] directoryVerifier(Inode inode) throws IOException {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public boolean getCaseInsensitive() {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public boolean getCasePreserving() {
+		throw new UnsupportedOperationException();
 	}
 
 	protected static Permissions getPermissionsForMode(int m) {
