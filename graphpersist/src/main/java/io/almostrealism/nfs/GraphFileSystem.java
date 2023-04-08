@@ -23,7 +23,7 @@ import java.util.List;
 
 import javax.security.auth.Subject;
 
-import io.almostrealism.code.Graph;
+import io.almostrealism.relation.Graph;
 import io.almostrealism.resource.Permissions;
 import io.almostrealism.resource.Resource;
 import io.almostrealism.relation.Factory;
@@ -92,7 +92,7 @@ public class GraphFileSystem<T extends Resource> implements VirtualFileSystem {
 
 	@Override
 	public FsStat getFsStat() throws IOException {
-		return new FsStat(TOTAL_SPACE, TOTAL_FILES, 0, graph.size());
+		return new FsStat(TOTAL_SPACE, TOTAL_FILES, 0, graph.countNodes());
 	}
 
 	@Override

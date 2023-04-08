@@ -18,7 +18,7 @@ package io.almostrealism.nfs;
 
 import java.io.IOException;
 
-import io.almostrealism.code.Graph;
+import io.almostrealism.relation.Graph;
 import io.almostrealism.resource.Resource;
 import org.dcache.nfs.ExportFile;
 import org.dcache.nfs.v3.MountServer;

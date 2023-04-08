@@ -16,13 +16,15 @@
 
 package io.almostrealism.resource;
 
+import io.almostrealism.relation.Node;
+
 import java.io.IOException;
 import java.io.InputStream;
 
 /**
  * @author  Michael Murray
  */
-public interface Resource<T extends Object> {
+public interface Resource<T extends Object> extends Node {
 	void load(IOStreams io) throws IOException;
 	void load(byte data[], long offset, int len);
 	void loadFromURI() throws IOException;
