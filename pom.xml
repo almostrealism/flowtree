@@ -4,7 +4,10 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<properties>
-		<common.version>0.52</common.version>
+		<maven.compiler.source>15</maven.compiler.source>
+		<maven.compiler.target>15</maven.compiler.target>
+
+		<common.version>0.53</common.version>
 		<!-- Adapt this to a version found on http://central.maven.org/maven2/org/eclipse/jetty/jetty-maven-plugin/ -->
 		<jettyVersion>9.4.6.v20170531</jettyVersion>
 		<dcache.version>0.24.1</dcache.version>
