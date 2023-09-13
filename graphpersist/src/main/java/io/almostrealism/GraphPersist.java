@@ -3,7 +3,7 @@ package io.almostrealism;
 import io.almostrealism.db.DatabaseConnection;
 import io.almostrealism.db.Query;
 import org.almostrealism.collect.PackedCollection;
-import org.almostrealism.collect.TraversalPolicy;
+import io.almostrealism.collect.TraversalPolicy;
 import org.hsqldb.Server;
 
 import java.util.Properties;
