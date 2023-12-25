@@ -35,7 +35,7 @@ public class ResourceVariable<T> extends Variable<T, Variable<T, ?>> {
 	 * @see  Resource#getData()
 	 */
 	public ResourceVariable(String name, Resource<T> r) {
-		super(name, true, (Expression) null, () -> new Provider<>(r.getData()));
+		super(name, null, (Expression) null, () -> new Provider<>(r.getData()));
 		this.res = r;
 	}
 
