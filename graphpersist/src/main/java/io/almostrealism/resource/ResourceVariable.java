@@ -16,6 +16,8 @@
 
 package io.almostrealism.resource;
 
+import io.almostrealism.expression.Expression;
+import io.almostrealism.relation.Provider;
 import io.almostrealism.scope.Variable;
 
 /**
@@ -33,7 +35,7 @@ public class ResourceVariable<T> extends Variable<T, Variable<T, ?>> {
 	 * @see  Resource#getData()
 	 */
 	public ResourceVariable(String name, Resource<T> r) {
-		super(name, r.getData());
+		super(name, true, (Expression) null, () -> new Provider<>(r.getData()));
 		this.res = r;
 	}
 
