@@ -8,7 +8,8 @@
 		<maven.compiler.target>15</maven.compiler.target>
 
 		<common.version>0.60</common.version>
-		<!-- Adapt this to a version found on http://central.maven.org/maven2/org/eclipse/jetty/jetty-maven-plugin/ -->
+		<javafx.version>21</javafx.version>
+		<javafx.classifier>mac-aarch64</javafx.classifier>
 		<jettyVersion>9.4.6.v20170531</jettyVersion>
 		<dcache.version>0.24.1</dcache.version>
 	</properties>
