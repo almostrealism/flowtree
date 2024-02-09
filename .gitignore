@@ -2,6 +2,7 @@
 target/**
 **/target/**
 commands/**
+**.versionsBackup
 
 flowtreedb**
 
