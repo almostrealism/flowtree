@@ -50,6 +50,16 @@
 		</plugins>
 	</build>
 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.almostrealism</groupId>
+				<artifactId>ar-utils</artifactId>
+				<version>${common.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<distributionManagement>
 		<repository>
 			<id>github</id>
