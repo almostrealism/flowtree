@@ -1,0 +1,18 @@
+name: flowtree
+id: ari:cloud:compass:a158e1a1-12d9-425a-a3c4-f5ff83e10cb2:component/d9bc3aba-252d-40c5-9afc-82f68c42bfdd/e4fc24f3-820f-44e8-84c1-1a1956214dd3
+description: A parallel computing solution for Almost Realism HPC tools
+configVersion: 1
+typeId: APPLICATION
+ownerId: null
+fields:
+  tier: 4
+links:
+  - name: null
+    type: REPOSITORY
+    url: https://github.com/almostrealism/flowtree
+relationships:
+  DEPENDS_ON: []
+labels:
+  - language:java
+  - source:github
+customFields: null
