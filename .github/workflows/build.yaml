@@ -4,11 +4,12 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main
+      - master
       - develop
+      - staging
   pull_request:
     branches:
-      - main
+      - master
 
 env:
   JAVA_VERSION: '17'
@@ -18,8 +19,8 @@ permissions:
   pull-requests: write
 
 jobs:
-  common:
-    name: common
+  flowtree:
+    name: flowtree
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
