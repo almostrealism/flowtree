@@ -15,7 +15,7 @@
 	</properties>
 
 	<groupId>io.flowtree</groupId>
-	<artifactId>FlowTree</artifactId>
+	<artifactId>flowtree</artifactId>
 	<version>0.20</version>
 
 	<modules>
