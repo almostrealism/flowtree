@@ -41,7 +41,6 @@ import javax.swing.JLabel;
 
 import io.flowtree.Server;
 import io.flowtree.fs.OutputServer;
-import org.almostrealism.algebra.Defaults;
 import org.almostrealism.io.RSSFeed;
 import org.almostrealism.util.Chart;
 
@@ -439,7 +438,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 		}
 		
 		if (l.size() > 0)
-			return l.get(Defaults.random.nextInt(l.size()));
+			return l.get(random.nextInt(l.size()));
 		else
 			return null;
 	}
