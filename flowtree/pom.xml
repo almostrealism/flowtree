@@ -23,12 +23,6 @@
 
 		<dependency>
 			<groupId>io.flowtree</groupId>
-			<artifactId>ar-treeview</artifactId>
-			<version>0.22</version>
-		</dependency>
-
-		<dependency>
-			<groupId>io.flowtree</groupId>
 			<artifactId>ar-graphpersist</artifactId>
 			<version>0.22</version>
 		</dependency>

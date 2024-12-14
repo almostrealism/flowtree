@@ -20,7 +20,6 @@
 
 	<modules>
 		<module>graphpersist</module>
-		<module>treeview</module>
 		<module>flowtreeapi</module>
 		<module>flowtree</module>
         <module>flowtree-shaded</module>
