@@ -17,7 +17,6 @@
 package io.flowtree.ui;
 
 import io.flowtree.msg.Connection;
-import io.almostrealism.tree.ui.TreeNode;
 
 import java.util.Enumeration;
 
@@ -33,7 +32,7 @@ import io.flowtree.node.NodeGroup;
  * 
  * @author Mike Murray
  */
-public class NetworkTreeNode implements TreeNode {
+public class NetworkTreeNode implements javax.swing.tree.MutableTreeNode {
 	private String label;
 	private Node node;
 	private NetworkTreeNode parent;

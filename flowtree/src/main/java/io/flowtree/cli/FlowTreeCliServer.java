@@ -68,8 +68,6 @@ import org.almostrealism.color.RGB;
 import org.almostrealism.io.OutputHandler;
 import io.almostrealism.resource.Resource;
 import org.almostrealism.io.Storable;
-import org.almostrealism.swing.GraphDisplay;
-import org.almostrealism.swing.ScrollingTextDisplay;
 import org.almostrealism.texture.GraphicsConverter;
 import org.almostrealism.util.Help;
 
@@ -115,9 +113,9 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 	private Hashtable commands;
 	
 	private NetworkDialog dialog;
-	private GraphDisplay activityGraph, sleepGraph;
+	// private GraphDisplay activityGraph, sleepGraph;
 	private JButton button;
-	private ScrollingTextDisplay display;
+	// private ScrollingTextDisplay display;
 	private ImageIcon activeIcon, inactiveIcon, sleepIcon, closeIcon;
 
 	public static void main(String args[]) { FlowTreeCliServer.start(args); }
@@ -265,11 +263,11 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 			Container c = graphFrame.getContentPane();
 			c.setLayout(new GridLayout(0, 1));
 			
-			this.activityGraph = new GraphDisplay();
-			this.sleepGraph = new GraphDisplay();
-			
-			c.add(this.activityGraph);
-			c.add(this.sleepGraph);
+//			this.activityGraph = new GraphDisplay();
+//			this.sleepGraph = new GraphDisplay();
+//
+//			c.add(this.activityGraph);
+//			c.add(this.sleepGraph);
 			// c.add(this.relayPGraph);
 			// c.add(this.connectPGraph);
 			
@@ -304,64 +302,64 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 					
 					System.exit(0);
 				});
-			
-			ScrollingTextDisplay.TextProducer producer = new ScrollingTextDisplay.TextProducer() {
-				private int last = 0;
-				
-				@Override
-				public String nextPhrase() {
-					if (OutputServer.getCurrentServer() == null) return "";
-					
-					Server s = Client.getCurrentClient().getServer();
-					if (s == null) return "";
-					
-					double g = s.getNodeGroup().getActivityRating() / 2;
-					double r = 0.5 + s.getNodeGroup().getAverageConnectivityRating();
-					double b = s.getNodeGroup().getAverageConnectivityRating() / 2.0;
-					
-					final RGB color = new RGB(r, g, b);
-					
-					try {
-						SwingUtilities.invokeAndWait(() -> {
-							if (FlowTreeCliServer.this.display == null) return;
-
-							FlowTreeCliServer.this.display.setBackground(
-									GraphicsConverter.convertToAWTColor(color));
-							FlowTreeCliServer.this.display.repaint();
-						});
-					} catch (InterruptedException ignored) {
-					} catch (InvocationTargetException e) {
-						e.printStackTrace();
-					}
-					
-					if (last == 0) {
-						last = 1;
-						return "Running " + s.getNodeGroup().getNodes().length + " nodes at " + 
-								s.getLocalSocketAddress() + ".";
-					} else if (last == 1) {
-						last = 2;
-						return "Connected to " + s.getNodeGroup().getServers().length + " servers.";
-					} else if (last == 2) {
-						last = 3;
-						return "Worked for " + Node.formatTime(s.getNodeGroup().getTimeWorked()) +
-								" and completed " + s.getNodeGroup().getCompletedJobCount() + " jobs.";
-					} else {
-						last = 0;
-						return "Communicated for " +
-								Node.formatTime(s.getNodeGroup().getTimeCommunicated()) + ".";
-					}
-				}
-			};
-			
-			this.display = new ScrollingTextDisplay(producer, 30);
-			this.display.setOpaque(true);
-			
-			f.getContentPane().setLayout(new BorderLayout());
-			f.getContentPane().add(this.button, BorderLayout.WEST);
-			f.getContentPane().add(this.display, BorderLayout.CENTER);
-			f.getContentPane().add(closeButton, BorderLayout.EAST);
 
 //			TODO  Separate UI elsewhere
+//			ScrollingTextDisplay.TextProducer producer = new ScrollingTextDisplay.TextProducer() {
+//				private int last = 0;
+//
+//				@Override
+//				public String nextPhrase() {
+//					if (OutputServer.getCurrentServer() == null) return "";
+//
+//					Server s = Client.getCurrentClient().getServer();
+//					if (s == null) return "";
+//
+//					double g = s.getNodeGroup().getActivityRating() / 2;
+//					double r = 0.5 + s.getNodeGroup().getAverageConnectivityRating();
+//					double b = s.getNodeGroup().getAverageConnectivityRating() / 2.0;
+//
+//					final RGB color = new RGB(r, g, b);
+//
+//					try {
+//						SwingUtilities.invokeAndWait(() -> {
+//							if (FlowTreeCliServer.this.display == null) return;
+//
+//							FlowTreeCliServer.this.display.setBackground(
+//									GraphicsConverter.convertToAWTColor(color));
+//							FlowTreeCliServer.this.display.repaint();
+//						});
+//					} catch (InterruptedException ignored) {
+//					} catch (InvocationTargetException e) {
+//						e.printStackTrace();
+//					}
+//
+//					if (last == 0) {
+//						last = 1;
+//						return "Running " + s.getNodeGroup().getNodes().length + " nodes at " +
+//								s.getLocalSocketAddress() + ".";
+//					} else if (last == 1) {
+//						last = 2;
+//						return "Connected to " + s.getNodeGroup().getServers().length + " servers.";
+//					} else if (last == 2) {
+//						last = 3;
+//						return "Worked for " + Node.formatTime(s.getNodeGroup().getTimeWorked()) +
+//								" and completed " + s.getNodeGroup().getCompletedJobCount() + " jobs.";
+//					} else {
+//						last = 0;
+//						return "Communicated for " +
+//								Node.formatTime(s.getNodeGroup().getTimeCommunicated()) + ".";
+//					}
+//				}
+//			};
+//
+//			this.display = new ScrollingTextDisplay(producer, 30);
+//			this.display.setOpaque(true);
+//
+//			f.getContentPane().setLayout(new BorderLayout());
+//			f.getContentPane().add(this.button, BorderLayout.WEST);
+//			f.getContentPane().add(this.display, BorderLayout.CENTER);
+//			f.getContentPane().add(closeButton, BorderLayout.EAST);
+//
 //			f.setVisible(true);
 			
 			Thread t = new Thread(() -> {
@@ -373,15 +371,16 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 						Server s = c1.getServer();
 						NodeGroup g = s.getNodeGroup();
 
-						if (FlowTreeCliServer.this.activityGraph != null) {
-							FlowTreeCliServer.this.activityGraph.addEntry(
-									(int)(g.getAverageActivityRating() * 10));
-						}
-
-						if (FlowTreeCliServer.this.sleepGraph != null) {
-							FlowTreeCliServer.this.sleepGraph.addEntry(
-									g.getSleep() / 10000);
-						}
+//						TODO  Separate UI elsewhere
+//						if (FlowTreeCliServer.this.activityGraph != null) {
+//							FlowTreeCliServer.this.activityGraph.addEntry(
+//									(int)(g.getAverageActivityRating() * 10));
+//						}
+//
+//						if (FlowTreeCliServer.this.sleepGraph != null) {
+//							FlowTreeCliServer.this.sleepGraph.addEntry(
+//									g.getSleep() / 10000);
+//						}
 
 						if (FlowTreeCliServer.this.dialog.isVisible() && c1 != null) {
 							SwingUtilities.invokeAndWait(() -> FlowTreeCliServer.this.dialog.updateStatus());
@@ -1477,11 +1476,12 @@ public class FlowTreeCliServer implements Runnable, NodeProxy.EventListener, Nod
 	 * @see Node.ActivityListener#becameIsolated()
 	 */
 	public void becameIsolated() {
-		if (this.display != null) {
-			JOptionPane.showMessageDialog(null, "Please restart the client.",
-									"Restart", JOptionPane.INFORMATION_MESSAGE);
-			System.exit(0);
-		}
+//			TODO  Separate UI elsewhere
+//		if (this.display != null) {
+//			JOptionPane.showMessageDialog(null, "Please restart the client.",
+//									"Restart", JOptionPane.INFORMATION_MESSAGE);
+//			System.exit(0);
+//		}
 	}
 
 	public void iteration(Node n) { }

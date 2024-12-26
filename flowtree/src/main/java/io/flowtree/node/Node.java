@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -56,6 +57,8 @@ import io.flowtree.job.JobFactory;
  */
 // TODO  Implement JobQueue
 public class Node implements Runnable, ThreadFactory {
+	public static Random random = new Random();
+
 	protected NumberFormat pFormat = NumberFormat.getPercentInstance();
 	protected NumberFormat dFormat = new DecimalFormat("#.000");
 	protected boolean verboseNews = true;

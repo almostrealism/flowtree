@@ -20,18 +20,19 @@ import java.io.IOException;
 import java.io.PrintStream;
 
 import io.flowtree.Server;
-import org.almostrealism.algebra.Defaults;
+import io.flowtree.node.Node;
 
 public class RandomPeerJoin implements ServerBehavior {
+
 	public void behave(Server s, PrintStream out) {
 		try {
-			int i = Defaults.random.nextInt(s.getPeers().length);
+			int i = Node.random.nextInt(s.getPeers().length);
 			String peers[] = s.getPeerList(i);
 			out.println("RandomPeerJoin: Got peer list for server " + i +
 						" (" + peers.length + " peers).");
 			if (peers.length <= 0) return;
 			
-			int j = Defaults.random.nextInt(s.getPeers().length);
+			int j = Node.random.nextInt(s.getPeers().length);
 			out.println("RandomPeerJoin: Attempting to open " + peers[j]);
 			
 			if (!s.open(peers[j])) {
