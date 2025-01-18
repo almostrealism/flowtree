@@ -5,7 +5,7 @@
 	<parent>
 		<artifactId>flowtree</artifactId>
 		<groupId>io.flowtree</groupId>
-		<version>0.22</version>
+		<version>0.23</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
@@ -18,13 +18,13 @@
 		<dependency>
 			<groupId>io.flowtree</groupId>
 			<artifactId>ar-flowtreeapi</artifactId>
-			<version>0.22</version>
+			<version>0.23</version>
 		</dependency>
 
 		<dependency>
 			<groupId>io.flowtree</groupId>
 			<artifactId>ar-graphpersist</artifactId>
-			<version>0.22</version>
+			<version>0.23</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
