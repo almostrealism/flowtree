@@ -7,3 +7,4 @@ commands/**
 flowtreedb**
 
 .idea/**
+**.DS_Store

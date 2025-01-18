@@ -30,9 +30,8 @@ import javax.swing.JWindow;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
+import io.almostrealism.util.NumberFormats;
 import io.flowtree.Server;
-
-import org.almostrealism.algebra.Defaults;
 
 /**
  * A {@link SendTaskDialog} provides a dialog for collecting input required
@@ -75,10 +74,10 @@ public class SendTaskDialog extends JPanel {
 		this.server = server;
 		this.index = index;
 
-		this.widthField = new JFormattedTextField(Defaults.integerFormat);
-		this.heightField = new JFormattedTextField(Defaults.integerFormat);
-		this.ssWidthField = new JFormattedTextField(Defaults.integerFormat);
-		this.ssHeightField = new JFormattedTextField(Defaults.integerFormat);
+		this.widthField = new JFormattedTextField(NumberFormats.integerFormat);
+		this.heightField = new JFormattedTextField(NumberFormats.integerFormat);
+		this.ssWidthField = new JFormattedTextField(NumberFormats.integerFormat);
+		this.ssHeightField = new JFormattedTextField(NumberFormats.integerFormat);
 
 		this.jobSizeField = new JComboBox(SendTaskDialog.jobSizeOptions);
 

@@ -40,10 +40,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
+import io.almostrealism.util.NumberFormats;
 import io.flowtree.job.JobFactory;
 import io.flowtree.msg.NodeProxy;
 import io.flowtree.node.Client;
-import org.almostrealism.algebra.Defaults;
 
 /**
  * A {@link NetworkDialog} allows the user to set up a node group for a network.
@@ -178,11 +178,11 @@ public class NetworkDialog extends JPanel {
 		
 		// Set up node panel
 		
-		this.portField = new JFormattedTextField(Defaults.integerFormat);
-		this.nodesField = new JFormattedTextField(Defaults.integerFormat);
-		this.peersField = new JFormattedTextField(Defaults.integerFormat);
-		this.jobsField = new JFormattedTextField(Defaults.integerFormat);
-		this.outputPortField = new JFormattedTextField(Defaults.integerFormat);
+		this.portField = new JFormattedTextField(NumberFormats.integerFormat);
+		this.nodesField = new JFormattedTextField(NumberFormats.integerFormat);
+		this.peersField = new JFormattedTextField(NumberFormats.integerFormat);
+		this.jobsField = new JFormattedTextField(NumberFormats.integerFormat);
+		this.outputPortField = new JFormattedTextField(NumberFormats.integerFormat);
 		
 		this.portField.setValue(Integer.valueOf(NetworkDialog.defaultPort));
 		this.nodesField.setValue(Integer.valueOf(NetworkDialog.defaultTotalNodes));

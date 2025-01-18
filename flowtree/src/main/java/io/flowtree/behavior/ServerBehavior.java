@@ -30,5 +30,5 @@ import java.io.PrintStream;
 import io.flowtree.Server;
 
 public interface ServerBehavior {
-	public void behave(Server s, PrintStream out);
+	void behave(Server s, PrintStream out);
 }
