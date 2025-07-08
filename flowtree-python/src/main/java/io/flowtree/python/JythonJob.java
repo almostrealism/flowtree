@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.flowtree.jobs;
+package io.flowtree.python;
 
 import io.almostrealism.code.FunctionalWriter;
 import io.flowtree.job.AbstractJobFactory;

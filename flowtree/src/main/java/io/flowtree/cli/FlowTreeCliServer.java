@@ -18,7 +18,6 @@ package io.flowtree.cli;
 
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.io.BufferedReader;
@@ -56,7 +55,7 @@ import javax.swing.SwingUtilities;
 
 import io.flowtree.behavior.ServerBehavior;
 import io.flowtree.fs.OutputServer;
-import io.flowtree.jobs.JythonJob;
+import io.flowtree.python.JythonJob;
 import io.flowtree.msg.Message;
 import io.flowtree.msg.NodeProxy;
 import io.flowtree.node.Client;
@@ -68,7 +67,6 @@ import org.almostrealism.color.RGB;
 import org.almostrealism.io.OutputHandler;
 import io.almostrealism.resource.Resource;
 import org.almostrealism.io.Storable;
-import org.almostrealism.texture.GraphicsConverter;
 import org.almostrealism.util.Help;
 
 import io.almostrealism.db.Query;
