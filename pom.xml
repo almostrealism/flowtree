@@ -7,7 +7,7 @@
 		<maven.compiler.source>15</maven.compiler.source>
 		<maven.compiler.target>15</maven.compiler.target>
 
-		<common.version>0.68</common.version>
+		<common.version>0.69</common.version>
 		<javafx.version>21</javafx.version>
 		<javafx.classifier>mac-aarch64</javafx.classifier>
 		<jettyVersion>9.4.6.v20170531</jettyVersion>
@@ -16,14 +16,15 @@
 
 	<groupId>io.flowtree</groupId>
 	<artifactId>flowtree</artifactId>
-	<version>0.24</version>
+	<version>0.25</version>
 
 	<modules>
 		<module>graphpersist</module>
 		<module>flowtreeapi</module>
 		<module>flowtree</module>
         <module>flowtree-shaded</module>
-    </modules>
+		<module>flowtree-python</module>
+	</modules>
 
 	<!-- Output to jar format -->
 	<packaging>pom</packaging>
@@ -55,6 +56,26 @@
 				<groupId>org.almostrealism</groupId>
 				<artifactId>ar-utils</artifactId>
 				<version>${common.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.python</groupId>
+				<artifactId>jython-standalone</artifactId>
+				<version>2.7.2</version>
+			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk -->
+			<dependency>
+				<groupId>com.amazonaws</groupId>
+				<artifactId>aws-java-sdk</artifactId>
+				<version>1.11.289</version>
+			</dependency>
+
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.13.2</version>
+				<scope>test</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

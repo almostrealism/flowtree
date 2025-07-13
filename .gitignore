@@ -5,6 +5,7 @@ commands/**
 **.versionsBackup
 
 flowtreedb**
+graphpersistdb**
 
 .idea/**
 **.DS_Store
