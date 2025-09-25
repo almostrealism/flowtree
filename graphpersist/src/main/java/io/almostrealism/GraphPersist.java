@@ -63,7 +63,7 @@ public class GraphPersist {
 				DatabaseConnection.dataColumn,
 				DatabaseConnection.uriColumn + " = '" + key + "'");
 		PackedCollection r = new PackedCollection(shape);
-		r.load((byte[]) db.executeQuery(q).get("0"));
+		r.read((byte[]) db.executeQuery(q).get("0"));
 		return r;
 	}
 
