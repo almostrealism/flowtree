@@ -21,7 +21,7 @@
     <parent>
         <artifactId>flowtree</artifactId>
         <groupId>io.flowtree</groupId>
-        <version>0.27</version>
+        <version>0.28</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -65,7 +65,7 @@
         <dependency>
             <groupId>io.flowtree</groupId>
             <artifactId>ar-flowtree</artifactId>
-            <version>0.27</version>
+            <version>0.28</version>
         </dependency>
     </dependencies>
 </project>
