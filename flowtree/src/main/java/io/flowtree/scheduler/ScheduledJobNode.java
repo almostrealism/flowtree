@@ -20,7 +20,6 @@ import io.flowtree.job.Job;
 import io.flowtree.node.Node;
 import io.flowtree.node.NodeGroup;
 import org.almostrealism.time.Frequency;
-import org.almostrealism.econ.Time;
 
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
@@ -38,7 +37,7 @@ public class ScheduledJobNode extends Node {
 	public int addJob(Job j) {
 		if (j instanceof FixedRate) {
 			FixedRate r = (FixedRate) j;
-			ScheduledFuture f = exec.scheduleAtFixedRate(j, r.getInitialDelay().getTime(),
+			ScheduledFuture f = exec.scheduleAtFixedRate(j, r.getInitialDelay(),
 									(long) (1000.0 / r.getFrequency().asHertz()),
 									TimeUnit.MILLISECONDS);
 			// TODO  Do something with f
@@ -50,6 +49,6 @@ public class ScheduledJobNode extends Node {
 
 	public interface FixedRate {
 		Frequency getFrequency();
-		Time getInitialDelay();
+		long getInitialDelay();
 	}
 }
