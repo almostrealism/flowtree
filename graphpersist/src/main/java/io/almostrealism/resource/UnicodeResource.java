@@ -29,7 +29,11 @@ public class UnicodeResource extends ResourceAdapter<byte[]> {
 	public UnicodeResource(String data) { this.data.put(0l, data); }
 
 	public UnicodeResource(File f) throws IOException {
-		read(new FileInputStream(f));
+		this(new FileInputStream(f));
+	}
+
+	public UnicodeResource(InputStream in) throws IOException {
+		read(in);
 	}
 
 	public synchronized void load(byte data[], long offset, int len) {
