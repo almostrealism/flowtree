@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>io.flowtree</groupId>
 		<artifactId>flowtree</artifactId>
-		<version>0.26</version>
+		<version>0.27</version>
 	</parent>
 
 	<artifactId>ar-flowtree-python</artifactId>
@@ -16,7 +16,7 @@
 		<dependency>
 			<groupId>io.flowtree</groupId>
 			<artifactId>ar-flowtreeapi</artifactId>
-			<version>0.26</version>
+			<version>0.27</version>
 		</dependency>
 
 		<dependency>
