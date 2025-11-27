@@ -1,32 +1,33 @@
 package io.almostrealism.db.test;
 
 import io.almostrealism.GraphPersist;
-import org.almostrealism.algebra.Scalar;
 import org.almostrealism.algebra.Tensor;
 import org.almostrealism.collect.PackedCollection;
 import io.almostrealism.collect.TraversalPolicy;
 import org.almostrealism.util.TestFeatures;
 import org.junit.Test;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class DatabaseTest implements TestFeatures {
+	private static PackedCollection<?> scalarValue(double value) {
+		PackedCollection<?> s = new PackedCollection<>(1);
+		s.setMem(0, value);
+		return s;
+	}
+
 	@Test
 	public void storeAndRetrieve() {
-		Tensor<Scalar> t = new Tensor<>();
-		t.insert(new Scalar(1), 0, 0);
-		t.insert(new Scalar(2), 0, 1);
-		t.insert(new Scalar(3), 0, 2);
-		t.insert(new Scalar(4), 1, 0);
-		t.insert(new Scalar(5), 1, 1);
-		t.insert(new Scalar(6), 1, 2);
+		Tensor<PackedCollection<?>> t = new Tensor<>();
+		t.insert(scalarValue(1), 0, 0);
+		t.insert(scalarValue(2), 0, 1);
+		t.insert(scalarValue(3), 0, 2);
+		t.insert(scalarValue(4), 1, 0);
+		t.insert(scalarValue(5), 1, 1);
+		t.insert(scalarValue(6), 1, 2);
 
 		GraphPersist.local().save("/test", t.pack());
 
-		PackedCollection<?> r = GraphPersist.local().read("/test", new TraversalPolicy(2, 3, 2));
-		List<PackedCollection<Scalar>> banks = r.traverse(1).extract(Scalar::scalarBank).collect(Collectors.toList());
-		assertEquals(3, banks.get(0).get(2));
-		assertEquals(5, banks.get(1).get(1));
+		PackedCollection<?> r = GraphPersist.local().read("/test", new TraversalPolicy(2, 3, 1));
+		assertEquals("Value at index 2", 3.0, r.toDouble(2));
+		assertEquals("Value at index 4", 5.0, r.toDouble(4));
 	}
 }
