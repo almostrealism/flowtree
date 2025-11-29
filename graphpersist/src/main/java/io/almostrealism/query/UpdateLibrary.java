@@ -23,9 +23,9 @@ import java.util.HashMap;
  * @author  Michael Murray
  */
 public class UpdateLibrary<D, K> {
-	private static UpdateLibrary root = new UpdateLibrary();
+	private static final UpdateLibrary root = new UpdateLibrary();
 	
-	private HashMap<Class, Update<? extends D, ? extends K, ?>>  updates;
+	private final HashMap<Class, Update<? extends D, ? extends K, ?>>  updates;
 	
 	protected UpdateLibrary() { updates = new HashMap<>(); }
 	

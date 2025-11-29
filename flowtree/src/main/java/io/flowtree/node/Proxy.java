@@ -36,7 +36,7 @@ public interface Proxy {
      * @param o  Object to write.
      * @param id  Unique id of reciever.
      */
-    public void writeObject(Object o, int id) throws IOException;
+	void writeObject(Object o, int id) throws IOException;
     
     /**
      * Returns the next object in the queue with the specified id.
@@ -44,5 +44,5 @@ public interface Proxy {
      * @param id  Unique id of the receiver.
      * @return  The received object or null if one is not found.
      */
-    public Object nextObject(int id);
+	Object nextObject(int id);
 }

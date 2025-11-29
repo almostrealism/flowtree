@@ -4,11 +4,10 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 import java.beans.PropertyVetoException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Set;
 
 public class DatabasePools {
-	private static HashMap<String, ComboPooledDataSource> pools =
+	private static final HashMap<String, ComboPooledDataSource> pools =
 						new HashMap<>();
 
 	public static boolean open(String url, String user, String password) {

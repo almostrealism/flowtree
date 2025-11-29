@@ -1,9 +1,9 @@
 package io.almostrealism.db.test;
 
 import io.almostrealism.GraphPersist;
+import io.almostrealism.collect.TraversalPolicy;
 import org.almostrealism.algebra.Tensor;
 import org.almostrealism.collect.PackedCollection;
-import io.almostrealism.collect.TraversalPolicy;
 import org.almostrealism.util.TestFeatures;
 import org.junit.Test;
 

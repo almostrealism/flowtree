@@ -16,6 +16,18 @@
 
 package io.flowtree.node;
 
+import io.flowtree.Server;
+import io.flowtree.fs.OutputServer;
+import io.flowtree.job.Job;
+import io.flowtree.job.JobFactory;
+import io.flowtree.msg.Connection;
+import io.flowtree.msg.Message;
+import io.flowtree.msg.NodeProxy;
+import org.almostrealism.io.RSSFeed;
+import org.almostrealism.util.Chart;
+
+import javax.crypto.NoSuchPaddingException;
+import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -36,20 +48,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Properties;
 
-import javax.crypto.NoSuchPaddingException;
-import javax.swing.JLabel;
-
-import io.flowtree.Server;
-import io.flowtree.fs.OutputServer;
-import org.almostrealism.io.RSSFeed;
-import org.almostrealism.util.Chart;
-
-import io.flowtree.msg.Connection;
-import io.flowtree.msg.Message;
-import io.flowtree.msg.NodeProxy;
-import io.flowtree.job.Job;
-import io.flowtree.job.JobFactory;
-
 /**
  * A {@link NodeGroup} object represents a group of {@link Node}s
  * The {@link NodeGroup} object is responsible for moderating communication
@@ -63,28 +61,31 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 
 	private double activityO = -0.2;
 	
-	private int maxDuplicateConnections = 2;
+	private final int maxDuplicateConnections = 2;
 
 	@Deprecated
-	private JobFactory defaultFactory;
+	private final JobFactory defaultFactory;
 	
-	private List<Node> nodes;
-	private List<NodeProxy> servers;
-	private List connecting;
-	private List<JobFactory> tasks;
-	private List cachedTasks;
-	private List plisteners;
+	private final List<Node> nodes;
+	private final List<NodeProxy> servers;
+	private final List connecting;
+	private final List<JobFactory> tasks;
+	private final List cachedTasks;
+	private final List plisteners;
 	private int jobsPerTask = 1, maxTasks = 10;
 	
-	private char passwd[];
-	private String crypt;
+	private char[] passwd;
+	private final String crypt;
 	
-	private Chart activityGraph, throughputGraph;
-	private int tpFreq = 5, tpLast = 0;
+	private final Chart activityGraph;
+	private final Chart throughputGraph;
+	private final int tpFreq = 5;
+	private int tpLast = 0;
 	private double activitySum, totalActivitySum;
 	private int activityDivisor, totalActivityDiv;
 	
-	private Thread thread, monitor;
+	private final Thread thread;
+	private final Thread monitor;
 	private boolean stop;
 	private int isolationTime;
 	private int monitorSleep = 30000;
@@ -534,7 +535,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	 * @return  The total number of node connections dropped due to the removal.
 	 */
 	public synchronized int removeServer(int index) {
-		return this.removeServer((NodeProxy)this.servers.get(index));
+		return this.removeServer(this.servers.get(index));
 	}
 	
 	/**
@@ -555,7 +556,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 		
 		if (tot > 0)
 			this.displayMessage("Dropped " + tot + " connections to " + p);
-		else if (r == true)
+		else if (r)
 			this.displayMessage("Dropped server " + p);
 		
 		itr = this.plisteners.iterator();
@@ -570,7 +571,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 		new Thread(() -> {
 			w: while (true) {
 				try {
-					Thread.sleep(30 * 1000l);
+					Thread.sleep(30 * 1000L);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 					return;
@@ -598,7 +599,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	
 	public String[] getCurrentWork() {
 		synchronized (this.nodes) {
-			String w[] = new String[this.nodes.size()];
+			String[] w = new String[this.nodes.size()];
 			Iterator itr = this.nodes.iterator();
 			int i = 0;
 			
@@ -631,7 +632,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	 * @return  The time, in milliseconds, to respond to the ping.
 	 */
 	public synchronized long ping(int peer, int size, int timeout) throws IOException {
-		return ((NodeProxy)this.servers.get(peer)).ping(size, timeout);
+		return this.servers.get(peer).ping(size, timeout);
 	}
 	
 	/**
@@ -648,10 +649,10 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 			if (this.servers.size() < 1) return null;
 			
 			int s = (int)(Math.random() * this.servers.size());
-			p = (NodeProxy)this.servers.get(s);
+			p = this.servers.get(s);
 			
 			if (p.isConnected())
-				break w;
+				break;
 			else
 				this.removeServer(p);
 		}
@@ -660,7 +661,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 		
 		try {
 			Message m = new Message(Message.ConnectionRequest, id, p);
-			m.setLocalNode((Node)this.nodes.get(id));
+			m.setLocalNode(this.nodes.get(id));
 			c = (Connection)m.send(-1);
 		} catch (SocketException se) {
 			this.displayMessage("Removing server " + p + " (" + se.getMessage() + ")");
@@ -687,26 +688,27 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 			j = (JobFactory)c.newInstance();
 			
 			boolean end = false;
-			
-			w: while (!end) {
+
+			while (!end) {
 				data = data.substring(index + JobFactory.ENTRY_SEPARATOR.length());
 				index = data.indexOf(JobFactory.ENTRY_SEPARATOR);
-				
-				while (data.charAt(index + JobFactory.ENTRY_SEPARATOR.length()) == '/' || index > 0 && data.charAt(index - 1) == '\\')
+
+				while (data.charAt(index + JobFactory.ENTRY_SEPARATOR.length()) == '/' || index > 0 && data.charAt(index - 1) == '\\') {
 					index = data.indexOf(JobFactory.ENTRY_SEPARATOR, index + 1);
-				
+				}
+
 				String s = null;
-				
+
 				if (index <= 0) {
 					s = data;
 					end = true;
 				} else {
 					s = data.substring(0, index);
 				}
-				
+
 				String key = s.substring(0, s.indexOf(KEY_VALUE_SEPARATOR));
 				String value = s.substring(s.indexOf(KEY_VALUE_SEPARATOR) + KEY_VALUE_SEPARATOR.length());
-				
+
 				j.set(key, value);
 			}
 		} catch (ClassNotFoundException cnf) {
@@ -768,7 +770,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	 */
 	public synchronized void sendTask(String data, int server) {
 		try {
-			Message m = new Message(Message.Task, -1, (NodeProxy)this.servers.get(server));
+			Message m = new Message(Message.Task, -1, this.servers.get(server));
 			m.setString(data);
 			m.send(-1);
 		} catch (IOException ioe) {
@@ -1009,7 +1011,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 	 *          rating measurement).
 	 */
 	public double getAveragePeerActivityRating() {
-		NodeProxy p[] = this.getServers();
+		NodeProxy[] p = this.getServers();
 		
 		double sum = 0.0;
 		int peers = 0;
@@ -1061,13 +1063,13 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 		
 		Date now = new Date();
 		
-		buf.append(now.toString() + nl + nl);
+		buf.append(now + nl + nl);
 		
 		buf.append("<center><h1>Network Node Group Status</h1>");
-		buf.append("<p><h3>" + this.toString() + "</h3>" + nl);
+		buf.append("<p><h3>" + this + "</h3>" + nl);
 		buf.append("<b>Sleep time:</b> " + Node.formatTime(super.getSleep()) + "</p></center>" + nl);
 		
-		NodeProxy s[] = this.getServers();
+		NodeProxy[] s = this.getServers();
 		if (Message.verbose) System.out.println("NodeGroup.getStatus: Got server list.");
 		
 		buf.append("<table><tr><td><h3>Servers</h3></td><td><h3>TaskList</h3></td></tr><tr>");
@@ -1212,7 +1214,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 				if (svrs > 0 || this.tasks.size() > 0)
 					Thread.sleep(sleep);
 				else
-					Thread.sleep(sleep * 10);
+					Thread.sleep(sleep * 10L);
 				
 //				double aar = this.getAverageActivityRating();
 //				this.activitySum += aar;
@@ -1365,7 +1367,7 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 					}
 				}
 			} else if (type == Message.ServerStatus) {
-				String s[] = m.getData().split(";");
+				String[] s = m.getData().split(";");
 				
 				boolean h = false;
 				
@@ -1389,14 +1391,14 @@ public class NodeGroup extends Node implements Runnable, NodeProxy.EventListener
 											s[i] + "' (" + nfe.getMessage() + ")");
 					}
 				}
-				
-				if (!h) return false;
+
+				return h;
 			} else if (type == Message.ServerStatusQuery) {
 				if (m.getData().equals("peers")) {
 					try {
 						Message response = new Message(Message.ServerStatus, -1, p);
 						
-						NodeProxy svs[] = this.getServers();
+						NodeProxy[] svs = this.getServers();
 						
 						StringBuffer b = new StringBuffer();
 						b.append("peers:");

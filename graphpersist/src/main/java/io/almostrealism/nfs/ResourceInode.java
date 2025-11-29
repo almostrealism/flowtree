@@ -26,14 +26,14 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class ResourceInode extends Inode implements Resource {
-    private Resource r;
+    private final Resource r;
 
     public ResourceInode(Resource r) {
         super(new FileHandle.FileHandleBuilder().build(r.getURI().getBytes()));
         this.r = r;
     }
 
-    @Override public void load(byte data[], long offset, int len) { r.load(data, offset, len); }
+    @Override public void load(byte[] data, long offset, int len) { r.load(data, offset, len); }
     @Override public void load(IOStreams ioStreams) throws IOException { r.load(ioStreams); }
     @Override public void loadFromURI() throws IOException { r.loadFromURI(); }
     @Override public void send(IOStreams ioStreams) throws IOException { r.send(ioStreams); }

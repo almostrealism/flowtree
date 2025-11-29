@@ -16,6 +16,20 @@
 
 package io.flowtree.msg;
 
+import io.almostrealism.db.Query;
+import io.flowtree.Server;
+import io.flowtree.node.Client;
+import io.flowtree.node.NodeGroup;
+import io.flowtree.node.Proxy;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SecretKey;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
+import javax.crypto.spec.PBEParameterSpec;
 import java.io.EOFException;
 import java.io.Externalizable;
 import java.io.FileNotFoundException;
@@ -37,27 +51,10 @@ import java.security.NoSuchAlgorithmException;
 import java.security.Provider;
 import java.security.Security;
 import java.security.spec.InvalidKeySpecException;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-
-import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-import javax.crypto.SecretKey;
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
-import javax.crypto.spec.PBEParameterSpec;
-
-import io.flowtree.node.Client;
-import io.flowtree.node.NodeGroup;
-import io.flowtree.node.Proxy;
-import io.flowtree.Server;
-
-import io.almostrealism.db.Query;
 
 /**
  * A NodeProxy object uses a Socket to enable communication between remote nodes.
@@ -70,23 +67,24 @@ public class NodeProxy implements Proxy, Runnable {
 	public static String serviceName = "RINGS";
 	public static final String msgHeader = "msg";
 	public static final String queryHeader = "query";
-	private String securityProvider = "SunJCE";
+	private final String securityProvider = "SunJCE";
 	private String cipherAlgorithm = "PBEWithMD5AndDES";
 	public static final byte[] defaultSalt = {
 			(byte)0xc7, (byte)0x73, (byte)0x21, (byte)0x8c,
 			(byte)0x7e, (byte)0xc8, (byte)0xee, (byte)0x99
 	};
-	private byte[] salt = {
+	private final byte[] salt = {
 			(byte)0xc7, (byte)0x73, (byte)0x21, (byte)0x8c,
 			(byte)0x7e, (byte)0xc8, (byte)0xee, (byte)0x99
 	};
 	public static final int defaultCount = 20;
-	private int count = 20;
+	private final int count = 20;
 	
 	private static Cipher sInc;
 	
-	private int lastPing = 1, pingFreq = 40;
-	private double pingStat[];
+	private int lastPing = 1;
+	private final int pingFreq = 40;
+	private double[] pingStat;
 	private Thread pingThread;
 	
 	private class StoredObject {
@@ -106,13 +104,13 @@ public class NodeProxy implements Proxy, Runnable {
 	
 	private static class ByteWrapper implements Externalizable {
 		private static final long serialVersionUID = 6512456536452755866L;
-		private transient Cipher c;
-		private byte b[];
+		private final transient Cipher c;
+		private byte[] b;
 		
 		public ByteWrapper() { this(NodeProxy.sInc); }
 		public ByteWrapper(Cipher c) { this.c = c; }
-		public ByteWrapper(Cipher c, byte b[]) { this.c = c; this.b = b; }
-		public void setBytes(byte b[]) { this.b = b; }
+		public ByteWrapper(Cipher c, byte[] b) { this.c = c; this.b = b; }
+		public void setBytes(byte[] b) { this.b = b; }
 		public byte[] getBytes() { return this.b; }
 		
 		public void writeExternal(ObjectOutput out) throws IOException {
@@ -120,7 +118,7 @@ public class NodeProxy implements Proxy, Runnable {
 				int div = 8 - (b.length % 8);
 				
 				if (div < 8) {
-					byte temp[] = this.b;
+					byte[] temp = this.b;
 					int l = temp.length;
 					this.b = new byte[l + div];
 					System.arraycopy(temp, 0, this.b, 0, l);
@@ -130,7 +128,7 @@ public class NodeProxy implements Proxy, Runnable {
 						System.out.println("NodeProxy.ByteWrapper: Padded message by " + div);
 				}
 				
-				byte b[] = this.c.doFinal(this.b);
+				byte[] b = this.c.doFinal(this.b);
 				out.writeInt(b.length);
 				out.write(b);
 			} catch (IllegalBlockSizeException e) {
@@ -148,11 +146,11 @@ public class NodeProxy implements Proxy, Runnable {
 				
 				int i;
 				i: for (i = 0; i < 8; i++) {
-					if (this.b[this.b.length - i - 1] != -1) break i;
+					if (this.b[this.b.length - i - 1] != -1) break;
 				}
 				
 				if (i > 0) {
-					byte temp[] = new byte[this.b.length - i];
+					byte[] temp = new byte[this.b.length - i];
 					System.arraycopy(this.b, 0, temp, 0, temp.length);
 					this.b = temp;
 					
@@ -168,15 +166,15 @@ public class NodeProxy implements Proxy, Runnable {
 	}
 	
 	public interface EventListener {
-		public void connect(NodeProxy p);
-		public int disconnect(NodeProxy p);
-		public boolean recievedMessage(Message m, int reciever);
+		void connect(NodeProxy p);
+		int disconnect(NodeProxy p);
+		boolean recievedMessage(Message m, int reciever);
 	}
 	
-	private int timeout = 20000;
-	private int maxStore = 100;
+	private final int timeout = 20000;
+	private final int maxStore = 100;
 	
-	private String label;
+	private final String label;
 	
 	private Socket soc;
 	private ObjectInputStream in;
@@ -190,7 +188,9 @@ public class NodeProxy implements Proxy, Runnable {
 	private int totalMsgIn, currentMsgIn;
 	private long checkedMsgIn;
 	
-	private List obj, listeners, queue;
+	private final List obj;
+	private final List listeners;
+	private final List queue;
 	
 	private double jobtime, activity;
 	
@@ -215,16 +215,13 @@ public class NodeProxy implements Proxy, Runnable {
 		this(s, null, null, false);
 	}
 	
-	public NodeProxy(Socket s, char passwd[], String cipher, boolean server) throws IOException,
+	public NodeProxy(Socket s, char[] passwd, String cipher, boolean server) throws IOException,
 									NoSuchAlgorithmException,
 									InvalidKeySpecException,
 									NoSuchPaddingException,
 									InvalidKeyException,
 									InvalidAlgorithmParameterException {
-		if (passwd == null)
-			this.secure = false;
-		else
-			this.secure = true;
+		this.secure = passwd != null;
 		
 		if (cipher != null) this.cipherAlgorithm = cipher;
 		
@@ -310,11 +307,11 @@ public class NodeProxy implements Proxy, Runnable {
 			return;
 		}
 		
-		if (this.isConnected() == false)
-			throw new IOException("Node Proxy (" + this.toString() + ") not connected.");
+		if (!this.isConnected())
+			throw new IOException("Node Proxy (" + this + ") not connected.");
 		
 		Externalizable ext = null;
-		byte b[] = null;
+		byte[] b = null;
 		String head = null;
 		
 		if (o instanceof Message) {
@@ -396,7 +393,7 @@ public class NodeProxy implements Proxy, Runnable {
 	public long ping(int size, int timeout) throws IOException {
 		Message m = new Message(Message.Ping, -1, this);
 		
-		char c[] = new char[size];
+		char[] c = new char[size];
 		
 		for (int i = 0; i < c.length; i++) {
 			if (Math.random() > 0.5)
@@ -465,7 +462,7 @@ public class NodeProxy implements Proxy, Runnable {
 		return new double[] {min, max, avg, div, error};
 	}
 	
-	protected void writeSecure(byte b[]) throws IOException {
+	protected void writeSecure(byte[] b) throws IOException {
 		ByteWrapper bw = new ByteWrapper(this.outc, b);
 		bw.writeExternal(this.out);
 		this.out.flush();
@@ -485,7 +482,7 @@ public class NodeProxy implements Proxy, Runnable {
 	 */
 	@Override
 	public Object nextObject(int id) {
-		StoredObject o[];
+		StoredObject[] o;
 		
 		synchronized (this.obj) {
 			if (this.obj.size() <= 0) return null;
@@ -517,7 +514,7 @@ public class NodeProxy implements Proxy, Runnable {
 	 * @return  The next Message object to be handled, or null if one is not present.
 	 */
 	public Object nextMessage(int type, String data) {
-		StoredObject o[];
+		StoredObject[] o;
 		
 		synchronized (this.obj) {
 			if (this.obj.size() <= 0) return null;
@@ -525,7 +522,7 @@ public class NodeProxy implements Proxy, Runnable {
 		}
 		
 		i: for (int i = o.length - 1; i >= 0; i--) {
-			if (o[i] == null || o[i].getObject() instanceof Message == false)
+			if (o[i] == null || !(o[i].getObject() instanceof Message))
 				continue i;
 			
 			Message m = (Message) o[i].getObject();
@@ -568,7 +565,7 @@ public class NodeProxy implements Proxy, Runnable {
 				return o;
 			}
 			
-			if (System.currentTimeMillis() - start > timeout) break i;
+			if (System.currentTimeMillis() - start > timeout) break;
 		}
 		
 		this.owait--;
@@ -604,7 +601,7 @@ public class NodeProxy implements Proxy, Runnable {
 				return o;
 			}
 			
-			if (System.currentTimeMillis() - start > timeout) break i;
+			if (System.currentTimeMillis() - start > timeout) break;
 		}
 		
 		this.mwait--;
@@ -648,7 +645,7 @@ public class NodeProxy implements Proxy, Runnable {
 	public void addEventListener(NodeProxy.EventListener listener) {
 		this.listeners.add(listener);
 		this.println("Added listener " +
-						String.valueOf(this.listeners.size() - 1) + " -- " + listener);
+				(this.listeners.size() - 1) + " -- " + listener);
 	}
 	
 	/**
@@ -657,7 +654,7 @@ public class NodeProxy implements Proxy, Runnable {
 	public void removeEventListener(NodeProxy.EventListener listener) {
 		this.listeners.remove(listener);
 		this.println("Removed listener " +
-						String.valueOf(this.listeners.size() - 1) + " -- " + listener);
+				(this.listeners.size() - 1) + " -- " + listener);
 	}
 	
 	public InetAddress getInetAddress() {
@@ -773,7 +770,7 @@ public class NodeProxy implements Proxy, Runnable {
 		while (itr != null && itr.hasNext()) {
 			EventListener l = (EventListener)itr.next();
 			
-			if (l.recievedMessage(m, reciever) == true) {
+			if (l.recievedMessage(m, reciever)) {
 				store = false;
 				this.println("Message handled by " + l, true);
 			}
@@ -836,7 +833,7 @@ public class NodeProxy implements Proxy, Runnable {
 						
 						NodeProxy.this.println("Finished sending status.", true);
 					} catch (IOException e) {
-						System.out.println("NodeProxy (" + this.toString() +
+						System.out.println("NodeProxy (" + this +
 											"): IO error sending status (" +
 											e.getMessage() + ")");
 					}
@@ -930,7 +927,7 @@ public class NodeProxy implements Proxy, Runnable {
 				if (reset)
 					this.reset();
 				else if (!this.isConnected())
-					break loop;
+					break;
 				
 				i: if (this.in.available() > 0) {
 					h = true;
@@ -994,7 +991,7 @@ public class NodeProxy implements Proxy, Runnable {
 				this.println(se.getMessage());
 				// reset = true;
 				this.fireDisconnect();
-				break loop;
+				break;
 			} catch (StreamCorruptedException sce) {
 				this.println("Stream Corrupted (" + sce.getMessage() + ")");
 				reset = true;
@@ -1028,21 +1025,21 @@ public class NodeProxy implements Proxy, Runnable {
 	}
 
 	public void print(String msg) {
-		System.out.print("NodeProxy (" + this.toString() + "): " + msg);
+		System.out.print("NodeProxy (" + this + "): " + msg);
 	}
 	
 	public void print(String msg, boolean verbose) {
 		if (!verbose || Message.verbose)
-			System.out.print("NodeProxy (" + this.toString() + "): " + msg);
+			System.out.print("NodeProxy (" + this + "): " + msg);
 	}
 	
 	public void println(String msg) {
-		System.out.println("NodeProxy (" + this.toString() + "): " + msg);
+		System.out.println("NodeProxy (" + this + "): " + msg);
 	}
 	
 	public void println(String msg, boolean verbose) {
 		if (!verbose || Message.verbose)
-			System.out.println("NodeProxy (" + this.toString() + "): " + msg);
+			System.out.println("NodeProxy (" + this + "): " + msg);
 	}
 	
 	public void println(String msg, boolean verbose, boolean ident) {

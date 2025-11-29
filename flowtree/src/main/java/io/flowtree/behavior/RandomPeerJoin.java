@@ -16,18 +16,18 @@
 
 package io.flowtree.behavior;
 
-import java.io.IOException;
-import java.io.PrintStream;
-
 import io.flowtree.Server;
 import io.flowtree.node.Node;
+
+import java.io.IOException;
+import java.io.PrintStream;
 
 public class RandomPeerJoin implements ServerBehavior {
 
 	public void behave(Server s, PrintStream out) {
 		try {
 			int i = Node.random.nextInt(s.getPeers().length);
-			String peers[] = s.getPeerList(i);
+			String[] peers = s.getPeerList(i);
 			out.println("RandomPeerJoin: Got peer list for server " + i +
 						" (" + peers.length + " peers).");
 			if (peers.length <= 0) return;

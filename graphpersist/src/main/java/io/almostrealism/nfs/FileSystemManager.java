@@ -16,8 +16,8 @@
 
 package io.almostrealism.nfs;
 
-import io.almostrealism.resource.Resource;
 import io.almostrealism.relation.Factory;
+import io.almostrealism.resource.Resource;
 
 public interface FileSystemManager<T extends Resource> extends Factory<T>, SearchEngine,
 													DirectoryNotifier, DeletionNotifier {

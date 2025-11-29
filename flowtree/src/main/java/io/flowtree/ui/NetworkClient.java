@@ -25,6 +25,13 @@
 
 package io.flowtree.ui;
 
+import io.flowtree.job.Job;
+import io.flowtree.msg.Connection;
+import io.flowtree.msg.NodeProxy;
+import io.flowtree.node.Node;
+import org.ietf.jgss.GSSException;
+
+import javax.crypto.NoSuchPaddingException;
 import java.io.IOException;
 import java.net.Socket;
 import java.security.InvalidAlgorithmParameterException;
@@ -32,22 +39,13 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 
-import javax.crypto.NoSuchPaddingException;
-
-import io.flowtree.node.Node;
-import org.ietf.jgss.GSSException;
-
-import io.flowtree.msg.Connection;
-import io.flowtree.msg.NodeProxy;
-import io.flowtree.job.Job;
-
 /**
  * A FlowTreeCliServer instance can be used to send jobs/messages to a server.
  *
  * @author Mike Murray
  */
 public class NetworkClient {
-	private Connection c;
+	private final Connection c;
 
 	/**
 	 * Constructs a new FlowTreeCliServer object using the specified host information

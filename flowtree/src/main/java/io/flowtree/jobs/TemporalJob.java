@@ -24,7 +24,7 @@ import java.util.concurrent.CompletableFuture;
 public class TemporalJob implements Job {
 	private Temporal temporal;
 	private int iterations;
-	private CompletableFuture<Void> future = new CompletableFuture<>();
+	private final CompletableFuture<Void> future = new CompletableFuture<>();
 	private boolean stopped;
 
 	public TemporalJob() { }

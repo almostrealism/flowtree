@@ -26,7 +26,7 @@ import java.util.Map;
  * @author  Michael Murray
  */
 public abstract class SimpleUpdate<D, K, V> implements Update<D, K, V>, Iterable<Map.Entry> {
-	private Hashtable map = new Hashtable<>();
+	private final Hashtable map = new Hashtable<>();
 
 	protected String query;
 	

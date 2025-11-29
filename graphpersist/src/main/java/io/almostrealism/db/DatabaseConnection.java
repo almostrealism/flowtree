@@ -16,6 +16,11 @@
 
 package io.almostrealism.db;
 
+import io.almostrealism.db.Query.ResultHandler;
+import org.almostrealism.io.JobOutput;
+import org.almostrealism.io.OutputHandler;
+import org.almostrealism.util.KeyValueStore;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -27,12 +32,6 @@ import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-
-import org.almostrealism.io.JobOutput;
-import org.almostrealism.io.OutputHandler;
-import org.almostrealism.util.KeyValueStore;
-
-import io.almostrealism.db.Query.ResultHandler;
 
 /**
  * @author  Michael Murray
@@ -56,7 +55,7 @@ public class DatabaseConnection {
 	public static boolean verbose = false;
 	
 	protected class DefaultOutputHandler implements OutputHandler {
-		private String table;
+		private final String table;
 		
 		public DefaultOutputHandler(String table) { this.table = table; }
 
@@ -175,13 +174,14 @@ public class DatabaseConnection {
 		}
 	}
 	
-	private String userTable = "users", outputTable;
+	private final String userTable = "users";
+	private final String outputTable;
 	private Connection db;
 	private PreparedStatement selectAll, binaryInsert, storeOutput, selectUser,
 								deleteUri, deleteIndex, deleteToa, updateDup, configJob;
 	
-	private Set<OutputHandler> outputHandlers;
-	private Set<QueryHandler> queryHandlers;
+	private final Set<OutputHandler> outputHandlers;
+	private final Set<QueryHandler> queryHandlers;
 	private int totalRecieved, currentRecieved;
 	private long totalJobTime;
 	private long lastChecked, firstRecieved;
@@ -477,7 +477,7 @@ public class DatabaseConnection {
 		outputHandlers.forEach(oh -> oh.storeOutput(time, uid, o));
 	}
 	
-	public boolean storeOutput(long time, byte data[], String uri, int index) {
+	public boolean storeOutput(long time, byte[] data, String uri, int index) {
 		if (this.binaryInsert == null) return false;
 		
 		try {
@@ -488,7 +488,7 @@ public class DatabaseConnection {
 				this.binaryInsert.setInt(4, index);
 				this.binaryInsert.executeUpdate();
 				
-				if (this.verbose)
+				if (verbose)
 					System.out.println("DatabaseConnection: Executed binary insert.");
 				
 				return true;

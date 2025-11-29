@@ -16,8 +16,8 @@
 
 package io.flowtree.test;
 
-import io.flowtree.jobs.ExternalProcessJob;
 import io.flowtree.Server;
+import io.flowtree.jobs.ExternalProcessJob;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -32,7 +32,7 @@ public class ServerTest {
         Server server = new Server(p);
         server.start();
 
-        Thread.sleep(2 * 60 * 60 * 1000l);
+        Thread.sleep(2 * 60 * 60 * 1000L);
     }
 
     @Test

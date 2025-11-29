@@ -17,14 +17,14 @@
 
 package io.almostrealism.query;
 
+import io.almostrealism.persist.CascadingQuery;
+
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import io.almostrealism.persist.CascadingQuery;
 
 /**
  * The {@link QueryLibrary} tracks {@link Query}s for various object types,
@@ -34,9 +34,9 @@ import io.almostrealism.persist.CascadingQuery;
  * @author  Michael Murray
  */
 public class QueryLibrary<D> {
-	private static QueryLibrary root = new QueryLibrary();
+	private static final QueryLibrary root = new QueryLibrary();
 	
-	private HashMap<KeyValueTypes, List<Query<? extends D, ?, ?>>>  queries;
+	private final HashMap<KeyValueTypes, List<Query<? extends D, ?, ?>>>  queries;
 	
 	protected QueryLibrary() { queries = new HashMap<>(); }
 
@@ -98,7 +98,7 @@ public class QueryLibrary<D> {
 		}
 		
 		public boolean equals(Object o) {
-			if (o instanceof KeyValueTypes == false) return false;
+			if (!(o instanceof KeyValueTypes)) return false;
 			
 			if (((KeyValueTypes) o).keyType == null && keyType != null) return false;
 			if (keyType == null && ((KeyValueTypes) o).keyType != null) return false;
@@ -107,9 +107,8 @@ public class QueryLibrary<D> {
 			
 			if (((KeyValueTypes) o).valueType == null && valueType != null) return false;
 			if (valueType == null && ((KeyValueTypes) o).valueType != null) return false;
-			if (valueType != null && ((KeyValueTypes) o).valueType != null &&
-					!((KeyValueTypes) o).valueType.equals(valueType)) return false;
-			return true;
+			return valueType == null || ((KeyValueTypes) o).valueType == null ||
+					((KeyValueTypes) o).valueType.equals(valueType);
 		}
 		
 		public int hashCode() { return valueType.hashCode(); }

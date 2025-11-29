@@ -16,6 +16,14 @@
 
 package io.flowtree.fs;
 
+import io.almostrealism.db.DatabaseConnection;
+import io.almostrealism.db.Query;
+import io.almostrealism.db.QueryHandler;
+import io.flowtree.node.Client;
+import org.almostrealism.io.JobOutput;
+import org.almostrealism.io.OutputHandler;
+import org.hsqldb.Server;
+
 import java.io.EOFException;
 import java.io.Externalizable;
 import java.io.FileInputStream;
@@ -27,15 +35,6 @@ import java.net.Socket;
 import java.util.Hashtable;
 import java.util.Properties;
 import java.util.function.Consumer;
-
-import io.flowtree.node.Client;
-import org.almostrealism.io.JobOutput;
-import org.almostrealism.io.OutputHandler;
-import org.hsqldb.Server;
-
-import io.almostrealism.db.DatabaseConnection;
-import io.almostrealism.db.Query;
-import io.almostrealism.db.QueryHandler;
 
 /**
  * @author  Michael Murray
@@ -82,7 +81,7 @@ public class OutputServer implements Runnable, Consumer<JobOutput> {
 			System.out.println("OutputServer: Driver and/or URI not specified, " +
 								"starting HSQLDB...");
 			
-			String args[] = new String[4];
+			String[] args = new String[4];
 			args[0] = "-database.0";
 			args[1] = "file:flowtreedb";
 			args[2] = "-dbname.0";
@@ -142,7 +141,7 @@ public class OutputServer implements Runnable, Consumer<JobOutput> {
 		t.start();
 		
 		this.setCurrentServer();
-		System.out.println("Set current DBS: " + this.toString());
+		System.out.println("Set current DBS: " + this);
 	}
 	
 	public String getTable() { return this.db.getTable(); }

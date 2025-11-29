@@ -7,7 +7,7 @@ import org.apache.catalina.startup.Tomcat;
 import org.slf4j.LoggerFactory;
 
 public class TomcatNode extends Node {
-	private Tomcat httpd;
+	private final Tomcat httpd;
 
 	public TomcatNode(NodeGroup parent, int id) {
 		super(parent, id, 0, 0);

@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class WebServerNode extends Node {
-    private SimpleWebServer httpd;
+    private final SimpleWebServer httpd;
 
     public WebServerNode(NodeGroup parent, int id, String dir) {
         super(parent, id, 0, 0);

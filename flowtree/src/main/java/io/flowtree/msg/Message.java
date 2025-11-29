@@ -16,16 +16,15 @@
 
 package io.flowtree.msg;
 
+import io.flowtree.job.Job;
+import io.flowtree.job.JobFactory;
+import io.flowtree.node.Node;
+
 import java.io.Externalizable;
 import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 import java.util.ArrayList;
-
-import io.flowtree.job.JobFactory;
-import io.flowtree.node.Node;
-
-import io.flowtree.job.Job;
 
 /**
  * A {@link Message} is used to send a message using a Proxy.
@@ -200,7 +199,7 @@ public class Message implements Externalizable {
 			} else if (m.getData().startsWith("peers:")) {
 				String ps = m.getData();
 				ps = ps.substring(ps.indexOf(JobFactory.ENTRY_SEPARATOR) + JobFactory.ENTRY_SEPARATOR.length());
-				String peers[] = ps.split(",");
+				String[] peers = ps.split(",");
 				ArrayList l = new ArrayList(peers.length);
 				
 				for (int i = 0; i < peers.length; i++) {
@@ -231,7 +230,7 @@ public class Message implements Externalizable {
 	 * @see java.io.Externalizable#writeExternal(java.io.ObjectOutput)
 	 */
 	public void writeExternal(ObjectOutput out) throws IOException {
-		if (Message.verbose) System.out.println("Write " + this.toString());
+		if (Message.verbose) System.out.println("Write " + this);
 		
 		out.writeInt(this.sender);
 		out.writeInt(this.receiver);
@@ -249,13 +248,13 @@ public class Message implements Externalizable {
 		
 		this.data = (String) in.readObject();
 		
-		if (Message.verbose) System.out.println("Read " + this.toString());
+		if (Message.verbose) System.out.println("Read " + this);
 		
 		this.node = null;
 		this.local = false;
 	}
 	
-	public void setBytes(byte b[]) {
+	public void setBytes(byte[] b) {
 		this.sender = b[0];
 		this.receiver = b[1];
 		this.type = b[2];
@@ -264,25 +263,25 @@ public class Message implements Externalizable {
 			this.data = new String(b, 3, b.length - 3);
 		
 		if (Message.verbose)
-			System.out.println("Read " + b.length + " bytes " + this.toString());
+			System.out.println("Read " + b.length + " bytes " + this);
 		
 		this.node = null;
 		this.local = false;
 	}
 	
 	public byte[] getBytes() {
-		byte db[] = new byte[0];
+		byte[] db = new byte[0];
 		if (this.data != null) db = this.data.getBytes();
-		byte b[] = new byte[3 + db.length];
+		byte[] b = new byte[3 + db.length];
 		
 		b[0] = (byte) this.sender;
 		b[1] = (byte) this.receiver;
 		b[2] = (byte) this.type;
-		
-		for (int i = 0; i < db.length; i++) b[3 + i] = db[i];
+
+		System.arraycopy(db, 0, b, 3, db.length);
 		
 		if (Message.verbose)
-			System.out.println("Write " + b.length + " bytes " + this.toString());
+			System.out.println("Write " + b.length + " bytes " + this);
 		
 		return b;
 	}

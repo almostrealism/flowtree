@@ -39,7 +39,7 @@ public interface ResourceHeaderParser {
 	 * @param head  Header for resource.
 	 * @return  True if the header matches, false otherwise.
 	 */
-	public boolean doesHeaderMatch(byte head[]);
+	boolean doesHeaderMatch(byte[] head);
 	
 	/**
 	 * Returns the resource class to be used if the header matches.
@@ -47,5 +47,5 @@ public interface ResourceHeaderParser {
 	 * 
 	 * @return  The resource class to be used.
 	 */
-	public Class getResourceClass();
+	Class getResourceClass();
 }

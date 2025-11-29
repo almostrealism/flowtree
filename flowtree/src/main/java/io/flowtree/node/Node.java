@@ -16,6 +16,17 @@
 
 package io.flowtree.node;
 
+import io.flowtree.Server;
+import io.flowtree.fs.OutputServer;
+import io.flowtree.job.Job;
+import io.flowtree.job.JobFactory;
+import io.flowtree.msg.Connection;
+import io.flowtree.msg.Message;
+import io.flowtree.msg.NodeProxy;
+import org.almostrealism.io.RSSFeed;
+import org.almostrealism.util.Chart;
+
+import javax.swing.*;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -33,19 +44,6 @@ import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
-
-import javax.swing.JLabel;
-
-import io.flowtree.Server;
-import io.flowtree.fs.OutputServer;
-import org.almostrealism.io.RSSFeed;
-import org.almostrealism.util.Chart;
-
-import io.flowtree.msg.Connection;
-import io.flowtree.msg.Message;
-import io.flowtree.msg.NodeProxy;
-import io.flowtree.job.Job;
-import io.flowtree.job.JobFactory;
 
 /**
  * A {@link Node} represents a member of the distributed network
@@ -69,11 +67,11 @@ public class Node implements Runnable, ThreadFactory {
 	private double maxSleepC = 300;
 	private double activitySleepC = 1.2, activitySleepO = -0.4;
 	private double peerActivitySleepC = 0.0;
-	private double activityC = 2.0;
+	private final double activityC = 2.0;
 	private double minJobP = 0.4;
 	private double peerRelayC = 0.2;
 	private double parentalRelayP = 0.0;
-	private double parentalSleepP = 0.0;
+	private final double parentalSleepP = 0.0;
 	
 	public interface ActivityListener {
 		void iteration(Node n);
@@ -83,12 +81,14 @@ public class Node implements Runnable, ThreadFactory {
 	}
 	
 	protected NodeGroup parent;
-	private int id;
+	private final int id;
 	
-	private int minJobs, maxJobs, maxPeers;
+	private int minJobs;
+	private int maxJobs;
+	private final int maxPeers;
 	private int maxFailedJobs;
 	private double relay, connect;
-	private Set peers;
+	private final Set peers;
 	protected final List<Job> jobs;
 	protected List listeners;
 	protected List failedJobs;
@@ -105,7 +105,8 @@ public class Node implements Runnable, ThreadFactory {
 	private int totalJobs, totalErrJobs, totalRelay;
 
 	private int threadCount;
-	private Thread nodeThread, worker;
+	private final Thread nodeThread;
+	private Thread worker;
 	private ExecutorService pool;
 	private Job currentJob;
 	
@@ -294,7 +295,7 @@ public class Node implements Runnable, ThreadFactory {
 		c.start();
 		this.peers.add(c);
 		
-		this.displayMessage("Established connection " + c.toString());
+		this.displayMessage("Established connection " + c);
 		
 		return true;
 	}
@@ -534,8 +535,8 @@ public class Node implements Runnable, ThreadFactory {
 		}
 		
 		if (this.worker != null) synchronized (this.worker) {
-			if (this.working == false &&
-				this.worker.isAlive() == false) this.worker.start();
+			if (!this.working &&
+					!this.worker.isAlive()) this.worker.start();
 		}
 		
 		if (this.parent != null) this.parent.addCachedTask(j.getTaskString());
@@ -597,7 +598,7 @@ public class Node implements Runnable, ThreadFactory {
 			this.jobs.removeIf(o -> o.getTaskId().equals(task));
 		}
 		
-		Connection p[] = this.getPeers();
+		Connection[] p = this.getPeers();
 		
 		try {
 			Message msg = new Message(Message.Kill, this.id);
@@ -621,13 +622,13 @@ public class Node implements Runnable, ThreadFactory {
 	public Connection getRandomPeer() {
 		if (this.peers == null || this.peers.size() <= 0) return null;
 		
-		Connection c[] = (Connection[]) this.peers.toArray(new Connection[0]);
+		Connection[] c = (Connection[]) this.peers.toArray(new Connection[0]);
 		int index = -1;
 		
 		double r = Math.random();
 		
 		if (this.weightPeers) {
-			double w[] = new double[c.length];
+			double[] w = new double[c.length];
 			double sum = 0.0;
 			
 			for (int i = 0; i < c.length; i++) {
@@ -681,7 +682,7 @@ public class Node implements Runnable, ThreadFactory {
 		if (this.sleep > max) this.sleep = (int) max;
 		
 		if (this.verbose)
-			System.out.println(this.toString() + ": Sleep = " + this.sleep);
+			System.out.println(this + ": Sleep = " + this.sleep);
 	}
 	
 	public int getSleep() { return this.sleep; }
@@ -726,7 +727,7 @@ public class Node implements Runnable, ThreadFactory {
 	 * @param image  URL of image.
 	 */
 	protected void displayMessage(String message, String image) {
-		String s = Instant.now() + " [" + this.toString() + "]: " + message;
+		String s = Instant.now() + " [" + this + "]: " + message;
 		
 		this.lastMessage = s;
 		
@@ -737,7 +738,7 @@ public class Node implements Runnable, ThreadFactory {
 			
 			b.append(RSSFeed.startHtml);
 			b.append("<h1>");
-			b.append(this.toString());
+			b.append(this);
 			b.append("</h1>");
 			b.append("<br>\n");
 			b.append("<h2>");
@@ -805,7 +806,7 @@ public class Node implements Runnable, ThreadFactory {
 	public String getStatus(String nl) {
 		StringBuffer buf = new StringBuffer();
 		
-		buf.append("<h3>" + this.toString() + "</h3>");
+		buf.append("<h3>" + this + "</h3>");
 		
 		buf.append("<p>");
 		buf.append("Sleep time: ");
@@ -862,7 +863,7 @@ public class Node implements Runnable, ThreadFactory {
 			int i = 0;
 			
 			while (itr.hasNext())
-				buf.append("\t <b>Peer "  + i++ + "</b>: " + ((Connection)itr.next()).toString() + nl);
+				buf.append("\t <b>Peer "  + i++ + "</b>: " + itr.next().toString() + nl);
 		}
 		
 		double a = 0.0;

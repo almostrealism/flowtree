@@ -17,14 +17,31 @@
 package io.flowtree.aws;
 
 import com.amazonaws.services.kms.AWSKMSClient;
-import com.amazonaws.services.kms.model.*;
+import com.amazonaws.services.kms.model.DecryptRequest;
+import com.amazonaws.services.kms.model.DecryptResult;
+import com.amazonaws.services.kms.model.EnableKeyRequest;
+import com.amazonaws.services.kms.model.EnableKeyResult;
+import com.amazonaws.services.kms.model.EncryptRequest;
+import com.amazonaws.services.kms.model.EncryptResult;
 
-import java.io.*;
-import java.nio.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
 import java.nio.charset.Charset;
 import java.nio.charset.CharsetDecoder;
 import java.nio.charset.CharsetEncoder;
-import java.security.*;
+import java.nio.charset.StandardCharsets;
+import java.security.KeyFactory;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.NoSuchAlgorithmException;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
@@ -33,9 +50,9 @@ import java.util.Scanner;
 public class KMSEngine {
     private static final SecureRandom srand = new SecureRandom();
 
-    private AWSKMSClient client;
+    private final AWSKMSClient client;
 
-    private Encryptor c;
+    private final Encryptor c;
 
     private String str;
 
@@ -74,7 +91,7 @@ public class KMSEngine {
     public AWSKMSClient getClient() { return client; }
 
     public ByteBuffer next() {
-        Charset charset = Charset.forName("UTF-8");
+        Charset charset = StandardCharsets.UTF_8;
         CharsetEncoder encoder = charset.newEncoder();
         CharsetDecoder decoder = charset.newDecoder();
         try {

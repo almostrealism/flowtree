@@ -16,6 +16,36 @@
 
 package io.flowtree;
 
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.AWSCredentialsProvider;
+import com.amazonaws.auth.BasicAWSCredentials;
+import io.almostrealism.db.DatabaseConnection;
+import io.almostrealism.db.Query;
+import io.almostrealism.persist.LocalResource;
+import io.almostrealism.resource.IOStreams;
+import io.almostrealism.resource.Permissions;
+import io.almostrealism.resource.Resource;
+import io.flowtree.airflow.AirflowJobFactory;
+import io.flowtree.aws.CognitoLogin;
+import io.flowtree.aws.Encryptor;
+import io.flowtree.fs.DistributedResource;
+import io.flowtree.fs.ImageResource;
+import io.flowtree.fs.OutputServer;
+import io.flowtree.fs.ResourceDistributionTask;
+import io.flowtree.job.Job;
+import io.flowtree.job.JobFactory;
+import io.flowtree.msg.Message;
+import io.flowtree.msg.NodeProxy;
+import io.flowtree.node.Client;
+import io.flowtree.node.Node;
+import io.flowtree.node.NodeGroup;
+import io.flowtree.www.TomcatNode;
+import org.almostrealism.auth.Login;
+import org.almostrealism.color.RGB;
+import org.almostrealism.io.OutputHandler;
+import org.almostrealism.texture.GraphicsConverter;
+
+import javax.swing.*;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
@@ -26,7 +56,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.net.InetAddress;
-import java.net.MalformedURLException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.URL;
@@ -44,38 +73,6 @@ import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
-
-import javax.swing.JLabel;
-
-import com.amazonaws.auth.AWSCredentials;
-import com.amazonaws.auth.AWSCredentialsProvider;
-import com.amazonaws.auth.BasicAWSCredentials;
-import io.flowtree.node.Client;
-import io.flowtree.node.Node;
-import io.flowtree.node.NodeGroup;
-import org.almostrealism.auth.Login;
-import io.flowtree.airflow.AirflowJobFactory;
-import io.flowtree.aws.CognitoLogin;
-import io.flowtree.aws.Encryptor;
-import io.flowtree.fs.OutputServer;
-import io.flowtree.www.TomcatNode;
-import org.almostrealism.color.RGB;
-import io.almostrealism.resource.IOStreams;
-import org.almostrealism.io.OutputHandler;
-import io.almostrealism.resource.Permissions;
-import io.almostrealism.resource.Resource;
-import org.almostrealism.texture.GraphicsConverter;
-
-import io.almostrealism.db.DatabaseConnection;
-import io.almostrealism.db.Query;
-import io.flowtree.msg.Message;
-import io.flowtree.msg.NodeProxy;
-import io.almostrealism.persist.LocalResource;
-import io.flowtree.fs.DistributedResource;
-import io.flowtree.fs.ImageResource;
-import io.flowtree.fs.ResourceDistributionTask;
-import io.flowtree.job.Job;
-import io.flowtree.job.JobFactory;
 
 // TODO Consider performing routine tasks (eg Garbage Collector, delete unused db rows, etc.)
 //      during time when activity rating is low.
@@ -98,7 +95,7 @@ public class Server implements JobFactory, Runnable {
 	private class ResourceServer implements Runnable {
 		public static final int defaultPort = 7767;
 		
-		private ServerSocket serv;
+		private final ServerSocket serv;
 		private boolean end = false;
 		
 		public ResourceServer() throws IOException { this(defaultPort); }
@@ -140,7 +137,7 @@ public class Server implements JobFactory, Runnable {
 	}
 	
 	protected class ResourceServerThread extends Thread implements Runnable {
-		private IOStreams io;
+		private final IOStreams io;
 		
 		public ResourceServerThread(IOStreams io) { this.io = io; }
 		
@@ -191,7 +188,7 @@ public class Server implements JobFactory, Runnable {
 				while (citem == null && itr.hasNext())
 					citem = ((ResourceProvider) itr.next()).loadResource(uri, io.host);
 				
-				if (citem instanceof Resource == false) {
+				if (!(citem instanceof Resource)) {
 					io.out.writeInt(-1);
 				} else {
 					io.out.writeInt(1);
@@ -217,26 +214,29 @@ public class Server implements JobFactory, Runnable {
 	public static boolean resourceVerbose = true;
 	
 	private int maxCache = 10;
-	private String logCache;
-	private Map cache, cIndex, logItems;
-	private List loading;
+	private final String logCache;
+	private final Map cache;
+	private final Map cIndex;
+	private final Map logItems;
+	private final List loading;
 
-	private List<Login> logins;
+	private final List<Login> logins;
 	
-	private NodeGroup group;
+	private final NodeGroup group;
 	private ServerSocket socket;
 	private ResourceServer rserver;
 
 	private CompletableFuture<Void> future;
 	
 	private String hostname;
-	private long startTime;
+	private final long startTime;
 	
 	private double p;
 	
 	private boolean stop;
-	private ThreadGroup threads;
-	private Thread thread, rthread;
+	private final ThreadGroup threads;
+	private final Thread thread;
+	private Thread rthread;
 	
 	private JLabel label;
 	
@@ -248,7 +248,7 @@ public class Server implements JobFactory, Runnable {
 	 * 
 	 * @param args  {path to properties file, full classname for JobFactory}
 	 */
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		Properties p = new Properties();
 
 		if (args.length > 0) {
@@ -465,7 +465,7 @@ public class Server implements JobFactory, Runnable {
 		return true;
 	}
 	
-	public static IOStreams getHttpIOStreams(String uri) throws MalformedURLException, IOException {
+	public static IOStreams getHttpIOStreams(String uri) throws IOException {
 		IOStreams io = new IOStreams();
 		io.in = new DataInputStream(new URL(uri).openStream());
 		return io;
@@ -509,8 +509,8 @@ public class Server implements JobFactory, Runnable {
 	 * @return  An array of Strings containing the hostnames of the peers of this server.
 	 */
 	public String[] getPeers() {
-		NodeProxy np[] = this.group.getServers();
-		String names[] = new String[np.length];
+		NodeProxy[] np = this.group.getServers();
+		String[] names = new String[np.length];
 		
 		for (int i = 0; i < np.length; i++) names[i] = np[i].toString();
 		
@@ -656,10 +656,10 @@ public class Server implements JobFactory, Runnable {
 	public ThreadGroup getThreadGroup() { return this.threads; }
 	
 	public String[] getThreadList() {
-		Thread list[] = new Thread[this.threads.activeCount()];
+		Thread[] list = new Thread[this.threads.activeCount()];
 		int j = threads.enumerate(list);
 		
-		String l[] = new String[list.length];
+		String[] l = new String[list.length];
 		for (int i = 0; i < j; i++) l[i] = list[i].getName();
 		return l;
 	}
@@ -681,18 +681,18 @@ public class Server implements JobFactory, Runnable {
 		
 		Thread t = new Thread(this.threads, new Runnable() {
 			public void run() {
-				w: while (true) {
+				while (true) {
 					try {
-						Thread.sleep(sleep * 1000);
-						
+						Thread.sleep(sleep * 1000L);
+
 						Server.this.writeStatus(file);
 						Server.this.getNodeGroup().storeActivityGraph(new File(file + ".ac"));
-						Server.this.getNodeGroup().storeSleepGraph(new File(file +".sl"));
+						Server.this.getNodeGroup().storeSleepGraph(new File(file + ".sl"));
 						Server.this.getNodeGroup().writeLogFile(sleep / 60);
 					} catch (InterruptedException e) {
 					} catch (IOException ioe) {
 						System.out.println("Server: IO error writing status file (" +
-											ioe.getMessage() + ").");
+								ioe.getMessage() + ").");
 					}
 				}
 			}
@@ -865,7 +865,7 @@ public class Server implements JobFactory, Runnable {
 	 *          reported a job time measurement).
 	 */
 	public double getAveragePeerJobTime() {
-		NodeProxy p[] = this.group.getServers();
+		NodeProxy[] p = this.group.getServers();
 		
 		double sum = 0.0;
 		int peers = 0;
@@ -904,15 +904,14 @@ public class Server implements JobFactory, Runnable {
 	}
 	
 	public Message getStatusMessage() throws IOException {
-		StringBuffer stat = new StringBuffer();
-		
-		stat.append("jobtime:");
-		stat.append(this.group.getAverageJobTime());
-		stat.append(";activity:");
-		stat.append(this.group.getAverageActivityRating());
+
+		String stat = "jobtime:" +
+				this.group.getAverageJobTime() +
+				";activity:" +
+				this.group.getAverageActivityRating();
 		
 		Message m = new Message(Message.ServerStatus, -1);
-		m.setString(stat.toString());
+		m.setString(stat);
 		
 		return m;
 	}
@@ -922,14 +921,14 @@ public class Server implements JobFactory, Runnable {
 	
 	public Object loadFromCache(String uri) {
 		Object s = null;
-		
-		i: for (int i = 0;;) {
+
+		for (int i = 0; ; ) {
 			s = this.cache.get(uri);
-			
+
 			if (this.loading.contains(uri)) {
 				try {
 					int sleep = 1000;
-					
+
 					if (i == 0) {
 						sleep = 1000;
 						i++;
@@ -945,9 +944,9 @@ public class Server implements JobFactory, Runnable {
 					} else {
 						sleep = 1200000;
 					}
-					
+
 					Thread.sleep(sleep);
-					
+
 					System.out.println("Server: Waited " + sleep / 1000.0 +
 							" seconds for " + uri);
 				} catch (InterruptedException ie) {}
@@ -1132,7 +1131,7 @@ public class Server implements JobFactory, Runnable {
 		}
 		
 		if (res == null) return null;
-		int data[] = (int[]) res.getData();
+		int[] data = (int[]) res.getData();
 		
 		if (!noReturn)
 			return GraphicsConverter.convertToRGBArray(data, 2, 0, 0, data[0], data[1], data[0]);
@@ -1148,7 +1147,7 @@ public class Server implements JobFactory, Runnable {
 	public IOStreams getResourceStream(String uri, String exclude) {
 		IOStreams io = null;
 		
-		NodeProxy p[] = this.getNodeGroup().getServers();
+		NodeProxy[] p = this.getNodeGroup().getServers();
 		
 		i: for (int i = 0; i < p.length; i++) {
 			String ad = p[i].toString();
@@ -1196,7 +1195,7 @@ public class Server implements JobFactory, Runnable {
 			return null;
 	}
 	
-	public IOStreams parseResourceUri(String uri) throws UnknownHostException, IOException {
+	public IOStreams parseResourceUri(String uri) throws IOException {
 		int index = uri.indexOf("/", 11);
 		
 		String serv = uri.substring(11, index);
@@ -1255,7 +1254,7 @@ public class Server implements JobFactory, Runnable {
 			
 			q.deincrementRelay();
 			
-			NodeProxy peers[] = this.group.getServers();
+			NodeProxy[] peers = this.group.getServers();
 			
 			i: for (int i = 0; i < peers.length; i++) {
 				if (peers[i] == p) continue i;
@@ -1353,26 +1352,27 @@ public class Server implements JobFactory, Runnable {
 			j = (Job)Class.forName(className).newInstance();
 			
 			boolean end = false;
-			
-			w: while (!end) {
+
+			while (!end) {
 				data = data.substring(index + JobFactory.ENTRY_SEPARATOR.length());
 				index = data.indexOf(JobFactory.ENTRY_SEPARATOR);
-				
-				while (data.charAt(index + JobFactory.ENTRY_SEPARATOR.length()) == '/' || index > 0 && data.charAt(index - 1) == '\\')
+
+				while (data.charAt(index + JobFactory.ENTRY_SEPARATOR.length()) == '/' || index > 0 && data.charAt(index - 1) == '\\') {
 					index = data.indexOf(JobFactory.ENTRY_SEPARATOR, index + JobFactory.ENTRY_SEPARATOR.length());
-				
+				}
+
 				String s = null;
-				
+
 				if (index <= 0) {
 					s = data;
 					end = true;
 				} else {
 					s = data.substring(0, index);
 				}
-				
+
 				int k = s.indexOf(KEY_VALUE_SEPARATOR);
 				int len = KEY_VALUE_SEPARATOR.length();
-				
+
 				if (k > 0) {
 					String key = s.substring(0, k);
 					String value = s.substring(k + len);

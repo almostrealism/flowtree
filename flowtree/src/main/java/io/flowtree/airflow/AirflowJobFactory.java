@@ -18,7 +18,6 @@ package io.flowtree.airflow;
 
 import io.flowtree.job.Job;
 import io.flowtree.job.JobFactory;
-
 import io.flowtree.node.Client;
 import org.almostrealism.util.KeyUtils;
 import org.eclipse.jetty.server.Request;
@@ -40,7 +39,7 @@ public class AirflowJobFactory extends AbstractHandler implements JobFactory {
 	private String taskId;
 	private int i;
 
-	private List jobs;
+	private final List jobs;
 
 	private CompletableFuture<Void> future;
 
@@ -120,9 +119,7 @@ public class AirflowJobFactory extends AbstractHandler implements JobFactory {
 	 */
 	@Override
 	public String encode() {
-		StringBuffer buf = new StringBuffer();
-		buf.append(this.getClass().getName());
-		return buf.toString();
+		return this.getClass().getName();
 	}
 
 	/**
@@ -137,10 +134,9 @@ public class AirflowJobFactory extends AbstractHandler implements JobFactory {
 
 	@Override
 	public String getName() {
-		StringBuffer b = new StringBuffer();
-		b.append("Airflow Worker - ");
-		b.append(this.taskId);
-		return b.toString();
+		String b = "Airflow Worker - " +
+				this.taskId;
+		return b;
 	}
 
 	@Override

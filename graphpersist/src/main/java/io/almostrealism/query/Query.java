@@ -16,12 +16,12 @@
 
 package io.almostrealism.query;
 
+import io.almostrealism.persist.CascadingQuery;
+
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-
-import io.almostrealism.persist.CascadingQuery;
 
 /**
  * A Query produces an object from any structured data in any database.

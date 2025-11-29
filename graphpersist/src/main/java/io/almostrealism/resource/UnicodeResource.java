@@ -16,17 +16,22 @@
 
 package io.almostrealism.resource;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.Hashtable;
 import java.util.TreeSet;
 
 public class UnicodeResource extends ResourceAdapter<byte[]> {
-	private Hashtable<Long, String> data = new Hashtable<>();
+	private final Hashtable<Long, String> data = new Hashtable<>();
 	
 	public UnicodeResource() { }
 	
-	public UnicodeResource(String data) { this.data.put(0l, data); }
+	public UnicodeResource(String data) { this.data.put(0L, data); }
 
 	public UnicodeResource(File f) throws IOException {
 		this(new FileInputStream(f));
@@ -36,7 +41,7 @@ public class UnicodeResource extends ResourceAdapter<byte[]> {
 		read(in);
 	}
 
-	public synchronized void load(byte data[], long offset, int len) {
+	public synchronized void load(byte[] data, long offset, int len) {
 		this.data.put(offset, new String(data, 0, len));
 	}
 
@@ -61,7 +66,7 @@ public class UnicodeResource extends ResourceAdapter<byte[]> {
 		}
 
 		data.clear();
-		data.put(0l, buf.toString());
+		data.put(0L, buf.toString());
 	}
 
 	@Override

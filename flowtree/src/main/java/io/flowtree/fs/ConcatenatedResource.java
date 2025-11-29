@@ -16,17 +16,17 @@
 
 package io.flowtree.fs;
 
+import io.almostrealism.persist.ResourceHeaderParser;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 
-import io.almostrealism.persist.ResourceHeaderParser;
-
 public class ConcatenatedResource extends DistributedResource {
-	private static String header = "<ConcatenatedResource>";
-	private static String footer = "";
+	private static final String header = "<ConcatenatedResource>";
+	private static final String footer = "";
 	
 	public static class ConcatenatedResourceHeaderParser implements ResourceHeaderParser {
 		public boolean doesHeaderMatch(byte[] head) {
@@ -38,13 +38,13 @@ public class ConcatenatedResource extends DistributedResource {
 	}
 	
 	public static class ConcatenatedInputStream extends InputStream {
-		private String files[];
-		private byte sep[] = "\n".getBytes();
+		private final String[] files;
+		private byte[] sep = "\n".getBytes();
 		private InputStream current;
 		private int index, sepIndex = 0;
 		private int bytes;
 		
-		public ConcatenatedInputStream(String files[]) {
+		public ConcatenatedInputStream(String[] files) {
 			this.files = files;
 			this.index = 0;
 		}
@@ -99,7 +99,7 @@ public class ConcatenatedResource extends DistributedResource {
 			String l = buf.readLine();
 			buf.close();
 			l = l.substring(header.length());
-			String c[] = t.getChildren(l);
+			String[] c = t.getChildren(l);
 			return new ConcatenatedInputStream(c);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
@@ -112,8 +112,8 @@ public class ConcatenatedResource extends DistributedResource {
 		try (BufferedReader buf = new BufferedReader(new InputStreamReader(super.getInputStream()))) {
 			String l = buf.readLine();
 			l = l.substring(header.length());
-			String c[] = t.getChildren(l);
-			long tot = c.length * 2;
+			String[] c = t.getChildren(l);
+			long tot = c.length * 2L;
 			
 			for (int i = 0; i < c.length; i++) {
 				DistributedResource r = t.getResource(c[i]);

@@ -1,10 +1,10 @@
 package io.almostrealism.query;
 
+import io.almostrealism.relation.Factory;
+
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Map;
-
-import io.almostrealism.relation.Factory;
 
 /**
  * {@link SimpleQuery} maps named columns to the POJO fields that should be populated.
@@ -12,7 +12,7 @@ import io.almostrealism.relation.Factory;
  * @author  Michael Murray
  */
 public abstract class SimpleQuery<D, K, V> implements Query<D, K, V>, Iterable<Map.Entry> {
-	private Hashtable map = new Hashtable<>();
+	private final Hashtable map = new Hashtable<>();
 
 	protected String query;
 	

@@ -16,6 +16,9 @@
 
 package io.flowtree.cli;
 
+import io.flowtree.msg.Message;
+import io.flowtree.node.Client;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,11 +27,9 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import io.flowtree.msg.Message;
-import io.flowtree.node.Client;
 
 /**
  * TODO  Rewrite as a Jersey service.
@@ -36,9 +37,9 @@ import io.flowtree.node.Client;
  * @author  Michael Murray
  */
 public class HttpCommandServer implements Runnable {
-	private static SimpleDateFormat format = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z");
+	private static final SimpleDateFormat format = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z");
 	
-	private ServerSocket socket;
+	private final ServerSocket socket;
 	private InputStream in;
 	private OutputStream out;
 	private BufferedReader br;
@@ -73,7 +74,7 @@ public class HttpCommandServer implements Runnable {
 				System.out.println("HttpCommandServer: Got IO streams...");
 				
 				this.br = new BufferedReader(new InputStreamReader(this.in));
-				this.ps = new PrintStream(this.out, false, "US-ASCII");
+				this.ps = new PrintStream(this.out, false, StandardCharsets.US_ASCII);
 				System.out.println("HttpCommandServer: Constructed input buffer and print stream...");
 				
 				String command = null;
@@ -84,7 +85,7 @@ public class HttpCommandServer implements Runnable {
 					s = s.trim();
 					
 					if (s == null || s.equals("")) {
-						break w;
+						break;
 					} else if (s.startsWith("GET /")) {
 						int p = s.indexOf("?") + 1;
 						int q = s.indexOf(" HTTP/");

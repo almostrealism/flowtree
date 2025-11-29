@@ -1,17 +1,17 @@
 package io.almostrealism.etl;
 
+import io.almostrealism.sql.SQLConnectionProvider;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Collection;
 import java.util.Map;
 
-import io.almostrealism.sql.SQLConnectionProvider;
-
 public abstract class View<V> {
-	private SQLConnectionProvider sql;
-	private String table;
-	private Collection<V> values;
+	private final SQLConnectionProvider sql;
+	private final String table;
+	private final Collection<V> values;
 	
 	public View(SQLConnectionProvider c, String table, Collection<V> values) {
 		this.sql = c;
@@ -41,7 +41,7 @@ public abstract class View<V> {
 		buf.append(table);
 		buf.append(" where ");
 		
-		String where[] = getPrimaryKeys();
+		String[] where = getPrimaryKeys();
 		
 		for (int i = 0; i < where.length; i++) {
 			buf.append(where[i]);
@@ -57,8 +57,8 @@ public abstract class View<V> {
 	}
 	
 	protected String getInsert(Map<String, String> data) {
-		String names[] = new String[data.size()];
-		String values[] = new String[data.size()];
+		String[] names = new String[data.size()];
+		String[] values = new String[data.size()];
 		
 		int i = 0;
 		for (Map.Entry<String, String> m : data.entrySet()) {
@@ -66,18 +66,17 @@ public abstract class View<V> {
 			values[i] = m.getValue();
 			i++;
 		}
-		
-		StringBuffer buf = new StringBuffer();
-		buf.append("insert into ");
-		buf.append(table);
-		buf.append(" ");
-		buf.append(getValueList(names));
-		buf.append(" values ");
-		buf.append(getValueList(values));
-		return buf.toString();
+
+		String buf = "insert into " +
+				table +
+				" " +
+				getValueList(names) +
+				" values " +
+				getValueList(values);
+		return buf;
 	}
 	
-	private String getValueList(String values[]) {
+	private String getValueList(String[] values) {
 		StringBuffer buf = new StringBuffer();
 		
 		buf.append("(");

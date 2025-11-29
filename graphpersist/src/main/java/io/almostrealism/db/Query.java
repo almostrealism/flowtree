@@ -41,7 +41,7 @@ public class Query implements Externalizable {
 	
 	public interface ResultHandler {
 		void handleResult(String key, String value);
-		void handleResult(String key, byte value[]);
+		void handleResult(String key, byte[] value);
 	}
 	
 	public static final String sep = "%";
@@ -162,12 +162,12 @@ public class Query implements Externalizable {
 	public String getCondition() { return this.con; }
 	
 	public byte[] getBytes() {
-		byte t[] = this.table.getBytes();
-		byte cl1[] = this.col1.getBytes();
-		byte cl2[] = this.col2.getBytes();
-		byte cn[] = this.con.getBytes();
+		byte[] t = this.table.getBytes();
+		byte[] cl1 = this.col1.getBytes();
+		byte[] cl2 = this.col2.getBytes();
+		byte[] cn = this.con.getBytes();
 		
-		byte data[] = new byte[t.length + cl1.length + cl2.length + cn.length + 5];
+		byte[] data = new byte[t.length + cl1.length + cl2.length + cn.length + 5];
 		
 		data[0] = (byte) t.length;
 		data[1] = (byte) cl1.length;
@@ -186,12 +186,12 @@ public class Query implements Externalizable {
 		System.arraycopy(cn, 0, data, index, cn.length);
 		
 		if (verbose)
-			System.out.println("Write " + data.length + " bytes " + this.toString());
+			System.out.println("Write " + data.length + " bytes " + this);
 		
 		return data;
 	}
 	
-	public void setBytes(byte b[]) {
+	public void setBytes(byte[] b) {
 		this.relay = b[4];
 		int index = 5;
 		this.table = new String(b, index, b[0]);
@@ -208,7 +208,7 @@ public class Query implements Externalizable {
 								b[0] + ", " + b[1] + ", " + b[2] + ", " + b[3] + ").");
 		
 		if (verbose)
-			System.out.println("Read " + b.length + " bytes " + this.toString());
+			System.out.println("Read " + b.length + " bytes " + this);
 	}
 	
 	public void setRelay(int r) { this.relay = r; }
@@ -221,7 +221,7 @@ public class Query implements Externalizable {
 	 */
 	@Override
 	public void writeExternal(ObjectOutput out) throws IOException {
-		if (verbose) System.out.println("Write " + this.toString());
+		if (verbose) System.out.println("Write " + this);
 		
 		out.writeInt(this.relay);
 		out.writeUTF(this.table);
@@ -241,7 +241,7 @@ public class Query implements Externalizable {
 		this.col2 = in.readUTF();
 		this.con = in.readUTF();
 		
-		if (verbose) System.out.println("Read " + this.toString());
+		if (verbose) System.out.println("Read " + this);
 	}
 
 	@Override
@@ -294,7 +294,7 @@ public class Query implements Externalizable {
 		w: while (true) {
 			if (index < 0) {
 				l.add(s);
-				break w;
+				break;
 			} else {
 				l.add(s.substring(0, index));
 			}
@@ -306,7 +306,7 @@ public class Query implements Externalizable {
 		Iterator<String> itr = l.iterator();
 		w: while (itr.hasNext()) {
 			String key = itr.next();
-			if (!itr.hasNext()) break w;
+			if (!itr.hasNext()) break;
 			h.put(key, itr.next());
 		}
 	}

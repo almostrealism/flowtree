@@ -16,6 +16,14 @@
 
 package io.flowtree.node;
 
+import io.almostrealism.db.Query;
+import io.almostrealism.resource.Resource;
+import io.flowtree.Server;
+import io.flowtree.fs.OutputServer;
+import io.flowtree.fs.ResourceDistributionTask;
+import io.flowtree.ui.LoginDialog;
+
+import javax.swing.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
@@ -28,17 +36,6 @@ import java.net.UnknownHostException;
 import java.util.Hashtable;
 import java.util.Properties;
 
-import javax.swing.JLabel;
-
-import io.almostrealism.resource.Resource;
-import io.flowtree.Server;
-import io.flowtree.fs.OutputServer;
-
-import io.flowtree.ui.LoginDialog;
-
-import io.almostrealism.db.Query;
-import io.flowtree.fs.ResourceDistributionTask;
-
 /**
  * A {@link Client} encapsulates a {@link Server} instance and keeps
  * track of login information.
@@ -48,11 +45,12 @@ import io.flowtree.fs.ResourceDistributionTask;
 public class Client {
 	private static Client client;
 	
-	private String user, passwd;
+	private final String user;
+	private final String passwd;
 	private String outputHost;
 	private int outputPort;
 	
-	private Server server;
+	private final Server server;
 	
 	/**
 	 * Prompts for username and password and constructs a new

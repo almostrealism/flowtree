@@ -8,7 +8,6 @@ import java.io.ObjectOutputStream;
 import java.net.ConnectException;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.function.Consumer;
 import java.util.function.Function;
 
 /**
@@ -20,8 +19,8 @@ import java.util.function.Function;
 public class Output implements Function<JobOutput, Boolean> {
 	public static boolean verbose = false;
 
-	private String outputHost;
-	private int outputPort;
+	private final String outputHost;
+	private final int outputPort;
 
 	public Output(String outputHost, int outputPort) {
 		this.outputHost = outputHost;

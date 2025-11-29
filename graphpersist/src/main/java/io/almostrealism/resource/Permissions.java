@@ -18,8 +18,8 @@ package io.almostrealism.resource;
 
 public class Permissions {
     public enum Setting {
-        EMPTY, EXECUTE, WRITE, WRITE_EXECUTE, READ, READ_EXECUTE, READ_WRITE, READ_WRITE_EXECUTE;
-    }
+        EMPTY, EXECUTE, WRITE, WRITE_EXECUTE, READ, READ_EXECUTE, READ_WRITE, READ_WRITE_EXECUTE
+	}
 
     private String owner;
     private Setting user, group, others;

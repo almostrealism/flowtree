@@ -16,6 +16,10 @@
 
 package io.almostrealism.persist;
 
+import io.almostrealism.resource.IOStreams;
+import io.almostrealism.resource.Permissions;
+import io.almostrealism.resource.Resource;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -24,16 +28,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import io.almostrealism.resource.IOStreams;
-import io.almostrealism.resource.Permissions;
-import io.almostrealism.resource.Resource;
-
 public class LocalResource implements Resource {
 	private String uri;
 	private File file;
 	private InputStream in;
 	
-	private Permissions permissions;
+	private final Permissions permissions;
 	
 	public LocalResource() {
 		this.permissions = new Permissions();
@@ -83,7 +83,7 @@ public class LocalResource implements Resource {
 		InputStream in = this.getInputStream();
 		
 		try (OutputStream out = new FileOutputStream(file)) {
-			byte b[] = new byte[1];
+			byte[] b = new byte[1];
 			in.read(b);
 			
 			while (in.read(b) >= 0) { out.write(b); }
@@ -95,7 +95,7 @@ public class LocalResource implements Resource {
 	public void send(IOStreams io) throws IOException {
 		InputStream in = this.getInputStream();
 		
-		byte b[] = new byte[1];
+		byte[] b = new byte[1];
 		in.read(b);
 		
 		while (in.read(b) >= 0) { io.out.write(b); }

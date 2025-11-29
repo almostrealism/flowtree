@@ -16,36 +16,41 @@
 
 package io.almostrealism.nfs;
 
+import io.almostrealism.relation.Factory;
+import io.almostrealism.relation.Graph;
+import io.almostrealism.resource.Permissions;
+import io.almostrealism.resource.Resource;
+import org.dcache.nfs.v4.NfsIdMapping;
+import org.dcache.nfs.v4.xdr.nfsace4;
+import org.dcache.nfs.vfs.AclCheckable;
+import org.dcache.nfs.vfs.DirectoryEntry;
+import org.dcache.nfs.vfs.DirectoryStream;
+import org.dcache.nfs.vfs.FileHandle;
+import org.dcache.nfs.vfs.FsStat;
+import org.dcache.nfs.vfs.Inode;
+import org.dcache.nfs.vfs.Stat;
+import org.dcache.nfs.vfs.Stat.Type;
+import org.dcache.nfs.vfs.VirtualFileSystem;
+
+import javax.security.auth.Subject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.security.auth.Subject;
-
-import io.almostrealism.relation.Graph;
-import io.almostrealism.resource.Permissions;
-import io.almostrealism.resource.Resource;
-import io.almostrealism.relation.Factory;
-import org.dcache.nfs.ChimeraNFSException;
-import org.dcache.nfs.v4.NfsIdMapping;
-import org.dcache.nfs.v4.xdr.nfsace4;
-import org.dcache.nfs.vfs.*;
-import org.dcache.nfs.vfs.Stat.Type;
-
 public class GraphFileSystem<T extends Resource> implements VirtualFileSystem {
 	public static final long KB = 1024;
 	public static final long MB = 1024 * KB;
 	public static final long GB = 1024 * MB;
-	public static final long TOTAL_SPACE = 1024l * 1024l * GB; // 1 petabtyte
-	public static final long TOTAL_FILES = 6l * GB / (2l * KB); // 6 GB of FS address space assuming
+	public static final long TOTAL_SPACE = 1024L * 1024L * GB; // 1 petabtyte
+	public static final long TOTAL_FILES = 6L * GB / (2L * KB); // 6 GB of FS address space assuming
 															    // file names are at most 2KB
 
-	private Graph<Resource> graph;
-	private Factory<T> factory;
-	private SearchEngine search;
-	private DirectoryNotifier dir;
-	private DeletionNotifier del;
+	private final Graph<Resource> graph;
+	private final Factory<T> factory;
+	private final SearchEngine search;
+	private final DirectoryNotifier dir;
+	private final DeletionNotifier del;
 	
 	public GraphFileSystem(Graph<Resource> graph, Factory<T> factory, SearchEngine e,
 						   DirectoryNotifier dir, DeletionNotifier del) {
@@ -122,7 +127,7 @@ public class GraphFileSystem<T extends Resource> implements VirtualFileSystem {
 	}
 
 	@Override
-	public DirectoryStream list(Inode inode, byte b[], long ll) throws IOException {
+	public DirectoryStream list(Inode inode, byte[] b, long ll) throws IOException {
 		// TODO  Check permissions
 		List<DirectoryEntry> l = new ArrayList<>();
 
@@ -245,7 +250,7 @@ public class GraphFileSystem<T extends Resource> implements VirtualFileSystem {
 	public AclCheckable getAclCheckable() {
 		return new AclCheckable() {
 			@Override
-			public Access checkAcl(Subject subject, Inode inode, int accessMask) throws ChimeraNFSException, IOException {
+			public Access checkAcl(Subject subject, Inode inode, int accessMask) throws IOException {
 				throw new RuntimeException("Not implemented"); // TODO
 			}
 		};
@@ -344,7 +349,7 @@ public class GraphFileSystem<T extends Resource> implements VirtualFileSystem {
 
 	private static String path(Inode n) { return path(n.getFileId()); }
 
-	private static String path(byte id[]) { return new String(id); }
+	private static String path(byte[] id) { return new String(id); }
 
 	private static String nameForUri(String uri) {
 		return uri.substring(uri.lastIndexOf("/") + 1);

@@ -19,7 +19,13 @@ package io.flowtree.aws;
 import com.amazonaws.auth.AWSCredentialsProvider;
 import com.amazonaws.services.cognitoidp.AWSCognitoIdentityProvider;
 import com.amazonaws.services.cognitoidp.AWSCognitoIdentityProviderClientBuilder;
-import com.amazonaws.services.cognitoidp.model.*;
+import com.amazonaws.services.cognitoidp.model.AdminInitiateAuthRequest;
+import com.amazonaws.services.cognitoidp.model.AdminInitiateAuthResult;
+import com.amazonaws.services.cognitoidp.model.AuthFlowType;
+import com.amazonaws.services.cognitoidp.model.ListUserPoolsRequest;
+import com.amazonaws.services.cognitoidp.model.ListUserPoolsResult;
+import com.amazonaws.services.cognitoidp.model.NotAuthorizedException;
+import com.amazonaws.services.cognitoidp.model.UserPoolDescriptionType;
 import com.amazonaws.services.s3.model.Region;
 import org.almostrealism.auth.Login;
 
@@ -27,8 +33,8 @@ import java.security.SecureRandom;
 import java.util.HashMap;
 
 public class CognitoLogin implements Login {
-	private AWSCognitoIdentityProvider c;
-	private AWSCredentialsProvider p;
+	private final AWSCognitoIdentityProvider c;
+	private final AWSCredentialsProvider p;
 
 	public CognitoLogin(Encryptor e, AWSCredentialsProvider p) {
 		this.p = p;

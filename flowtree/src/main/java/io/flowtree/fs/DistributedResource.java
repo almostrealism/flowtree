@@ -16,6 +16,13 @@
 
 package io.flowtree.fs;
 
+import io.almostrealism.db.DatabaseConnection;
+import io.almostrealism.db.Query;
+import io.almostrealism.resource.IOStreams;
+import io.almostrealism.resource.Permissions;
+import io.almostrealism.resource.Resource;
+import org.apache.commons.lang3.NotImplementedException;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -24,14 +31,6 @@ import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
-import io.almostrealism.resource.IOStreams;
-import io.almostrealism.resource.Permissions;
-import io.almostrealism.resource.Resource;
-
-import io.almostrealism.db.DatabaseConnection;
-import io.almostrealism.db.Query;
-import org.apache.commons.lang3.NotImplementedException;
 
 /**
  * A {@link DistributedResource} represents a file in the distributed content repository.
@@ -57,15 +56,15 @@ public class DistributedResource implements Resource {
 	public static boolean verbose = true;  // server.resource.verbose
 	public static boolean ioVerbose = true;  // server.resource.io.verbose
 	
-	private int chunkSize = 500000;
-	private boolean commitAtEnd = false;
+	private final int chunkSize = 500000;
+	private final boolean commitAtEnd = false;
 	
 	private String uri, exclude;
 	private long tot;
 	private int size;
-	private boolean loaded[];
-	private long toa[];
-	private byte data[][];
+	private boolean[] loaded;
+	private long[] toa;
+	private byte[][] data;
 	
 	private Permissions permissions;
 	
@@ -110,7 +109,7 @@ public class DistributedResource implements Resource {
 		this.uri = processUri(res.getURI());
 		
 		Object o = res.getData();
-		if (o instanceof byte[][] == false)
+		if (!(o instanceof byte[][]))
 			throw new IllegalArgumentException("Resource data is not byte[][].");
 		
 		this.data = (byte[][]) res.getData();
@@ -121,7 +120,7 @@ public class DistributedResource implements Resource {
 		}
 		
 		this.size = this.data.length;
-		this.tot = this.chunkSize * (this.size - 1) +
+		this.tot = (long) this.chunkSize * (this.size - 1) +
 					this.data[this.data.length - 1].length;
 		this.loaded = new boolean[this.size];
 		for (int i = 0; i < this.loaded.length; i++) this.loaded[i] = true;
@@ -174,7 +173,7 @@ public class DistributedResource implements Resource {
 		return this.tot;
 	}
 	
-	private void setData(int index, byte d[]) {
+	private void setData(int index, byte[] d) {
 		if (verbose) {
 			String msg = "DistributedResource (" + this.uri +
 								"): Set data[" + index + "] to ";
@@ -209,7 +208,7 @@ public class DistributedResource implements Resource {
 			return this.data[index];
 		
 		if (load && (!store || index < l)) {
-			byte b[] = this.loadFromLocalDB(index);
+			byte[] b = this.loadFromLocalDB(index);
 			
 			if (b != null) {
 				if (store) {
@@ -301,7 +300,7 @@ public class DistributedResource implements Resource {
 	
 	protected void setExcludeHost(String host) { this.exclude = host; }
 
-	public synchronized void load(byte data[], long offset, int len) {
+	public synchronized void load(byte[] data, long offset, int len) {
 		throw new NotImplementedException("load");
 	}
 
@@ -335,7 +334,7 @@ public class DistributedResource implements Resource {
 		}
 		
 		int r = -1;
-		byte latest[] = new byte[0];
+		byte[] latest = new byte[0];
 		
 		long lastToa = 0;
 		
@@ -359,7 +358,7 @@ public class DistributedResource implements Resource {
 				if (r < 0) {
 					if (j == 0 && i == 0) return;
 					
-					byte d[];
+					byte[] d;
 					
 					if (l == null) {
 						d = this.data[i];
@@ -404,7 +403,7 @@ public class DistributedResource implements Resource {
 		if (l != null) {
 			long s = l.size();
 			if (s != 0)
-				s = (s - 1) * chunkSize + ((byte[])l.get((int) s - 1)).length;
+				s = (s - 1) * chunkSize + l.get((int) s - 1).length;
 			this.tot = s;
 			this.size = (int) (s / this.chunkSize);
 			if (s % chunkSize != 0) this.size++;
@@ -419,10 +418,10 @@ public class DistributedResource implements Resource {
 			
 			Iterator<byte[]> itr = l.iterator();
 			
-			byte b[];
+			byte[] b;
 			
 			for (int i = 0; itr.hasNext(); i++) {
-				b = (byte[]) itr.next();
+				b = itr.next();
 				
 				this.data[i] = b;
 				this.loaded[i] = true;
@@ -463,7 +462,7 @@ public class DistributedResource implements Resource {
 		this.toa = new long[this.data.length];
 		this.loaded = new boolean[this.data.length];
 		this.size = h.size();
-		this.tot = (this.size - 1) * this.chunkSize;
+		this.tot = (long) (this.size - 1) * this.chunkSize;
 		
 		Iterator itr = h.entrySet().iterator();
 		w: while (itr.hasNext()) {
@@ -506,7 +505,7 @@ public class DistributedResource implements Resource {
 		Hashtable h = s.getDatabaseConnection().executeQuery(q);
 		if (h == null) return null;
 		
-		byte b[] = (byte[]) h.get(this.uri);
+		byte[] b = (byte[]) h.get(this.uri);
 		return b;
 	}
 	
@@ -555,7 +554,7 @@ public class DistributedResource implements Resource {
 		this.commitToLocalDB(this.toa[index], this.data[index], index);
 	}
 	
-	private void commitToLocalDB(long toa, byte data[], int index) {
+	private void commitToLocalDB(long toa, byte[] data, int index) {
 		OutputServer s = OutputServer.getCurrentServer();
 		
 		if (DistributedResource.verbose)
@@ -588,7 +587,7 @@ public class DistributedResource implements Resource {
 		InputStream in = new InputStream() {
 			long total;
 			int chunk, index;
-			byte b[];
+			byte[] b;
 
 			@Override
 			public int read() {
@@ -648,7 +647,7 @@ public class DistributedResource implements Resource {
 			}
 			
 			public String toString() {
-				return "InputStream for " + DistributedResource.this.toString();
+				return "InputStream for " + DistributedResource.this;
 			}
 			
 			protected void finalize() {
@@ -675,7 +674,7 @@ public class DistributedResource implements Resource {
 		if (verbose)
 			System.out.println("DistributedResource.load: " + s + " chunks to load.");
 		
-		byte b[][] = new byte[0][0];
+		byte[][] b = new byte[0][0];
 		
 		if (this.data != null && this.data.length < s) {
 			b = this.data;
@@ -746,12 +745,12 @@ public class DistributedResource implements Resource {
 		
 		i: while (true) {
 			int i = io.in.readInt();
-			if (i < 0) break i;
+			if (i < 0) break;
 			
 			if (this.loaded[i]) {
 				io.out.writeInt(this.data[i].length);
 			} else {
-				byte b[] = this.getData(i, true);
+				byte[] b = this.getData(i, true);
 				
 				if (b == null) {
 					io.out.writeInt(-1);
