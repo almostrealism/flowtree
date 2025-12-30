@@ -19,11 +19,7 @@
 	<version>0.29</version>
 
 	<modules>
-		<module>graphpersist</module>
-		<module>flowtreeapi</module>
-		<module>flowtree</module>
-        <module>flowtree-shaded</module>
-		<module>flowtree-python</module>
+		<module>flowtree-shaded</module>
 	</modules>
 
 	<!-- Output to jar format -->
