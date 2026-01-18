@@ -16,6 +16,10 @@
 
 package io.almostrealism.sql;
 
+import com.mchange.v2.c3p0.ComboPooledDataSource;
+import io.almostrealism.query.SimpleUpdate;
+import org.apache.commons.beanutils.BeanUtils;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
@@ -25,12 +29,6 @@ import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
-
-import org.apache.commons.beanutils.BeanUtils;
-
-import com.mchange.v2.c3p0.ComboPooledDataSource;
-
-import io.almostrealism.query.SimpleUpdate;
 
 /**
  * @author  Michael Murray
@@ -59,8 +57,8 @@ public class SQLInsert<V> extends SimpleUpdate<ComboPooledDataSource, String[], 
 	 * @throws IllegalAccessException 
 	 * @throws NoSuchMethodException 
 	 */
-	public void execute(ComboPooledDataSource database, String keys[], V value) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
-		String splitOnWhereClause[] = query.split("[w,W][h,H][e,E][r,R][e,E]");
+	public void execute(ComboPooledDataSource database, String[] keys, V value) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+		String[] splitOnWhereClause = query.split("[w,W][h,H][e,E][r,R][e,E]");
 		
 		StringBuffer q = new StringBuffer();
 		q.append(splitOnWhereClause[0]);

@@ -1,7 +1,10 @@
 package io.almostrealism.sql;
 
+import com.mchange.v2.c3p0.ComboPooledDataSource;
 import io.almostrealism.persist.CascadingQuery;
 import io.almostrealism.query.SimpleQuery;
+import io.almostrealism.relation.Factory;
+import org.apache.commons.beanutils.BeanUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,11 +18,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-
-import io.almostrealism.relation.Factory;
-import org.apache.commons.beanutils.BeanUtils;
-
-import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 /**
  * @author  Michael Murray
@@ -47,7 +45,7 @@ public class SQLSelect<V> extends SimpleQuery<ComboPooledDataSource, String[], V
 	 * @throws InvocationTargetException 
 	 * @throws IllegalAccessException 
 	 */
-	public Collection<V> execute(ComboPooledDataSource database, String arguments[], Map<Class, List<CascadingQuery>> cascades) throws IllegalAccessException, InvocationTargetException {
+	public Collection<V> execute(ComboPooledDataSource database, String[] arguments, Map<Class, List<CascadingQuery>> cascades) throws IllegalAccessException, InvocationTargetException {
 		List<V> data = new ArrayList<V>();
 		
 		try (Connection c = database.getConnection();

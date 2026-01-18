@@ -1,5 +1,7 @@
 package io.almostrealism.persist;
 
+import io.almostrealism.sql.SQLConnectionProvider;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,8 +9,6 @@ import java.sql.Statement;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-
-import io.almostrealism.sql.SQLConnectionProvider;
 
 public abstract class CascadingQuery<D extends SQLConnectionProvider, K, V extends Cacheable> extends CacheableQuery<D, K, V> {
 	@Override

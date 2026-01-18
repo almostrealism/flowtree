@@ -17,6 +17,22 @@
 package io.flowtree.fs;
 
 
+import io.almostrealism.db.DatabaseConnection;
+import io.almostrealism.db.Query;
+import io.almostrealism.db.Query.ResultHandler;
+import io.almostrealism.db.QueryHandler;
+import io.almostrealism.persist.ResourceHeaderParser;
+import io.almostrealism.relation.Graph;
+import io.almostrealism.resource.Resource;
+import io.flowtree.Server;
+import io.flowtree.Server.ResourceProvider;
+import io.flowtree.job.AbstractJobFactory;
+import io.flowtree.job.Job;
+import io.flowtree.msg.Message;
+import io.flowtree.msg.NodeProxy;
+import org.almostrealism.io.JobOutput;
+import org.almostrealism.io.OutputHandler;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -28,27 +44,9 @@ import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
-
-import io.flowtree.job.AbstractJobFactory;
-import io.flowtree.Server;
-import io.flowtree.Server.ResourceProvider;
-import io.almostrealism.relation.Graph;
-import org.almostrealism.io.JobOutput;
-import org.almostrealism.io.OutputHandler;
-import io.almostrealism.resource.Resource;
-
-import io.almostrealism.db.DatabaseConnection;
-import io.almostrealism.db.Query;
-import io.almostrealism.db.QueryHandler;
-import io.almostrealism.db.Query.ResultHandler;
-import io.flowtree.msg.Message;
-import io.flowtree.msg.NodeProxy;
-import io.almostrealism.persist.ResourceHeaderParser;
-import io.flowtree.job.Job;
 
 /**
  * A ResourceDistributionTask object maintains a collection of Job instances that are cycled
@@ -75,9 +73,9 @@ public class ResourceDistributionTask extends AbstractJobFactory implements Outp
 	public static long maxCache = 250 * 1000 * 1000;
 	
 	private static ResourceDistributionTask current;
-	private static List resourceTypes = new ArrayList();
+	private static final List resourceTypes = new ArrayList();
 	
-	public static interface InvalidateListener { public void fireInvalidate(); }
+	public interface InvalidateListener { void fireInvalidate(); }
 	private class Directory {
 		String uri;
 		ResourceProvider provider;
@@ -129,7 +127,7 @@ public class ResourceDistributionTask extends AbstractJobFactory implements Outp
 									+ key + " " + value);
 		}
 		
-		public void handleResult(String key, byte value[]) {
+		public void handleResult(String key, byte[] value) {
 			System.out.println("ResourceDistributionTask.CustomResultHandler: " +
 								"Recieved bytes when string was expected.");
 		}
@@ -153,7 +151,7 @@ public class ResourceDistributionTask extends AbstractJobFactory implements Outp
 		private String uri, data;
 		private int index;
 
-		private CompletableFuture<Void> future = new CompletableFuture<>();
+		private final CompletableFuture<Void> future = new CompletableFuture<>();
 		
 		private ResourceDistributionTask task;
 		
@@ -185,18 +183,16 @@ public class ResourceDistributionTask extends AbstractJobFactory implements Outp
 			}
 			
 			this.task.loadJob(this);
+
+			String b = this.getClass().getName() +
+					":uri=" +
+					this.uri +
+					":i=" +
+					this.index +
+					":RAW:" +
+					this.data;
 			
-			StringBuffer b = new StringBuffer();
-			
-			b.append(this.getClass().getName());
-			b.append(":uri=");
-			b.append(this.uri);
-			b.append(":i=");
-			b.append(this.index);
-			b.append(":RAW:");
-			b.append(this.data);
-			
-			return b.toString();
+			return b;
 		}
 
 		@Override
@@ -240,14 +236,14 @@ public class ResourceDistributionTask extends AbstractJobFactory implements Outp
 	}
 	
 	private String id;
-	private Set jobs;
-	private int sleep;
+	private final Set jobs;
+	private final int sleep;
 	
 	private long cacheTot;
 	
 	private InvalidateListener inListen;
 	
-	private Hashtable items;
+	private final Hashtable items;
 	private OutputServer server;
 
 	private CompletableFuture<Void> future;
@@ -282,7 +278,7 @@ public class ResourceDistributionTask extends AbstractJobFactory implements Outp
 		DatabaseConnection db = this.server.getDatabaseConnection();
 		
 		Query q = new Query(db.getTable());
-		q.setColumn(0, db.uriColumn);
+		q.setColumn(0, DatabaseConnection.uriColumn);
 		q.setColumn(1, null);
 		q.setResultHandler(new ResultHandler() {
 			@Override
@@ -303,7 +299,7 @@ public class ResourceDistributionTask extends AbstractJobFactory implements Outp
 			}
 
 			@Override
-			public void handleResult(String key, byte value[]) {
+			public void handleResult(String key, byte[] value) {
 					System.out.println("ResourceDistributionTask: Received bytes " +
 										"when String was expected.");
 			}
@@ -374,7 +370,7 @@ public class ResourceDistributionTask extends AbstractJobFactory implements Outp
 		
 		if (this.isDirectory(dir)) o = this.items.get(dir);
 		
-		if (o instanceof Directory == false) {
+		if (!(o instanceof Directory)) {
 			System.out.println("ResourceDistributionTask.setResourceProvider: " + dir +
 								" is not a directory.");
 			return false;
@@ -408,7 +404,7 @@ public class ResourceDistributionTask extends AbstractJobFactory implements Outp
 	 * @return  True if the directory and contents was successfully deleted, false otherwise.
 	 */
 	public synchronized boolean deleteDirectory(String uri) {
-		String s[] = this.getChildren(uri);
+		String[] s = this.getChildren(uri);
 		
 		boolean deleted = true;
 		
@@ -522,8 +518,8 @@ public class ResourceDistributionTask extends AbstractJobFactory implements Outp
 	protected void checkFull() {
 		//TODO Add intelligent clutter removal...
 		
-		if (this.cacheTot > this.maxCache) {
-			Object o[] = this.items.entrySet().toArray();
+		if (this.cacheTot > maxCache) {
+			Object[] o = this.items.entrySet().toArray();
 			Map.Entry ent = (Map.Entry) o[(int) (Math.random() * o.length)];
 			DistributedResource r = (DistributedResource) ent.getValue();
 			r.clear();
@@ -583,7 +579,7 @@ public class ResourceDistributionTask extends AbstractJobFactory implements Outp
 		w: while (itr.hasNext()) {
 			Map.Entry ent = (Map.Entry) itr.next();
 			
-			if (ent.getValue() instanceof DistributedResource == false)
+			if (!(ent.getValue() instanceof DistributedResource))
 				continue w;
 			
 			this.notifyPeers((String) ent.getKey(), Message.DistributedResourceUri);
@@ -603,7 +599,7 @@ public class ResourceDistributionTask extends AbstractJobFactory implements Outp
 	protected int notifyPeers(String uri, int type) {
 		this.fireInvalidate();
 		
-		NodeProxy p[] = OutputServer.getCurrentServer().getNodeServer().getNodeGroup().getServers();
+		NodeProxy[] p = OutputServer.getCurrentServer().getNodeServer().getNodeGroup().getServers();
 		int tot = 0;
 		
 		for (int i = 0; i < p.length; i++) {
@@ -702,7 +698,7 @@ public class ResourceDistributionTask extends AbstractJobFactory implements Outp
 		if (index < 0) return null;
 		
 		DistributedResource r = (DistributedResource) this.items.get(uri);
-		byte b[] = r.getData(index, false);
+		byte[] b = r.getData(index, false);
 		
 		Hashtable h = null;
 		
@@ -732,7 +728,7 @@ public class ResourceDistributionTask extends AbstractJobFactory implements Outp
 	 * @param b  Header for resource.
 	 * @return  Class to use.
 	 */
-	public static Class getResourceClass(byte b[]) {
+	public static Class getResourceClass(byte[] b) {
 		if (b == null) return DistributedResource.class;
 		
 		Iterator itr = resourceTypes.iterator();
@@ -757,7 +753,7 @@ public class ResourceDistributionTask extends AbstractJobFactory implements Outp
 			w: while (itr.hasNext()) {
 				Map.Entry ent = (Map.Entry) itr.next();
 				Object o = ent.getValue();
-				if (o instanceof DistributedResource == false) continue w;
+				if (!(o instanceof DistributedResource)) continue w;
 				this.notifyPeer((String) ent.getKey(), Message.DistributedResourceUri, p);
 			}
 		}

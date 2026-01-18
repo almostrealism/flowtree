@@ -16,12 +16,11 @@
 
 package io.flowtree.msg;
 
-import java.io.IOException;
-
+import io.flowtree.job.Job;
 import io.flowtree.job.JobFactory;
 import io.flowtree.node.Node;
 
-import io.flowtree.job.Job;
+import java.io.IOException;
 
 /**
  * A {@link Connection} is used to relay information between a local node
@@ -30,10 +29,10 @@ import io.flowtree.job.Job;
  * @author Mike Murray
  */
 public class Connection implements Runnable, NodeProxy.EventListener {
-	private Node node;
+	private final Node node;
 	private NodeProxy proxy;
 	
-	private int id;
+	private final int id;
 	
 	/**
 	 * Constructs a new Connection object.
@@ -112,7 +111,7 @@ public class Connection implements Runnable, NodeProxy.EventListener {
 		
 		Boolean b = null;
 		
-		System.out.println("Connection (" + this.toString() +
+		System.out.println("Connection (" + this +
 							"): Confirming connection...");
 		
 		try {
@@ -122,11 +121,8 @@ public class Connection implements Runnable, NodeProxy.EventListener {
 		} catch (IOException ioe) {
 			return false;
 		}
-		
-		if (b == null || !b.booleanValue())
-			return false;
-		else
-			return true;
+
+		return b != null && b.booleanValue();
 	}
 	
 	public void run() {
@@ -178,7 +174,7 @@ public class Connection implements Runnable, NodeProxy.EventListener {
 	 * @see NodeProxy.EventListener#connect(NodeProxy)
 	 */
 	public void connect(NodeProxy p) {
-		System.out.println(this.toString() + ": Connected to " + p);
+		System.out.println(this + ": Connected to " + p);
 		this.proxy = p;
 	}
 
@@ -187,7 +183,7 @@ public class Connection implements Runnable, NodeProxy.EventListener {
 	 * @return  0.
 	 */
 	public int disconnect(NodeProxy p) {
-		System.out.println(this.toString() + ": Disconnected from " + p);
+		System.out.println(this + ": Disconnected from " + p);
 		p.removeEventListener(this);
 		this.proxy = null;
 		
@@ -206,7 +202,7 @@ public class Connection implements Runnable, NodeProxy.EventListener {
 				String md = m.getData();
 				
 				if (md == null) {
-					System.out.println(this.toString() + ": Job message contains no job data.");
+					System.out.println(this + ": Job message contains no job data.");
 					return true;
 				}
 				
@@ -214,7 +210,7 @@ public class Connection implements Runnable, NodeProxy.EventListener {
 					int mdi = md.indexOf("RAW");
 					String dis = md;
 					if (mdi > 0) dis = md.substring(0, mdi + 3);
-					System.out.println(this.toString() +
+					System.out.println(this +
 										" -- Adding job to node  -- "
 										+ dis);
 				}
@@ -239,7 +235,7 @@ public class Connection implements Runnable, NodeProxy.EventListener {
 			obe.printStackTrace(System.out);
 			return false;
 		} catch (IllegalThreadStateException tse) {
-			System.out.println(this.toString() +
+			System.out.println(this +
 							" -- Illegal Thread State (" +
 							tse.getMessage() + ")");
 			tse.printStackTrace(System.out);
@@ -252,21 +248,20 @@ public class Connection implements Runnable, NodeProxy.EventListener {
 		return true;
 	}
 	
-	protected void finalize() { System.out.println("Finalizing " + this.toString()); }
+	protected void finalize() { System.out.println("Finalizing " + this); }
 	
 	public String toString() { return this.toString(false); }
 	
 	public String toString(boolean showStat) {
-		StringBuffer b = new StringBuffer();
+
+		String b = "Connection from " +
+				this.node.getName() +
+				" to remote node " +
+				this.id +
+				" (" +
+				this.proxy.toString(showStat) +
+				") ";
 		
-		b.append("Connection from ");
-		b.append(this.node.getName());
-		b.append(" to remote node ");
-		b.append(this.id);
-		b.append(" (");
-		b.append(this.proxy.toString(showStat));
-		b.append(") ");
-		
-		return b.toString();
+		return b;
 	}
 }

@@ -16,8 +16,6 @@
 
 package io.almostrealism.nfs;
 
-import java.io.IOException;
-
 import io.almostrealism.relation.Graph;
 import io.almostrealism.resource.Resource;
 import org.dcache.nfs.ExportFile;
@@ -30,10 +28,12 @@ import org.dcache.oncrpc4j.rpc.OncRpcProgram;
 import org.dcache.oncrpc4j.rpc.OncRpcSvc;
 import org.dcache.oncrpc4j.rpc.OncRpcSvcBuilder;
 
+import java.io.IOException;
+
 public class NetworkFileSystemServer {
-	private int port = 2049;
+	private final int port = 2049;
 	
-	private OncRpcSvc nfs;
+	private final OncRpcSvc nfs;
 
 	public NetworkFileSystemServer(Graph<Resource> graph, FileSystemManager fs) throws IOException {
 		VirtualFileSystem vfs = new GraphFileSystem(graph, fs, fs, fs, fs);

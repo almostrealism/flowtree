@@ -16,34 +16,19 @@
 
 package io.flowtree.ui;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
+import io.almostrealism.util.NumberFormats;
+import io.flowtree.job.JobFactory;
+import io.flowtree.msg.NodeProxy;
+import io.flowtree.node.Client;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.util.Properties;
-
-import javax.swing.DefaultListModel;
-import javax.swing.JButton;
-import javax.swing.JEditorPane;
-import javax.swing.JFormattedTextField;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-
-import io.almostrealism.util.NumberFormats;
-import io.flowtree.job.JobFactory;
-import io.flowtree.msg.NodeProxy;
-import io.flowtree.node.Client;
 
 /**
  * A {@link NetworkDialog} allows the user to set up a node group for a network.
@@ -62,25 +47,35 @@ public class NetworkDialog extends JPanel {
   
   private Client client;
   
-  private JFrame frame;
+  private final JFrame frame;
   private boolean open, locked;
   
-  private JPanel nodePanel, serverPanel, statusPanel;
-  private JPanel statusButtonPanel, serverButtonPanel;
+  private final JPanel nodePanel;
+	private final JPanel serverPanel;
+	private final JPanel statusPanel;
+  private final JPanel statusButtonPanel;
+	private final JPanel serverButtonPanel;
   
-  private JButton startButton, stopButton;
-  private JButton addButton, removeButton, sendButton;
-  private JButton closeButton;
-  private JButton updateStatusButton;
+  private final JButton startButton;
+	private final JButton stopButton;
+  private final JButton addButton;
+	private final JButton removeButton;
+	private final JButton sendButton;
+  private final JButton closeButton;
+  private final JButton updateStatusButton;
   
-  private JEditorPane statusDetailPane;
+  private final JEditorPane statusDetailPane;
   
-  private JLabel statusLabel;
+  private final JLabel statusLabel;
   
-  private JTextField outputHostField;
-  private JFormattedTextField portField, nodesField, peersField, jobsField, outputPortField;
+  private final JTextField outputHostField;
+  private final JFormattedTextField portField;
+	private final JFormattedTextField nodesField;
+	private final JFormattedTextField peersField;
+	private final JFormattedTextField jobsField;
+	private final JFormattedTextField outputPortField;
   
-  private JList serverList;
+  private final JList serverList;
 
 	/**
 	 * Constructs a new NetworkDialog object.
@@ -328,7 +323,7 @@ public class NetworkDialog extends JPanel {
 		DefaultListModel m = (DefaultListModel) NetworkDialog.this.serverList.getModel();
 		m.clear();
 		
-		NodeProxy p[] = this.client.getServer().getNodeGroup().getServers();
+		NodeProxy[] p = this.client.getServer().getNodeGroup().getServers();
 		
 		for (int i = 0; i < p.length; i++)
 			m.add(m.getSize(), p[i].getInetAddress().getHostAddress() + ":" + p[i].getRemotePort());
@@ -402,7 +397,7 @@ public class NetworkDialog extends JPanel {
 						StringBuffer b = new StringBuffer();
 						b.append(e.getMessage() + "\n");
 						
-						Object o[] = e.getStackTrace();
+						Object[] o = e.getStackTrace();
 						for (int i = 0; i < o.length; i++) b.append(o[i] + "\n");
 						
 						JOptionPane.showMessageDialog(NetworkDialog.this, b,

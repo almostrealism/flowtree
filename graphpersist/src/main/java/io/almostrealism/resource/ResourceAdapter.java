@@ -22,14 +22,14 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public abstract class ResourceAdapter<T extends Object> implements Resource<T> {
-	private Permissions permissions = new Permissions();
+	private final Permissions permissions = new Permissions();
 	
 	protected String uri;
 	
 	@Override
 	public void saveLocal(String file) throws IOException {
 		try (FileOutputStream out = new FileOutputStream(file)) {
-			byte data[] = (byte[]) getData();
+			byte[] data = (byte[]) getData();
 			if (data == null) return;
 			
 			for (int j = 0; j < data.length; j++)
@@ -50,7 +50,7 @@ public abstract class ResourceAdapter<T extends Object> implements Resource<T> {
 	
 	// TODO  This could be made faster by writing a range of bytes at a time
 	public synchronized void send(IOStreams io) throws IOException {
-		byte data[] = (byte[]) getData();
+		byte[] data = (byte[]) getData();
 		if (data == null) return;
 		
 		for (int j = 0; j < data.length; j++)

@@ -17,13 +17,11 @@
 package io.flowtree.ui;
 
 import io.flowtree.msg.Connection;
-
-import java.util.Enumeration;
-
-import javax.swing.tree.MutableTreeNode;
-
 import io.flowtree.node.Node;
 import io.flowtree.node.NodeGroup;
+
+import javax.swing.tree.MutableTreeNode;
+import java.util.Enumeration;
 
 
 /**
@@ -106,14 +104,14 @@ public class NetworkTreeNode implements javax.swing.tree.MutableTreeNode {
 	 * @see javax.swing.tree.TreeNode#children()
 	 */
 	public Enumeration children() {
-		final NetworkTreeNode c[];
+		final NetworkTreeNode[] c;
 		
 		if (this.node instanceof NodeGroup) {
-			Node n[] = ((NodeGroup)this.node).getNodes();
+			Node[] n = ((NodeGroup)this.node).getNodes();
 			c = new NetworkTreeNode[n.length];
 			for (int i = 0; i < c.length; i++) c[i] = new NetworkTreeNode(n[i]);
 		} else {
-			Connection n[] = this.node.getPeers();
+			Connection[] n = this.node.getPeers();
 			c = new NetworkTreeNode[n.length];
 			for (int i = 0; i < c.length; i++) c[i] = new NetworkTreeNode(n[i].toString());
 		}

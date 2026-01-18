@@ -25,6 +25,13 @@
 
 package io.flowtree.fs;
 
+import io.almostrealism.persist.ScpDownloader;
+import io.almostrealism.resource.IOStreams;
+import io.almostrealism.resource.Permissions;
+import io.almostrealism.resource.Resource;
+import io.flowtree.node.Client;
+import org.apache.commons.lang3.NotImplementedException;
+
 import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
 import java.io.IOException;
@@ -32,27 +39,19 @@ import java.io.InputStream;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
 
-import io.flowtree.node.Client;
-import io.almostrealism.resource.IOStreams;
-import io.almostrealism.resource.Permissions;
-import io.almostrealism.resource.Resource;
-
-import io.almostrealism.persist.ScpDownloader;
-import org.apache.commons.lang3.NotImplementedException;
-
 public class ImageResource implements Resource {
 	private String uri;
 	
-	private int data[];
+	private int[] data;
 	private int x, y, w, h;
 	
-	private Permissions permissions;
+	private final Permissions permissions;
 	
 	public ImageResource() {
 		this.permissions = new Permissions();
 	}
 	
-	public ImageResource(String uri, int data[], Permissions permissions) {
+	public ImageResource(String uri, int[] data, Permissions permissions) {
 		this.uri = uri;
 		this.data = data;
 		
@@ -114,9 +113,9 @@ public class ImageResource implements Resource {
 	}
 	
 	public void loadFromURI() {
-		t: try {
+		try {
 			RenderedImage im = null;
-			
+
 			if (uri.startsWith("scp://")) {
 				String ur = uri.substring(6);
 				int index = ur.indexOf("|");
@@ -128,16 +127,16 @@ public class ImageResource implements Resource {
 				index = ur.indexOf("/");
 				String passwd = ur.substring(0, index);
 				ur = ur.substring(index);
-				
+
 				final String fur = ur;
-				
+
 				System.out.println("ImageResource: Loading image from " + user + "@" + host + ur);
-				
+
 				PipedInputStream in = new PipedInputStream();
 				final PipedOutputStream out = new PipedOutputStream(in);
-				
+
 				final ScpDownloader scpd = ScpDownloader.getDownloader(host, user, passwd);
-				
+
 				ThreadGroup g = null;
 				Client c = Client.getCurrentClient();
 				if (c != null) g = c.getServer().getThreadGroup();
@@ -155,12 +154,12 @@ public class ImageResource implements Resource {
 //				im = JAI.create("stream", seekableInput);
 			} else if (uri.startsWith("resource://")) {
 				IOStreams io = Client.getCurrentClient().getServer().parseResourceUri(uri);
-				
+
 				if (io == null) {
 					System.out.println("ImageResource: Resource unavailable.");
 					return;
 				}
-				
+
 				this.load(io);
 				io.close();
 			} else {
@@ -168,34 +167,34 @@ public class ImageResource implements Resource {
 //				TODO  Must load image without JAI
 //				im = JAI.create("url", new URL(uri));
 			}
-			
+
 			if (im == null && this.data == null) throw new IOException();
-			
+
 			if (im != null) {
 				int w = im.getWidth();
 				int h = im.getHeight();
-				
+
 				System.out.println("ImageResource: Buffer is " + w + " x " + h);
-				
+
 				BufferedImage bim = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
 				bim.setData(im.copyData(null));
-				
+
 				int index = 2;
 				this.data = new int[2 + w * h];
 				this.data[0] = w;
 				this.data[1] = h;
-				
+
 				System.out.println("ImageResource: Converting...");
-				
-				for(int j = 0; j < h; j++) {
-					for(int i = 0; i < w; i++) {
+
+				for (int j = 0; j < h; j++) {
+					for (int i = 0; i < w; i++) {
 						this.data[index++] = bim.getRGB(i, j);
 					}
-				};
-				
+				}
+
 				System.out.println("ImageResource: Converted.");
 			}
-			
+
 			System.out.println("ImageResource: Loaded " + this.data[0] + " x " + this.data[1]);
 		} catch (IndexOutOfBoundsException oob) {
 			System.out.println("Server: Index out of bounds while loading image.");
@@ -216,7 +215,7 @@ public class ImageResource implements Resource {
 		int sw = this.w;
 		int sh = this.h;
 		
-		int rgb[] = this.data;
+		int[] rgb = this.data;
 		
 		sx = io.in.readInt();
 		sy = io.in.readInt();
@@ -266,7 +265,7 @@ public class ImageResource implements Resource {
 							cw + ", " + ch + "...");
 		
 		if (cx == 0 && cy == 0 && cw == this.w && ch == this.h) {
-			int out[] = new int[this.data.length];
+			int[] out = new int[this.data.length];
 			System.arraycopy(this.data, 0, out, 0, this.data.length);
 			return out;
 		}
@@ -277,7 +276,7 @@ public class ImageResource implements Resource {
 		if (cw < 0) cw = this.data[0] + cw;
 		if (ch < 0) ch = this.data[1] + ch;
 		
-		int rgb[] = new int[2 + cw * ch];
+		int[] rgb = new int[2 + cw * ch];
 		rgb[0] = cw;
 		rgb[1] = ch;
 		int index = 2;
@@ -299,16 +298,14 @@ public class ImageResource implements Resource {
 	}
 	
 	public boolean equals(Object o) {
-		if (o instanceof ImageResource == false) return false;
+		if (!(o instanceof ImageResource)) return false;
 		
 		ImageResource res = (ImageResource) o;
-		if (this.w == res.w &&
-			this.h == res.h &&
-			this.x == res.x &&
-			this.y == res.y &&
-			this.uri.equals(res.uri)) return true;
-		
-		return false;
+		return this.w == res.w &&
+				this.h == res.h &&
+				this.x == res.x &&
+				this.y == res.y &&
+				this.uri.equals(res.uri);
 	}
 	
 	public int hashCode() { return this.uri.hashCode(); }

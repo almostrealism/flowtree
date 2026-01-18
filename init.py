@@ -1,6 +1,5 @@
-import urllib2
 import os
-
+import urllib2
 
 # from python_helpers import instance
 home = '/root'

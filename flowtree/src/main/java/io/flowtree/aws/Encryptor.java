@@ -25,13 +25,20 @@ import com.amazonaws.services.costandusagereport.model.AWSRegion;
 import com.amazonaws.services.s3.AmazonS3Encryption;
 import com.amazonaws.services.s3.AmazonS3EncryptionClient;
 import com.amazonaws.services.s3.AmazonS3EncryptionClientBuilder;
-import com.amazonaws.services.s3.model.*;
-
+import com.amazonaws.services.s3.model.EncryptionMaterials;
+import com.amazonaws.services.s3.model.EncryptionMaterialsProvider;
+import com.amazonaws.services.s3.model.StaticEncryptionMaterialsProvider;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
-import java.security.*;
+import java.security.KeyFactory;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.NoSuchAlgorithmException;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
@@ -43,9 +50,10 @@ public class Encryptor implements EncryptionMaterialsProvider, AWSCredentialsPro
 
     private KMSEngine kms;
 
-    private String myAccessKeyId, mySecretKey;
+    private final String myAccessKeyId;
+	private final String mySecretKey;
 
-    private EncryptionMaterials ency;
+    private final EncryptionMaterials ency;
 
     {
         if (enable509) {
@@ -115,7 +123,7 @@ public class Encryptor implements EncryptionMaterialsProvider, AWSCredentialsPro
         }
     }
 
-    private ClientConfiguration cc = new ClientConfiguration();
+    private final ClientConfiguration cc = new ClientConfiguration();
 
     public Encryptor(String myAccessKeyId, String mySecretKey) throws NoSuchAlgorithmException {
         this.myAccessKeyId = myAccessKeyId;

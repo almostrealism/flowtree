@@ -16,15 +16,15 @@
 
 package io.flowtree.airflow;
 
+import io.flowtree.job.Job;
+
 import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
-
-import io.flowtree.job.Job;
 
 public class AirflowJob implements Job {
 	private String taskId;
 	private String command;
-	private CompletableFuture<Void> future;
+	private final CompletableFuture<Void> future;
 
 	public AirflowJob(String taskId, String command) {
 		this.taskId = taskId;
@@ -44,15 +44,14 @@ public class AirflowJob implements Job {
 
 	@Override
 	public String encode() {
-		StringBuffer b = new StringBuffer();
 
-		b.append(this.getClass().getName());
-		b.append(":id=");
-		b.append(this.taskId);
-		b.append(":cmd=");
-		b.append(command);
+		String b = this.getClass().getName() +
+				":id=" +
+				this.taskId +
+				":cmd=" +
+				command;
 
-		return b.toString();
+		return b;
 	}
 
 	@Override

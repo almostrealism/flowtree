@@ -1,16 +1,16 @@
 package io.almostrealism;
 
+import io.almostrealism.collect.TraversalPolicy;
 import io.almostrealism.db.DatabaseConnection;
 import io.almostrealism.db.Query;
 import org.almostrealism.collect.PackedCollection;
-import io.almostrealism.collect.TraversalPolicy;
 import org.hsqldb.Server;
 
 import java.util.Properties;
 
 public class GraphPersist {
 	private static Properties properties = new Properties();
-	private static GraphPersist local;
+	private static final GraphPersist local;
 
 	static {
 		String outputTable = properties.getProperty("db.tables.output", "output");
@@ -23,7 +23,7 @@ public class GraphPersist {
 			System.out.println("GraphPersist: Driver and/or URI not specified, " +
 					"starting HSQLDB...");
 
-			String args[] = new String[4];
+			String[] args = new String[4];
 			args[0] = "-database.0";
 			args[1] = "file:graphpersistdb";
 			args[2] = "-dbname.0";
@@ -47,7 +47,7 @@ public class GraphPersist {
 									dbpasswd, outputTable, !testMode));
 	}
 
-	private DatabaseConnection db;
+	private final DatabaseConnection db;
 
 	private GraphPersist(DatabaseConnection db) {
 		this.db = db;

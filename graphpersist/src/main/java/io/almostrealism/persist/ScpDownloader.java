@@ -16,6 +16,11 @@
 
 package io.almostrealism.persist;
 
+import com.jcraft.jsch.JSch;
+import com.jcraft.jsch.JSchException;
+import com.jcraft.jsch.Session;
+import com.jcraft.jsch.UserInfo;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -24,18 +29,15 @@ import java.io.OutputStream;
 import java.util.Hashtable;
 import java.util.Map;
 
-import com.jcraft.jsch.JSch;
-import com.jcraft.jsch.JSchException;
-import com.jcraft.jsch.Session;
-import com.jcraft.jsch.UserInfo;
-
 public class ScpDownloader implements UserInfo {
-	private static int maxCache = 5;
+	private static final int maxCache = 5;
 	private static Map cache;
 	
-	private JSch sch;
+	private final JSch sch;
 	private Session session;
-	private String host, user, passwd;
+	private final String host;
+	private final String user;
+	private final String passwd;
 	
 	private File ddir;
 	private int retry = 3;
@@ -54,7 +56,7 @@ public class ScpDownloader implements UserInfo {
 			
 			try {
 				this.init();
-				break i;
+				break;
 			} catch (IOException ioe) {
 				this.dispose();
 				if (i >= this.retry - 1) throw ioe;
@@ -117,10 +119,10 @@ public class ScpDownloader implements UserInfo {
 				done = true;
 				System.out.println("ScpDownloader: Done");
 				fout.flush();
-				break i;
+				break;
 			} catch (IOException e) {
 				System.out.println("ScpDownloader: " + e.getMessage());
-				if (done) break i;
+				if (done) break;
 //			} catch (JSchException jsch) {
 //				System.out.println("ScpDownloader: " + jsch.getMessage());
 			}
@@ -206,8 +208,8 @@ public class ScpDownloader implements UserInfo {
 				sb.append((char)c);
 			} while(c != '\n');
 			
-			if(b == 1) System.out.println("ScpDownloader (ERROR): " + sb.toString());
-			if(b == 2) System.out.println("ScpDownloader (FATAL): " + sb.toString());
+			if(b == 1) System.out.println("ScpDownloader (ERROR): " + sb);
+			if(b == 2) System.out.println("ScpDownloader (FATAL): " + sb);
 		}
 		
 		return b;

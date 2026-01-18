@@ -16,22 +16,13 @@
 
 package io.flowtree.ui;
 
-import java.awt.*;
-
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFormattedTextField;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.JWindow;
-import javax.swing.border.LineBorder;
-import javax.swing.border.TitledBorder;
-
 import io.almostrealism.util.NumberFormats;
 import io.flowtree.Server;
+
+import javax.swing.*;
+import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
+import java.awt.*;
 
 /**
  * A {@link SendTaskDialog} provides a dialog for collecting input required
@@ -40,22 +31,27 @@ import io.flowtree.Server;
  * @author  Michael Murray
  */
 public class SendTaskDialog extends JPanel {
-	public static final String jobSizeOptions[] = {"1", "4", "9", "16", "25", "36", "49", "64", "81", "100"};
+	public static final String[] jobSizeOptions = {"1", "4", "9", "16", "25", "36", "49", "64", "81", "100"};
 
-	private JFrame frame;
+	private final JFrame frame;
 	private boolean open;
 
-	private Server server;
-	private int index;
+	private final Server server;
+	private final int index;
 
-	private JPanel renderPanel, buttonPanel;
+	private final JPanel renderPanel;
+	private final JPanel buttonPanel;
 	private JTextField hostField, portField;
-	private JComboBox jobSizeField;
-	private JFormattedTextField widthField, heightField, ssWidthField, ssHeightField;
-	private JButton submitButton, cancelButton;
+	private final JComboBox jobSizeField;
+	private final JFormattedTextField widthField;
+	private final JFormattedTextField heightField;
+	private final JFormattedTextField ssWidthField;
+	private final JFormattedTextField ssHeightField;
+	private final JButton submitButton;
+	private final JButton cancelButton;
 
-	private static int screenWidth;
-	private static int screenHeight;
+	private static final int screenWidth;
+	private static final int screenHeight;
 
 	static {
 		Dimension screenDim = Toolkit.getDefaultToolkit().getScreenSize();
