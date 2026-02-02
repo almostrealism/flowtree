@@ -65,7 +65,6 @@
         <dependency>
             <groupId>org.almostrealism</groupId>
             <artifactId>ar-flowtree</artifactId>
-            <version>${common.version}</version>
         </dependency>
     </dependencies>
 </project>

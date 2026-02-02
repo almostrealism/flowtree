@@ -9,3 +9,7 @@ graphpersistdb**
 
 .idea/**
 **.DS_Store
+
+# Configuration for agents
+slack-tokens.json
+workstreams.yaml
