@@ -1,0 +1,95 @@
+#!/usr/bin/env bash
+# claude-tracker - Wraps Claude Code to record session agent/API time into SQLite
+set -uo pipefail
+
+if ! command -v claude &>/dev/null; then
+    echo "Error: 'claude' not found in PATH" >&2
+    exit 1
+fi
+
+DB_PATH="${CLAUDE_USAGE_DB:-$HOME/.claude/usage.db}"
+mkdir -p "$(dirname "$DB_PATH")"
+
+# Initialize database
+sqlite3 "$DB_PATH" <<'SQL'
+CREATE TABLE IF NOT EXISTS sessions (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    started_at TEXT DEFAULT (datetime('now','localtime')),
+    agent_time_seconds REAL DEFAULT 0,
+    api_time_seconds REAL DEFAULT 0
+);
+SQL
+
+# Temp file for capturing terminal output
+TMPFILE=$(mktemp /tmp/claude-tracker.XXXXXX)
+trap 'rm -f "$TMPFILE"' EXIT
+
+# Launch claude inside script(1) to capture terminal output from the TUI
+if [[ "$(uname)" == "Darwin" ]]; then
+    script -q "$TMPFILE" claude "$@" && CLAUDE_EXIT=0 || CLAUDE_EXIT=$?
+else
+    # Linux (util-linux) syntax
+    script -qec "$(printf '%q ' claude "$@")" "$TMPFILE" && CLAUDE_EXIT=0 || CLAUDE_EXIT=$?
+fi
+
+# Parse captured output for session time using perl
+read -r AGENT_SECS API_SECS < <(perl -e '
+    use strict;
+    use warnings;
+
+    my $file = $ARGV[0];
+    open my $fh, "<", $file or do { print "0 0\n"; exit };
+
+    # Only read last 20KB - session summary is at the end
+    my $size = -s $file;
+    if ($size > 20480) {
+        seek($fh, -20480, 2);
+    }
+    local $/;
+    my $text = <$fh>;
+    close $fh;
+
+    # Strip ANSI escape codes and control characters
+    $text =~ s/\e\[[0-9;]*[a-zA-Z]//g;
+    $text =~ s/\e\([a-zA-Z]//g;
+    $text =~ s/\e\].*?\x07//g;
+    $text =~ s/\r//g;
+    $text =~ s/[^[:print:]\n\t]//g;
+
+    sub parse_time {
+        my $s = shift;
+        my $total = 0;
+        $total += $1 * 3600 if $s =~ /(\d+)\s*h/;
+        $total += $1 * 60   if $s =~ /(\d+)\s*m(?!s)/;
+        if ($s =~ /(\d+(?:\.\d+)?)\s*ms/) {
+            $total += $1 / 1000;
+        } elsif ($s =~ /(\d+(?:\.\d+)?)\s*s/) {
+            $total += $1;
+        }
+        return $total;
+    }
+
+    my ($agent, $api) = (0, 0);
+
+    # Find agent time (last occurrence wins)
+    while ($text =~ /[Aa]gent\s*(?:time)?\s*[:=]\s*([0-9][0-9hms \.]*)/g) {
+        $agent = parse_time($1);
+    }
+
+    # Find API time (last occurrence wins)
+    while ($text =~ /[Aa][Pp][Ii]\s*(?:time)?\s*[:=]\s*([0-9][0-9hms \.]*)/g) {
+        $api = parse_time($1);
+    }
+
+    printf "%.2f %.2f\n", $agent, $api;
+' "$TMPFILE")
+
+# Record to database if we captured any time data
+if [[ "$AGENT_SECS" != "0.00" || "$API_SECS" != "0.00" ]]; then
+    sqlite3 "$DB_PATH" "INSERT INTO sessions (agent_time_seconds, api_time_seconds) VALUES ($AGENT_SECS, $API_SECS);"
+    echo "[claude-tracker] Session recorded: agent=${AGENT_SECS}s, api=${API_SECS}s"
+else
+    echo "[claude-tracker] No session time data captured."
+fi
+
+exit "${CLAUDE_EXIT:-0}"

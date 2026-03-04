@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+# claude-usage - Query Claude Code session usage from SQLite
+set -euo pipefail
+
+DB_PATH="${CLAUDE_USAGE_DB:-$HOME/.claude/usage.db}"
+
+if [[ ! -f "$DB_PATH" ]]; then
+    echo "No usage database found at $DB_PATH"
+    echo "Use claude-tracker to launch Claude Code and start recording sessions."
+    exit 1
+fi
+
+DAYS="${1:-30}"
+
+echo ""
+echo "Claude Code Usage - Last $DAYS days"
+echo "==========================================="
+echo ""
+
+sqlite3 -header -column "$DB_PATH" <<SQL
+SELECT
+    date(started_at) as day,
+    count(*) as sessions,
+    printf('%.2f', sum(agent_time_seconds) / 3600.0) as agent_hrs,
+    printf('%.2f', sum(api_time_seconds) / 3600.0) as api_hrs,
+    printf('%.2f', (sum(agent_time_seconds) + sum(api_time_seconds)) / 3600.0) as total_hrs
+FROM sessions
+WHERE date(started_at) >= date('now', 'localtime', '-$DAYS days')
+GROUP BY date(started_at)
+ORDER BY day DESC;
+SQL
+
+echo ""
+echo "--- Totals ---"
+
+sqlite3 -header -column "$DB_PATH" <<SQL
+SELECT
+    printf('%.2f', coalesce(sum(agent_time_seconds) / 3600.0, 0)) as agent_hrs,
+    printf('%.2f', coalesce(sum(api_time_seconds) / 3600.0, 0)) as api_hrs,
+    printf('%.2f', coalesce((sum(agent_time_seconds) + sum(api_time_seconds)) / 3600.0, 0)) as total_hrs,
+    count(*) as sessions
+FROM sessions
+WHERE date(started_at) >= date('now', 'localtime', '-$DAYS days');
+SQL
+
+echo ""
