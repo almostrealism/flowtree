@@ -1,8 +1,0 @@
-awscli
-boto3
-httplib2
-Flask
-nose
-pdb
-psycopg2
-pdb

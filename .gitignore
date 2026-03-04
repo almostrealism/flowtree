@@ -9,3 +9,10 @@ graphpersistdb**
 
 .idea/**
 **.DS_Store
+
+# Output
+claude-output/**
+
+# Configuration for agents
+slack-tokens.json
+workstreams.yaml
