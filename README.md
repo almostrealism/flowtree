@@ -1,6 +1,6 @@
 # FlowTree
 
-A thin wrapper for the [FlowTree library](https://github.com/almostrealism/common), which is now part of [Almost Realism Common](https://github.com/almostrealism/common). This repository provides packaging, configuration, and utility scripts for running FlowTree services.
+A thin wrapper for the [FlowTree library](https://github.com/almostrealism/common/tree/master/flowtree), which is now part of [Almost Realism Common](https://github.com/almostrealism/common). This repository provides packaging, configuration, and utility scripts for running FlowTree services.
 
 ## Tools
 
