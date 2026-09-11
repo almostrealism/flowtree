@@ -21,7 +21,7 @@
     <parent>
         <artifactId>flowtree</artifactId>
         <groupId>io.flowtree</groupId>
-        <version>0.30</version>
+        <version>0.31</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
